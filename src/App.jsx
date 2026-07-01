@@ -1,10 +1,12 @@
 import React from 'react'
+import Navbar from './CustomComponents/Navbar'
 
 const App = () => {
   return (
     <div>
 
-      <div className='bg-red-500 w-[50px] h-[50px]'></div>
+      <Navbar />
+
       
     </div>
   )
