@@ -1,7 +1,25 @@
+@font-face {
+    font-family: HeadingNow;
+    src: url('../assets/heading_now/HeadingNowTrial-24Regular.ttf');
+}
+
 .navcomponents {
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1;
-    font-size: 1rem;
+    font-size: 2rem;
+    font-family: 'HeadingNow', sans-serif;
+
+}
+
+.book {
+    font-family: 'HeadingNow', sans-serif;
+    background-color: orange;
+    color: white;
+    font-size: 2rem;
+    width: 30%;
+    height: 60%;
+    border-radius: 8px;
+    
 }

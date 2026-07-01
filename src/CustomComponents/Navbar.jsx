@@ -5,6 +5,7 @@ import './Navbar.css'
 import { useState } from 'react';
 import { CiCircleMinus } from "react-icons/ci";
 import { motion } from 'motion/react';
+import CompanyLogo from '../assets/icons/benefit-crab.png'
 
 const Navbar = () => {
 
@@ -20,11 +21,15 @@ const Navbar = () => {
 
 
   return (
-    <div>
+    <div className='fixed top-0 left-0 w-full z-50'>
 
-        <Flex className='w-full h-[12vh] bg-red-500'>
+        <Flex 
+            className='w-full h-[12vh]'
+            bg={'linear-gradient(0, transparent 5%, rgb(0 0 0 / 50%) 50%)'}
 
-            <Flex padding={'10px'} className='w-[70%] h-[100%] bg-purple-500 gap-5'>
+        >
+
+            <Flex padding={'10px'} className='w-[70%] h-[100%] bg-transparent gap-5'>
                 
                 <Flex className='w-[10%] h-full items-center justify-center '>
 
@@ -53,8 +58,6 @@ const Navbar = () => {
                             class='navcomponents' 
                             key={navitem}
 
-                            
-
                             animate={{
 
                                 opacity: expandedMenu ? 1 : 0,
@@ -70,9 +73,9 @@ const Navbar = () => {
 
             </Flex>
 
-            <Flex className='w-[30%] h-[100%] bg-green-500 justify-end items-center gap-2'>
+            <Flex className='w-[30%] h-[100%] bg-transparent justify-end items-center gap-5'>
 
-                <Button className='w-[30%] h-[100%]'>
+                <Button class='book' className='w-[30%] h-[100%] bg-orange-500'>
 
                     Book Now
 
@@ -80,7 +83,9 @@ const Navbar = () => {
                 
 
                 {/* Box for Logo */}
-                <Box className='w-[20%] h-[100%] bg-yellow-500'>
+                <Box padding={4} className='w-[20%] h-[100%] bg-transparent'>
+
+                    <img src={CompanyLogo} alt='company logo'/>
 
                 </Box>
 
