@@ -87,11 +87,11 @@ const Navbar = () => {
 
             <Flex className='w-[30%] h-[100%] bg-transparent justify-end items-center gap-5'>
 
-                <Button class='book' className='w-[30%] h-[100%] bg-orange-500'>
+                <button class='book'>
 
                     Book Now
 
-                </Button>
+                </button>
                 
 
                 {/* Box for Logo */}

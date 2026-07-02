@@ -17,9 +17,16 @@
     font-family: 'HeadingNow', sans-serif;
     background-color: orange;
     color: white;
-    font-size: 2rem;
-    width: 30%;
-    height: 60%;
+    font-size: 1.5rem;
+    width: 25%;
+    height: 55%;
     border-radius: 8px;
+    transition-duration: 0.4s;
+
     
+}
+
+.book:hover {
+    background-color: white;
+    color: orange;
 }
