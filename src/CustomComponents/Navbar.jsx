@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { CiCircleMinus } from "react-icons/ci";
 import { motion } from 'motion/react';
 import CompanyLogo from '../assets/icons/benefit-crab.png'
+import WheelIcon from '../assets/icons/benefit-wheel.png'
 
 const Navbar = () => {
 
@@ -40,11 +41,22 @@ const Navbar = () => {
                             flex 
                             justify-center 
                             items-center
-                            z-10'
+                            z-10
+                            '
                         
                         onClick={toggleMenu}
                     >
-                        {expandedMenu ? <CiCircleMinus size={'80%'}/> : <CiCirclePlus size={'80%'}/>}
+                        {/* {expandedMenu ? <CiCircleMinus size={'80%'}/> : <CiCirclePlus size={'80%'}/>} */}
+                        <motion.img 
+                            src={WheelIcon} 
+                            alt='wheel expanding menu icon' 
+                            style={{padding: '20%'}}
+                            animate={{
+                                rotate: expandedMenu ? 360 : -360,
+                            }}
+                        />
+
+
                     </Box>
 
 

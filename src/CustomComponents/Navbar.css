@@ -1,6 +1,6 @@
 @font-face {
     font-family: HeadingNow;
-    src: url('../assets/heading_now/HeadingNowTrial-24Regular.ttf');
+    src: url('../assets/heading_now/HeadingNowTrial-45Medium.ttf');
 }
 
 .navcomponents {
@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     flex: 1;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'HeadingNow', sans-serif;
 
 }
