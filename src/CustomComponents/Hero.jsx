@@ -1,15 +1,24 @@
 import React from 'react'
-import HeroImg from '../assets/img/home-hero-final.png'
+import HeroImg1 from '../assets/img/home-hero-final.png'
+import HeroImg2 from '../assets/img/group-dining.png'
+import HeroImg3 from '../assets/img/restaurant-exterior.png'
+import HeroImg4 from '../assets/img/group-dining-new.png'
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { motion } from 'motion/react'
+import HeroCarousel from './HeroCarousel'
 
 const Hero = () => {
 
   return (
-    <div className='w-full h-[100vh] bg-green-500 relative flex justify-start items-center'>
+    <div className='w-full h-[100vh] relative flex justify-start items-center'>
 
-        <img src={HeroImg} alt='Hero Image' style={{height: '100%', width: '100%', objectFit: 'cover', position:'absolute'}}/>
+        {/* Hero Image */}
+        <HeroCarousel />
+
+        {/* Brightness lowering */}
         <Box className='w-full h-full bg-black/50 absolute'/>
+        
+        {/* Hero Text */}
         <div
           className='
             h-[50%]
