@@ -5,8 +5,8 @@ import './Navbar.css'
 import { useState } from 'react';
 import { CiCircleMinus } from "react-icons/ci";
 import { motion } from 'motion/react';
-import CompanyLogo from '../assets/icons/benefit-crab.png'
-import WheelIcon from '../assets/icons/benefit-wheel.png'
+import CompanyLogo from '@/assets/icons/benefit-crab.png'
+import WheelIcon from '@/assets/icons/benefit-wheel.png'
 
 const Navbar = () => {
 
@@ -26,11 +26,11 @@ const Navbar = () => {
 
         <Flex 
             className='w-full h-[12vh]'
-            bg={'linear-gradient(0, transparent 5%, rgb(0 0 0 / 50%) 50%)'}
+            bg={'linear-gradient(0, transparent 5%, rgb(0 0 0 / 70%) 20%)'}
 
         >
 
-            <Flex padding={'10px'} className='w-[70%] h-[100%] bg-transparent gap-5'>
+            <Flex padding={'10px'} className='w-[55%] h-[100%] gap-5'>
                 
                 <Flex className='w-[10%] h-full items-center justify-center '>
 
@@ -46,7 +46,6 @@ const Navbar = () => {
                         
                         onClick={toggleMenu}
                     >
-                        {/* {expandedMenu ? <CiCircleMinus size={'80%'}/> : <CiCirclePlus size={'80%'}/>} */}
                         <motion.img 
                             src={WheelIcon} 
                             alt='wheel expanding menu icon' 
@@ -67,7 +66,7 @@ const Navbar = () => {
                 
                     {navcomponents.map((navitem) => (
                         <motion.div 
-                            class='navcomponents' 
+                            className='navcomponents' 
                             key={navitem}
 
                             animate={{
@@ -85,9 +84,9 @@ const Navbar = () => {
 
             </Flex>
 
-            <Flex className='w-[30%] h-[100%] bg-transparent justify-end items-center gap-5'>
+            <Flex className='w-[45%] h-[100%] justify-end items-center gap-5'>
 
-                <button class='book'>
+                <button className='book'>
 
                     Book Now
 
@@ -95,9 +94,9 @@ const Navbar = () => {
                 
 
                 {/* Box for Logo */}
-                <Box padding={4} className='w-[20%] h-[100%] bg-transparent'>
+                <Box padding={4} className='w-[20%] h-[100%] flex justify-centre items-centre'>
 
-                    <img src={CompanyLogo} alt='company logo'/>
+                    <img src={CompanyLogo} alt='company logo' className="object-cover"/>
 
                 </Box>
 
