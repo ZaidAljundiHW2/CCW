@@ -6,13 +6,29 @@ import HeroCarousel from './HeroCarousel'
 const Hero = () => {
 
   return (
-    <div className='w-full h-[100vh] relative flex justify-start items-center'>
+    <div 
+      className='
+        w-full 
+        h-[100vh] 
+        relative 
+        flex 
+        justify-start 
+        items-center
+      '
+    >
 
         {/* Hero Image */}
         <HeroCarousel />
 
         {/* Brightness lowering */}
-        <Box className='w-full h-full bg-black/70 absolute'/>
+        <Box className='w-full h-full bg-black/60 absolute'/>
+
+        <Box 
+          className='h-full w-full absolute'
+          style={{
+            backgroundImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 50%)'
+          }}
+        />
         
         {/* Hero Text */}
         <div

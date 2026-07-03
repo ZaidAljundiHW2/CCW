@@ -26,7 +26,7 @@ const Navbar = () => {
 
         <Flex 
             className='w-full h-[12vh]'
-            bg={'linear-gradient(0, transparent 5%, rgb(0 0 0 / 70%) 20%)'}
+            bg={'linear-gradient(0, transparent 5%, rgb(0 0 0 / 90%) 30%)'}
 
         >
 
