@@ -48,7 +48,12 @@ const ExistingLocation = () => {
                             h-full
                             max-w-[40%]
                             bg-red-500
+                            flex
+                            flex-col
+                            justify-center
+                            
                         '
+
                         
                         
                     >
