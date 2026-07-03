@@ -21,7 +21,17 @@ const Menu = () => {
                 absolute
             '
 
-            style={{backgroundImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 50%)'}}
+            style={{backgroundImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 15%)'}}
+        />
+
+        <Box 
+            className='
+                w-full 
+                h-full 
+                absolute
+            '
+
+            style={{backgroundImage:'linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 15%)'}}
         />
 
       

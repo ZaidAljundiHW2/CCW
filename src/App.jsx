@@ -3,6 +3,7 @@ import Navbar from './CustomComponents/Navbar/Navbar'
 import Hero from './CustomComponents/Hero/Hero'
 import Separator from './CustomComponents/Separator/Separator'
 import Menu from './CustomComponents/Menu/Menu'
+import Locations from './CustomComponents/Locations/Locations'
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
       <Menu />
 
       <Separator />
+
+      <Locations />
 
       
     </div>

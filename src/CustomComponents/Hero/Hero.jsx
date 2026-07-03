@@ -26,7 +26,7 @@ const Hero = () => {
         <Box 
           className='h-full w-full absolute'
           style={{
-            backgroundImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 50%)'
+            backgroundImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 15%)'
           }}
         />
         
