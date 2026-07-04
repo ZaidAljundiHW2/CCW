@@ -7,8 +7,6 @@ import './ExistingLocation.css'
 import { useState, useEffect } from 'react'
 import InfoJSON from '@/assets/JSONs/infosec.json'
 import DownArrow from '@/assets/icons/DownArrow.png'
-import WaveIcon from '@/assets/icons/waveicon.png'
-import WaveIcon2 from '@/assets/icons/waveicon2.png'
 
 const ExistingLocation = () => {
 
@@ -58,23 +56,9 @@ const ExistingLocation = () => {
                         '
                     >
 
-                        <Flex className='flex-1 w-full'>
-                            <h1 className='ELH'>Our Home Port</h1>
+                        <h1 className='ELT'>Our Home Port</h1>
 
-                            <img 
-                                src={WaveIcon} 
-                                alt='wave icon' 
-                                style={{
-                                    width:'20%',
-                                    height:'auto',
-                                    objectFit:'contain'
-                                }}
-                            />
-                        </Flex>
-
-                        
-
-                        <h1 className='ELH2'>Burlington, Ontario</h1>
+                        <h1 className='ELT'>Burlington, Ontario</h1>
 
                         <p className='ELT'>
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident"
@@ -86,14 +70,11 @@ const ExistingLocation = () => {
 
                 </Box>
 
-                <div
+                <Flex
                     className='
-                        flex
-                        max-w-[29%]
+                        w-[29%]
                         justify-center
                         items-center
-                        min-w-0
-
                         
                     '
 
@@ -102,14 +83,11 @@ const ExistingLocation = () => {
                     }}
                 >
 
-                    <div
-                        className='flex rounded-lg shadow-lg gap-2 flex-col justify-center relative w-full min-w-0'
+                    <Flex
+                        className='w-full rounded-lg shadow-lg gap-2 flex-col justify-center'
                         style={{ padding: '5%' }}
                     >
-                        <h1 className='ELH2 min-w-0 break-words'>Visit the flagship</h1>
-
-                        
-
+                        <h1 className='ELT'>Visit the flagship</h1>
                         <p className='ELT'>Our home port in the heart of burlington serving up bold flavours and good times</p>
 
                         <VStack className='w-full' align='stretch' spacing={2}>
@@ -122,14 +100,14 @@ const ExistingLocation = () => {
 
                         <Flex className='w-full items-center justify-center gap-5' padding={'5%'}>
 
-                            <Button className='flex-1 ELDir'>
+                            <Button className='flex-1'>
 
                                 Directions
 
                             </Button>
 
 
-                            <Button className='flex-1 ELBook'>
+                            <Button className='flex-1'>
 
                                 Book
 
@@ -162,11 +140,11 @@ const ExistingLocation = () => {
                             </div>
 
                         </Flex>
-                    </div>
+                    </Flex>
 
 
 
-                </div>
+                </Flex>
 
             </Flex>
 

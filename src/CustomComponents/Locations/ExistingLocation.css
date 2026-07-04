@@ -1,0 +1,40 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+.ELH {
+    color: black;
+    font-family: 'PersonalServices', sans-serif;
+    font-size: 1.5rem;
+}
+
+.ELH2 {
+    color: #012447;
+    font-family: 'PersonalServices', sans-serif;
+    font-size: 2rem;
+}
+
+.ELT {
+    color: black;
+}
+
+.ELBook {
+    background-color: #012447;
+    color: white;
+}
+
+.ELBook:hover {
+    background-color: white;
+    color: #012447;
+}
+
+.ELDir {
+    background-color: white;
+    color: orange;
+} 
+
+.ELDir:hover {
+    background-color: orange;
+    color:white
+}

@@ -1,0 +1,16 @@
+[
+    {
+        "Text": "Mon - Sun: 11:00 AM - 10:00 PM",
+        "img": "/src/assets/icons/contact-clock-orange.png"
+    },
+
+    {
+        "Text":"Dine in • Takout • Catering • Group Orders",
+        "img": "/src/assets/icons/dinein.png"
+    },
+
+    {
+        "Text": "Free parking available on-site",
+        "img": "/src/assets/icons/parking.png"
+    }
+]
