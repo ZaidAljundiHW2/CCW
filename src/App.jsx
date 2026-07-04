@@ -4,6 +4,7 @@ import Hero from './CustomComponents/Hero/Hero'
 import Separator from './CustomComponents/Separator/Separator'
 import Menu from './CustomComponents/Menu/Menu'
 import Locations from './CustomComponents/Locations/Locations'
+import Contact from './CustomComponents/Contact/Contact'
 
 const App = () => {
   return (
@@ -20,6 +21,10 @@ const App = () => {
       <Separator />
 
       <Locations />
+
+      <Separator />
+
+      <Contact />
 
       
     </div>

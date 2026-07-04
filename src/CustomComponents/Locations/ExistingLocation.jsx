@@ -13,9 +13,7 @@ import WaveIcon2 from '@/assets/icons/waveicon2.png'
 const ExistingLocation = () => {
 
   return (
-    <div style={{
-        marginTop:'-5%'
-    }}>
+    <div>
 
         <Box
             className='w-full min-h-[50vh] relative'

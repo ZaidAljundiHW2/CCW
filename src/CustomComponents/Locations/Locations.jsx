@@ -5,7 +5,9 @@ import ComingSoon from './ComingSoon'
 
 const Locations = () => {
   return (
-    <div>
+    <div style={{
+        marginTop:'-5%'
+    }}>
 
         <ExistingLocation />
 
