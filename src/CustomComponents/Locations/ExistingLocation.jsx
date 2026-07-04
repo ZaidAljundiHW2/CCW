@@ -140,7 +140,7 @@ const ExistingLocation = () => {
 
                             <div className='flex items-center justify-center ELT'>
                                 <h1>
-                                    Future Locations
+                                    Other Locations
                                 </h1>
                             </div>
 

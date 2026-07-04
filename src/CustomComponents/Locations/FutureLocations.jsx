@@ -29,7 +29,7 @@ const FutureLocations = () => {
             
 
 
-        },5000);
+        },10000);
 
         return () => clearInterval(interval);
 

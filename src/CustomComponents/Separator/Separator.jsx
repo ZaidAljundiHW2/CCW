@@ -9,7 +9,7 @@ const Separator = () => {
             marginTop:'-5%', 
             zIndex:'-10', 
             position:'relative',
-            height:'50vh',
+            height:'35vh',
             width:'100%',
             overflow:'hidden',
             backgroundImage: `url(${SeparatorImg})`,

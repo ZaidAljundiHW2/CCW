@@ -1,0 +1,14 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+.CSH {
+    color: #012447;
+    font-family: 'PersonalServices', sans-serif;
+    font-size: 2rem;
+}
+
+.CST {
+    color: black;
+}

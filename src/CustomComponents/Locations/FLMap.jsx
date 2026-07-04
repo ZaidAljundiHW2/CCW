@@ -20,7 +20,7 @@ const FLMap = () => {
             setIndex(prev => (prev + 1) % numWayPoints);
 
 
-        }, 5000);
+        }, 10000);
 
         return () => clearInterval(interval);
 

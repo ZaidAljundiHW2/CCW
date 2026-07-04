@@ -1,6 +1,7 @@
 import React from 'react'
 import ExistingLocation from './ExistingLocation'
 import FutureLocations from './FutureLocations'
+import ComingSoon from './ComingSoon'
 
 const Locations = () => {
   return (
@@ -9,6 +10,8 @@ const Locations = () => {
         <ExistingLocation />
 
         <FutureLocations />
+
+        <ComingSoon />
 
       
     </div>
