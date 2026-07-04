@@ -1,0 +1,29 @@
+[
+    {
+        "Location":"Hamilton",
+        "Top": "83.5%",
+        "Left":"63%",
+        "Description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.",
+        "Img": "/src/assets/img/hamilton.png",
+        "Link": "https://maps.app.goo.gl/5N66fjjbTitZngJm6"
+    },
+
+    {
+        "Location":"Edmonton",
+        "Top": "60%",
+        "Left":"20%",
+        "Description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur",
+        "Img":"/src/assets/img/edmonton.png",
+        "Link": "https://maps.app.goo.gl/v8Yzhids5dkCwqEK8"
+    },
+
+    {
+        "Location":"Montreal",
+        "Top": "75.5%",
+        "Left":"71%",
+        "Description":"magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad",
+        "Img":"/src/assets/img/montreal.png",
+        "Link": "https://maps.app.goo.gl/jYwdiuqKCfmshggc7"
+
+    }
+]

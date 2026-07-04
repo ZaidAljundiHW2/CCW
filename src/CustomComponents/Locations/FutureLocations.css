@@ -1,0 +1,37 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+.FLH {
+    color: white;
+    font-family: 'PersonalServices', sans-serif;
+    font-size: 2rem;
+}
+
+.FLH2 {
+    color: #012447;
+    font-family: 'PersonalServices', sans-serif;
+    font-size: 2rem;
+}
+
+.FLT {
+    color: black;
+}
+
+.FLimgG {
+    position:absolute;
+    object-fit: cover;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0));
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+}
+
+.FLBut {
+    background-color: orange;
+    width: 20%;
+    color: white;
+}

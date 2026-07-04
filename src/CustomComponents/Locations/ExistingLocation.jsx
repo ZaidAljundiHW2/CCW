@@ -138,7 +138,7 @@ const ExistingLocation = () => {
 
                         <Flex className='items-center justify-center gap-5'>
 
-                            <div className='flex items-center justify-center'>
+                            <div className='flex items-center justify-center ELT'>
                                 <h1>
                                     Future Locations
                                 </h1>

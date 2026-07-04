@@ -4,6 +4,7 @@ import HeroImg1 from '@/assets/img/home-hero-final.png'
 import HeroImg2 from '@/assets/img/group-dining.png'
 import HeroImg3 from '@/assets/img/restaurant-exterior.png'
 import HeroImg4 from '@/assets/img/restaurant-front.png'
+import HeroImg5 from '@/assets/img/hero-harbor.png'
 import './HeroCarousel.css'
 import { motion } from 'motion/react';
 import { useEffect, useState, useRef } from 'react';
@@ -15,7 +16,8 @@ const HeroCarousel = () => {
     HeroImg1,
     HeroImg2,
     HeroImg3,
-    HeroImg4
+    HeroImg4,
+    HeroImg5
   ];
 
   const [index, setIndex] = useState(0);
