@@ -27,18 +27,18 @@ const CSCard = ({image, location}) => {
             <Flex className='flex-col gap-5' style={{zIndex:'1'}}>
 
                 <Flex className='w-full'>
-                    <Heading className='CSCH'>
+                    <h1 className='CSCH'>
                         {location}
-                    </Heading>
+                    </h1>
                     <IoLocationSharp color='orange' size={'2rem'}/>
 
                 </Flex>
 
 
                 <Flex className='items-center justify-center bg-[#012447] rounded-lg' style={{padding:'10px'}}>
-                    <Heading className='CSCT'>
+                    <h1 className='CSCT'>
                         Coming Soon
-                    </Heading>
+                    </h1>
 
                 </Flex>
             </Flex>

@@ -7,6 +7,7 @@ import CSCard from './CSCard'
 import TorontoSketch from '@/assets/img/torontosketch.jpg'
 import MississaugaSketch from '@/assets/img/mississaugasketch.jpg'
 import OttowaSketch from '@/assets/img/ottowasketch.jpg'
+import { HiH1 } from 'react-icons/hi2'
 
 const ComingSoon = () => {
   return (
@@ -41,9 +42,9 @@ const ComingSoon = () => {
                         justify-start   
                     '
                 >
-                    <Heading lineHeight={1.2} className='CSH'>
+                    <h1 lineHeight={1.2} className='CSH'>
                         MORE LOCATIONS COMING SOON
-                    </Heading>
+                    </h1>
 
                     <img 
                         src={Wave2}

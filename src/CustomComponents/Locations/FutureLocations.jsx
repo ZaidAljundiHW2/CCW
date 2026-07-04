@@ -62,11 +62,11 @@ const FutureLocations = () => {
             }}
         >
             
-            <Heading className='FLH flex'>
+            <h1 className='FLH flex'>
 
                 Our Other Locations
 
-            </Heading>
+            </h1>
 
             <Box className='w-[40%] h-[1vh] bg-[#ff6161]'/>
             
@@ -128,14 +128,14 @@ const FutureLocations = () => {
 
                         {WayPointsJSON.map((waypoint,i) => (
 
-                            <Heading
+                            <h1
                                 className='FLH2 transition-opacity duration-700 absolute'
                                 style={{
                                     opacity: i === index ? 1 : 0
                                 }}
                             >
                                 {waypoint.Location}
-                            </Heading>
+                            </h1>
                         ))}
 
                     </div>
