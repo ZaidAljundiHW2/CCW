@@ -9,17 +9,16 @@ const Hero = () => {
     <div 
       className='
         w-full 
-        h-[100vh] 
+        min-h-screen
         relative 
-        flex 
-        justify-start 
-        items-center
+        overflow-hidden
       '
     >
 
+        <div className='absolute inset-0'>
         {/* Hero Image */}
-        <HeroCarousel />
-
+          <HeroCarousel />
+        </div>
         {/* Brightness lowering */}
         <Box className='w-full h-full bg-black/60 absolute'/>
 
@@ -33,12 +32,13 @@ const Hero = () => {
         {/* Hero Text */}
         <div
           className='
-            h-full
-            w-full
-            absolute
+            min-h-screen
+            relative
             items-center
             inset-0
-            flex            
+            flex  
+            py-20
+            z-10          
           '
           
         >

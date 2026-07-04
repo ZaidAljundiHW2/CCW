@@ -136,32 +136,7 @@ const ExistingLocation = () => {
                             </Button>
                         </Flex>
 
-                        <Flex className='items-center justify-center gap-5'>
-
-                            <div className='flex items-center justify-center ELT'>
-                                <h1>
-                                    Other Locations
-                                </h1>
-                            </div>
-
-
-                            <div className='w-4 flex justify-center items-center shrink-0'>
-
-                                <img
-                                    src={DownArrow}
-                                    alt='down arrow'
-                                    className='
-                                        h-full
-                                        w-full
-                                        object-contain
-                                    '
-                                />
-
-
-
-                            </div>
-
-                        </Flex>
+                        
                     </div>
 
 

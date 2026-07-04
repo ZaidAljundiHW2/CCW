@@ -38,7 +38,7 @@ const HeroCarousel = () => {
           key={i}
           src={img}
           alt="hero"
-          className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-700"
+          className="absolute inset-0 top-0 left-0 w-full h-full object-cover transition-opacity duration-700"
           style={{
             opacity: i === index ? 1 : 0
           }}

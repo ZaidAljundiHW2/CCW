@@ -94,7 +94,7 @@ const Navbar = () => {
                 
 
                 {/* Box for Logo */}
-                <Box padding={4} className='w-[20%] h-[100%] flex justify-centre items-centre'>
+                <Box padding={4} className='w-[15%] h-[auto] flex justify-centre items-centre'>
 
                     <img src={CompanyLogo} alt='company logo' className="object-cover"/>
 
