@@ -12,6 +12,8 @@
   "dependencies": {
     "@chakra-ui/react": "^3.36.0",
     "@emotion/react": "^11.14.0",
+    "@heroui/react": "^3.2.1",
+    "@heroui/styles": "^3.2.1",
     "@tailwindcss/vite": "^4.3.2",
     "bootstrap": "^5.3.8",
     "motion": "^12.42.2",

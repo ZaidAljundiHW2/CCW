@@ -1,0 +1,37 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+.CUH {
+    color: white;
+    font-family: 'PersonalServices', sans-serif;
+    font-size: 3rem;
+}
+
+.CUH2 {
+    color: white;
+    font-family: 'PersonalServices', sans-serif;
+    font-size: 2rem;
+}
+
+.CUT {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.CUI {
+    position: absolute;
+    bottom:0;
+    right:0;
+    height: 90%;
+    width: auto;
+}
+
+.CUI2 {
+    position: absolute;
+    bottom:0;
+    right:0;
+    height: 40%;
+    width: auto;
+}

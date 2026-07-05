@@ -1,0 +1,11 @@
+@font-face {
+    font-family: HeadingNow;
+    src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
+}
+
+.CFH {
+
+    font-family: HeadingNow, 'sans-serif';
+    color:black;
+    font-size: 2rem;
+}
