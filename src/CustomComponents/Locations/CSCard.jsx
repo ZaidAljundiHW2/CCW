@@ -24,7 +24,7 @@ const CSCard = ({image, location}) => {
         >
 
 
-            <Flex className='flex-col gap-5' style={{zIndex:'1'}}>
+            <Flex className='flex-col gap-5 justify-center items-center' style={{zIndex:'1'}}>
 
                 <Flex className='w-full'>
                     <h1 className='CSCH'>
@@ -35,7 +35,7 @@ const CSCard = ({image, location}) => {
                 </Flex>
 
 
-                <Flex className='items-center justify-center bg-[#012447] rounded-lg' style={{padding:'10px'}}>
+                <Flex className='items-center justify-center w-[200px] bg-[#012447] rounded-lg' style={{padding:'10px'}}>
                     <h1 className='CSCT'>
                         Coming Soon
                     </h1>
