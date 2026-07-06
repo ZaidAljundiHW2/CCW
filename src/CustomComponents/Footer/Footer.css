@@ -1,0 +1,28 @@
+@font-face {
+    font-family: HeadingNow;
+    src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
+}
+
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+
+.SMI {
+    width: 40px;
+    height:auto
+}
+
+.FH {
+    font-family: HeadingNow, 'sans-serif';
+    padding-bottom: 20px;
+    font-size: 2rem;
+   
+}
+
+.FH2 {
+    font-family:PersonalServices, 'sans-serif';
+    font-size:1.75rem;
+    color: #d9ebff;
+}

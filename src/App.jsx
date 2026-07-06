@@ -5,6 +5,7 @@ import Separator from './CustomComponents/Separator/Separator'
 import Menu from './CustomComponents/Menu/Menu'
 import Locations from './CustomComponents/Locations/Locations'
 import Contact from './CustomComponents/Contact/Contact'
+import Footer from './CustomComponents/Footer/Footer'
 
 const App = () => {
   return (
@@ -25,6 +26,8 @@ const App = () => {
       <Separator />
 
       <Contact />
+
+      <Footer />
 
       
     </div>
