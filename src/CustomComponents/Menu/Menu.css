@@ -1,3 +1,13 @@
+@font-face {
+    font-family: HeadingNow;
+    src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
+}
+
+.MenuHeader {
+    font-family: HeadingNow, 'sans-serif';
+    font-size: 3rem;
+}
+
 .MenuCard {
     flex:1;
     background-color: green;
@@ -5,5 +15,8 @@
     box-shadow: var(--shadow-lg);
     border-color: white;
     border-width: 2px;
-    padding:20px
+    padding:20px;
+    flex-direction: column;
+    gap: 20px;
 }
+

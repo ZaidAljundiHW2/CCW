@@ -1,0 +1,47 @@
+[
+    {
+        "Step": "1",
+        "Label": "Catch Options",
+        "Header": "Step One: Choose Your Catch",
+        "Items": [
+            {
+                "Name":"Lobster",
+                "Img":"/src/assets/img/lobsteroption.jpg"
+            },
+
+            {
+                "Name":"Crab",
+                "Img":"/src/assets/img/craboption.jpg"
+            },
+
+            {
+                "Name":"Shrimp",
+                "Img":"/src/assets/img/shrimpoption.jpg"
+            }
+        ]
+    },
+
+    {
+        "Step": "2",
+        "Label": "Side Options",
+        "Header": "Step Two: Choose Your Side",
+        "Items": [
+            {
+                "Name":"Roasted Potatoes",
+                "Img":"/src/assets/img/poratoesoption.jpg"
+            },
+
+            {
+                "Name":"Corn",
+                "Img":"/src/assets/img/cornoption.jpg"
+            },
+
+            {
+                "Name":"Fries",
+                "Img":"/src/assets/img/friesoption.jpg"
+            }
+        ]
+    }
+
+
+]
