@@ -78,7 +78,7 @@ const FutureLocations = () => {
                 <Flex 
                     className='
                         flex-1 
-                        h-[60vh] 
+                        min-h-[60vh] 
                         rounded-lg 
                         shadow-lg
                         flex
@@ -96,7 +96,6 @@ const FutureLocations = () => {
                     <Box 
                         className='
                             w-full
-                            h-full
                             rounded-lg
                             absolute
                             inset-0
@@ -124,7 +123,7 @@ const FutureLocations = () => {
 
                     
 
-                    <div className='relative h-[20%] w-[60%] '>
+                    <div className='relative h-[70px] w-[60%] '>
 
                         {WayPointsJSON.map((waypoint,i) => (
 
@@ -141,28 +140,32 @@ const FutureLocations = () => {
                     </div>
                     
 
-                    <div className='relative flex-1 w-[60%]'>
-
-                    
-                        {WayPointsJSON.map((waypoint,i) => (
-
+                    <div className="grid w-[60%]">
+                        {WayPointsJSON.map((waypoint, i) => (
                             <p
-                                className='FLT transition-opacity duration-700 absolute'
+                                key={i}
+                                className="
+                                    col-start-1
+                                    row-start-1
+                                    transition-opacity
+                                    duration-700
+                                    FLT
+                                "
                                 style={{
-                                    opacity: i === index ? 1 : 0
+                                    opacity: i === index ? 1 : 0,
                                 }}
                             >
                                 {waypoint.Description}
                             </p>
                         ))}
-
                     </div>
 
 
                     <Button
-                        className='FLBut'
+                        className='FLBut relative'
                         as="a"
                         href={currLink}
+                        
                         
                     >
                         Directions

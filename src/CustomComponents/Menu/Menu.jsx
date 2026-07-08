@@ -1,38 +1,71 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, Flex, Grid } from '@chakra-ui/react'
+import MenuBackground from '@/assets/img/back4.png'
+import './Menu.css'
 
 const Menu = () => {
   return (
-    <div style={{marginTop:'-5%', position:'relative', width:'100%', height:'100vh'}}>
+    <div 
+        style={{
+            marginTop:'-5%', 
+            width:'100%', 
+            minHeight:'100vh',
+            backgroundImage:`url(${MenuBackground})`,
+            backgroundSize:'cover',
+            backgroundPosition:'center'
+        }}
 
-        <Box 
+        className='flex justify-center items-center'
+    >
+
+        <Flex
             className='
-                w-full
-                h-full
-                bg-green-500
-                absolute
-            '
-        />
-
-        <Box 
-            className='
-                w-full 
-                h-full 
-                absolute
-            '
-
-            style={{backgroundImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 15%)'}}
-        />
-
-        <Box 
-            className='
-                w-full 
-                h-full 
-                absolute
+                w-[90%]
+                min-h-[90vh]
+                rounded-lg
+                shadow-lg
+                bg-red-500
+                items-stretch
+                gap-5
             '
 
-            style={{backgroundImage:'linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 15%)'}}
-        />
+            style={{
+                padding:'20px'
+            }}
+        >
+            
+            {/* Options */}
+            <Flex className='MenuCard'>
+
+                <h1>
+                    Step 1: Choose your catch
+                </h1>
+
+                <Grid>
+
+                </Grid>
+
+            </Flex>
+
+            {/* Separator */}
+            <Box className='w-[2px] self-stretch'
+                style={{
+                    background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'
+                }}
+            />
+
+            {/* Bucket Visual */}
+            <Flex className='MenuCard'>
+
+            </Flex>
+
+            
+
+        </Flex>
+
+
+
+        
 
       
     </div>

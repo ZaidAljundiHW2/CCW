@@ -19,6 +19,13 @@ const ComingSoon = () => {
             bg-[#F2F0EF]
             gap-5
         '
+
+        style={{
+            paddingBottom:'20px',
+            paddingTop:'20px'
+        }}
+
+        
     >
         <Flex className='w-[30%] items-center'>
 
