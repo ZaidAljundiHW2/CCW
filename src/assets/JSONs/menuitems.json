@@ -28,7 +28,7 @@
         "Items": [
             {
                 "Name":"Roasted Potatoes",
-                "Img":"/src/assets/img/poratoesoption.jpg"
+                "Img":"/src/assets/img/potatoesoption.jpg"
             },
 
             {
@@ -39,6 +39,33 @@
             {
                 "Name":"Fries",
                 "Img":"/src/assets/img/friesoption.jpg"
+            },
+
+            {
+                "Name":"Coleslaw",
+                "Img":"/src/assets/img/coleslawoption.jpg"
+            }
+        ]
+    },
+
+    {
+        "Step":"3",
+        "Label":"Sauce Options",
+        "Header": "Step Three: Choose Your Sauce",
+        "Items": [
+            {
+                "Name":"Sweet Chili Sauce",
+                "Img":"/src/assets/img/chiligarlicoption.jpg"
+            },
+
+            {
+                "Name":"Katsu Curry Sauce",
+                "Img":"/src/assets/img/katsucurryoption.jpg"
+            },
+
+            {
+                "Name":"Lemon Butter Sauce",
+                "Img":"/src/assets/img/lemonbutteroption.jpg"
             }
         ]
     }

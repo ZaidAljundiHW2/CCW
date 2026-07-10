@@ -51,7 +51,7 @@ const Menu = () => {
                 <IoArrowBackCircle size={'2rem'}/>
 
                 <h1 className='MenuHeader'>
-                    // Step One: Choose your catch
+                    {MenuItemsJSON[stepNum].Header}
                 </h1>
 
                 <Flex className='flex-1 justify-center items-center'>
@@ -59,7 +59,8 @@ const Menu = () => {
                     <Grid 
                         className='
                             w-full 
-                            
+                            place-items-center
+                            justify-center
                             bg-yellow-500
                             gap-5
                             
@@ -70,6 +71,8 @@ const Menu = () => {
                         style={{
                             padding:'20px'
                         }}
+
+
                     >
 
                         {MenuItemsJSON[stepNum].Items.map((item, i) => (
