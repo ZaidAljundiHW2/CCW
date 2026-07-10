@@ -107,7 +107,6 @@ const Menu = () => {
 
         <Flex
             className='
-                min-h-[90vh]
                 w-[90%]
                 rounded-lg
                 shadow-lg
@@ -121,101 +120,118 @@ const Menu = () => {
         >
             
             {/* Options */}
-            <Flex className='MenuCard'>
+            <AnimatePresence>
 
-                <IoArrowBackCircle size={'2rem'} onClick={() => {
-                    decrementStep();
-                    decrementOrder();
-                }}/>
+                {!(atEnd) && (
+                    <Flex className='MenuCard flex-col flex-1'>
 
-                <AnimatePresence mode="wait">
-                    <motion.h1
-                        key={stepNum}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="MenuHeader"
-                    >
-                        {MenuItemsJSON[stepNum].Header}
-                    </motion.h1>
-                </AnimatePresence>
+                        <IoArrowBackCircle size={'2rem'} onClick={() => {
+                            decrementStep();
+                            decrementOrder();
+                        }}/>
 
-                <Flex className='justify-center items-center bg-red-500'>
-                    <AnimatePresence mode='wait'>
-                        <motion.div
-
-                            className='w-full h-full bg-red-500'
-                        
-                            initial={{
-                                opacity:0
-                            }}
-
-                            animate={{
-                                opacity:1
-                            }}
-
-                            exit={{
-                                opacity:0
-                            }}
-
-                            key={stepNum}
-                        >
-
-                            <Grid 
-                                className='
-                                    w-full 
-                                    place-items-center
-                                    justify-center
-                                    bg-yellow-500
-                                    gap-5
-                                    
-                                '
-
-                                templateColumns="repeat(3, 1fr)"
-
-                                style={{
-                                    padding:'20px'
-                                    
-                                }}
-
-
+                        <AnimatePresence mode="wait">
+                            <motion.h1
+                                key={stepNum}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.25 }}
+                                className="MenuHeader"
                             >
+                                {MenuItemsJSON[stepNum].Header}
+                            </motion.h1>
+                        </AnimatePresence>
 
-                                {MenuItemsJSON[stepNum].Items.map((item, i) => (
+                        <Flex className='justify-center items-center bg-red-500'>
+                            <AnimatePresence mode='wait'>
+                                <motion.div
 
-                                    <ItemCard 
-                                        key={i} 
-                                        ItemObj={item} 
-                                        incStep={incrementStep}
-                                        incOrder={incrementOrder}
-                                        
-                                    />
-                                ))}
+                                    className='w-full h-full bg-red-500'
+                                
+                                    initial={{
+                                        opacity:0
+                                    }}
 
-                            </Grid>
+                                    animate={{
+                                        opacity:1
+                                    }}
 
-                        </motion.div>
+                                    exit={{
+                                        opacity:0
+                                    }}
 
-                    </AnimatePresence>
-                    
+                                    key={stepNum}
+                                >
+
+                                    <Grid 
+                                        className='
+                                            w-full 
+                                            place-items-center
+                                            justify-center
+                                            bg-yellow-500
+                                            gap-5
+                                            
+                                        '
+
+                                        templateColumns="repeat(3, 1fr)"
+
+                                        style={{
+                                            padding:'20px'
+                                            
+                                        }}
 
 
-                </Flex>
+                                    >
 
-                <h1 className='bg-red-500'>
-                    {order}
-                </h1>
-                
+                                        {MenuItemsJSON[stepNum].Items.map((item, i) => (
 
-            </Flex>
+                                            <ItemCard 
+                                                key={i} 
+                                                ItemObj={item} 
+                                                incStep={incrementStep}
+                                                incOrder={incrementOrder}
+                                                
+                                            />
+                                        ))}
+
+                                    </Grid>
+
+                                </motion.div>
+
+                            </AnimatePresence>
+                            
+
+
+                        </Flex>
+
+                        <h1 className='bg-red-500'>
+                            {order}
+                        </h1>
+                        
+
+                    </Flex>
+
+                )}
+
+            </AnimatePresence>
+            
+            
 
             {/* Separator */}
-            <Box className='w-[2px] self-stretch'
-                style={{
-                    background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'
-                }}
-            />
+
+            {!(atEnd) && (
+
+                <AnimatePresence>
+                    <Box className='w-[2px] self-stretch'
+                        style={{
+                            background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'
+                        }}
+                    />
+                </AnimatePresence>
+
+            )}
+            
 
             {/* Bucket Visual */}
             <Flex 
@@ -224,11 +240,11 @@ const Menu = () => {
                     items-center 
                     justify-center
                     relative
-                    flex-col
+                    flex-1
                 '
             >
 
-                <div className='w-[75%] aspect-square flex relative'>
+                <div className='w-[75%] aspect-square flex relative' style={{maxWidth:'500px'}}>
 
             
                     <img src={BucketImg} className="w-full h-full object-contain"/>

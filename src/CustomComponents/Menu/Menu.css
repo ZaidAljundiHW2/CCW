@@ -10,14 +10,12 @@
 }
 
 .MenuCard {
-    flex:1;
     background-color: green;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     border-color: white;
     border-width: 2px;
     padding:20px;
-    flex-direction: column;
     gap: 20px;
 }
 
