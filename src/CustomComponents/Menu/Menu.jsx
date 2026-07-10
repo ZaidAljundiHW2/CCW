@@ -7,6 +7,7 @@ import ItemCard from './ItemCard';
 import MenuItemsJSON from '@/assets/JSONs/menuitems.json'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import RestBack from '@/assets/img/Backgrounds/restback.jpg'
 
 // Bucket Imports
 import BucketImg from '@/assets/img/FoodShowcase/bucket.png'
@@ -97,57 +98,80 @@ const Menu = () => {
             marginTop:'-5%', 
             width:'100%', 
             minHeight:'100vh',
-            backgroundImage:`url(${MenuBackground})`,
+            backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${MenuBackground})`,
             backgroundSize:'cover',
             backgroundPosition:'center'
         }}
 
+    
+
         className='flex justify-center items-center'
     >
 
-        <Flex
+        <motion.div
             className='
                 w-[90%]
                 rounded-lg
                 shadow-lg
-                bg-red-500
                 gap-5
+                items-center
+                justify-center
+                flex
             '
 
             style={{
-                padding:'20px'
+                padding:'20px',
+                backgroundImage: 'radial-gradient(#9ac8f5, #012447 30%)'
             }}
+
+            layout
+            transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
+
+
         >
             
             {/* Options */}
             <AnimatePresence>
 
                 {!(atEnd) && (
-                    <Flex className='MenuCard flex-col flex-1'>
+                    <motion.div 
+                        className='
+                            MenuCard 
+                            flex-col 
+                            flex
+                            w-[50%]
+                        '
+                        layout
+                        transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
+
+
+                    >
 
                         <IoArrowBackCircle size={'2rem'} onClick={() => {
                             decrementStep();
                             decrementOrder();
                         }}/>
 
-                        <AnimatePresence mode="wait">
+                        <AnimatePresence mode='popLayout'>
                             <motion.h1
                                 key={stepNum}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                transition={{ duration: 0.25 }}
+                                transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeInOut' }}}
                                 className="MenuHeader"
+                                layout
+
                             >
                                 {MenuItemsJSON[stepNum].Header}
                             </motion.h1>
                         </AnimatePresence>
 
-                        <Flex className='justify-center items-center bg-red-500'>
-                            <AnimatePresence mode='wait'>
+                        <Flex className='justify-center items-center'>
+                            <AnimatePresence mode='popLayout'>
                                 <motion.div
 
-                                    className='w-full h-full bg-red-500'
+                                    className='w-full h-full'
                                 
                                     initial={{
                                         opacity:0
@@ -169,7 +193,6 @@ const Menu = () => {
                                             w-full 
                                             place-items-center
                                             justify-center
-                                            bg-yellow-500
                                             gap-5
                                             
                                         '
@@ -205,12 +228,12 @@ const Menu = () => {
 
                         </Flex>
 
-                        <h1 className='bg-red-500'>
+                        <motion.h1 className='MenuText' layout transition={{layout: { duration: 0.4, ease: 'easeInOut'}}}>
                             {order}
-                        </h1>
+                        </motion.h1>
                         
 
-                    </Flex>
+                    </motion.div>
 
                 )}
 
@@ -234,14 +257,27 @@ const Menu = () => {
             
 
             {/* Bucket Visual */}
-            <Flex 
+            <motion.div 
                 className='
                     MenuCard 
                     items-center 
                     justify-center
                     relative
-                    flex-1
+                    flex
                 '
+
+                animate={{width: atEnd ? '100%' : '50%'}}
+
+                transition={{duration:'1'}}
+
+                style={{
+                    backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${RestBack})`,
+                    backgroundSize:'cover',
+                    backgroundPosition:'center',
+                    backgroundRepeat:'no-repeat'
+                }}
+
+
             >
 
                 <div className='w-[75%] aspect-square flex relative' style={{maxWidth:'500px'}}>
@@ -280,7 +316,6 @@ const Menu = () => {
                                     items-center
                                     flex-col
                                     gap-5
-                                    bg-red-500
                                 "
                                 style={{
                                     padding: '20px'
@@ -302,13 +337,13 @@ const Menu = () => {
 
 
 
-            </Flex>
+            </motion.div>
 
             
 
             
 
-        </Flex>
+        </motion.div>
 
 
 

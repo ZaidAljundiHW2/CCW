@@ -3,19 +3,31 @@
     src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
 }
 
+.MenuText {
+    font-family: HeadingNow, 'sans-serif';
+    font-size: 2rem;
+}
+
 .MenuHeader {
     font-family: HeadingNow, 'sans-serif';
     font-size: 3rem;
-    background-color: red;
 }
 
 .MenuCard {
-    background-color: green;
+    background-image: linear-gradient(to right, #012447, #1c3752);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     border-color: white;
     border-width: 2px;
     padding:20px;
     gap: 20px;
+}
+
+.MenuBack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* black with 50% opacity */
+
 }
 
