@@ -12,6 +12,7 @@ import RestBack from '@/assets/img/Backgrounds/restback.jpg'
 // Bucket Imports
 import BucketImg from '@/assets/img/FoodShowcase/bucket.png'
 import BucketImagesJSON from '@/assets/JSONs/BucketImages.json'
+import InfiniteAppetizerCarousel from './InfiniteAppetizerCarousel';
 
 const Menu = () => {
 
@@ -105,7 +106,7 @@ const Menu = () => {
 
     
 
-        className='flex justify-center items-center'
+        className='flex justify-center items-center flex-col'
     >
 
         <motion.div
@@ -344,6 +345,31 @@ const Menu = () => {
             
 
         </motion.div>
+
+        <Flex  
+            className='
+                w-[100%] 
+                flex-col
+                justify-center
+                items-center
+                gap-5
+                bg-[#f2f0ef]
+
+            '
+
+            style={{
+                padding:'20px'
+            }}
+        >
+
+            <h1 className='MenuHeader2'>
+                Our Appetizers
+            </h1>
+
+            <InfiniteAppetizerCarousel />
+
+
+        </Flex>
 
 
 

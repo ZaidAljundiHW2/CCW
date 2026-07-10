@@ -3,6 +3,11 @@
     src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
 }
 
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/heading_now/Personal Services.ttf');
+}
+
 .MenuText {
     font-family: HeadingNow, 'sans-serif';
     font-size: 2rem;
@@ -11,6 +16,12 @@
 .MenuHeader {
     font-family: HeadingNow, 'sans-serif';
     font-size: 3rem;
+}
+
+.MenuHeader2 {
+    font-family: PersonalServices, 'sans-serif';
+    font-size: 3rem;
+    color: #012447;
 }
 
 .MenuCard {
@@ -23,11 +34,7 @@
     gap: 20px;
 }
 
-.MenuBack::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* black with 50% opacity */
 
-}
+
+
 

@@ -1,0 +1,36 @@
+[
+    {
+        "Name":"French Fries",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/fries.jpg"
+    },
+
+    {
+        "Name":"Bang Bang Shrimp",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/bangbangshrimp.jpg"
+    },
+
+    {
+        "Name":"Ceviche",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/ceviche.jpg"
+    },
+
+    {
+        "Name":"Oyster Rockefeller",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/oysterrockefeller.jpg"
+    },
+
+    {
+        "Name":"Shrimp Cocktail",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/shrimpcocktail.jpg"
+    },
+
+    {
+        "Name":"Tuna Tartare",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/tunatartare.jpg"
+    },
+
+    {
+        "Name":"Bang Bang Chicken",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/bangbangchicken.jpg"
+    }
+]

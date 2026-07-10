@@ -1,0 +1,57 @@
+.appetizercar {
+    width: 90%;
+    min-width: 0;
+    display: flex;
+    overflow-x:auto;
+    background:white;
+    padding:20px;
+    font-size: 1rem;
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+}
+
+.appetizercar::-webkit-scrollbar {
+    display:none
+}
+
+.groupcar {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    animation: spin 10s infinite linear;
+    padding-right: 1em;
+}
+
+.IAC_Card {
+    flex: 0 0 5em;
+    height: 5em;
+    background:cornflowerblue;
+    font-size: 3rem;
+    border-radius: .2em;
+    text-align: center;
+    align-content: center;
+    display: flex
+}
+
+@keyframes spin {
+    from {translate: 0}
+    to {translate: -100%}
+}
+
+.IAE_text {
+    font-size: 1rem;
+    color: white;
+}
