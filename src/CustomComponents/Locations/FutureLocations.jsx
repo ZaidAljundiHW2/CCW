@@ -132,6 +132,7 @@ const FutureLocations = () => {
                                 style={{
                                     opacity: i === index ? 1 : 0
                                 }}
+                                key={i}
                             >
                                 {waypoint.Location}
                             </h1>

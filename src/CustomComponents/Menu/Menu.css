@@ -6,6 +6,7 @@
 .MenuHeader {
     font-family: HeadingNow, 'sans-serif';
     font-size: 3rem;
+    background-color: red;
 }
 
 .MenuCard {

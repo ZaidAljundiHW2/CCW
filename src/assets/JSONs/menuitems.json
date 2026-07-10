@@ -6,17 +6,17 @@
         "Items": [
             {
                 "Name":"Lobster",
-                "Img":"/src/assets/img/lobsteroption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Catches/lobsteroption.jpg"
             },
 
             {
                 "Name":"Crab",
-                "Img":"/src/assets/img/craboption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Catches/craboption.jpg"
             },
 
             {
                 "Name":"Shrimp",
-                "Img":"/src/assets/img/shrimpoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Catches/shrimpoption.jpg"
             }
         ]
     },
@@ -28,22 +28,22 @@
         "Items": [
             {
                 "Name":"Roasted Potatoes",
-                "Img":"/src/assets/img/potatoesoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/potatoesoption.jpg"
             },
 
             {
                 "Name":"Corn",
-                "Img":"/src/assets/img/cornoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/cornoption.jpg"
             },
 
             {
                 "Name":"Fries",
-                "Img":"/src/assets/img/friesoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/friesoption.jpg"
             },
 
             {
                 "Name":"Coleslaw",
-                "Img":"/src/assets/img/coleslawoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/coleslawoption.jpg"
             }
         ]
     },
@@ -55,17 +55,39 @@
         "Items": [
             {
                 "Name":"Sweet Chili Sauce",
-                "Img":"/src/assets/img/chiligarlicoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sauces/chiligarlicoption.jpg"
             },
 
             {
                 "Name":"Katsu Curry Sauce",
-                "Img":"/src/assets/img/katsucurryoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sauces/katsucurryoption.jpg"
             },
 
             {
                 "Name":"Lemon Butter Sauce",
-                "Img":"/src/assets/img/lemonbutteroption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sauces/lemonbutteroption.jpg"
+            }
+        ]
+    },
+
+    {
+        "Step":"4",
+        "Label":"Spice Level",
+        "Header":"Step Four: Choose Your Spice Level",
+        "Items": [
+            {
+                "Name":"Mild",
+                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice1.png"
+            },
+
+            {
+                "Name":"Spicy",
+                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice2.png"
+            },
+
+            {
+                "Name":"Extra Spicy",
+                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice3.png"
             }
         ]
     }

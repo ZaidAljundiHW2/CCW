@@ -1,0 +1,66 @@
+[
+    {
+        "Name":"Lobster",
+        "Img":"/src/assets/img/FoodShowcase/lobsterlayer.png"
+    },
+
+    {
+        "Name":"Crab",
+        "Img":"/src/assets/img/FoodShowcase/crablayer.png"
+    },
+
+    {
+        "Name":"Shrimp",
+        "Img":"/src/assets/img/FoodShowcase/shrimplayer.png"
+    },
+
+    {
+        "Name":"Corn",
+        "Img":"/src/assets/img/FoodShowcase/corn.png"
+    },
+
+    {
+        "Name":"Coleslaw",
+        "Img":"/src/assets/img/FoodShowcase/coleslaw.png"
+    },
+
+    {
+        "Name":"Fries",
+        "Img":"/src/assets/img/FoodShowcase/fries.png"
+    },
+
+    {
+        "Name":"Roasted Potatoes",
+        "Img":"/src/assets/img/FoodShowcase/roastpotato.png"
+    },
+
+    {
+        "Name":"Katsu Curry Sauce",
+        "Img":"/src/assets/img/FoodShowcase/katsucurry.png"
+    },
+
+    {
+        "Name":"Lemon Butter Sauce",
+        "Img":"/src/assets/img/FoodShowcase/lemonbutter.png"
+    },
+
+    {
+        "Name":"Sweet Chili Sauce",
+        "Img":"/src/assets/img/FoodShowcase/chiligarlic.png"
+    },
+
+    {
+        "Name":"Mild",
+        "Img":"/src/assets/img/FoodShowcase/spice1.png"
+    },
+
+    {
+        "Name":"Spicy",
+        "Img":"/src/assets/img/FoodShowcase/spice2.png"
+    },
+
+    {
+        "Name":"Extra Spicy",
+        "Img":"/src/assets/img/FoodShowcase/spice3.png"
+    }
+]

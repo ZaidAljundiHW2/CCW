@@ -4,7 +4,7 @@ import './ItemCard.css'
 import fitty from 'fitty'
 import { useEffect } from 'react'
 
-const ItemCard = ({ItemObj, setStepNum}) => {
+const ItemCard = ({ItemObj, incStep, incOrder}) => {
 
     useEffect(() => {
         fitty('fit');
@@ -25,7 +25,10 @@ const ItemCard = ({ItemObj, setStepNum}) => {
             backgroundPosition: 'center'
         }}
 
-        onClick={() => setStepNum(prev => prev + 1)}
+        onClick={() => {
+            incStep();
+            incOrder(ItemObj.Name);
+        }}
     >
 
         <Box className='flex bg-white h-[30%] justify-center items-center'>
