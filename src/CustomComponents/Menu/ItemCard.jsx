@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react'
 import './ItemCard.css'
 import fitty from 'fitty'
 import { useEffect } from 'react'
+import { motion } from 'motion/react'
 
 const ItemCard = ({ItemObj, incStep, incOrder}) => {
 
@@ -11,13 +12,16 @@ const ItemCard = ({ItemObj, incStep, incOrder}) => {
     }, []);
 
   return (
-    <Box    
+    <motion.div    
         className='
             ItemCard
             rounded-lg
             shadow-lg
             
         '
+
+        layout
+        transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeInOut' }}}
 
         style={{
             backgroundImage:`url(${ItemObj.Img})`,
@@ -39,7 +43,7 @@ const ItemCard = ({ItemObj, incStep, incOrder}) => {
 
         </Box>
       
-    </Box>
+    </motion.div>
   )
 }
 

@@ -186,6 +186,9 @@ const Menu = () => {
                                         opacity:0
                                     }}
 
+                                    transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
+
+
                                     key={stepNum}
                                 >
 
@@ -346,8 +349,9 @@ const Menu = () => {
 
         </motion.div>
 
-        <Flex  
+        <motion.div  
             className='
+                flex
                 w-[100%] 
                 flex-col
                 justify-center
@@ -356,6 +360,10 @@ const Menu = () => {
                 bg-[#f2f0ef]
 
             '
+
+            layout
+            transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
+
 
             style={{
                 padding:'20px'
@@ -369,7 +377,7 @@ const Menu = () => {
             <InfiniteAppetizerCarousel />
 
 
-        </Flex>
+        </motion.div>
 
 
 
