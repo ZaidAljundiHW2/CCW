@@ -352,9 +352,9 @@ const Menu = () => {
                                     padding: '20px'
                                 }}
                             >
-                                <h1 className='text-center'>
+                                <motion.h1 layout className='MenuHeader'>
                                     {order}
-                                </h1>
+                                </motion.h1>
 
                                 <Button className="w-[30%]" onClick={restartMenu}>
                                     Restart

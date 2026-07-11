@@ -6,6 +6,7 @@ import Menu from './CustomComponents/Menu/Menu'
 import Locations from './CustomComponents/Locations/Locations'
 import Contact from './CustomComponents/Contact/Contact'
 import Footer from './CustomComponents/Footer/Footer'
+import About from './CustomComponents/About/About'
 
 const App = () => {
   return (
@@ -22,6 +23,10 @@ const App = () => {
       <Separator />
 
       <Locations />
+
+      <Separator />
+
+      <About />
 
       <Separator />
 
