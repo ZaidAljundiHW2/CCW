@@ -106,8 +106,12 @@ const Menu = () => {
 
     
 
-        className='flex justify-center items-center flex-col'
+        className='flex justify-center items-center flex-col gap-5'
     >
+
+        <h1 className='MenuHeader2' style={{color:'white', paddingTop:"20px"}}>
+            EXPLORE OUR MENU
+        </h1>
 
         <motion.div
             className='
@@ -122,7 +126,8 @@ const Menu = () => {
 
             style={{
                 padding:'20px',
-                backgroundImage: 'radial-gradient(#9ac8f5, #012447 30%)'
+                backgroundImage: 'radial-gradient(#9ac8f5, #012447 30%)',
+                position:'relative'
             }}
 
             layout
@@ -132,18 +137,21 @@ const Menu = () => {
         >
             
             {/* Options */}
-            <AnimatePresence>
+            <AnimatePresence mode='popLayout'>
 
                 {!(atEnd) && (
                     <motion.div 
+                        key={'options'}
                         className='
                             MenuCard 
                             flex-col 
                             flex
-                            w-[50%]
+                            flex-1
                         '
-                        layout
-                        transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
+                        transition={{
+                            opacity: { duration: 0.5 }
+                        }}
+                        exit={{ opacity: 0 }}
 
 
                     >
@@ -168,7 +176,7 @@ const Menu = () => {
                             </motion.h1>
                         </AnimatePresence>
 
-                        <Flex className='justify-center items-center'>
+                        <Flex className='justify-center items-start'>
                             <AnimatePresence mode='popLayout'>
                                 <motion.div
 
@@ -186,10 +194,11 @@ const Menu = () => {
                                         opacity:0
                                     }}
 
-                                    transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
-
+                                    transition={{ duration: 0.25, ease: 'easeInOut' }}
 
                                     key={stepNum}
+
+                                    
                                 >
 
                                     <Grid 
@@ -231,10 +240,15 @@ const Menu = () => {
 
 
                         </Flex>
+                        
+                        <motion.div layout='position'>
 
-                        <motion.h1 className='MenuText' layout transition={{layout: { duration: 0.4, ease: 'easeInOut'}}}>
-                            {order}
-                        </motion.h1>
+                            <h1 className='MenuText'>
+                                {order}
+                            </h1>
+
+                        </motion.div>
+                        
                         
 
                     </motion.div>
@@ -268,11 +282,15 @@ const Menu = () => {
                     justify-center
                     relative
                     flex
+                    w-[100%]
+                    flex-1
+                    min-w-0
+                    overflow-hidden
                 '
+                
+                layout
 
-                animate={{width: atEnd ? '100%' : '50%'}}
-
-                transition={{duration:'1'}}
+                transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
 
                 style={{
                     backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${RestBack})`,
@@ -287,13 +305,20 @@ const Menu = () => {
                 <div className='w-[75%] aspect-square flex relative' style={{maxWidth:'500px'}}>
 
             
-                    <img src={BucketImg} className="w-full h-full object-contain"/>
+                    <motion.img 
+                        layout 
+                        src={BucketImg} 
+                        className="w-full h-full object-contain absolute"
+                        transition={{layout: {delay:0.4}}}
+                    />
 
                     {BucketImagesJSON.map((image, i) => (
-                        <img 
+                        <motion.img 
                             src={image.Img} 
                             key={i} 
+                            transition={{layout: {delay:0.4}}}
                             className='absolute transition-opacity duration-700'
+                            layout
                             style={{
                                 opacity: orderItems.includes(image.Name) ? 1 : 0
                             }}
@@ -311,6 +336,7 @@ const Menu = () => {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.7 }}
                             className='flex justify-center items-center'
+                            
                         >
                             <Box
                                 className="
@@ -320,6 +346,7 @@ const Menu = () => {
                                     items-center
                                     flex-col
                                     gap-5
+                                    
                                 "
                                 style={{
                                     padding: '20px'
