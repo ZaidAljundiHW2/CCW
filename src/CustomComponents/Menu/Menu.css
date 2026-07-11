@@ -5,8 +5,10 @@
 
 @font-face {
     font-family: PersonalServices;
-    src: url('@/assets/heading_now/Personal Services.ttf');
+    src: url('@/assets/personal_services/Personal Services.ttf');
 }
+
+
 
 .MenuText {
     font-family: HeadingNow, 'sans-serif';
