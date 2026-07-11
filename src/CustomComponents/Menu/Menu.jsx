@@ -14,6 +14,8 @@ import BucketImg from '@/assets/img/FoodShowcase/bucket.png'
 import BucketImagesJSON from '@/assets/JSONs/BucketImages.json'
 import InfiniteAppetizerCarousel from './InfiniteAppetizerCarousel';
 
+import { resolveImg } from '@/customLib/utils/resolveImage';
+
 const Menu = () => {
 
     const [stepNum, setStepNum] = useState(0);
@@ -314,7 +316,7 @@ const Menu = () => {
 
                     {BucketImagesJSON.map((image, i) => (
                         <motion.img 
-                            src={image.Img} 
+                            src={resolveImg(image.Img)} 
                             key={i} 
                             transition={{layout: {delay:0.4}}}
                             className='absolute transition-opacity duration-700'

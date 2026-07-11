@@ -4,6 +4,7 @@ import './ItemCard.css'
 import fitty from 'fitty'
 import { useEffect } from 'react'
 import { motion } from 'motion/react'
+import { resolveImg } from '@/customLib/utils/resolveImage'
 
 const ItemCard = ({ItemObj, incStep, incOrder}) => {
 
@@ -24,7 +25,7 @@ const ItemCard = ({ItemObj, incStep, incOrder}) => {
         transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeInOut' }}}
 
         style={{
-            backgroundImage:`url(${ItemObj.Img})`,
+            backgroundImage:`url(${resolveImg(ItemObj.Img)})`,
             backgroundSize:'cover',
             backgroundPosition: 'center'
         }}

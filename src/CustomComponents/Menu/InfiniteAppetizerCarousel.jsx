@@ -2,6 +2,7 @@ import React from 'react'
 import AppetizerJSON from '@/assets/JSONs/Appetizers.json'
 import './InfiniteAppetizerCarousel.css'
 import { Box } from '@chakra-ui/react'
+import { resolveImg } from '@/customLib/utils/resolveImage'
 
 const InfiniteAppetizerCarousel = () => {
   return (
@@ -23,7 +24,7 @@ const InfiniteAppetizerCarousel = () => {
                     ' 
                     key={i}
                     style={{
-                        backgroundImage:`url(${app.Img})`,
+                        backgroundImage:`url(${resolveImg(app.Img)})`,
                         backgroundSize:'cover',
                         backgroundPosition:'center',
                         backgroundRepeat:'no-repeat',

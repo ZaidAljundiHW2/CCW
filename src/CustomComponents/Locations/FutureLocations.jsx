@@ -7,6 +7,7 @@ import WayPointsJSON from '@/assets/JSONs/waypoints.json'
 import { useState, useEffect } from 'react'
 import Background from '@/assets/img/home-franchise-background.png'
 import creamwall from '@/assets/img/creamwall.png'
+import { resolveImg } from '@/customLib/utils/resolveImage'
 
 const FutureLocations = () => {
 
@@ -108,7 +109,7 @@ const FutureLocations = () => {
                         {WayPointsJSON.map((waypoint, i) => (
 
                             <img 
-                                src={waypoint.Img} 
+                                src={resolveImg(waypoint.Img)} 
                                 key={i}
                                 className='FLimgG absolute transition-opacity duration-700'
                                 style={{

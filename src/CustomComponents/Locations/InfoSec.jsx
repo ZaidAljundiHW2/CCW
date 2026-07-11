@@ -3,6 +3,7 @@ import React from 'react'
 import { Flex, Box } from '@chakra-ui/react'
 import ClockIcon from '@/assets/icons/contact-clock-orange.png'
 import './InfoSec.css'
+import { resolveImg } from '@/customLib/utils/resolveImage'
 
 const InfoSec = ({info}) => {
   return (
@@ -10,7 +11,7 @@ const InfoSec = ({info}) => {
 
         <div className='w-10 aspect-square shrink-0 overflow-hidden'>
             <img
-                src={info.img}
+                src={resolveImg(info.img)}
                 alt='icon'
                 className='w-full h-full object-contain block'
             />
