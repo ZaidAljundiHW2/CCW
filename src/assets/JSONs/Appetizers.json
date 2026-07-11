@@ -32,5 +32,10 @@
     {
         "Name":"Bang Bang Chicken",
         "Img":"/src/assets/img/FoodOptions/Appetizers/bangbangchicken.jpg"
+    },
+
+    {
+        "Name":"Shrimp Toast",
+        "Img":"/src/assets/img/FoodOptions/Appetizers/shrimptoast.jpg"
     }
 ]
