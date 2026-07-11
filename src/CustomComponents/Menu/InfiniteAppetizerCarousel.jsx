@@ -71,7 +71,7 @@ const InfiniteAppetizerCarousel = () => {
                     ' 
                     key={i}
                     style={{
-                        backgroundImage:`url(${app.Img})`,
+                        backgroundImage:`url(${resolveImg(app.Img)})`,
                         backgroundSize:'cover',
                         backgroundPosition:'center',
                         backgroundRepeat:'no-repeat',
