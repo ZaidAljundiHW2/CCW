@@ -9,7 +9,7 @@ const Locations = () => {
 
         <ExistingLocation />
 
-        <FutureLocations />
+        {/* <FutureLocations /> */}
 
         <ComingSoon />
 

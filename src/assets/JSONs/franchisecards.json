@@ -1,0 +1,63 @@
+[
+    [
+
+        {
+            "Header":"BOLD BRAND IDENTITY",
+            "Text": "A standout with eye-catching design, craveable food, and a story guests love to share.",
+            "Img": "/src/assets/icons/helmicon.png"
+        },
+
+        {
+            "Header":"FAMILY-FRIENDLY CONCEPT",
+            "Text": "Welcoming, fun, and approachable - perfect for guests of all ages and occasions.",
+            "Img": "/src/assets/icons/familyicon.png"
+        },
+
+        {
+            "Header":"HIGH-DEMAND MENU",
+            "Text": "Seafood boils, combos, and signature flavours, that keep guests coming back for more.",
+            "Img": "/src/assets/icons/shrimpicon.png"
+        },
+
+        {
+            "Header":"EXPANSION READY",
+            "Text": "Proven systems and strong support to help you grow with confidence and consistency.",
+            "Img": "/src/assets/icons/riseicon.png"
+        }
+
+    ],
+
+    [
+        {
+            "Header":"PROVEN CONCEPT",
+            "Text": "A tested business model with loyal customers and repeat sales.",
+            "Img": "/src/assets/icons/shield-anchor-gold.png"
+        },
+
+        {
+            "Header":"TRAINING & SUPPORT",
+            "Text": "Comprehensive training and ongoing support every step of the way.",
+            "Img": "/src/assets/icons/mini-people.png"
+        },
+
+        {
+            "Header":"OPERATIONAL GUIDANCE",
+            "Text": "Streamlined systems and playbook for efficient operations.",
+            "Img": "/src/assets/icons/clipboardicon.png"
+        },
+
+        {
+            "Header":"MARKETING SUPPORT",
+            "Text": "National branding, local marketing, and tools that drive traffic.",
+            "Img": "/src/assets/icons/megaphoneicon.png"
+        },
+
+        {
+            "Header":"SCALABLE MARKET",
+            "Text": "Flexible formats and territories with strong return potential.",
+            "Img": "/src/assets/icons/franchise-scalable.png"
+        }
+    ]
+    
+    
+]

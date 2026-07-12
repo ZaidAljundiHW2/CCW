@@ -7,6 +7,7 @@ import { CiCircleMinus } from "react-icons/ci";
 import { motion } from 'motion/react';
 import CompanyLogo from '@/assets/img/logo-full-transparent.png'
 import WheelIcon from '@/assets/icons/benefit-wheel.png'
+import { GiPaperBagFolded } from "react-icons/gi";
 
 const Navbar = () => {
 
@@ -97,7 +98,7 @@ const Navbar = () => {
                         opacity: 0,
                         x:-100
                     }}
-                    
+
                     animate={{
 
                         opacity: expandedMenu ? 1 : 0,
@@ -170,37 +171,45 @@ const Navbar = () => {
 
             </Flex>
 
-            <Flex className='w-[45%] h-[100%] justify-end items-center gap-5'>
+            <Flex 
+                className='
+                    w-[45%] 
+                    h-[100%] 
+                    justify-end 
+                    items-center 
+                    gap-5
+                '
 
-                
-                
+                style={{
+                    padding:'20px',
+                    paddingTop:'50px'
+                }}
+            >
 
-                {/* Box for Logo */}
+            
 
-                <Box
+                <button 
+                    className='
+                        orderbutton
+                    ' 
+
                     style={{
-                        position:'absolute',
-                        top:0,
-                        right:0,
-                        padding:'20px'
+                        background:'#ef571b'
                     }}
                 >
+                    Order
 
-                    <img    
-                        src={CompanyLogo} 
-                        alt='company logo'
-                        style={{
-                            width:'100px',
-                            
-                        }}
-                    />
+                    <GiPaperBagFolded />
+                </button>
 
-                </Box>
-
-                
-
-                
-
+                <img    
+                    src={CompanyLogo} 
+                    alt='company logo'
+                    style={{
+                        width:'100px',
+                        
+                    }}
+                />
 
             </Flex>
 

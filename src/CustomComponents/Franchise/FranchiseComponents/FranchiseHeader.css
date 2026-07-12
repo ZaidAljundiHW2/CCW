@@ -1,0 +1,11 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+
+.FHH {
+    font-family: PersonalServices, 'sans-serif';
+    font-size: 3.5rem;
+
+}

@@ -72,3 +72,14 @@
     padding-right: 55px;  /* more padding on the rounded outer side */
     padding-left: 40px;
 }
+
+.orderbutton {
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
