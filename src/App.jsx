@@ -7,8 +7,29 @@ import Locations from './CustomComponents/Locations/Locations'
 import Contact from './CustomComponents/Contact/Contact'
 import Footer from './CustomComponents/Footer/Footer'
 import About from './CustomComponents/About/About'
+import Loader from './CustomComponents/Loader/Loader'
+import { useState, useEffect } from 'react'
 
 const App = () => {
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const handleLoad = () => setIsLoading(false)
+
+    if (document.readyState === 'complete') {
+      // page already fully loaded (images, fonts, etc.)
+      handleLoad()
+    } else {
+      window.addEventListener('load', handleLoad)
+      return () => window.removeEventListener('load', handleLoad)
+    }
+  }, [])
+
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <div>
 
