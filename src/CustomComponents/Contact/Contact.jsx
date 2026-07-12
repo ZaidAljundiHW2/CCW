@@ -15,7 +15,6 @@ const Contact = () => {
   return (
     <div 
         style={{
-            marginTop:'-5%',
             backgroundImage: `url(${Back2})`,
             backgroundSize:'cover',
             width:'100%',

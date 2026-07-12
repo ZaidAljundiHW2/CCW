@@ -16,19 +16,14 @@ const App = () => {
       
       <Hero />
 
-      <Separator />
-
       <Menu />
 
-      <Separator />
 
       <Locations />
 
-      <Separator />
 
       <About />
 
-      <Separator />
 
       <Contact />
 

@@ -98,7 +98,6 @@ const Menu = () => {
   return (
     <div 
         style={{
-            marginTop:'-5%', 
             width:'100%', 
             minHeight:'100vh',
             backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${MenuBackground})`,

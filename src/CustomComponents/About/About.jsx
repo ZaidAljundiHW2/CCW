@@ -16,7 +16,6 @@ const About = () => {
         id='about'
 
         style={{
-            marginTop:'-5%', 
             padding:'20px',
             backgroundImage:'linear-gradient(to right, #012447, #1b2c3d)'
         }}
