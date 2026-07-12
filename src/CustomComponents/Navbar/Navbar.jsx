@@ -5,7 +5,7 @@ import './Navbar.css'
 import { useState } from 'react';
 import { CiCircleMinus } from "react-icons/ci";
 import { motion } from 'motion/react';
-import CompanyLogo from '@/assets/icons/benefit-crab.png'
+import CompanyLogo from '@/assets/img/logo-full-transparent.png'
 import WheelIcon from '@/assets/icons/benefit-wheel.png'
 
 const Navbar = () => {
