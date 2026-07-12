@@ -50,7 +50,7 @@ const Navbar = () => {
             className='w-full h-[12vh]'
         >
 
-            <Flex padding={'10px'} className=' gap-5'>
+            <Flex padding={'10px'} className='gap-5 justify-center items-center'>
                 
 
                 <Box 
@@ -93,6 +93,11 @@ const Navbar = () => {
 
                     key={'navbar'}
 
+                    initial ={{
+                        opacity: 0,
+                        x:-100
+                    }}
+                    
                     animate={{
 
                         opacity: expandedMenu ? 1 : 0,

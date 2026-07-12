@@ -2,6 +2,11 @@ import React from 'react'
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { motion } from 'motion/react'
 import HeroCarousel from './HeroCarousel'
+import './Hero.css'
+import { FaClipboard } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
+import { FaDoorClosed } from "react-icons/fa";
+import backalt from '@/assets/img/altback.png'
 
 const Hero = () => {
 
@@ -9,112 +14,155 @@ const Hero = () => {
     <div 
       className='
         w-full 
-        min-h-screen
+        min-h-[100vh]
         relative 
-        overflow-hidden
+        items-center
+        flex
       '
+
+      style={{
+        backgroundImage:`url(${backalt})`,
+        backgroundSize:'coverx',
+        backgroundPosition:'center',
+        backgroundRepeat:'no-repeat',
+        overflowX:'hidden'
+      }}
+      
 
       id='home'
     >
 
-        <div className='absolute inset-0'>
+        <div 
+          className='
+            absolute 
+            inset-0 
+            overflow-hidden
+          '
+          
+        
+
+
+        >
         {/* Hero Image */}
           <HeroCarousel />
         </div>
-        {/* Brightness lowering */}
-        <Box className='w-full h-full bg-black/60 absolute'/>
-
+        
         <Box 
           className='h-full w-full absolute'
-          style={{
-            backgroundImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 15%)'
-          }}
+          
         />
         
         {/* Hero Text */}
         <div
           className='
-            min-h-screen
-            relative
-            items-center
-            inset-0
-            flex  
-            py-20
-            z-10          
+            max-w-[40%]
+            flex
+            flex-col
+            gap-0
+            ml-[5%]
+            z-10
           '
-          
+
+          style={{
+            paddingLeft:'5%'
+          }}
         >
-
-          <div 
-            className='
-              max-w-[50%] 
-              min-h-[50%]
-              border-4 
-              border-red-500
-              flex
-              flex-col
-              justify-center
-              p-8
-              gap-4
-            '
-
-            
+          <div
+            style={{
+              gap:'-10x'
+            }}
           >
+
           
             <motion.h1 
-              style={{
-                fontSize:"4rem", 
-                fontWeight:'bold',
-                paddingLeft:'5%'
-              }}
+              className='heroheader'
 
-              initial={{
-                x:-50,
-                opacity:0
-              }}
+              initial={{opacity:0, x:-100}}
 
-              animate={{
-                x:0,
-                opacity:1,
-              }}
+              animate={{opacity:1, x:0}}
 
-              transition={{
-                duration:.8,
-                ease: 'easeOut'
-              }}
-
-            >
-
+              transition={{duration:1, ease:'easeInOut', delay:.2}}
               
-
-              Captain Crabs
-
+            >
+              FRESH CATCH.
             </motion.h1>
 
-            <motion.p 
-              style={{
-                paddingLeft:'10%',
-                fontSize:'1.2rem'
-              }}
+            <motion.h1 
+              className='heroheader' 
+              style={{color:'#ef571b'}}
 
-              initial={{
-                y:50,
-                opacity:0
-              }}
+              initial={{opacity:0, x:-100}}
 
-              animate={{
-                y:0,
-                opacity:1,
-              }}
+              animate={{opacity:1, x:0}}
 
-              transition={{
-                duration:.8,
-                ease: 'easeOut'
-              }}
+              transition={{duration:1, ease:'easeInOut', delay:.1}}
             >
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </motion.p>
+              BIG FLAVOUR.
+            </motion.h1>
+
+            <motion.h1 
+              className='heroheader' 
+              style={{color:'#68a7d6'}}
+              initial={{opacity:0, x:-100}}
+
+              animate={{opacity:1, x:0}}
+
+              transition={{duration:1, ease:'easeInOut'}}
+            >
+              FRANCHISE READY.
+            </motion.h1>
+
           </div>
+
+          <motion.p
+            initial={{opacity:0, x:-100}}
+
+            animate={{opacity:1, x:0}}
+
+            transition={{duration:1, ease:'easeInOut'}}
+          >
+            Premium seafood boils, bold flavours, and an unforgettable experience - in Burlington and coming to communities across Canada.
+          </motion.p>
+
+          <motion.div
+            className='
+              flex
+              gap-5
+            '
+
+            style={{
+              paddingTop:'20px'
+            }}
+
+            initial={{opacity:0, x:-100}}
+
+            animate={{opacity:1, x:0}}
+
+            transition={{duration:1, ease:'easeInOut'}}
+          >
+
+            <button className='herobutton' style={{background:'#ef571b'}}>
+              View Menu
+
+              <FaClipboard />
+            </button>
+
+            <button className='herobutton' style={{background:'black'}}>
+              Book a Table
+
+              <FaCalendarAlt />
+            </button>
+              
+
+            <button className='herobutton' style={{background:'#68a7d6'}}>
+              Request Franchise
+
+              <FaDoorClosed />
+            </button>
+
+            
+
+          </motion.div>
 
         </div>
       

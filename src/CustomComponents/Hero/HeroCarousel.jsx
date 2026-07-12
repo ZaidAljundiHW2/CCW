@@ -1,49 +1,175 @@
-import React from 'react'
-import Carousel from 'react-bootstrap/Carousel';
-import HeroImg1 from '@/assets/img/home-hero-final.png'
-import HeroImg2 from '@/assets/img/group-dining.png'
-import HeroImg3 from '@/assets/img/restaurant-exterior.png'
-import HeroImg4 from '@/assets/img/restaurant-front.png'
-import HeroImg5 from '@/assets/img/hero-harbor.png'
 import './HeroCarousel.css'
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useState, useRef } from 'react';
 import { useStackState } from 'rooks';
 import Queue from '@/customLib/Queue'
+import FoodBucket from '@/assets/img/food collection.png'
+import { Box } from '@chakra-ui/react';
+import steaminit from '@/assets/videos/steam.mp4'
+import steamloop from '@/assets/videos/steamloop.mp4'
 
 const HeroCarousel = () => {
-  const imgs = [
-    HeroImg1,
-    HeroImg2,
-    HeroImg3,
-    HeroImg4,
-    HeroImg5
-  ];
 
-  const [index, setIndex] = useState(0);
+  const [videoEnded, setVideoEnded] = useState(false);
+  const [loopIndex, setLoopIndex] = useState(0);
+  const [smokeReady, setSmokeReady] = useState(false);
+  
+  const updateLoopIndex = () => {
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex(prev => (prev + 1) % imgs.length);
-    }, 5000);
+    const currIndex = loopIndex;
 
-    return () => clearInterval(interval);
-  }, []);
+    const updatedIndex = (currIndex + 1) % 2;
+
+    setLoopIndex(updatedIndex);
+  }
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div 
+      className="
+        relative 
+        w-full 
+        h-full 
+      "
 
-      {imgs.map((img, i) => (
-        <img
-          key={i}
-          src={img}
-          alt="hero"
-          className="absolute inset-0 top-0 left-0 w-full h-full object-cover transition-opacity duration-700"
+      style={{
+        background:'transparent'
+      }}
+
+      
+
+
+    >
+
+      <Box
+        style={{
+          right:'0',
+          bottom:'0',
+          position:'relative',
+          display:'flex',
+          alignItems:'end',
+          justifyContent:'end',
+          flexDirection:'column',
+          width:'100%',
+          height:'100%'
+
+        }}
+      >
+
+        <Box
           style={{
-            opacity: i === index ? 1 : 0
+            right:'0',
+            bottom:'0',
+            position:'absolute',
+            width:'90%',
+            height:'90%',
           }}
-        />
-      ))}
+        >
+
+          {/* Food */}
+          <img 
+            src={FoodBucket}
+            style={{
+              position:'absolute',
+              right:0,
+              bottom:0,
+              height:'100%',
+              width:'auto'
+            }}
+          />
+
+
+          {/* Smoke layer */}
+          <AnimatePresence>
+            {!videoEnded && (
+              <motion.video
+                src={steaminit}
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setVideoEnded(true)}
+                className="smoke"
+                style={{
+                  position:'absolute',
+                  right:0,
+                  bottom:0,
+                  height:'100%',
+                  width:'auto',
+                  mixBlendMode:'screen'
+                }}
+                initial={{opacity:0}}
+                animate={{opacity: smokeReady ? 1 : 0}}
+                exit={{opacity:0}}
+                transition={{duration:1}}
+                onCanPlay={() => setSmokeReady(true)}
+
+              />
+            )}
+          </AnimatePresence>
+
+
+          <AnimatePresence mode="sync">
+
+            {videoEnded && loopIndex === 0 && (
+              <motion.video
+                key="loop0"
+                src={steamloop}
+                autoPlay
+                muted
+                playsInline
+                className="smoke"
+                style={{
+                  position:'absolute',
+                  right:0,
+                  bottom:0,
+                  height:'100%',
+                  width:'auto',
+                  mixBlendMode:'screen'
+                }}
+                onEnded={updateLoopIndex}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                exit={{opacity:0}}
+                transition={{duration:1}}
+              />
+            )}
+
+            {videoEnded && loopIndex === 1 && (
+              <motion.video
+                key="loop1"
+                src={steamloop}
+                autoPlay
+                muted
+                playsInline
+                className="smoke"
+                style={{
+                  position:'absolute',
+                  right:0,
+                  bottom:0,
+                  height:'100%',
+                  width:'auto',
+                  mixBlendMode:'screen'
+                }}
+                onEnded={updateLoopIndex}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                exit={{opacity:0}}
+                transition={{duration:1}}
+              />
+            )}
+
+          </AnimatePresence>
+
+        </Box>
+
+
+        
+        
+        
+
+      </Box>
+      
+
+      
 
     </div>
   );

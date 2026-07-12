@@ -10,3 +10,14 @@
   height: 100%;
   display: block;
 }
+
+.smoke {
+  mix-blend-mode: screen;
+  position: absolute;
+  width:10%;
+  height:auto;
+  top: -64%;
+  left:17%;
+  transform:scale(1.5);
+
+}

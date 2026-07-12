@@ -1,0 +1,21 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+.heroheader {
+
+    font-family: PersonalServices, 'sans-serif';
+    font-size: 3.8rem;
+}
+
+.herobutton {
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
