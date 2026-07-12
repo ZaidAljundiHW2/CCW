@@ -9,18 +9,23 @@ import InfoJSON from '@/assets/JSONs/infosec.json'
 import DownArrow from '@/assets/icons/DownArrow.png'
 import WaveIcon from '@/assets/icons/waveicon.png'
 import WaveIcon2 from '@/assets/icons/waveicon2.png'
+import ELBack from '@/assets/img/Backgrounds/elback.png'
 
 const ExistingLocation = () => {
 
   return (
     <div
         id='locations'
+        className='
+            flex
+            min-h-[50vh]
+        '
     >
 
         <Box
-            className='w-full min-h-[50vh] relative'
+            className='w-[60%] min-h-[50vh] flex items-center justify-center'
             style={{
-                backgroundImage: `url(${HomeMapBackground})`,
+                backgroundImage: `url(${ELBack})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
             }}
@@ -28,37 +33,36 @@ const ExistingLocation = () => {
 
             <Flex
                 className='
-                    w-full
+                    w-[full]
                     relative
                 '
-                style={{ minHeight: '50vh' }}
             >
 
                 <Box
                     className='
-                        w-[71%]
-                        py-10
+
                         items-center
                         flex
                     '
 
-                    style={{
-                        paddingLeft:'10%',
-                        paddingRight: '5%'
-                    }}
+                    
 
                 >
                     <Box
                         className='
-                            max-w-[40%]
+                            max-w-[60%]
                             flex
                             flex-col
                             justify-center
                             text-black
+                            rounded-lg
+                            shadow-lg
                         '
+
+                        style={{padding:'3%', background:'rgb(255 255 255 / 85%) '}}
                     >
 
-                        <Flex className='flex-1 w-full'>
+                        <Flex className='w-full'>
                             <h1 className='ELH'>Our Home Port</h1>
 
                             <img 
@@ -102,42 +106,7 @@ const ExistingLocation = () => {
                     }}
                 >
 
-                    <div
-                        className='flex rounded-lg shadow-lg gap-2 flex-col justify-center relative w-full min-w-0'
-                        style={{ padding: '5%' }}
-                    >
-                        <h1 className='ELH2 min-w-0 break-words'>Visit the flagship</h1>
-
-                        
-
-                        <p className='ELT'>Our home port in the heart of burlington serving up bold flavours and good times</p>
-
-                        <VStack className='w-full' align='stretch' spacing={2}>
-
-                            {InfoJSON.map((infopiece) => (
-                                <InfoSec info={infopiece} key={infopiece.Text}/>
-                            ))}
-
-                        </VStack>
-
-                        <Flex className='w-full items-center justify-center gap-5' padding={'5%'}>
-
-                            <Button className='flex-1 ELDir'>
-
-                                Directions
-
-                            </Button>
-
-
-                            <Button className='flex-1 ELBook'>
-
-                                Book
-
-                            </Button>
-                        </Flex>
-
-                        
-                    </div>
+                    
 
 
 
@@ -146,6 +115,59 @@ const ExistingLocation = () => {
             </Flex>
 
 
+
+        </Box>
+
+        <Box
+            className='
+                w-[40%]
+                bg-[#f2eeee]
+                flex
+                justify-center
+                items-center
+                
+            '
+            style={{
+                padding:'1%'
+            }}
+        >
+
+            <div
+                className='flex rounded-lg shadow-lg gap-2 flex-col justify-center relative w-full min-w-0'
+                style={{ padding: '5%', background:'#f2eeee' }}
+            >
+                <h1 className='ELH2 min-w-0 break-words'>Visit the flagship</h1>
+
+                
+
+                <p className='ELT'>Our home port in the heart of burlington serving up bold flavours and good times</p>
+
+                <VStack className='w-full' align='stretch' spacing={2}>
+
+                    {InfoJSON.map((infopiece) => (
+                        <InfoSec info={infopiece} key={infopiece.Text}/>
+                    ))}
+
+                </VStack>
+
+                <Flex className='w-full items-center justify-center gap-5' padding={'5%'}>
+
+                    <Button className='flex-1 ELDir'>
+
+                        Directions
+
+                    </Button>
+
+
+                    <Button className='flex-1 ELBook'>
+
+                        Book
+
+                    </Button>
+                </Flex>
+
+                
+            </div>
 
         </Box>
 
