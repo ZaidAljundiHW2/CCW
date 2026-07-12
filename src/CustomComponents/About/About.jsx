@@ -13,6 +13,8 @@ const About = () => {
             
         '
 
+        id='about'
+
         style={{
             marginTop:'-5%', 
             padding:'20px',

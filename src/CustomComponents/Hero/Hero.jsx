@@ -13,6 +13,8 @@ const Hero = () => {
         relative 
         overflow-hidden
       '
+
+      id='home'
     >
 
         <div className='absolute inset-0'>

@@ -13,7 +13,9 @@ import WaveIcon2 from '@/assets/icons/waveicon2.png'
 const ExistingLocation = () => {
 
   return (
-    <div>
+    <div
+        id='locations'
+    >
 
         <Box
             className='w-full min-h-[50vh] relative'

@@ -23,6 +23,8 @@ const Contact = () => {
             padding:'2%'
         }}
 
+        id='contact'
+
         className='flex flex-col gap-5'
         
     

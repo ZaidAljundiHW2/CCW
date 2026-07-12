@@ -20,85 +20,181 @@ const Navbar = () => {
         setExpandedMenu(!expandedMenu)
     }
 
+    const handleNavLink = (event, targetID) => {
+
+        event.preventDefault();
+
+        const target = document.querySelector(targetID);
+        
+        if (target) {
+
+            const navbar = document.querySelector('#navbar');
+            const navbarheight = navbar?.offsetHeight || 0;
+            const offsetPosition = target.offsetTop - navbarheight;
+
+
+            window.scrollTo ({
+                top: offsetPosition,
+                behavior: 'smooth'
+
+            })
+
+        }
+    }
+
 
   return (
-    <div className='fixed top-0 left-0 w-full z-50'>
+    <div className='fixed top-0 left-0 w-full z-50' id='navbar'>
 
         <Flex 
             className='w-full h-[12vh]'
-            bg={'linear-gradient(0, transparent 5%, rgb(0 0 0 / 90%) 30%)'}
-
         >
 
-            <Flex padding={'10px'} className='w-[55%] h-[100%] gap-5'>
+            <Flex padding={'10px'} className=' gap-5'>
                 
-                <Flex className='w-[10%] h-full items-center justify-center '>
 
-                    <Box 
-                        className='
-                            w-[100%] 
-                            h-[100%] 
-                            flex 
-                            justify-center 
-                            items-center
-                            z-10
-                            '
+                <Box 
+                    className='
+                        flex 
+                        justify-center 
+                        items-center
+                        z-10
+                        cursor-pointer
+                    '
+                    
+                    onClick={toggleMenu}
+
+                    
+                >
+                    <motion.img 
+                        src={WheelIcon} 
+                        alt='wheel expanding menu icon' 
+                        style={{
+                            aspectRatio:'square',
+                            width:'60px',
+                            height:'auto',
+                            flexShrink:'0'
+                        }}
+                        animate={{
+                            rotate: expandedMenu ? 360 : -360,
+                        }}
+                    />
+
+
+                </Box>
+
+
+                
+                <motion.div 
+                    className=' 
+                        flex 
+                        componentBar
+                    '
+
+                    key={'navbar'}
+
+                    animate={{
+
+                        opacity: expandedMenu ? 1 : 0,
+                        x: expandedMenu ? 0 : -100
                         
-                        onClick={toggleMenu}
+                    }}
+                >
+
+                
+                    <button
+                        style={{
+                            paddingLeft:'40px',
+
+                        }}
+
+                        onClick={(e) => handleNavLink(e, "#home")}
+                    
                     >
-                        <motion.img 
-                            src={WheelIcon} 
-                            alt='wheel expanding menu icon' 
-                            style={{padding: '20%'}}
-                            animate={{
-                                rotate: expandedMenu ? 360 : -360,
-                            }}
-                        />
+                        Home
+                    </button>
+
+                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+                    <button onClick={(e) => handleNavLink(e, '#menu')}>
+                        Menu
+                    </button>
+
+                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+                    <button
+                        onClick={(e) => handleNavLink(e, "#locations")}
+                    >
+                        Locations
+                    </button>
+
+                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
 
 
-                    </Box>
+                    <button
+                        onClick={(e) => handleNavLink(e, "#about")}
+                    >
+                        About
+                    </button>
+                    
+                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
 
 
-                </Flex>
-                
-                <Flex className='w-[90%] h-full'>
+                    <button
+                        onClick={(e) => handleNavLink(e, "#contact")}
+                    >
+                        Contact
+                    </button>
 
-                
-                    {navcomponents.map((navitem) => (
-                        <motion.div 
-                            className='navcomponents' 
-                            key={navitem}
 
-                            animate={{
 
-                                opacity: expandedMenu ? 1 : 0,
-                                x: expandedMenu ? 0 : -100
-                                
-                            }}
-                        >
-                            {navitem}
-                        </motion.div>
-                    ))}
+                    <button
+                        style={{
+                            paddingRight:'40px',
+                            
+                        }}
 
-                </Flex>
+                        className='book'
+                    >
+                        Book Now
+                    </button>
+
+                    
+
+                </motion.div>
 
             </Flex>
 
             <Flex className='w-[45%] h-[100%] justify-end items-center gap-5'>
 
-                <button className='book'>
-
-                    Book Now
-
-                </button>
+                
                 
 
                 {/* Box for Logo */}
-                <Box padding={4} className='w-[15%] h-[auto] flex justify-centre items-centre'>
 
-                    <img src={CompanyLogo} alt='company logo' className="object-cover"/>
+                <Box
+                    style={{
+                        position:'absolute',
+                        top:0,
+                        right:0,
+                        padding:'20px'
+                    }}
+                >
+
+                    <img    
+                        src={CompanyLogo} 
+                        alt='company logo'
+                        style={{
+                            width:'100px',
+                            
+                        }}
+                    />
 
                 </Box>
+
+                
+
+                
 
 
             </Flex>

@@ -7,26 +7,67 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
     font-size: 1.5rem;
     font-family: 'HeadingNow', sans-serif;
 
+}
+
+
+
+.book:hover {
+    background: rgb(255, 255, 255);
+    color: orange;
+    transition:.2s;
 }
 
 .book {
-    font-family: 'HeadingNow', sans-serif;
-    background-color: orange;
-    color: white;
-    font-size: 1.5rem;
-    width: 20%;
-    min-height: 55%;
-    border-radius: 8px;
-    transition-duration: 0.4s;
+    background:orange;
+    color:white;
+}
 
+.componentBar {
+
+    background: black;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.componentBar button {
+    white-space: nowrap;
+    flex-shrink: 0;
+    height:100%;
+    padding:0 40px 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.componentBar button:hover {
+
+    background: rgb(54, 54, 54);
+    transition: .2s;
+    cursor:pointer;
+
+}
+
+.componentBar button.book:hover {
+    background: rgb(255, 255, 255);
+    color: orange;
+    transition:.2s;
     
 }
 
-.book:hover {
-    background-color: white;
-    color: orange;
+
+.componentBar button:first-child {
+    padding-left: 55px;   /* more padding on the rounded outer side */
+    padding-right: 40px;  /* matches the default inner padding */
+}
+
+.componentBar button:last-child {
+    padding-right: 55px;  /* more padding on the rounded outer side */
+    padding-left: 40px;
 }
