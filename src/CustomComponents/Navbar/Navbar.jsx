@@ -8,6 +8,7 @@ import { motion } from 'motion/react';
 import CompanyLogo from '@/assets/img/logo-full-transparent.png'
 import WheelIcon from '@/assets/icons/benefit-wheel.png'
 import { GiPaperBagFolded } from "react-icons/gi";
+import { AnimatePresence } from 'motion/react';
 
 const Navbar = () => {
 
@@ -17,6 +18,8 @@ const Navbar = () => {
     
     const [expandedMenu, setExpandedMenu] = useState(false);
 
+
+    
     const toggleMenu = () => {
         setExpandedMenu(!expandedMenu)
     }
@@ -85,104 +88,118 @@ const Navbar = () => {
                 </Box>
 
 
-                
-                <motion.div 
-                    className=' 
-                        flex 
-                        componentBar
-                    '
+                <AnimatePresence>
 
-                    key={'navbar'}
+                    {expandedMenu && (
 
-                    initial ={{
-                        opacity: 0,
-                        x:-100
-                    }}
+                        <motion.div 
+                            className=' 
+                                flex 
+                                componentBar
+                            '
 
-                    animate={{
+                            key={'navbar'}
 
-                        opacity: expandedMenu ? 1 : 0,
-                        x: expandedMenu ? 0 : -100
-                        
-                    }}
-                >
+                            initial ={{
+                                opacity: 0,
+                                x:-100
+                            }}
 
-                
-                    <button
-                        style={{
-                            paddingLeft:'40px',
+                            animate ={{
+                                opacity: 1,
+                                x:0
+                            }}
 
-                        }}
+                            exit={{
+                                opacity:0,
+                                x:-100
+                            }}
 
-                        onClick={(e) => handleNavLink(e, "#home")}
-                    
-                    >
-                        Home
-                    </button>
-
-                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
-                    <button onClick={(e) => handleNavLink(e, '#menu')}>
-                        Menu
-                    </button>
-
-                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
-                    <button
-                        onClick={(e) => handleNavLink(e, "#locations")}
-                    >
-                        Locations
-                    </button>
-
-                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
-
-                    <button
-                        onClick={(e) => handleNavLink(e, "#about")}
-                    >
-                        About
-                    </button>
-                    
-                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
-
-                    <button
-                        onClick={(e) => handleNavLink(e, "#contact")}
-                    >
-                        Contact
-                    </button>
-
-                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
-                    <button
-                        onClick={(e) => handleNavLink(e, "#franchise")}
-                    >
-                        Franchise
-                    </button>
-
-
-
-                    <button
-                        style={{
-                            paddingRight:'40px',
                             
-                        }}
+                        >
 
-                        className='book'
-                    >
-                        Book Now
-                    </button>
+                        
+                            <button
+                                style={{
+                                    paddingLeft:'40px',
+
+                                }}
+
+                                onClick={(e) => handleNavLink(e, "#home")}
+                            
+                            >
+                                Home
+                            </button>
+
+                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+                            <button onClick={(e) => handleNavLink(e, '#menu')}>
+                                Menu
+                            </button>
+
+                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+                            <button
+                                onClick={(e) => handleNavLink(e, "#locations")}
+                            >
+                                Locations
+                            </button>
+
+                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+
+                            <button
+                                onClick={(e) => handleNavLink(e, "#about")}
+                            >
+                                About
+                            </button>
+                            
+                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+
+                            <button
+                                onClick={(e) => handleNavLink(e, "#contact")}
+                            >
+                                Contact
+                            </button>
+
+                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+                            <button
+                                onClick={(e) => handleNavLink(e, "#franchise")}
+                            >
+                                Franchise
+                            </button>
+
+
+
+                            <button
+                                style={{
+                                    paddingRight:'40px',
+                                    
+                                }}
+
+                                className='book'
+                            >
+                                Book Now
+                            </button>
+
+                            
+
+                        </motion.div>
+
+                    )}
 
                     
 
-                </motion.div>
+                </AnimatePresence>
+
 
             </Flex>
 
             <Flex 
                 className='
-                    w-[45%] 
-                    h-[100%] 
+                    flex-1
                     justify-end 
                     items-center 
                     gap-5

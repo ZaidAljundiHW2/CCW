@@ -1,5 +1,5 @@
 import React from 'react'
-import creamwall from '@/assets/img/Backgrounds/sand.jpg'
+import creamwall from '@/assets/img/Backgrounds/sand2.png'
 import { Flex } from '@chakra-ui/react'
 import waveicon from '@/assets/icons/waveicon.png'
 import './OurMission.css'

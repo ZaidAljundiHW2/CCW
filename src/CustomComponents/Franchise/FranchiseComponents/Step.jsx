@@ -79,11 +79,15 @@ const Step = ({CardItem}) => {
         
         </div>
 
-        <h1>
+        <h1 style={{
+            color:'#e4b055'
+        }}>
             {CardItem.Header}
         </h1>
 
-        <p>
+        <p style={{
+            color:'#e4b055'
+        }}>
             {CardItem.Text}
         </p>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Box } from '@chakra-ui/react'
-import StepsBack from '@/assets/img/Backgrounds/f2eeee.png'
+import StepsBack from '@/assets/img/Backgrounds/f2back.png'
 import waveicon from '@/assets/icons/waveicon.png'
 import waveicon4 from '@/assets/icons/waveicon4.png'
 import waveicon3 from '@/assets/icons/waveicon3.png'
@@ -91,7 +91,7 @@ const Steps = () => {
                             style={{
                                 height:'2px',
                                 width:'30%',
-                                background:'black',
+                                background:'white',
                                 display:(card.StepNum == 4 ? 'none' : 'block')
                             }}
                         />

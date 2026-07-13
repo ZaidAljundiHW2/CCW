@@ -16,12 +16,12 @@
 
 .book:hover {
     background: rgb(255, 255, 255);
-    color: orange;
+    color: #ef571b;
     transition:.2s;
 }
 
 .book {
-    background:orange;
+    background:#ef571b;
     color:white;
 }
 
@@ -57,7 +57,7 @@
 
 .componentBar button.book:hover {
     background: rgb(255, 255, 255);
-    color: orange;
+    color: #ef571b;
     transition:.2s;
     
 }

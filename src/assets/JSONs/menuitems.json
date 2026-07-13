@@ -1,96 +1,185 @@
 [
     {
-        "Step": "1",
-        "Label": "Catch Options",
-        "Header": "Step One: Choose Your Catch",
+        "Option": "Main Courses",
         "Items": [
+
             {
-                "Name":"Lobster",
-                "Img":"/src/assets/img/FoodOptions/Catches/lobsteroption.jpg"
+                "Name":"The Captain's Boil",
+                "Img":"/src/assets/img/menuitems/maincourses/captainsboil.jpg"
             },
 
             {
-                "Name":"Crab",
-                "Img":"/src/assets/img/FoodOptions/Catches/craboption.jpg"
+                "Name":"Snow Crab Leg Boil",
+                "Img":"/src/assets/img/menuitems/maincourses/snowcrablegboil.jpg"
             },
 
             {
-                "Name":"Shrimp",
-                "Img":"/src/assets/img/FoodOptions/Catches/shrimpoption.jpg"
+                "Name":"Shrimp and Sausage Boil",
+                "Img":"/src/assets/img/menuitems/maincourses/shrimpandsausageboil.jpg"
+            },
+
+            {
+                "Name":"Lobster Tail Boil",
+                "Img":"/src/assets/img/menuitems/maincourses/lobstertailboil.jpg"
+            },
+
+            {
+                "Name":"Lobster Roll",
+                "Img":"/src/assets/img/menuitems/maincourses/lobsterroll.jpg"
+            },
+
+            {
+                "Name":"Shrimp Scampi",
+                "Img":"/src/assets/img/menuitems/maincourses/shrimpscampi.jpg"
             }
         ]
+            
+        
     },
 
     {
-        "Step": "2",
-        "Label": "Side Options",
-        "Header": "Step Two: Choose Your Side",
+        "Option": "Salads",
         "Items": [
+
             {
-                "Name":"Roasted Potatoes",
-                "Img":"/src/assets/img/FoodOptions/Sides/potatoesoption.jpg"
+                "Name":"Crab Salad",
+                "Description":""
+            },
+
+            {
+                "Name":"Shrimp Caesar Salad",
+                "Description":""
+            },
+
+            {
+                "Name":"Crab Louie",
+                "Description":""
+            },
+
+            {
+                "Name":"Insalata di Pesce",
+                "Description":""
+            }
+        ]
+            
+        
+    },
+
+    {
+        "Option": "Sides",
+        "Items": [
+
+            {
+                "Name":"French Fries",
+                "Description":""
             },
 
             {
                 "Name":"Corn",
-                "Img":"/src/assets/img/FoodOptions/Sides/cornoption.jpg"
+                "Description":""
             },
 
             {
-                "Name":"Fries",
-                "Img":"/src/assets/img/FoodOptions/Sides/friesoption.jpg"
+                "Name":"Roasted Potato",
+                "Description":""
+            },
+
+            {
+                "Name":"Mixed Veggies",
+                "Description":""
             },
 
             {
                 "Name":"Coleslaw",
-                "Img":"/src/assets/img/FoodOptions/Sides/coleslawoption.jpg"
+                "Description":""
             }
         ]
+            
+        
     },
 
     {
-        "Step":"3",
-        "Label":"Sauce Options",
-        "Header": "Step Three: Choose Your Sauce",
+        "Option": "Sauces",
         "Items": [
+
             {
-                "Name":"Sweet Chili Sauce",
-                "Img":"/src/assets/img/FoodOptions/Sauces/chiligarlicoption.jpg"
+                "Name":"Garlic Butter",
+                "Description":""
             },
 
             {
-                "Name":"Katsu Curry Sauce",
-                "Img":"/src/assets/img/FoodOptions/Sauces/katsucurryoption.jpg"
+                "Name":"Lemon Pepper Butter",
+                "Description":""
             },
 
             {
-                "Name":"Lemon Butter Sauce",
-                "Img":"/src/assets/img/FoodOptions/Sauces/lemonbutteroption.jpg"
+                "Name":"Cajun Remoulade",
+                "Description":""
+            },
+
+            {
+                "Name":"Captain's Fire Sauce",
+                "Description":""
             }
         ]
+            
+        
     },
 
     {
-        "Step":"4",
-        "Label":"Spice Level",
-        "Header":"Step Four: Choose Your Spice Level",
+        "Option": "Drinks",
         "Items": [
+
             {
-                "Name":"Mild",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice1.png"
+                "Name":"Lemonade",
+                "Description":""
             },
 
             {
-                "Name":"Spicy",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice2.png"
+                "Name":"Strawberry Mojito",
+                "Description":""
             },
 
             {
-                "Name":"Extra Spicy",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice3.png"
+                "Name":"Water",
+                "Description":""
+            },
+
+            {
+                "Name":"Coca Cola",
+                "Description":""
+            },
+
+            {
+                "Name":"Pepsi",
+                "Description":""
+            },
+
+            {
+                "Name":"Fanta",
+                "Description":""
+            },
+
+            {
+                "Name":"7Up",
+                "Description":""
+            },
+
+            {
+                "Name":"Orange",
+                "Description":""
             }
         ]
+            
+        
+    },
+
+    {
+        "Option": "Build Your Own",
+        "Items": [
+
+        ]
+            
+        
     }
-
-
 ]

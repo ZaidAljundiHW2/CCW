@@ -13,7 +13,7 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
             h-full
             flex
             items-center
-            justify-center
+            justify-start
             flex-col
         '
 
@@ -24,20 +24,20 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
             background: YNA ? '#002342' : '#f2eeee'
         }}
     >
-        <div className='w-full flex-1 flex items-center justify-center'>
+        <div className='w-full flex items-center justify-center h-[25%]'>
 
-            <h1 className='flex-1 WhyCCHead' style={{color: YNA ? 'white' : '#012447', fontSize:'2rem', textAlign:'center', lineHeight:1.1}}>
+            <h1 className='WhyCCHead' style={{color: YNA ? 'white' : '#012447', fontSize:'2rem', textAlign:'center', lineHeight:1.1}}>
                 {CardItem.Header}
             </h1>
         </div>
 
 
-        <div className='w-full flex-1 flex items-center justify-center'>
+        <div className='w-full flex items-center justify-center'>
 
             <img 
                 src={resolveImg(CardItem.Img)} 
                 style={{
-                    width:'100px',
+                    width:'75px',
                     height:'auto'
                 }}
 
@@ -46,16 +46,16 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
         </div>
         
         {wave && (
-            <div className='w-full flex-1 flex items-center justify-center'>
+            <div className='w-full flex items-center justify-center' style={{marginTop:'-10px'}}>
                 <img src={wave2} className='flex-1'/>
             </div>
         )}
         
         
-        <div className='w-full flex-1 flex items-center justify-center'>
+        <div className='w-full flex items-center justify-center'>
 
         
-            <p className='flex-1' style={{color: YNA ? 'white' : '#012447', textAlign:'center'}}>
+            <p className='flex-1' style={{color: YNA ? 'white' : '#012447', textAlign:'center', fontSize:'.9rem'}}>
                 {CardItem.Text}
             </p>
         </div>

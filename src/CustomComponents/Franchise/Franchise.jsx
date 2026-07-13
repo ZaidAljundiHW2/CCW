@@ -14,7 +14,7 @@ const Franchise = () => {
 
       <WhyCC />
 
-      <YNA />
+      {/* <YNA /> */}
 
       <Steps />
 
