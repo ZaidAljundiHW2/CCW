@@ -57,6 +57,36 @@
             "Text": "Flexible formats and territories with strong return potential.",
             "Img": "/src/assets/icons/franchise-scalable.png"
         }
+    ],
+
+    [
+        {
+            "StepNum":1,
+            "Header":"INQUIRY",
+            "Text":"Tell us about yourself and your goals by submitting an inquiry.",
+            "Icon":"mail"
+        },
+
+        {
+            "StepNum":2,
+            "Header":"DISCOVERY",
+            "Text":"We'll connect, share details, and explore if we're the right fit.",
+            "Icon":"magnifying"
+        },
+
+        {
+            "StepNum":3,
+            "Header":"PLANNING",
+            "Text":"We'll guide you through site selection, financing, and next steps.",
+            "Icon":"file"
+        },
+
+        {
+            "StepNum":4,
+            "Header":"LAUNCH",
+            "Text":"Get trained, open your doors, and start serving up big flavour.",
+            "Icon":"store"
+        }
     ]
     
     

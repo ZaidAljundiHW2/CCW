@@ -21,7 +21,7 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
             borderWidth:'2px',
             borderColor:'white',
             padding:'20px',
-            background: YNA ? '#002342' : 'f2eeee'
+            background: YNA ? '#002342' : '#f2eeee'
         }}
     >
         <div className='w-full flex-1 flex items-center justify-center'>
@@ -37,7 +37,7 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
             <img 
                 src={resolveImg(CardItem.Img)} 
                 style={{
-                    width:'45%',
+                    width:'100px',
                     height:'auto'
                 }}
 

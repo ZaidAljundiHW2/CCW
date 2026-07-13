@@ -30,7 +30,7 @@ const ContactForm = () => {
             height:'103px'
         }} />
 
-        <Button className='w-[100px]' bg={'orange'} color={'white'}>
+        <Button className='w-[100px]' bg={'#ef571b'} color={'white'}>
             Submit
             <FaRegPaperPlane />
         </Button>

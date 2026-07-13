@@ -3,6 +3,7 @@ import { Flex } from '@chakra-ui/react'
 import YNABack from '@/assets/img/Backgrounds/f2back.png'
 import waveicon from '@/assets/icons/waveicon.png'
 import waveicon4 from '@/assets/icons/waveicon4.png'
+import waveicon3 from '@/assets/icons/waveicon3.png'
 import './WhyCC.css'
 import WhyCCCard from './WhyCCCard'
 import FranchiseItemsJSON from '@/assets/JSONs/franchisecards.json'
@@ -52,7 +53,7 @@ const YNA = () => {
                     YOU'RE NOT ALONE
                 </h1>
 
-                <img src={waveicon} style={{
+                <img src={waveicon3} style={{
                                     width:'20%',
                                     height:'auto',
                                     objectFit:'contain'

@@ -152,6 +152,14 @@ const Navbar = () => {
                         Contact
                     </button>
 
+                    <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
+
+                    <button
+                        onClick={(e) => handleNavLink(e, "#franchise")}
+                    >
+                        Franchise
+                    </button>
+
 
 
                     <button
@@ -191,6 +199,7 @@ const Navbar = () => {
                 <button 
                     className='
                         orderbutton
+                        rounded-full
                     ' 
 
                     style={{
