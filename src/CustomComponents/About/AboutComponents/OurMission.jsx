@@ -25,7 +25,7 @@ const OurMission = () => {
       <Flex
         className='flex-col justiy-center'
         style={{
-          padding:'20px'
+          padding:'50px'
         }}
       >
 
@@ -58,7 +58,7 @@ const OurMission = () => {
 
       </Flex>
 
-      <Flex className='w-[20%] flex-col justify-center' style={{fontSize:'1.2rem'}}>
+      <Flex className='w-[20%] flex-col justify-center' style={{fontSize:'1.1rem'}}>
         <p style={{color:'#012447'}}>
           We're on a mission to serve the freshest seafood with bold flavors and warm hospitality - creating experiences that bring people together and keep them coming back.
 
