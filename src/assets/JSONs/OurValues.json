@@ -1,0 +1,25 @@
+[
+    {
+        "Header":"FRESH QUALITY",
+        "Text": "We source premium seafood and fresh ingredients daily to ensure every bite is exceptional.",
+        "Icon": "anchor"
+    },
+
+    {
+        "Header":"BOLD FLAVOR",
+        "Text": "Our signature boils and sauces are crafted to bring big, unforgettable flavor to every craving.",
+        "Icon": "crab"
+    },
+
+    {
+        "Header":"HOSPITALITY",
+        "Text": "We treat every guest like family - welcoming, genuine, and always crafted with care.",
+        "Icon":"handshake"
+    },
+    
+    {
+        "Header":"COMMUNITY",
+        "Text": "We're proud to bring people together and give back to the communities we call home.",
+        "Icon":"team"
+    }
+]
