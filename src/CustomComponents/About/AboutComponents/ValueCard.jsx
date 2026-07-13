@@ -18,18 +18,18 @@ const ValueCard = ({Value}) => {
             shadow-lg
             relative
             items-center
-            justify-end
+            justify-center
             text-center
             gap-5
 
         '
 
         style={{
-            padding:'20px'
+            padding:'7% 20px 20px 20px',
         }}
     >  
 
-        <Flex className='flex-col justify-center items-center absolute top-[-8%]'>
+        <Flex className='flex-col justify-center items-center'>
 
             {/* Icon */}
             <Flex
@@ -38,6 +38,8 @@ const ValueCard = ({Value}) => {
                     flex
                     justify-center
                     items-center
+                    absolute
+                    top-[-8%]
                     
 
                 '
