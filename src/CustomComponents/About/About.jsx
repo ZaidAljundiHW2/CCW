@@ -9,7 +9,7 @@ import OurMission from './AboutComponents/OurMission'
 const About = () => {
   return (
     <div
-        
+        id='about'
     >
 
         <OurStory />

@@ -1,0 +1,23 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+@font-face {
+    font-family: HeadingNow;
+    src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
+}
+
+.missionhead {
+
+    font-family: PersonalServices, 'sans-serif';
+    font-size: 2.65rem;
+
+}
+
+.missionhead2 {
+
+    font-family: HeadingNow, 'sans-serif';
+    font-size: 2rem;
+
+}
