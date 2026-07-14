@@ -12,7 +12,9 @@
 .CSCH {
     color: #012447;
     font-family: 'PersonalServices', sans-serif;
-    font-size: 2rem;
+    font-size: 1.25rem;
+    overflow-wrap: break-word;
+
 }
 
 .CSCT {

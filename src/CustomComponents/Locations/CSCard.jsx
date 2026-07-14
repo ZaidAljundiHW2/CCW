@@ -7,12 +7,12 @@ import { IoLocationSharp } from "react-icons/io5";
 const CSCard = ({image, location}) => {
   return (
     <Flex
-        className='flex-1 items-center justify-center'
+        className='items-center justify-center min-w-[0] flex-1' 
     >
         <Flex
             className='
-                w-[90%]
-                h-[90%]
+                flex-1
+                h-full
                 rounded-lg
                 shadow-lg
                 bg-[#F2F0EF]
@@ -21,6 +21,13 @@ const CSCard = ({image, location}) => {
                 justify-center
                 overflow-hidden
             '
+
+            style={{
+                padding:'20px',
+                background:`url(${image})`,
+                backgroundSize:'cover',
+                backgroundPosition:'center'
+            }}
         >
 
 
@@ -35,7 +42,7 @@ const CSCard = ({image, location}) => {
                 </Flex>
 
 
-                <Flex className='items-center justify-center w-[200px] bg-[#012447] rounded-lg' style={{padding:'10px'}}>
+                <Flex className='items-center justify-center flex-1 bg-[#012447] rounded-lg' style={{padding:'10px'}}>
                     <h1 className='CSCT'>
                         Coming Soon
                     </h1>
@@ -43,7 +50,6 @@ const CSCard = ({image, location}) => {
                 </Flex>
             </Flex>
 
-            <img src={image} className='CSCimgG'/>
 
 
         </Flex>

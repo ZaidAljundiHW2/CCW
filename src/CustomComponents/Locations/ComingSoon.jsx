@@ -14,71 +14,58 @@ const ComingSoon = () => {
     <div
         className='
             flex
-            w-full
             min-h-[40vh]
             bg-[#F2F0EF]
             gap-5
+            items-center
+            justify-center
+            
         '
 
         style={{
-            paddingBottom:'20px',
-            paddingTop:'20px'
+            padding:'20px',
         }}
 
         
     >
-        <Flex className='w-[30%] items-center'>
+        
+        {/* Text */}
+        <Flex className='flex-1 gap-5 items-center justify-center'>
 
-            <img src={Lighthouse} style={{
-                width:'200px',
-                height:'auto'
-            }}/>
+            <div>
+                <img src={Lighthouse}/>
+            </div>
 
-            <Flex
-                className='
-                    flex-col
-                    w-[100%]
-                    justify-start
-                '
-            >
+            <Flex className='flex-col'>
 
-                <Flex
-                    className='
-                        flex-col
-                        gap-0
-                        justify-start   
-                    '
-                >
-                    <h1 lineHeight={1.2} className='CSH'>
-                        MORE LOCATIONS COMING SOON
-                    </h1>
+                <h1 className='CSH'>
+                    MORE LOCATIONS COMING SOON.
+                </h1>
 
-                    <img 
-                        src={Wave2}
-                        style={{
-                            width:'200px',
-                            height:'auto'
-                        }}
-                    />
-
-                </Flex>
+                <img src={Wave2} style={{
+                    height:'20px',
+                    width:'auto'
+                }}/>
 
                 <p className='CST'>
                     We're setting sail for new shores! Captain's Crab is expanding to bring bold, craveable seafood experiences to communities across Canada.
-                </p>
+                </p>    
 
             </Flex>
-
-
-
-
             
+
 
         </Flex>
 
-        <CSCard image={TorontoSketch} location={"Toronto"}/>
-        <CSCard image={OttowaSketch} location={"Ottowa"}/>
-        <CSCard image={MississaugaSketch} location={"Mississauga"}/>
+        {/* Cards */}
+        <Flex className='flex-1 gap-5'>
+
+            <CSCard image={TorontoSketch} location={"Toronto"}/>
+            <CSCard image={MississaugaSketch} location={"Mississauga"}/>
+            <CSCard image={OttowaSketch} location={"Ottowa"}/>
+
+        </Flex>
+        
 
 
       

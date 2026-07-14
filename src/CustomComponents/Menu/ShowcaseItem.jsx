@@ -25,7 +25,6 @@ const ShowcaseItem = ({item}) => {
 
         style={{
             padding:'20px',
-            aspectRatio: '1 / 1'
         }}
 
         
