@@ -50,18 +50,20 @@ const HeroCarousel = () => {
           justifyContent:'end',
           flexDirection:'column',
           width:'100%',
-          height:'100%'
+          height:'100%',
+          
 
         }}
       >
 
         <Box
           style={{
-            right:'0',
-            bottom:'0',
             position:'absolute',
-            width:'90%',
+            right:0,
+            bottom:0,
             height:'90%',
+            width:'auto',
+            aspectRatio:'auto'
           }}
         >
 
@@ -69,17 +71,17 @@ const HeroCarousel = () => {
           <img 
             src={FoodBucket}
             style={{
-              position:'absolute',
-              right:0,
-              bottom:0,
+              width:'100%',
               height:'100%',
-              width:'auto'
+              objectFit:'contain'
             }}
           />
 
-
-          {/* Smoke layer */}
+          
           <AnimatePresence>
+
+          
+            {/* Smoke layer */}
             {!videoEnded && (
               <motion.video
                 src={steaminit}
@@ -87,27 +89,30 @@ const HeroCarousel = () => {
                 muted
                 playsInline
                 onEnded={() => setVideoEnded(true)}
-                className="smoke"
                 style={{
                   position:'absolute',
-                  right:0,
-                  bottom:0,
-                  height:'100%',
-                  width:'auto',
+                  right:'7%',
+                  bottom:'35%',
+                  width:'200%',
+                  height:'200%',
+                  objectFit:'contain',
                   mixBlendMode:'screen'
                 }}
+
                 initial={{opacity:0}}
                 animate={{opacity:1}}
                 exit={{opacity:0}}
                 transition={{duration:1}}
+                
                 
               />
             )}
           </AnimatePresence>
 
 
-          <AnimatePresence mode="sync">
+          <AnimatePresence>
 
+          
             {videoEnded && loopIndex === 0 && (
               <motion.video
                 key="loop0"
@@ -115,39 +120,16 @@ const HeroCarousel = () => {
                 autoPlay
                 muted
                 playsInline
-                className="smoke"
                 style={{
                   position:'absolute',
-                  right:0,
-                  bottom:0,
-                  height:'100%',
-                  width:'auto',
+                  right:'7%',
+                  bottom:'35%',
+                  width:'200%',
+                  height:'200%',
+                  objectFit:'contain',
                   mixBlendMode:'screen'
                 }}
-                onEnded={updateLoopIndex}
-                initial={{opacity:0}}
-                animate={{opacity:1}}
-                exit={{opacity:0}}
-                transition={{duration:1}}
-              />
-            )}
 
-            {videoEnded && loopIndex === 1 && (
-              <motion.video
-                key="loop1"
-                src={steamloop}
-                autoPlay
-                muted
-                playsInline
-                className="smoke"
-                style={{
-                  position:'absolute',
-                  right:0,
-                  bottom:0,
-                  height:'100%',
-                  width:'auto',
-                  mixBlendMode:'screen'
-                }}
                 onEnded={updateLoopIndex}
                 initial={{opacity:0}}
                 animate={{opacity:1}}
@@ -157,15 +139,51 @@ const HeroCarousel = () => {
             )}
 
           </AnimatePresence>
+          
+          <AnimatePresence>
+
+         
+            {videoEnded && loopIndex === 1 && (
+              <motion.video
+                key="loop1"
+                src={steamloop}
+                autoPlay
+                muted
+                playsInline
+                style={{
+                  position:'absolute',
+                  right:'7%',
+                  bottom:'35%',
+                  width:'200%',
+                  height:'200%',
+                  objectFit:'contain',
+                  mixBlendMode:'screen'
+                }}
+
+                onEnded={updateLoopIndex}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                exit={{opacity:0}}
+                transition={{duration:1}}
+              />
+            )}
+          </AnimatePresence>
 
         </Box>
 
+        
 
         
-        
+
         
 
       </Box>
+
+
+        
+        
+        
+
       
 
       
