@@ -5,32 +5,50 @@
 
             {
                 "Name":"The Captain's Boil",
-                "Img":"/src/assets/img/menuitems/maincourses/captainsboil.jpg"
+                "HasDescription": true,
+                "Description":"Snow crab, shrimp, mussels, sausage, corn, and potatoes tossed in our signature blend.",
+                "Img":"/src/assets/img/menuitems/maincourses/captainsboil.jpg",
+                "Price":"49.99$"
             },
 
             {
                 "Name":"Snow Crab Leg Boil",
-                "Img":"/src/assets/img/menuitems/maincourses/snowcrablegboil.jpg"
+                "HasDescription": true,
+                "Description":"Sweet snow crab legs, shrimp, corn, and potatoes seasoned to perfection.",
+                "Img":"/src/assets/img/menuitems/maincourses/snowcrablegboil.jpg",
+                "Price":"54.99$"
             },
 
             {
                 "Name":"Shrimp and Sausage Boil",
-                "Img":"/src/assets/img/menuitems/maincourses/shrimpandsausageboil.jpg"
+                "Description":"Juicy shrimp, smoked sausage, corn, and potatoes with bold, zesty flavor.",
+                "HasDescription": true,
+                "Img":"/src/assets/img/menuitems/maincourses/shrimpandsausageboil.jpg",
+                "Price":"39.99$"
             },
 
             {
                 "Name":"Lobster Tail Boil",
-                "Img":"/src/assets/img/menuitems/maincourses/lobstertailboil.jpg"
+                "HasDescription": true,
+                "Description":"Lobster tails, shrimp, corn, and potatoes in a rich, buttery blend.",
+                "Img":"/src/assets/img/menuitems/maincourses/lobstertailboil.jpg",
+                "Price":"59.99$"
             },
 
             {
                 "Name":"Lobster Roll",
-                "Img":"/src/assets/img/menuitems/maincourses/lobsterroll.jpg"
+                "HasDescription": true,
+                "Description":"Tender, sweet lobster meat stuffed into a butter-toasted hot dog bun.",
+                "Img":"/src/assets/img/menuitems/maincourses/lobsterroll.jpg",
+                "Price":"24.99$"
             },
 
             {
                 "Name":"Shrimp Scampi",
-                "Img":"/src/assets/img/menuitems/maincourses/shrimpscampi.jpg"
+                "Description":"Shrimp sautéed in a rich flavorful garlic and butter sauce with served over pasta.",
+                "HasDescription": true,
+                "Img":"/src/assets/img/menuitems/maincourses/shrimpscampi.jpg",
+                "Price":"22.99$"
             }
         ]
             
@@ -43,22 +61,34 @@
 
             {
                 "Name":"Crab Salad",
-                "Description":""
+                "HasDescription": true,
+                "Img":"/src/assets/img/menuitems/salads/crabsalad.jpg",
+                "Description":"Fresh crab meat tossed with crisp greens, cherry tomatoes, and a light citrus dressing.",
+                "Price":"16.99$"
             },
 
             {
                 "Name":"Shrimp Caesar Salad",
-                "Description":""
+                "HasDescription": true,
+                "Img":"/src/assets/img/menuitems/salads/shrimpcaesarsalad.jpg",
+                "Description":"Grilled shrimp over romaine lettuce with parmesan, croutons, and classic Caesar dressing.",
+                "Price":"15.99$"
             },
 
             {
                 "Name":"Crab Louie",
-                "Description":""
+                "HasDescription": true,
+                "Img":"/src/assets/img/menuitems/salads/crablouie.jpg",
+                "Description":"Chilled crab meat piled over mixed greens with egg, tomato, and creamy Louie dressing.",
+                "Price":"17.99$"
             },
 
             {
                 "Name":"Insalata di Pesce",
-                "Description":""
+                "HasDescription": true,
+                "Img":"/src/assets/img/menuitems/salads/insalatadipesce.jpg",
+                "Description":"Italian-style seafood salad with shrimp, calamari, and mussels in a lemon herb vinaigrette.",
+                "Price":"18.99$"
             }
         ]
             
@@ -71,27 +101,42 @@
 
             {
                 "Name":"French Fries",
-                "Description":""
+                "HasDescription": false,
+                "Img": "/src/assets/img/menuitems/sides/fries.jpg",
+                "Description":"",
+                "Price":"5.99$"
             },
 
             {
                 "Name":"Corn",
-                "Description":""
+                "HasDescription": false,
+                "Img": "/src/assets/img/menuitems/sides/corn.jpg",
+                "Description":"",
+                "Price":"4.99$"
             },
 
             {
                 "Name":"Roasted Potato",
-                "Description":""
+                "HasDescription": false,
+                "Img": "/src/assets/img/menuitems/sides/roastpotato.jpg",
+                "Description":"",
+                "Price":"5.99$"
             },
 
             {
                 "Name":"Mixed Veggies",
-                "Description":""
+                "HasDescription": false,
+                "Img": "/src/assets/img/menuitems/sides/mixedveggies.jpg",
+                "Description":"",
+                "Price":"5.49$"
             },
 
             {
                 "Name":"Coleslaw",
-                "Description":""
+                "HasDescription": false,
+                "Img": "/src/assets/img/menuitems/sides/coleslaw.jpg",
+                "Description":"",
+                "Price":"4.49$"
             }
         ]
             
@@ -104,22 +149,34 @@
 
             {
                 "Name":"Garlic Butter",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/sauces/garlicbutter.jpg",
+                "Description":"",
+                "Price":"2.99$"
             },
 
             {
                 "Name":"Lemon Pepper Butter",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/sauces/lemonbutter.jpg",
+                "Description":"",
+                "Price":"2.99$"
             },
 
             {
                 "Name":"Cajun Remoulade",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/sauces/images.jpg",
+                "Description":"",
+                "Price":"2.99$"
             },
 
             {
                 "Name":"Captain's Fire Sauce",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/sauces/captainsspicysauce.jpg",
+                "Description":"",
+                "Price":"3.49$"
             }
         ]
             
@@ -132,42 +189,66 @@
 
             {
                 "Name":"Lemonade",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/lemonade.jpg",
+                "Description":"",
+                "Price":"3.49$"
             },
 
             {
                 "Name":"Strawberry Mojito",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/strawberrymojito.jpg",
+                "Description":"",
+                "Price":"5.99$"
             },
 
             {
                 "Name":"Water",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/water.jpg",
+                "Description":"",
+                "Price":"1.99$"
             },
 
             {
                 "Name":"Coca Cola",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/cocacola.jpg",
+                "Description":"",
+                "Price":"2.99$"
             },
 
             {
                 "Name":"Pepsi",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/pepsi.jpg",
+                "Description":"",
+                "Price":"2.99$"
             },
 
             {
                 "Name":"Fanta",
-                "Description":""
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/fanta.jpg",
+                "Description":"",
+                "Price":"2.99$"
             },
 
             {
-                "Name":"7Up",
-                "Description":""
+                "Name":"Sprite",
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/sprite.jpg",
+                "Description":"",
+                "Price":"2.99$"
             },
 
             {
-                "Name":"Orange",
-                "Description":""
+                "Name":"Orange Juice",
+                "HasDescription": false,
+                "Img":"/src/assets/img/menuitems/drinks/orangejuice.jpg",
+                "Description":"",
+                "Price":"2.99$"
             }
         ]
             

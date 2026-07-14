@@ -95,9 +95,10 @@ const CreateYourOwn = () => {
     }
 
   return (
-    <motion.div
+    
+    <div
         className='
-            w-[90%]
+            w-full
             rounded-lg
             shadow-lg
             gap-5
@@ -113,7 +114,9 @@ const CreateYourOwn = () => {
         }}
 
         layout
-        transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
+
+
+        
 
 
     >
@@ -356,7 +359,7 @@ const CreateYourOwn = () => {
 
         
 
-    </motion.div>
+    </div>
 
     
   )

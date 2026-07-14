@@ -9,11 +9,15 @@ import MenuShowcase from './MenuShowcase';
 const Menu = () => {
 
   return (
-    <div 
+    <motion.div 
         style={{
             background:'#f4f4f4',
             padding:'5%'
         }}
+
+        layout
+
+        transition={{ layout: { duration: 0.4, ease: 'easeInOut' }}}
 
     
         id='menu'
@@ -26,48 +30,9 @@ const Menu = () => {
 
         <MenuShowcase />
 
-        
-
-
-
-
-
-        {/* <CreateYourOwn /> */}
-
-        {/* <motion.div  
-            className='
-                flex
-                w-[100%] 
-                flex-col
-                justify-center
-                items-center
-                gap-5
-                bg-[#f2f0ef]
-
-            '
-
-            layout
-            transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
-
-
-            style={{
-                padding:'20px'
-            }}
-        >
-
-            <InfiniteAppetizerCarousel />
-
-
-        </motion.div> */}
-
-        
-
-
-
-        
-
+    
       
-    </div>
+    </motion.div>
   )
 }
 

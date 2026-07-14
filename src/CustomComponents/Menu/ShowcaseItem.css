@@ -1,0 +1,10 @@
+@font-face {
+    font-family: HeadingNow;
+    src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
+}
+
+
+.SIHeader {
+
+    font-family: HeadingNow, 'sans-serif';
+}

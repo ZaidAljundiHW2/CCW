@@ -4,23 +4,29 @@ import './MenuShowcase.css'
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import ShowcaseItem from './ShowcaseItem'
-
+import MenuItemsJSON from '@/assets/JSONs/menuitems.json'
+import { select } from 'motion/react-client'
+import CreateYourOwn from './CreateYourOwn'
+import { AnimatePresence } from 'motion/react'
+import { resolveImg } from '@/customLib/utils/resolveImage'
+import './ShowcaseItem.css'
 const MenuShowcase = () => {
 
     const options = ['Main Courses', 'Salads', 'Sides', 'Sauces', 'Drinks', 'Build Your Own'];
 
-    const [selectedCat, setSelectedCat] = useState("");
-    const [index, setIndex] = useState();
+    const [selectedCat, setSelectedCat] = useState("Main Courses");
+    const [index, setIndex] = useState(0);
 
     const changeCat = (option) => {
 
+        console.log(option)
         setSelectedCat(option);
         setIndex(options.indexOf(option));
 
     };
 
   return (
-    <div
+    <motion.div
         className='
             w-[80%]
             flex
@@ -28,6 +34,9 @@ const MenuShowcase = () => {
             items-center
             gap-5
         '
+
+        layout
+        
     > 
 
         {/* Buttons */}
@@ -48,7 +57,7 @@ const MenuShowcase = () => {
 
                     key={i}
 
-                    onClick={() => setSelectedCat(option)}
+                    onClick={() => changeCat(option)}
 
                     animate = {{
 
@@ -76,23 +85,63 @@ const MenuShowcase = () => {
 
         {/* Grid */}
 
-        <div className='w-full h-full flex justify-center items-center'>
+        <motion.div layout className='w-full h-full flex relative justify-center items-center'>
 
-            <SimpleGrid columns={4} gap={'6'}>
+                <AnimatePresence mode='wait'>
 
-                <ShowcaseItem />
-                <ShowcaseItem />
-                <ShowcaseItem />
-                <ShowcaseItem />
                 
+                    <motion.div layout className='w-full h-full'
+                    
+                        initial={{
+                            opacity:0
+                        }}
+
+                        animate={{
+                            opacity:1
+                        }}
+
+                        exit={{
+                            opacity:0
+                        }}
+
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+
+                        key={index}
+                    >
+
+                    
+                
+                        {(!(selectedCat === "Build Your Own")) && (
+
+                            <SimpleGrid columns={4} gap={'6'}>
 
 
-            </SimpleGrid>
+                                {MenuItemsJSON[index].Items.map((item) => (
+                                    <ShowcaseItem item={item} key={item.Name} />
+                                ))}
 
 
-        </div>
+                            </SimpleGrid>
+                        )}
+
+                        {(selectedCat === "Build Your Own") && (
+
+                    
+                            <CreateYourOwn />
+                        )}
+
+                    </motion.div>
+
+                </AnimatePresence>
+           
+            
+        
+            
+
+
+        </motion.div>
       
-    </div>
+    </motion.div>
   )
 }
 
