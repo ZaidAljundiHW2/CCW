@@ -9,7 +9,7 @@ const InfoSec = ({info}) => {
   return (
     <div className='w-full flex gap-5 items-center'>
 
-        <div className='w-10 aspect-square shrink-0 overflow-hidden'>
+        <div className='md:w-10 w-5 aspect-square shrink-0 overflow-hidden'>
             <img
                 src={resolveImg(info.img)}
                 alt='icon'

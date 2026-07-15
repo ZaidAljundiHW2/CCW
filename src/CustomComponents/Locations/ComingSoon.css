@@ -6,9 +6,11 @@
 .CSH {
     color: #012447;
     font-family: 'PersonalServices', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1rem, 1.5vw, 2rem);
 }
 
 .CST {
     color: black;
+    font-size: clamp(.75rem, 1vw, 1.5rem);
+
 }

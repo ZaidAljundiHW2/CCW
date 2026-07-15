@@ -74,14 +74,14 @@ const WhyCC = () => {
         </Flex>
 
         {/* Cards */}
-        {/* <Flex className='gap-10 flex-1'>
+        <Flex className='gap-10 flex-1'>
 
             {FranchiseItemsJSON[0].map((card, i) => (
 
                 <WhyCCCard CardItem={card} key={i}/>
             ))}
 
-        </Flex> */}
+        </Flex>
 
 
       

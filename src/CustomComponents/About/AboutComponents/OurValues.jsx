@@ -39,13 +39,13 @@ const OurValues = () => {
                 }}/>
         </Flex>
 
-        {/* <Flex className='flex-1  gap-5'>
+        <Flex className='flex-1  gap-5'>
 
             {OurValuesJSON.map((value, i) => (
                 <ValueCard Value={value} key={i} />
             ))}
 
-        </Flex> */}
+        </Flex>
 
             
 

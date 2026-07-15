@@ -6,17 +6,18 @@
 .ELH {
     color: black;
     font-family: 'PersonalServices', sans-serif;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 1.5vw, 2rem);
 }
 
 .ELH2 {
     color: #012447;
     font-family: 'PersonalServices', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
 }
 
 .ELT {
     color: black;
+    font-size: clamp(.75rem, 1vw, 1.5rem);
 }
 
 .ELBook {
@@ -37,4 +38,8 @@
 .ELDir:hover {
     background-color: orange;
     color:white
+}
+
+@media (max-width:768px) {
+
 }

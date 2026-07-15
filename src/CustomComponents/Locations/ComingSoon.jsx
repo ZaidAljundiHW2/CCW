@@ -14,11 +14,12 @@ const ComingSoon = () => {
     <div
         className='
             flex
-            min-h-[40vh]
             bg-[#F2F0EF]
             gap-5
             items-center
             justify-center
+            md:flex-row
+            flex-col
             
         '
 
@@ -58,11 +59,11 @@ const ComingSoon = () => {
         </Flex>
 
         {/* Cards */}
-        <Flex className='flex-1 gap-5'>
+        <Flex className='flex-1 w-full bg-red-500 gap-5' style={{padding:'20px'}}>
 
-            {/* <CSCard image={TorontoSketch} location={"Toronto"}/>
+            <CSCard image={TorontoSketch} location={"Toronto"}/>
             <CSCard image={MississaugaSketch} location={"Mississauga"}/>
-            <CSCard image={OttowaSketch} location={"Ottowa"}/> */}
+            <CSCard image={OttowaSketch} location={"Ottowa"}/>
 
         </Flex>
         

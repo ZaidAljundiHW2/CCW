@@ -1,22 +1,14 @@
-.CSCimgG {
-    position:absolute;
-    object-fit: cover;
-    
-    width: 100%;
-    height: 100%;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0));
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
-    z-index: 0;
-}
+
 
 .CSCH {
     color: #012447;
     font-family: 'PersonalServices', sans-serif;
-    font-size: 1.25rem;
+    font-size: clamp(.75rem, 1.25vw, 2rem);
     overflow-wrap: break-word;
 
 }
 
 .CSCT {
     color: white;
+    text-align: center;
 }

@@ -6,55 +6,50 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const CSCard = ({image, location}) => {
   return (
+    
     <Flex
-        className='items-center justify-center min-w-[0] flex-1' 
+        className='
+            rounded-lg
+            shadow-lg
+            items-start
+            justify-center
+            overflow-hidden
+            flex-1
+            
+        '
+
+        style={{
+            padding:'20px',
+            background:`url(${image})`,
+            backgroundSize:'cover',
+            backgroundPosition:'center'
+        }}
     >
-        <Flex
-            className='
-                flex-1
-                h-full
-                rounded-lg
-                shadow-lg
-                bg-[#F2F0EF]
-                relative
-                items-center
-                justify-center
-                overflow-hidden
-            '
-
-            style={{
-                padding:'20px',
-                background:`url(${image})`,
-                backgroundSize:'cover',
-                backgroundPosition:'center'
-            }}
-        >
 
 
-            <Flex className='flex-col gap-5 justify-center items-center' style={{zIndex:'1'}}>
+        <Flex className='flex-col gap-5 justify-center items-center' style={{zIndex:'1'}}>
 
-                <Flex className='w-full'>
-                    <h1 className='CSCH'>
-                        {location}
-                    </h1>
-                    <IoLocationSharp color='orange' size={'2rem'}/>
+            <Flex className='w-full md:flex-row flex-col items-center'>
+                <h1 className='CSCH'>
+                    {location}
+                </h1>
+                <IoLocationSharp color='#ef571b' size={'2rem'}/>
 
-                </Flex>
-
-
-                <Flex className='items-center justify-center flex-1 bg-[#012447] rounded-lg' style={{padding:'10px'}}>
-                    <h1 className='CSCT'>
-                        Coming Soon
-                    </h1>
-
-                </Flex>
             </Flex>
 
 
+            <Flex className='items-center justify-center flex-1 bg-[#012447] rounded-lg' style={{padding:'10px'}}>
+                <h1 className='CSCT'>
+                    Coming Soon
+                </h1>
 
+            </Flex>
         </Flex>
 
+
+
     </Flex>
+
   )
 }
 

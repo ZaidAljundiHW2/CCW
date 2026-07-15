@@ -18,12 +18,13 @@ const ExistingLocation = () => {
         id='locations'
         className='
             flex
-            min-h-[50vh]
+            md:flex-row
+            flex-col
         '
     >
 
         <Box
-            className='w-[60%] min-h-[50vh] flex items-center justify-center'
+            className='md:w-[60%] w-full flex items-center justify-center'
             style={{
                 backgroundImage: `url(${ELBack})`,
                 backgroundSize: 'cover',
@@ -120,7 +121,8 @@ const ExistingLocation = () => {
 
         <Box
             className='
-                w-[40%]
+                md:w-[40%]
+                w-full
                 bg-[#f2eeee]
                 flex
                 justify-center
@@ -133,7 +135,7 @@ const ExistingLocation = () => {
         >
 
             <div
-                className='flex rounded-lg shadow-lg gap-2 flex-col justify-center relative w-full min-w-0'
+                className='flex h-full rounded-lg shadow-lg gap-2 flex-col justify-center relative w-full min-w-0'
                 style={{ padding: '5%', background:'#f2eeee' }}
             >
                 <h1 className='ELH2 min-w-0 break-words'>Visit the flagship</h1>
