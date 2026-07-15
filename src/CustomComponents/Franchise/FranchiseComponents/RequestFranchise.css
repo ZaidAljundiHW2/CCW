@@ -5,7 +5,15 @@
 
 .RFHead {
     font-family: HeadingNow, 'sans-serif';
+    font-size: clamp(1rem, 2vw, 2.5rem);
     
+}
+
+.RFHead2 {
+
+    font-family: HeadingNow, 'sans-serif';
+    font-size: clamp(1.5rem, 3.5vw, 5rem);
+
 }
 
 .mask1 {
@@ -15,4 +23,14 @@
     width:100%;
     -webkit-mask-image: linear-gradient(to left, black, transparent);
     mask-image: linear-gradient(to left, black, transparent);
+}
+
+@media (max-width:768px) {
+    .rqffadeimg {
+        display: none;
+    }
+
+    .mask1 {
+        display: none;
+    }
 }

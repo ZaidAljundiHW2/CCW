@@ -12,13 +12,11 @@ const Step = ({CardItem}) => {
     <div
         className='
             h-full
-            w-[70%]
             flex
             flex-col
             items-center
             justify-start
             gap-1
-            stepcontainer
         '
 
         style={{
@@ -37,7 +35,7 @@ const Step = ({CardItem}) => {
 
             {(CardItem.Icon === "mail" && (
                 <CiMail 
-                    size={'3.5rem'}
+                    className='stepicon'
                     color={(CardItem.Icon === "mail" || CardItem.Icon === "file") ? '#e84f14' : '#135695'}
                 
                 />
@@ -45,21 +43,21 @@ const Step = ({CardItem}) => {
 
             {(CardItem.Icon === "magnifying" && (
                 <FaMagnifyingGlass 
-                    size={'3.5rem'}
+                    className='stepicon'
                     color={(CardItem.Icon === "mail" || CardItem.Icon === "file") ? '#e84f14' : '#135695'}
                 />
             ))}
 
             {(CardItem.Icon === "file" && (
                 <FaFileAlt 
-                    size={'3.5rem'}
+                    className='stepicon'
                     color={(CardItem.Icon === "mail" || CardItem.Icon === "file") ? '#e84f14' : '#135695'}
                 />
             ))}
 
             {(CardItem.Icon === "store" && (
                 <FaStore 
-                    size={'3.5rem'}
+                    className='stepicon'
                     color={(CardItem.Icon === "mail" || CardItem.Icon === "file") ? '#e84f14' : '#135695'}
                 />
             ))}
@@ -79,15 +77,20 @@ const Step = ({CardItem}) => {
         
         </div>
 
-        <h1 style={{
-            color:'#e4b055'
-        }}>
+        <h1 
+            style={{
+                color:'#e4b055'
+            }}
+
+            className='stepcontainerheader'
+        
+        >
             {CardItem.Header}
         </h1>
 
         <p style={{
             color:'#e4b055'
-        }}>
+        }} className='WhyCCText2'>
             {CardItem.Text}
         </p>
 

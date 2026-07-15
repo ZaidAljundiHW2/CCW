@@ -24,6 +24,10 @@
 
 }
 
+.stepscont {
+    display: block;
+}
+
 .WhyCCContainer {
     padding:20px;
     overflow: hidden;
@@ -49,4 +53,10 @@
     .WhyCCText2 {
         font-size: .6rem;
     }
+
+    .stepscont {
+        display: none;
+    }
+
+
 }

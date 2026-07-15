@@ -13,8 +13,8 @@ const RequestFranchise = () => {
     <div
         className='
             flex
-            min-h-[60vh]
-
+            md:flex-row
+            flex-col
         '
 
         
@@ -30,7 +30,7 @@ const RequestFranchise = () => {
                 
             }}
 
-            className='w-[35%] flex-col items-center justify-center'
+            className='md:w-[35%] w-full flex-col items-center justify-center'
 
             
         >   
@@ -50,7 +50,7 @@ const RequestFranchise = () => {
                     className='items-center gap-5'
                     
                 >
-                    <h1 className='WhyCCHead' style={{color: '#ef571b', fontSize:'2rem'}}>
+                    <h1 className='WhyCCHead' style={{color: '#ef571b'}}>
                         WHO WE'RE LOOKING FOR
                     </h1>
 
@@ -61,7 +61,7 @@ const RequestFranchise = () => {
                                     }}/>
                 </Flex>
 
-                <h1 className='WhyCCHead' style={{color:'#012447', fontSize:'3.5rem', lineHeight:1.1}}>
+                <h1 className='WhyCCHead2' style={{color:'#012447', lineHeight:1.1}}>
                     PASSIONATE PARTNERS. DRIVEN TO SUCCEED.
                 </h1>
 
@@ -69,7 +69,7 @@ const RequestFranchise = () => {
                 
 
 
-                <p style={{color:'#012477'}}>
+                <p className='WhyCCText' style={{color:'#012477'}}>
                     We're looking for partners who love hospitality, have an entrepreneurial spirit, are community focused, and are team oriented.
                 </p>
 
@@ -88,11 +88,11 @@ const RequestFranchise = () => {
         >
 
             {/* Franchise form */}
-            <Flex className='w-[65%] flex-col gap-3' style={{padding:'20px'}}>
+            <Flex className='md:w-[65%] w-full flex-col gap-3' style={{padding:'20px'}}>
 
                 <h1 
-                    className='RFHead' 
-                    style={{color:'#ef571b', fontSize:'2.5rem'}}
+                    className='WhyCCHead2' 
+                    style={{color:'#ef571b'}}
                 >
                     LET'S START THE CONVERSATION
                 </h1>
@@ -106,7 +106,7 @@ const RequestFranchise = () => {
             </Flex>
             
             {/* Background fade */}
-            <Flex className='flex-1 relative'>
+            <Flex className='flex-1 relative rqffadeimg'>
 
                 <img class='mask1' src={reqfrImg}/>
 

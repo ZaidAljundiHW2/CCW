@@ -11,103 +11,101 @@ import Step from './Step'
 
 const Steps = () => {
   return (
-    <div>
 
-        <div
+    <div
+        className='
+            
+            w-full
+            flex
+            md:gap-10
+            gap-3
+            md:flex-row
+            flex-col
+            items-center
+            justify-center
+            
+        '
+
+        style={{
+            backgroundImage:`url(${StepsBack})`,
+            backgroundPosition:'100% 100%',
+            padding:'20px'
+        }}
+    >
+
+        {/* Text */}
+        <Flex
             className='
-                min-h-[50vh]
+                md:w-[30%]
                 w-full
-                flex
-                gap-10
-            '
-    
-            style={{
-                backgroundImage:`url(${StepsBack})`,
-                backgroundPosition:'100% 100%',
-                padding:'20px'
-            }}
-        >
-    
-            {/* Text */}
-            <Flex
-                className='
-                    w-[30%]
-                    flex-col
-                    justify-center
-                    align-center
-                    rounded-lg
-                    shadow-lg
-    
-                '
-    
-                style={{
-                    padding:'20px',
-                    background:'rgb(255 255 255 / 85%)'
-                }}
-    
+                flex-col
                 
+                rounded-lg
+                shadow-lg
+
+            '
+
+            style={{
+                padding:'20px',
+                background:'rgb(255 255 255 / 85%)'
+            }}
+
+            
+        >
+
+            <Flex
+                className='items-center gap-5'
             >
-    
-                <Flex
-                    className='items-center gap-5'
-                >
-                    <h1 className='WhyCCHead' style={{color: '#ef571b', fontSize:'2rem'}}>
-                        HOW IT WORKS
-                    </h1>
-    
-                    <img src={waveicon} style={{
-                                        width:'20%',
-                                        height:'auto',
-                                        objectFit:'contain'
-                                    }}/>
-                </Flex>
-    
-                <h1 className='WhyCCHead' style={{color:'#012447', fontSize:'3.5rem', lineHeight:1.1}}>
-                    YOUR JOURNEY TO OWNERSHIP
+                <h1 className='WhyCCHead' style={{color: '#ef571b'}}>
+                    HOW IT WORKS
                 </h1>
 
-                <img src={waveicon4} style={{width:'100px', height:'auto', paddingTop:'10px'}}/>
-                
-    
-    
-                <p style={{color:'#012477'}}>
-                    Simple steps. Powerful partnership.
-                </p>
-    
-    
+                <img src={waveicon} style={{
+                                    width:'20%',
+                                    height:'auto',
+                                    objectFit:'contain'
+                                }}/>
             </Flex>
-    
-            {/* Cards */}
-            <Flex className='gap-10 flex-1 items-center relative justify-center'
+
+            <h1 className='WhyCCHead2' style={{color:'#012447', lineHeight:1.1}}>
+                YOUR JOURNEY TO OWNERSHIP
+            </h1>
+
+            <img src={waveicon4} style={{width:'100px', height:'auto', paddingTop:'10px'}}/>
             
+
+
+            <p className='WhyCCText' style={{color:'#012477'}}>
+                Simple steps. Powerful partnership.
+            </p>
+
+
+        </Flex>
+
+        {/* Cards */}
+        <div className='grid grid-cols-2 md:grid-cols-4 md:gap-10 gap-3 items-stretch justify-center flex-1'
+        
+            
+        >
+
+            {FranchiseItemsJSON[2].map((card, i) => (
                 
-            >
-    
-                {FranchiseItemsJSON[2].map((card, i) => (
-                    
-                    <>
-                        <Step CardItem={card} key={i}/>
-                        <Box 
-                            style={{
-                                height:'2px',
-                                width:'30%',
-                                background:'white',
-                                display:(card.StepNum == 4 ? 'none' : 'block')
-                            }}
-                        />
-                    </>
-                    
+                
+                <Step CardItem={card} key={i}/>
 
                     
-                ))}
-    
-            </Flex>
-    
-    
-            
+                
+                
+
+                
+            ))}
+
         </div>
-      
+
+
+        
     </div>
+      
   )
 }
 

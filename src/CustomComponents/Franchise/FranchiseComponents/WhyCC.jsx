@@ -34,8 +34,7 @@ const WhyCC = () => {
                 md:w-[30%]
                 w-full
                 flex-col
-                justify-center
-                align-center
+                
                 rounded-lg
                 shadow-lg
 
@@ -50,7 +49,7 @@ const WhyCC = () => {
         >
 
             <Flex
-                className='items-center gap-5'
+                className='items-center justify-start gap-5'
             >
                 <h1 className='WhyCCHead' style={{color: '#ef571b'}}>
                     WHY CAPTAIN'S CRAB
