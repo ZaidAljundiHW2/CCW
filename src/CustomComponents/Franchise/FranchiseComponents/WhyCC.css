@@ -6,7 +6,47 @@
 .WhyCCHead {
 
     font-family: HeadingNow, 'sans-serif';
+    font-size: clamp(1rem, 2vw, 2.5rem);
     
 
 }
 
+.WhyCCHead2 {
+
+    font-family: HeadingNow, 'sans-serif';
+    font-size: clamp(1.5rem, 3.5vw, 5rem);
+    
+
+}
+
+.WhyCCText {
+    font-size: clamp(.75rem, 1vw, 1.5rem);
+
+}
+
+.WhyCCContainer {
+    padding:20px;
+    overflow: hidden;
+}
+
+.WhyCCIcon {
+    width:75px;
+    height:auto;
+}
+
+@media (max-width:768px) {
+
+    .WhyCCContainer {
+        padding:5px;
+
+    }
+
+    .WhyCCIcon {
+        width:45px;
+        height:auto
+    }
+
+    .WhyCCText2 {
+        font-size: .6rem;
+    }
+}

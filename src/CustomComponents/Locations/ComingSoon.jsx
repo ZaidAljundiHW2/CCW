@@ -59,7 +59,7 @@ const ComingSoon = () => {
         </Flex>
 
         {/* Cards */}
-        <Flex className='flex-1 w-full bg-red-500 gap-5' style={{padding:'20px'}}>
+        <Flex className='flex-1 w-full gap-5 flex-wrap' style={{padding:'20px'}}>
 
             <CSCard image={TorontoSketch} location={"Toronto"}/>
             <CSCard image={MississaugaSketch} location={"Mississauga"}/>

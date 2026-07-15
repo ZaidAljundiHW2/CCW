@@ -9,38 +9,29 @@ const FranchiseHeader = () => {
     <div
         className='
             flex
-            w-full
-            h-[40vh]
+            items-center
+            justify-center
             overflow-hidden
-            gap-10
+            gap-2
+            md:gap-10
         '
 
         style={{
             background:`url(${OceanBack})`,
             backgroundSize:'100% 100%',
             backgroundRepeat:'no-repeat',
-            backgroundPosition:'center'
+            backgroundPosition:'center',
+            padding:'10px'
         }}
     >
 
         <div 
-            className='
-                w-[30%]
-                relative
-            '
+            className='relative flex items-center justify-center w-[22%]'
         >
-
             <img 
                 src={SeafoodPile}
-
-                style={{
-                    position:'absolute',
-                    bottom:'-10%',
-                    
-                    
-                }}
+                className="w-full h-auto object-contain"
             />
-
         </div>
 
         <Flex
@@ -60,13 +51,11 @@ const FranchiseHeader = () => {
                     BRING THE <span style={{color:'#ef571b'}}> BOIL </span> TO YOUR CITY
                 </h1>
 
-                <p>
-                    Unforgettable flavors. Loyal guests. Powerful Support. 
+                <p className='FHT'>
+                    Unforgettable flavors. Loyal guests. Powerful Support. Let's build something amazing - together.
                 </p>
 
-                <p>
-                    Let's build something amazing - together.
-                </p>
+               
 
             </Flex>
 

@@ -12,10 +12,12 @@ const WhyCC = () => {
   return (
     <div
         className='
-            min-h-[50vh]
             w-full
             flex
-            gap-10
+            md:gap-10
+            gap-3
+            md:flex-row
+            flex-col
         '
 
         style={{
@@ -29,7 +31,8 @@ const WhyCC = () => {
         {/* Text */}
         <Flex
             className='
-                w-[30%]
+                md:w-[30%]
+                w-full
                 flex-col
                 justify-center
                 align-center
@@ -49,7 +52,7 @@ const WhyCC = () => {
             <Flex
                 className='items-center gap-5'
             >
-                <h1 className='WhyCCHead' style={{color: '#ef571b', fontSize:'2rem'}}>
+                <h1 className='WhyCCHead' style={{color: '#ef571b'}}>
                     WHY CAPTAIN'S CRAB
                 </h1>
 
@@ -60,13 +63,13 @@ const WhyCC = () => {
                                 }}/>
             </Flex>
 
-            <h1 className='WhyCCHead' style={{color:'#012447', fontSize:'3.5rem', lineHeight:1.1}}>
+            <h1 className='WhyCCHead2' style={{color:'#012447', lineHeight:1.1}}>
                 BUILT FOR FLAVOR. DESIGNED FOR SUCCESS.
             </h1>
 
             <img src={waveicon4} style={{width:'100px', height:'auto', paddingTop:'10px'}}/>
 
-            <p style={{color:'#012447'}}>
+            <p style={{color:'#012447'}} className='WhyCCText'>
                 We do more than serve seafood - we create unforgettable experiences and help our franchise partners build thriving businesses.
             </p>
 
@@ -74,14 +77,14 @@ const WhyCC = () => {
         </Flex>
 
         {/* Cards */}
-        <Flex className='gap-10 flex-1'>
+        <div className='grid grid-cols-2 md:grid-cols-4 md:gap-10 gap-3 items-stretch justify-center flex-1'>
 
             {FranchiseItemsJSON[0].map((card, i) => (
 
                 <WhyCCCard CardItem={card} key={i}/>
             ))}
 
-        </Flex>
+        </div>
 
 
       

@@ -8,25 +8,23 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
     <div
         className='
             rounded-lg
-            flex-1
             shadow-lg
-            h-full
             flex
             items-center
             justify-start
             flex-col
+            WhyCCContainer
         '
 
         style={{
             borderWidth:'2px',
             borderColor:'white',
-            padding:'20px',
             background: YNA ? '#002342' : '#f2eeee'
         }}
     >
         <div className='w-full flex items-center justify-center h-[25%]'>
 
-            <h1 className='WhyCCHead' style={{color: YNA ? 'white' : '#012447', fontSize:'2rem', textAlign:'center', lineHeight:1.1}}>
+            <h1 className='WhyCCHead' style={{color: YNA ? 'white' : '#012447', textAlign:'center', lineHeight:1.1}}>
                 {CardItem.Header}
             </h1>
         </div>
@@ -36,10 +34,9 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
 
             <img 
                 src={resolveImg(CardItem.Img)} 
-                style={{
-                    width:'75px',
-                    height:'auto'
-                }}
+                
+
+                className='WhyCCIcon'
 
             />
 
@@ -55,7 +52,7 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
         <div className='w-full flex items-center justify-center'>
 
         
-            <p className='flex-1' style={{color: YNA ? 'white' : '#012447', textAlign:'center', fontSize:'.9rem'}}>
+            <p className='flex-1 WhyCCText2' style={{color: YNA ? 'white' : '#012447', textAlign:'center'}}>
                 {CardItem.Text}
             </p>
         </div>

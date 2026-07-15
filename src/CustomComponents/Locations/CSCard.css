@@ -5,10 +5,40 @@
     font-family: 'PersonalServices', sans-serif;
     font-size: clamp(.75rem, 1.25vw, 2rem);
     overflow-wrap: break-word;
+    text-align: center;
 
 }
 
 .CSCT {
     color: white;
     text-align: center;
+    font-size: clamp(.6rem, 1.25vw, 2rem);
+
+}
+
+.CSCardbutton {
+
+    padding:10px
+}
+
+.locationicon {
+
+    font-size: clamp(1rem, 2vw, 3rem);
+}
+
+.CSCard {
+    padding:20px;
+}
+
+@media (max-width:768px) {
+
+    .CSCardbutton {
+        padding:5px;
+        font-size: .5rem;
+
+    }
+
+    .CSCard {
+        padding:5px;
+    }
 }

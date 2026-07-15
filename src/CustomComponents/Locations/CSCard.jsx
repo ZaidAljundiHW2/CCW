@@ -14,12 +14,15 @@ const CSCard = ({image, location}) => {
             items-start
             justify-center
             overflow-hidden
-            flex-1
+            min-w-[0]
+            md:flex-1
+            w-[45%]
+            CSCard
             
         '
 
         style={{
-            padding:'20px',
+            
             background:`url(${image})`,
             backgroundSize:'cover',
             backgroundPosition:'center'
@@ -29,16 +32,16 @@ const CSCard = ({image, location}) => {
 
         <Flex className='flex-col gap-5 justify-center items-center' style={{zIndex:'1'}}>
 
-            <Flex className='w-full md:flex-row flex-col items-center'>
-                <h1 className='CSCH'>
+            <Flex className='w-full md:flex-row flex-col justify-center items-center'>
+                <h1 className='CSCH w-full min-w-0'>
                     {location}
                 </h1>
-                <IoLocationSharp color='#ef571b' size={'2rem'}/>
+                <IoLocationSharp color='#ef571b' className='locationicon'/>
 
             </Flex>
 
 
-            <Flex className='items-center justify-center flex-1 bg-[#012447] rounded-lg' style={{padding:'10px'}}>
+            <Flex className='items-center justify-center bg-[#012447] rounded-lg CSCardbutton'>
                 <h1 className='CSCT'>
                     Coming Soon
                 </h1>
