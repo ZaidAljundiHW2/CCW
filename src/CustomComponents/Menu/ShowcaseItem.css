@@ -9,7 +9,7 @@
     font-family: HeadingNow, 'sans-serif';
 }
 
-@media (max-width:912px) {
+@media (max-width:768px) {
     .showcaseitemcard {
         gap:5px;
         font-size: .5rem;

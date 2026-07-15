@@ -25,15 +25,15 @@
     font-family: PersonalServices, 'sans-serif';
 }
 
-@media (max-width:912px) {
+@media (max-width:768px) {
 
     .ItemCard {
-        width:100px;
+        min-height:100px;
         min-height: 100px;
-        aspect-ratio: 0;
     }
 
     
     
+
 }
 

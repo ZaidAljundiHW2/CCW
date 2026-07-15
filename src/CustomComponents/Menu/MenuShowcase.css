@@ -2,10 +2,14 @@
     padding:clamp(3px, 2%, 6px);
     width: clamp(50px, 100%, 120px);
     width: clamp(50px, 100%, 120px);
-    font-size: clamp(.6rem, 1vw, 1.2rem);
+    font-size: 1rem
 }
 
-@media (max-width:912px) {
+@media (max-width:768px) {
+
+    .msbutton {
+        font-size: .8rem;
+    }
 
     
 }

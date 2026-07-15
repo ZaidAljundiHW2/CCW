@@ -136,6 +136,7 @@ const CreateYourOwn = () => {
                         flex
                         flex-1
                         CYOoptionsContainer
+                        w-full
                     '
                     transition={{
                         opacity: { duration: 0.5 }
