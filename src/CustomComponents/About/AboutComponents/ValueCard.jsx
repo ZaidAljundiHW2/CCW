@@ -39,14 +39,14 @@ const ValueCard = ({Value}) => {
                     justify-center
                     items-center
                     absolute
-                    top-[-8%]
+                    top-[-15%]
                     
 
                 '
 
                 style={{
                     aspectRatio: '1 / 1',
-                    width:'30%',
+                    width:'25%',
                     borderWidth:'2px',
                     borderColor:'white',
 
@@ -65,11 +65,11 @@ const ValueCard = ({Value}) => {
 
             </Flex>
 
-            <h1 className='VCH' style={{color:'#012447'}}>
+            <h1 className='WhyCCHead' style={{color:'#012447'}}>
                 {Value.Header}
             </h1>
 
-            <p style={{color:'#012447'}}>
+            <p className='WhyCCText' style={{color:'#012447'}}>
                 {Value.Text}
             </p>
         </Flex>

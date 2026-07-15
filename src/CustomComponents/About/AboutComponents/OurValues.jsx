@@ -15,7 +15,7 @@ const OurValues = () => {
             bg-[#f2eeee]
             flex
             flex-col
-            gap-5
+            gap-10
         '
 
         style={{
@@ -32,20 +32,19 @@ const OurValues = () => {
             </h1>
 
             <img src={waveicon3} 
-                style={{
-                    width:'5%',
-                    height:'auto',
-                    objectFit:'contain'
-                }}/>
+
+                className='md:w-[5%] w-[10%] h-[auto] contain'
+
+            />
         </Flex>
 
-        <Flex className='flex-1  gap-5'>
+        <div className='grid grid-cols-2 md:grid-cols-4 md:gap-10 gap-3 items-stretch justify-center flex-1'>
 
             {OurValuesJSON.map((value, i) => (
                 <ValueCard Value={value} key={i} />
             ))}
 
-        </Flex>
+        </div>
 
             
 
