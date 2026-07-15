@@ -156,7 +156,6 @@ const Hero = () => {
             absolute 
             inset-0 
             overflow-hidden
-            bg-red-500
           '
           
         

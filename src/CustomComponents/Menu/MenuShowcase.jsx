@@ -113,7 +113,7 @@ const MenuShowcase = () => {
                 
                         {(!(selectedCat === "Build Your Own")) && (
 
-                            <SimpleGrid columns={4} gap={'6'}>
+                            <SimpleGrid columns={{base:2, md:4}} gap={'6'}>
 
 
                                 {MenuItemsJSON[index].Items.map((item) => (

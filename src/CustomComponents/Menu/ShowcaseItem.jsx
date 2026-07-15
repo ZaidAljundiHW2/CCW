@@ -10,17 +10,17 @@ const ShowcaseItem = ({item}) => {
 
 
    
-    <div
+    <motion.div
         className='
             flex
             flex-col
             rounded-lg
             shadow-lg
-            
             justify-start
             overflow-hidden
             relative
             gap-5
+            showcaseitemcard
         '
 
         style={{
@@ -34,7 +34,9 @@ const ShowcaseItem = ({item}) => {
         <Flex
             className='
                 w-full
-                h-[50%]
+                md:h-[50%]
+                gap-2
+                              
             '
 
             
@@ -42,9 +44,10 @@ const ShowcaseItem = ({item}) => {
 
             <Flex
                 className='
-                    flex-1
-
+                    md:aspect-square 
                 '
+
+                
 
                 
             >
@@ -59,6 +62,8 @@ const ShowcaseItem = ({item}) => {
 
                     style={{
                         aspectRatio: '1 / 1',
+                        width:'100%',
+                        height:'100%',
                     }}
                 />
 
@@ -72,12 +77,10 @@ const ShowcaseItem = ({item}) => {
                     flex-1
                 '
 
-                style={{
-                    paddingRight:'20px'
-                }}
+               
             >
 
-                <h1 style={{color:"#012447", fontWeight:'bold'}}>
+                <h1 style={{color:"#012447", fontWeight:'bold', fontSize:'clamp(.5rem, 1vw, 1.5rem)'}}>
                     {item.Price}
                 </h1>
 
@@ -104,10 +107,13 @@ const ShowcaseItem = ({item}) => {
             }}
         >
 
-            <h1 className='SIHeader' 
+            <h1 
+                className='
+                    SIHeader
+                ' 
                 style={{
                     color:'#012447',
-                    fontSize: item.HasDescription ? '1.5rem' : '2rem'
+                    fontSize: item.HasDescription ? 'clamp(.8rem, 1.5vw, 3rem)' : 'clamp(1rem, 2vw, 3.2rem)'
                 }}
             >
                 {item.Name}
@@ -115,7 +121,7 @@ const ShowcaseItem = ({item}) => {
 
             {item.HasDescription && (
 
-                <p style={{fontSize:'.75rem', color:'#012447'}}>
+                <p style={{fontSize:'clamp(.5rem, .75vw, 1.5rem)', color:'#012447'}}>
                     {item.Description}
 
                 </p>
@@ -130,7 +136,7 @@ const ShowcaseItem = ({item}) => {
         </Flex>
 
     
-    </div>
+    </motion.div>
   )
 }
 

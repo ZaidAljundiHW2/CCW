@@ -31,7 +31,7 @@
     font-size: clamp(.8rem, 1vw, 1.2rem);
 }
 
-@media (max-width:768px) {
+@media (max-width:912px) {
 
     .heroheader, .herotext {
         text-align: center;

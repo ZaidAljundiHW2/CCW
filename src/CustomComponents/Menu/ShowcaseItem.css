@@ -8,3 +8,13 @@
 
     font-family: HeadingNow, 'sans-serif';
 }
+
+@media (max-width:912px) {
+    .showcaseitemcard {
+        gap:5px;
+        font-size: .5rem;
+        padding:2px
+    }
+
+    
+}
