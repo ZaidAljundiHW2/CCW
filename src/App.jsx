@@ -32,7 +32,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className='overflow-hidden'>
 
       <Navbar />
       
@@ -48,7 +48,7 @@ const App = () => {
 
       <Contact />
 
-      {/* <Footer /> */}
+      <Footer />
 
       
     </div>

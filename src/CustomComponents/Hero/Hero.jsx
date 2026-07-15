@@ -32,25 +32,9 @@ const Hero = () => {
       id='home'
     >
 
-        <div 
-          className='
-            absolute 
-            inset-0 
-            overflow-hidden
-          '
-          
         
-
-
-        >
-        {/* Hero Image */}
-          <HeroCarousel />
-        </div>
         
-        <Box 
-          className='h-full w-full absolute'
-          
-        />
+        
         
         {/* Hero Text */}
         <div
@@ -60,13 +44,11 @@ const Hero = () => {
             flex
             flex-col
             gap-0
-            ml-[5%]
             z-10
+            herotextwrapper
           '
 
-          style={{
-            paddingLeft:'5%'
-          }}
+          
         >
           <div
             style={{
@@ -121,6 +103,8 @@ const Hero = () => {
             animate={{opacity:1, x:0}}
 
             transition={{duration:1, ease:'easeInOut'}}
+
+            className='herotext'
           >
             Premium seafood boils, bold flavours, and an unforgettable experience - in Burlington and coming to communities across Canada.
           </motion.p>
@@ -165,6 +149,22 @@ const Hero = () => {
 
           </motion.div>
 
+        </div>
+
+        <div 
+          className='
+            absolute 
+            inset-0 
+            overflow-hidden
+            bg-red-500
+          '
+          
+        
+
+
+        >
+        {/* Hero Image */}
+          <HeroCarousel />
         </div>
       
     </div>

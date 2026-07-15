@@ -21,3 +21,34 @@
   transform:scale(1.5);
 
 }
+
+.visualbox {
+  height:90%;
+  aspect-ratio: auto;
+  width:auto
+}
+
+.foodbucket {
+  width:100%;
+  height:100%
+}
+
+@media (max-width:912px) {
+  
+  .hcfoodimage {
+    bottom:0;
+    background: red;
+  }
+
+  .visualbox {
+    width:100%;
+    height:auto;
+    bottom:0;
+
+  }
+
+  .foodbucket {
+    height:auto;
+    width:auto
+  }
+}

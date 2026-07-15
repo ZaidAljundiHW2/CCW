@@ -59,12 +59,13 @@ const HeroCarousel = () => {
         <Box
           style={{
             position:'absolute',
-            right:0,
-            bottom:0,
-            height:'90%',
             width:'auto',
             aspectRatio:'auto'
           }}
+
+          className='visualbox'
+
+          
         >
 
           {/* Food */}
@@ -73,8 +74,10 @@ const HeroCarousel = () => {
             style={{
               width:'100%',
               height:'100%',
-              objectFit:'contain'
+              objectFit:'contain',
             }}
+
+            className='foodbucket'
           />
 
           

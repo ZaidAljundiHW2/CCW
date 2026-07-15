@@ -3,10 +3,16 @@
     src: url('@/assets/personal_services/Personal Services.ttf');
 }
 
+.herotextwrapper {
+    padding-left: 5%;
+}
+
 .heroheader {
 
     font-family: PersonalServices, 'sans-serif';
-    font-size: 3.8rem;
+    font-size: clamp(2rem, 3.8vw, 4rem);
+
+    
 }
 
 .herobutton {
@@ -18,4 +24,27 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
+    font-size: clamp(.6rem, 1vw, 1.5rem);
+}
+
+.herotext {
+    font-size: clamp(.8rem, 1vw, 1.2rem);
+}
+
+@media (max-width:768px) {
+
+    .heroheader, .herotext {
+        text-align: center;
+    }
+
+    .herobutton {
+        padding:5px;
+        flex:1
+    }
+
+    .herotextwrapper {
+        padding:10px
+    }
+    
+    
 }
