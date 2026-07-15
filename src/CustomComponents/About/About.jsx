@@ -18,7 +18,7 @@ const About = () => {
 
         <OurMission />
 
-        <GalleryComponent />
+        {/* <GalleryComponent /> */}
 
         
       

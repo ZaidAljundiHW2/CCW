@@ -60,9 +60,9 @@ const ComingSoon = () => {
         {/* Cards */}
         <Flex className='flex-1 gap-5'>
 
-            <CSCard image={TorontoSketch} location={"Toronto"}/>
+            {/* <CSCard image={TorontoSketch} location={"Toronto"}/>
             <CSCard image={MississaugaSketch} location={"Mississauga"}/>
-            <CSCard image={OttowaSketch} location={"Ottowa"}/>
+            <CSCard image={OttowaSketch} location={"Ottowa"}/> */}
 
         </Flex>
         

@@ -73,14 +73,14 @@ const YNA = () => {
         </Flex>
 
         {/* Cards */}
-        <Flex className='gap-10 flex-1'>
+        {/* <Flex className='gap-10 flex-1'>
 
             {FranchiseItemsJSON[1].map((card, i) => (
 
                 <WhyCCCard CardItem={card} YNA={true} wave={false} key={i}/>
             ))}
 
-        </Flex>
+        </Flex> */}
 
 
       

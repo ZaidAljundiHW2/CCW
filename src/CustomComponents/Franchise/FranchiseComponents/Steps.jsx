@@ -83,7 +83,7 @@ const Steps = () => {
                 
             >
     
-                {FranchiseItemsJSON[2].map((card, i) => (
+                {/* {FranchiseItemsJSON[2].map((card, i) => (
                     
                     <>
                         <Step CardItem={card} key={i}/>
@@ -99,7 +99,7 @@ const Steps = () => {
                     
 
                     
-                ))}
+                ))} */}
     
             </Flex>
     

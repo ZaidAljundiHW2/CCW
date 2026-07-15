@@ -55,7 +55,8 @@ const Hero = () => {
         {/* Hero Text */}
         <div
           className='
-            max-w-[40%]
+            w-full
+            md:w-[40%]
             flex
             flex-col
             gap-0

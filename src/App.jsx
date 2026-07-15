@@ -48,7 +48,7 @@ const App = () => {
 
       <Contact />
 
-      <Footer />
+      {/* <Footer /> */}
 
       
     </div>
