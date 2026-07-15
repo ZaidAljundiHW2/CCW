@@ -28,7 +28,8 @@ const MenuShowcase = () => {
   return (
     <motion.div
         className='
-            w-[80%]
+            w-full
+            md:w-[80%]
             flex
             flex-col
             items-center

@@ -17,12 +17,13 @@ const Hero = () => {
         min-h-[100vh]
         relative 
         items-center
+        herowrapper
         flex
       '
 
       style={{
         backgroundImage:`url(${backalt})`,
-        backgroundSize:'coverx',
+        backgroundSize:'cover',
         backgroundPosition:'center',
         backgroundRepeat:'no-repeat',
         overflowX:'hidden'

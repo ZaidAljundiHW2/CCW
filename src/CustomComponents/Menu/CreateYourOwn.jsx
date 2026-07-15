@@ -16,6 +16,8 @@ import InfiniteAppetizerCarousel from './InfiniteAppetizerCarousel';
 
 import { resolveImg } from '@/customLib/utils/resolveImage';
 
+import './CreateYourOwn.css'
+
 const CreateYourOwn = () => {
 
     const [stepNum, setStepNum] = useState(0);
@@ -105,11 +107,12 @@ const CreateYourOwn = () => {
             items-center
             justify-center
             flex
+            CYOContainer
         '
 
         style={{
             padding:'20px',
-            backgroundImage: 'radial-gradient(#9ac8f5, #012447 30%)',
+            background: '#012447',
             position:'relative'
         }}
 
@@ -132,6 +135,7 @@ const CreateYourOwn = () => {
                         flex-col 
                         flex
                         flex-1
+                        CYOoptionsContainer
                     '
                     transition={{
                         opacity: { duration: 0.5 }
@@ -141,7 +145,7 @@ const CreateYourOwn = () => {
 
                 >
 
-                    <IoArrowBackCircle size={'2rem'} onClick={() => {
+                    <IoArrowBackCircle className='backbutton' onClick={() => {
                         decrementStep();
                         decrementOrder();
                     }}/>
@@ -191,16 +195,13 @@ const CreateYourOwn = () => {
                                         w-full 
                                         place-items-center
                                         justify-center
-                                        gap-5
+                                        itemgrid
                                         
                                     '
-
+                                    gap={{base:2, md:5}}
                                     templateColumns="repeat(3, 1fr)"
 
-                                    style={{
-                                        padding:'20px'
-                                        
-                                    }}
+                                    
 
 
                                 >
@@ -271,6 +272,10 @@ const CreateYourOwn = () => {
                 flex-1
                 min-w-0
                 overflow-hidden
+                CYOvisualContainer
+                md:flex-row
+                flex-col
+                
             '
             
             layout
@@ -287,7 +292,7 @@ const CreateYourOwn = () => {
 
         >
 
-            <div className='w-[75%] aspect-square flex relative' style={{maxWidth:'500px'}}>
+            <div className='md:w-[75%] w-full aspect-square flex relative' style={{maxWidth:'500px'}}>
 
         
                 <motion.img 
@@ -302,7 +307,7 @@ const CreateYourOwn = () => {
                         src={resolveImg(image.Img)} 
                         key={i} 
                         transition={{layout: {delay:0.4}}}
-                        className='absolute transition-opacity duration-700'
+                        className='absolute transition-opacity duration-700 z-10'
                         layout
                         style={{
                             opacity: orderItems.includes(image.Name) ? 1 : 0
@@ -331,17 +336,16 @@ const CreateYourOwn = () => {
                                 items-center
                                 flex-col
                                 gap-5
+                                resultshowcase
                                 
                             "
-                            style={{
-                                padding: '20px'
-                            }}
+                            
                         >
                             <motion.h1 layout className='MenuHeader'>
                                 {order}
                             </motion.h1>
 
-                            <Button className="w-[30%]" onClick={restartMenu}>
+                            <Button className="md:w-[30%] w-[70%]" onClick={restartMenu}>
                                 Restart
                             </Button>
                         </Box>

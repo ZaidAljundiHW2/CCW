@@ -8,9 +8,7 @@ import { resolveImg } from '@/customLib/utils/resolveImage'
 
 const ItemCard = ({ItemObj, incStep, incOrder}) => {
 
-    useEffect(() => {
-        fitty('fit');
-    }, []);
+    
 
   return (
     <motion.div    
@@ -36,9 +34,9 @@ const ItemCard = ({ItemObj, incStep, incOrder}) => {
         }}
     >
 
-        <Box className='flex bg-white h-[30%] justify-center items-center'>
+        <Box className='flex bg-white h-[30%] justify-center items-center' style={{padding:'5px'}}>
 
-            <h1 className='text-black fit'>
+            <h1 className='text-black'>
                 {ItemObj.Name}
             </h1>
 

@@ -31,6 +31,10 @@
     font-size: clamp(.8rem, 1vw, 1.2rem);
 }
 
+.herowrapper {
+    justify-content: start;
+}
+
 @media (max-width:912px) {
 
     .heroheader, .herotext {
@@ -44,6 +48,10 @@
 
     .herotextwrapper {
         padding:10px
+    }
+
+    .herowrapper {
+        justify-content:center
     }
     
     

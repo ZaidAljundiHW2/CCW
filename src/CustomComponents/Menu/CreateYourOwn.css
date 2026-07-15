@@ -1,0 +1,36 @@
+.backbutton {
+
+    font-size: clamp(1rem, 2vw, 2.5rem);
+}
+
+.itemgrid {
+    padding:20px
+}
+
+
+@media (max-width:912px) {
+
+    .CYOContainer {
+
+        padding:5px;
+        flex-direction: column;
+
+    }
+
+    .CYOoptionsContainer {
+
+        order:1
+
+    }
+
+    .CYOvisualContainer {
+        order:0
+
+    }
+
+    .itemgrid {
+        padding:5px;
+    }
+
+    
+}

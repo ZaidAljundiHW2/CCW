@@ -54,17 +54,17 @@
         "Header": "Step Three: Choose Your Sauce",
         "Items": [
             {
-                "Name":"Sweet Chili Sauce",
+                "Name":"Sweet Chili",
                 "Img":"/src/assets/img/FoodOptions/Sauces/chiligarlicoption.jpg"
             },
 
             {
-                "Name":"Katsu Curry Sauce",
+                "Name":"Katsu Curry",
                 "Img":"/src/assets/img/FoodOptions/Sauces/katsucurryoption.jpg"
             },
 
             {
-                "Name":"Lemon Butter Sauce",
+                "Name":"Lemon Butter",
                 "Img":"/src/assets/img/FoodOptions/Sauces/lemonbutteroption.jpg"
             }
         ]

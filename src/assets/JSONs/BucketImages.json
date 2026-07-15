@@ -35,17 +35,17 @@
     },
 
     {
-        "Name":"Katsu Curry Sauce",
+        "Name":"Katsu Curry",
         "Img":"/src/assets/img/FoodShowcase/katsucurry.png"
     },
 
     {
-        "Name":"Lemon Butter Sauce",
+        "Name":"Lemon Butter",
         "Img":"/src/assets/img/FoodShowcase/lemonbutter.png"
     },
 
     {
-        "Name":"Sweet Chili Sauce",
+        "Name":"Sweet Chili",
         "Img":"/src/assets/img/FoodShowcase/chiligarlic.png"
     },
 

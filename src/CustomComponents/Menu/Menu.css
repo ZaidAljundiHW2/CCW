@@ -12,17 +12,17 @@
 
 .MenuText {
     font-family: HeadingNow, 'sans-serif';
-    font-size: 2rem;
+    font-size: clamp(.75rem, 3vw, 5rem);
 }
 
 .MenuHeader {
     font-family: HeadingNow, 'sans-serif';
-    font-size: 3rem;
+    font-size: clamp(1.25rem, 3vw, 3.5rem);
 }
 
 .MenuHeader2 {
     font-family: PersonalServices, 'sans-serif';
-    font-size: clamp(1.75rem, 3vw, 3.5rem);
+    font-size: clamp(1.25rem, 3vw, 3.5rem);
     color: #012447;
 }
 
@@ -36,10 +36,30 @@
     gap: 20px;
 }
 
+.resultshowcase {
+    padding:20px
+}
+
 
 @media (max-width:912px) {
 
     .MenuHeader2 {
+        text-align: center;
+    }
+
+    .MenuCard {
+        gap:0
+    }
+
+    .MenuText {
+        display: none;
+    }
+
+    .resultshowcase {
+        padding:5px
+    }
+
+    .MenuHeader {
         text-align: center;
     }
 }
