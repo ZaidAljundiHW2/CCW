@@ -15,7 +15,7 @@ const OurStory = () => {
         flex-col
         
         md:min-h-[50vh]
-        min-h-[50vh]
+        min-h-[80vh]
       '
     >
 
@@ -24,7 +24,7 @@ const OurStory = () => {
       </Flex>
 
       {/* Content */}
-      <Flex className='flex-col oscw' style={{background:'#e3f6fc'}}>
+      <Flex className='flex-col md:w-[40%] md:h-full h-[40%] oscw' style={{background:'#e3f6fc'}}>
 
         <Flex
           className='items-center gap-5'
