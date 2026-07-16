@@ -32,7 +32,8 @@
 
 .wi3 {
     width:50%;
-    height:10%
+    height:10%;
+    display: block;
 }
 
 .footerwrapper {
@@ -44,6 +45,8 @@
     font-size: clamp(.5rem, 1vw, 1.2rem);
 }
 
+
+
 .footerlogo {
     width: 240px;
     height: auto;
@@ -54,6 +57,10 @@
 }
 
 @media (max-width:768px) {
+
+    .wi3 {
+        display: none;
+    }
 
     .footerlogo2 {
         display: block;

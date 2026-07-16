@@ -110,12 +110,12 @@ const Footer = () => {
                 }}
             />
 
-            <Flex className='flex-col w-[20%] justify-center md:gap-4 gap-0'>
+            <Flex className='flex-col w-[20%] justify-start gap-0'>
 
                 <h1 className='FH2'> FRESH CATCHES</h1>
                 <h1 className='FH2'> BIG FLAVOURS</h1>
                 <h1 className='FH2'> GOOD TIMES AHEAD</h1>
-                {/* <img src={WaveIcon3} className='wi3'/> */}
+                <img src={WaveIcon3} className='wi3'/>
 
                 <img src={Logo} className='footerlogo2'/>
 

@@ -11,7 +11,6 @@ const OurValues = () => {
   return (
     <div
         className='
-            min-h-[50vh]
             bg-[#f2eeee]
             flex
             flex-col

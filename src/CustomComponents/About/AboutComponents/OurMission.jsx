@@ -10,7 +10,6 @@ const OurMission = () => {
     <div
 
       className='
-        min-h-[50vh]
         w-full
         flex
         md:flex-row

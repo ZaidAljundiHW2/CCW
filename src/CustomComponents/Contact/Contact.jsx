@@ -18,7 +18,6 @@ const Contact = () => {
             backgroundImage: `url(${Back2})`,
             backgroundSize:'cover',
             width:'100%',
-            minHeight:'80vh',
             
         }}
 
@@ -33,7 +32,7 @@ const Contact = () => {
             CONTACT US
         </h1>
 
-        <Flex className='flex-1 md:flex-row flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg md:gap-5 gap-0' padding={'2%'}>
+        <Flex className='flex-1 md:flex-row contactwrapper flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg md:gap-5 gap-0' padding={'2%'}>
 
             {/* Contact Form */}
             <Flex
@@ -64,90 +63,100 @@ const Contact = () => {
             
 
             {/* Social Media  */}
+            <Flex className='flex-1 rounded-lg
+                        shadow-lg' style={{
+                        backgroundImage:`url(${Back3})`
+                    }}>
 
-            <Flex
-                className='
-                    flex-1
+            
+                <Flex
+                    className='
+                        flex-1
+                        
+                        
+                        flex-col
+                        relative
+                        socmediawrapper
+                    '
+
                     
-                    rounded-lg
-                    shadow-lg
-                    flex-col
-                    relative
-                    socmediawrapper
-                '
 
-                
+                    
+                >
 
-                style={{
-                    backgroundImage:`url(${Back3})`
-                }}
-            >
+                    
 
-                <img 
-                    src={BoilBag}
-                    alt='boil bag'
+                    <Flex className='flex-col gap-0'>
 
-                    className='CUI'
-                />
+                        <h1 className='CUH2'>
+                            FOLLOW US
+                        </h1>
 
-                <img 
-                    src={Tray}
-                    alt='boil bag'
+                        <img src={Wave2} className='w-[150px]'/>
 
-                    className='CUI2'
-                />
 
-                <Flex className='flex-col gap-0'>
+                    </Flex>
 
-                    <h1 className='CUH2'>
-                        FOLLOW US
-                    </h1>
+                    <Flex className='flex-1 flex-col md:gap-5 gap-2'>
 
-                    <img src={Wave2} className='w-[150px]'/>
+                        <Flex gap={'3'} className='items-center'>
+
+                            <img src={InstagramIcon} style={{
+                                height:'40px',
+                                width:'40px'
+                            }}/>
+                            <Text className='CUT'>
+                                @captainscrab.ca
+                            </Text>
+
+                        </Flex>
+
+                        <Flex gap={'3'} className='items-center'>
+
+                            <img src={TiktokIcon} style={{
+                                height:'40px',
+                                width:'40px'
+                            }}/>
+                            <Text className='CUT'>
+                                @captainscrab.ca
+                            </Text>
+
+                        </Flex>
+
+                        <Flex gap={'3'} className='items-center'>
+
+                            <img src={FacebookIcon} style={{
+                                height:'40px',
+                                width:'40px'
+                            }}/>
+                            <Text className='CUT'>
+                                /captainscrab.ca
+                            </Text>
+
+                        </Flex>
+
+                    </Flex>
 
 
                 </Flex>
 
-                <Flex className='flex-1 flex-col md:gap-5 gap-2'>
+                <Flex className='flex-1 relative'>
 
-                    <Flex gap={'3'} className='items-center'>
+                    <img 
+                        src={BoilBag}
+                        alt='boil bag'
 
-                        <img src={InstagramIcon} style={{
-                            height:'40px',
-                            width:'40px'
-                        }}/>
-                        <Text className='CUT'>
-                            @captainscrab.ca
-                        </Text>
+                        className='CUI'
+                    />
 
-                    </Flex>
+                    <img 
+                        src={Tray}
+                        alt='boil bag'
 
-                    <Flex gap={'3'} className='items-center'>
-
-                        <img src={TiktokIcon} style={{
-                            height:'40px',
-                            width:'40px'
-                        }}/>
-                        <Text className='CUT'>
-                            @captainscrab.ca
-                        </Text>
-
-                    </Flex>
-
-                    <Flex gap={'3'} className='items-center'>
-
-                        <img src={FacebookIcon} style={{
-                            height:'40px',
-                            width:'40px'
-                        }}/>
-                        <Text className='CUT'>
-                            /captainscrab.ca
-                        </Text>
-
-                    </Flex>
+                        className='CUI2'
+                    />
 
                 </Flex>
-
 
             </Flex>
 

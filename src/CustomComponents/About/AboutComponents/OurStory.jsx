@@ -12,10 +12,10 @@ const OurStory = () => {
       className='
         flex
         md:flex-row
+        md:min-h-[0vh]
         flex-col
         
-        md:min-h-[50vh]
-        min-h-[80vh]
+        min-h-[50vh]
       '
     >
 
