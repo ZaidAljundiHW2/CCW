@@ -10,10 +10,14 @@ const OurMission = () => {
     <div
 
       className='
-        min-h-[45vh]
+        min-h-[50vh]
         w-full
         flex
-        gap-10
+        md:flex-row
+        flex-col
+        md:gap-10
+        gap-3
+        missionwrapper
       '
 
       style={{
@@ -23,25 +27,23 @@ const OurMission = () => {
     >
 
       <Flex
-        className='flex-col justiy-center'
-        style={{
-          padding:'50px'
-        }}
+        className='flex-col justify-center'
+
+        
       >
 
         <Flex
-          className='gap-5'
+          className='gap-5 md:justify-start justify-center items-center'
+
         >
-            <h1 className='WhyCCHead' style={{color: '#ef571b', fontSize:'2rem'}}>
+            <h1 className='WhyCCHead' style={{color: '#ef571b'}}>
                 OUR STORY
             </h1>
 
             <img src={waveicon} 
-              style={{
-                  width:'100px',
-                  height:'auto',
-                  objectFit:'contain'
-              }}/>
+
+              className='waveicon'
+            />
         </Flex>
 
         <h1 className='missionhead' style={{color:'#012447'}}>
@@ -58,25 +60,29 @@ const OurMission = () => {
 
       </Flex>
 
-      <Flex className='w-[20%] flex-col justify-center' style={{fontSize:'1.1rem'}}>
-        <p style={{color:'#012447'}}>
+
+
+
+      <Flex className='flex-1 justify-center items-center'>
+        <p className='WhyCCText md:text-left text-center' style={{color:'#012447'}}>
           We're on a mission to serve the freshest seafood with bold flavors and warm hospitality - creating experiences that bring people together and keep them coming back.
 
         </p>
       </Flex>
+      
+      
 
-      <Flex className='flex-1 relative items-center justify-center'>
-
+      <Flex className='md:flex-1 logowrapper items-center relative justify-center'>
         <img src={logo}
-          style={{
-            position:'absolute',
-            height:'120%',
-            width:'auto',
-            bottom:0
-          }}
+
+          className='complogo'
+        
         />
 
       </Flex>
+      
+
+
       
     </div>
   )

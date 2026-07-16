@@ -38,15 +38,13 @@ const ValueCard = ({Value}) => {
                     flex
                     justify-center
                     items-center
-                    absolute
-                    top-[-15%]
-                    
+                    md:w-[25%]
+                    w-[50%]
 
                 '
 
                 style={{
                     aspectRatio: '1 / 1',
-                    width:'25%',
                     borderWidth:'2px',
                     borderColor:'white',
 

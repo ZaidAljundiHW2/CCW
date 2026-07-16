@@ -11,13 +11,61 @@
 .missionhead {
 
     font-family: PersonalServices, 'sans-serif';
-    font-size: 2.65rem;
+    font-size: clamp(1rem, 2vw, 2.5rem);
 
 }
+
+.missionwrapper {
+
+    padding:0 50px 0 50px;
+}
+
 
 .missionhead2 {
 
     font-family: HeadingNow, 'sans-serif';
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3.5vw, 5rem);
 
+
+}
+
+.waveicon {
+    width: 100px;
+    height:auto;
+    object-fit: contain;
+} 
+
+.complogo {
+    height:100%;
+    width:auto;
+    position:absolute;
+    bottom:0
+
+}
+
+@media (max-width:768px) {
+
+    .missionwrapper {
+        padding:20px 20px 0 20px
+    }
+
+    .logowrapper {
+        height: 15vh;
+    }
+    
+    .complogo {
+        height:100px;
+        width:auto;
+        position:absolute
+    }
+
+    .missionhead, .missionhead2 {
+        text-align: center;
+    }
+
+    .waveicon  {
+        width: 40px;
+        height:auto;
+        object-fit: contain;
+    }
 }
