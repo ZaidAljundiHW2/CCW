@@ -14,33 +14,33 @@ const ReqFrForm = () => {
 })
 
   return (
-    <div className='flex-col flex gap-5 rounded-lg shadow-lg' style={{background:'#f2f0ef', padding:'20px'}}>
+    <div className='flex-col flex md:gap-5 gap-2 rounded-lg shadow-lg' style={{background:'#f2f0ef', padding:'20px'}}>
     
 
         <Flex
-            className='gap-5'
+            className='md:gap-5 gap-2'
         >
-            <Input placeholder='Full Name*' required/>
+            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Full Name*' required/>
             
-            <Input placeholder='Email Address*' required/>
+            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Email Address*' required/>
 
         </Flex>
 
         <Flex
             className='gap-5'
         >
-            <Input placeholder='City*' required/>
+            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='City*' required/>
             
-            <Input placeholder='Phone Number*' required/>
+            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Phone Number*' required/>
 
         </Flex>
         
 
-        <Select.Root collection={frameworks} width="100%">
+        <Select.Root collection={frameworks} size={{base:'xs', md:'md'}} width="100%">
             <Select.HiddenSelect />
             <Select.Control>
                 <Select.Trigger>
-                <Select.ValueText placeholder="Select framework" />
+                <Select.ValueText className='CFText'  placeholder="Select framework" />
                 </Select.Trigger>
                 <Select.IndicatorGroup>
                 <Select.Indicator />
@@ -63,7 +63,7 @@ const ReqFrForm = () => {
 
         
 
-        <Textarea placeholder='Message...*' required style={{
+        <Textarea className='CFText' size={{base:'xs', md:'md'}} placeholder='Message...*' required style={{
             height:'103px'
         }} />
 

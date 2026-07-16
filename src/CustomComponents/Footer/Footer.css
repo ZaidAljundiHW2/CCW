@@ -16,13 +16,59 @@
 
 .FH {
     font-family: HeadingNow, 'sans-serif';
-    padding-bottom: 20px;
-    font-size: 2rem;
+    font-size: clamp(1rem, 2vw, 2.5rem);
    
 }
 
 .FH2 {
     font-family:PersonalServices, 'sans-serif';
-    font-size:1.75rem;
+    font-size: clamp(.6rem, 2vw, 2.5rem);
     color: #d9ebff;
+}
+
+.footericon {
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+}
+
+.wi3 {
+    width:50%;
+    height:10%
+}
+
+.footerwrapper {
+    padding:10px
+}
+
+.footertext {
+    
+    font-size: clamp(.5rem, 1vw, 1.2rem);
+}
+
+.footerlogo {
+    width: 240px;
+    height: auto;
+}
+
+.footerlogo2 {
+    display: none;
+}
+
+@media (max-width:768px) {
+
+    .footerlogo2 {
+        display: block;
+    }
+    .footerwrapper {
+        padding:5px
+    }
+
+    .footerlogo {
+        width:50px;
+        height:50px
+    }
+
+    .SMI {
+        width: 20px;
+        height: auto;
+    }
 }

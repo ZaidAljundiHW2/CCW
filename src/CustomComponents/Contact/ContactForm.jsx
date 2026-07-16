@@ -5,28 +5,28 @@ import './ContactForm.css'
 
 const ContactForm = () => {
   return (
-    <div className='flex-col flex gap-5'>
+    <div className='flex-col flex md:gap-5 gap-2'>
 
         <h1 className='CFH'>
             Send Us A Message!
         </h1>
 
         <Flex
-            className='gap-5'
+            className='md:gap-5 gap-2' 
         >
-            <Input placeholder='Name*' required/>
+            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Name*' required/>
             
-            <Input placeholder='Email*' required/>
+            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Email*' required/>
 
         </Flex>
         
 
 
-        <Input placeholder='Phone Number'/>
+        <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Phone Number'/>
 
-        <Input placeholder='Subject*' required/>
+        <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Subject*' required/>
 
-        <Textarea placeholder='Message...*' required style={{
+        <Textarea className='CFText' size={{base:'xs', md:'md'}} placeholder='Message...*' required style={{
             height:'103px'
         }} />
 

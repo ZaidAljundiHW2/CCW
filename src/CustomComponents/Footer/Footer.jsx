@@ -16,29 +16,31 @@ const Footer = () => {
   return (
     <div
         className='
-            min-h-[40vh]
             flex
             flex-col
-            gap-5
+            md:gap-5
+            gap-0
             items-center
+            footerwrapper
             
         '
         style={{
             backgroundImage:`url(${FooterBack})`,
             backgroundSize:'100% 100%',
             backgroundPosition:'center',
-            padding:'20px',
+            
             
         }}
     >
         
         
-        <Flex className='gap-15'>
+        <Flex className='md:gap-15 gap-5'>
 
-            <img src={Logo} style={{
-                height:'200px',
-                width:'200px'
-            }}/>
+            <Flex className='flex-1 items-center justify-center'>
+
+            
+                <img src={Logo} className='footerlogo'/>
+            </Flex>
 
             {/* Quick Links */}
             <Flex className='flex-col'>
@@ -47,40 +49,40 @@ const Footer = () => {
                     QUICK LINKS
                 </h1>
 
-                <p>Home</p>
-                <p>Menu</p>
-                <p>Locations</p>
-                <p>Franchise</p>
-                <p>About Us</p>
-                <p>Contact</p>
+                <p className='footertext'>Home</p>
+                <p className='footertext'>Menu</p>
+                <p className='footertext'>Locations</p>
+                <p className='footertext'>Franchise</p>
+                <p className='footertext'>About Us</p>
+                <p className='footertext'>Contact</p>
 
             </Flex>
 
             {/* Contact */}
-            <Flex className='flex-col w-[20%] gap-2'>
+            <Flex className='flex-col gap-2'>
 
                 <h1 className='FH'>
                     CONTACT US
                 </h1>
 
-                <Flex className='items-center gap-5'>
-                    <CiLocationOn size={'1.25rem'} color='gold'/>
-                    <p>1250 Brant Street, Burlington, ON LS7 1X6</p>
+                <Flex className='items-center md:gap-5 gap-1'>
+                    <CiLocationOn className='footericon' color='gold'/>
+                    <p className='footertext'>1250 Brant Street, Burlington, ON LS7 1X6</p>
                 </Flex>
 
-                <Flex className='items-center gap-5'>
-                    <CiPhone size={'1.25rem'} color='gold'/>
-                    <p>647 271 3140</p>
+                <Flex className='items-center md:gap-5 gap-1'>
+                    <CiPhone className='footericon' color='gold'/>
+                    <p className='footertext'>647 271 3140</p>
                 </Flex>
 
-                <Flex className='items-center gap-5'>
-                    <CiMail size={'1.25rem'} color='gold'/>
-                    <p>captainscrab@gmail.com</p>
+                <Flex className='items-center md:gap-5 gap-1'>
+                    <CiMail className='footericon' color='gold'/>
+                    <p className='footertext'>captainscrab@gmail.com</p>
                 </Flex>
 
-                <Flex className='items-center gap-5'>
-                    <CiClock2 size={'1.25rem'} color='gold'/>
-                    <p>Mon - Sun: 11:00 AM - 10:00 PM</p>
+                <Flex className='items-center md:gap-5 gap-1'>
+                    <CiClock2 className='footericon' color='gold'/>
+                    <p className='footertext'>Mon - Sun: 11:00 AM - 10:00 PM</p>
                 </Flex>
 
             </Flex>
@@ -91,7 +93,7 @@ const Footer = () => {
 
                 <h1 className='FH'>FOLLOW US</h1>
 
-                <Flex className='gap-2'>
+                <Flex className='md:flex-row flex-col gap-2'>
 
                     <img src={InstagramIcon} className='SMI'/>
                     <img src={TiktokIcon} className='SMI'/>
@@ -102,21 +104,21 @@ const Footer = () => {
             </Flex>
 
             {/* Separator */}
-            <Box className='w-[2px] h[80%]'
+            <Box className='w-[2px]'
                 style={{
                     background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'
                 }}
             />
 
-            <Flex className='flex-col w-[20%] justify-center gap-4'>
+            <Flex className='flex-col w-[20%] justify-center md:gap-4 gap-0'>
 
                 <h1 className='FH2'> FRESH CATCHES</h1>
                 <h1 className='FH2'> BIG FLAVOURS</h1>
                 <h1 className='FH2'> GOOD TIMES AHEAD</h1>
-                <img src={WaveIcon3} style={{
-                    width:'1000px',
-                    height:'50px'
-                }}/>
+                {/* <img src={WaveIcon3} className='wi3'/> */}
+
+                <img src={Logo} className='footerlogo2'/>
+
 
             </Flex>
 
@@ -133,20 +135,20 @@ const Footer = () => {
 
         {/* TOS and Copyright */}
         <Flex className='w-full items-center justify-center'>
-            <h1 className='w-[60%]'>
+            <h1 className='w-[60%] footertext'>
                 @ 2024 Captain's Crab Seafood Boil House. All Rights Reserved.
 
             </h1>
 
             <Flex className='gap-6 items-center justify-center'>
 
-                <h1>
+                <h1 className='footertext'>
                     Privacy Policy
                 </h1>
 
                 <Box className='h-[20px] w-[1px] bg-[#d9ebff]'/>
 
-                <h1>
+                <h1 className='footertext'>
                     Terms of Service
                 </h1>
 

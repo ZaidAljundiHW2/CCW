@@ -19,12 +19,12 @@ const Contact = () => {
             backgroundSize:'cover',
             width:'100%',
             minHeight:'80vh',
-            padding:'2%'
+            
         }}
 
         id='contact'
 
-        className='flex flex-col gap-5'
+        className='flex flex-col gap-5 aboutwrapper'
         
     
     >
@@ -33,7 +33,7 @@ const Contact = () => {
             CONTACT US
         </h1>
 
-        <Flex className='flex-1 bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg gap-5' padding={'2%'}>
+        <Flex className='flex-1 md:flex-row flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg md:gap-5 gap-0' padding={'2%'}>
 
             {/* Contact Form */}
             <Flex
@@ -73,12 +73,12 @@ const Contact = () => {
                     shadow-lg
                     flex-col
                     relative
+                    socmediawrapper
                 '
 
                 
 
                 style={{
-                    padding:'20px',
                     backgroundImage:`url(${Back3})`
                 }}
             >
@@ -97,7 +97,7 @@ const Contact = () => {
                     className='CUI2'
                 />
 
-                <Flex className='flex-col gap-0' paddingBottom={'20px'}>
+                <Flex className='flex-col gap-0'>
 
                     <h1 className='CUH2'>
                         FOLLOW US
@@ -108,7 +108,7 @@ const Contact = () => {
 
                 </Flex>
 
-                <Flex className='flex-1 flex-col gap-5' paddingLeft={'20px'}>
+                <Flex className='flex-1 flex-col md:gap-5 gap-2'>
 
                     <Flex gap={'3'} className='items-center'>
 

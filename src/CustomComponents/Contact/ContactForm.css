@@ -9,3 +9,9 @@
     color:black;
     font-size: 2rem;
 }
+
+.CFText {
+
+    font-size: clamp(.5rem, 1vw, 1.5rem);
+    color: black;
+}

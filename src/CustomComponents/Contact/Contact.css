@@ -3,16 +3,21 @@
     src: url('@/assets/personal_services/Personal Services.ttf');
 }
 
+.aboutwrapper {
+    padding:20px
+}
+
 .CUH {
     color: white;
     font-family: 'PersonalServices', sans-serif;
-    font-size: 3rem;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+
 }
 
 .CUH2 {
     color: white;
     font-family: 'PersonalServices', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2vw, 3rem);
 }
 
 .CUT {
@@ -34,4 +39,43 @@
     right:0;
     height: 40%;
     width: auto;
+}
+
+.socmediawrapper {
+    padding:20px
+}
+
+@media (max-width:768px) {
+
+    .socmediawrapper {
+        padding:5px
+    }
+
+    .aboutwrapper {
+        padding:20px
+    }
+
+
+   
+
+    .CUI {
+        position: absolute;
+        bottom:0;
+        right:0;
+        height: 40%;
+        width: auto;
+    }
+
+    .CUI2 {
+        position: absolute;
+        bottom:0;
+        right:0;
+        height: 10%;
+        width: auto;
+    }
+
+    .CUT {
+        font-size: clamp(.75rem, 1vw, 1.5rem);
+
+    }
 }
