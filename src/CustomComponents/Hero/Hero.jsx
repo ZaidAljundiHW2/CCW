@@ -49,7 +49,6 @@ const Hero = () => {
             flex-col
             gap-0
             z-10
-            bg-red-500
             herotextwrapper
             
           '

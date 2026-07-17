@@ -48,7 +48,8 @@ const Navbar = () => {
 
 
   return (
-    <div className='fixed top-0 left-0 w-full z-50' id='navbar'>
+
+    <div className='fixed w-full z-50' id='navbar'>
 
         <Flex 
             className='w-full h-[12vh]'
@@ -96,6 +97,7 @@ const Navbar = () => {
                             className=' 
                                 flex 
                                 componentBar
+                                
                             '
 
                             key={'navbar'}
@@ -120,24 +122,18 @@ const Navbar = () => {
 
                         
                             <button
-                                style={{
-                                    paddingLeft:'40px',
-
-                                }}
-
+            
                                 onClick={(e) => handleNavLink(e, "#home")}
+
+                               
                             
                             >
                                 Home
                             </button>
 
-                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
                             <button onClick={(e) => handleNavLink(e, '#menu')}>
                                 Menu
                             </button>
-
-                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
 
                             <button
                                 onClick={(e) => handleNavLink(e, "#locations")}
@@ -145,17 +141,17 @@ const Navbar = () => {
                                 Locations
                             </button>
 
-                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
+                             <button
+                                onClick={(e) => handleNavLink(e, "#franchise")}
+                            >
+                                Franchise
+                            </button>
 
                             <button
                                 onClick={(e) => handleNavLink(e, "#about")}
                             >
                                 About
                             </button>
-                            
-                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
 
                             <button
                                 onClick={(e) => handleNavLink(e, "#contact")}
@@ -163,22 +159,11 @@ const Navbar = () => {
                                 Contact
                             </button>
 
-                            <Box className='w-[2px] h-[70%]' style={{background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'}}/>
-
-                            <button
-                                onClick={(e) => handleNavLink(e, "#franchise")}
-                            >
-                                Franchise
-                            </button>
+                           
 
 
 
                             <button
-                                style={{
-                                    paddingRight:'40px',
-                                    
-                                }}
-
                                 className='book'
                             >
                                 Book Now
