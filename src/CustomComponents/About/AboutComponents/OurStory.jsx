@@ -35,7 +35,7 @@ const OurStory = () => {
 
               whileInView={{opacity:1, x:0}}
 
-              transition={{duration:.5, ease:'easeInOut', delay:.4}}
+              transition={{duration:.5, ease:'easeOut', delay:.4}}
             >
                 OUR STORY
             </motion.h1>
@@ -53,7 +53,7 @@ const OurStory = () => {
 
           whileInView={{opacity:1, x:0}}
 
-          transition={{duration:.5, ease:'easeInOut', delay:.3}}
+          transition={{duration:.5, ease:'easeOut', delay:.3}}
         >
             BORN BY THE COAST. MADE FOR YOU.
         </motion.h1> 
@@ -64,7 +64,7 @@ const OurStory = () => {
 
             whileInView={{opacity:1, x:0}}
 
-            transition={{duration:.5, ease:'easeInOut', delay:.2}}
+            transition={{duration:.5, ease:'easeOut', delay:.2}}
           >
             Captain's Crab began with a simple belief: everyone deserves premium seafood, big flavors, and good times around the table.
 
@@ -75,7 +75,7 @@ const OurStory = () => {
 
             whileInView={{opacity:1, x:0}}
 
-            transition={{duration:.5, ease:'easeInOut', delay:.1}}
+            transition={{duration:.5, ease:'easeOut', delay:.1}}
           >
               Inspired by coastal traditions and crafted with a modern twist, we created a place where friends and families can dig in, connect, and make memories that last.
 
@@ -86,7 +86,7 @@ const OurStory = () => {
 
             whileInView={{opacity:1, x:0}}
 
-            transition={{duration:.5, ease:'easeInOut'}}
+            transition={{duration:.5, ease:'easeOut'}}
           >
             From our signature boils to our crave-worthy sauces, every detail is made with fresh ingredients, real passion, and a promise to always deliver more.
           </motion.p>

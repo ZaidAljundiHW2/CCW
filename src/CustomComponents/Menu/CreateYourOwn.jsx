@@ -158,7 +158,7 @@ const CreateYourOwn = () => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             style={{color:'white'}}
-                            transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeInOut' }}}
+                            transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeOut' }}}
                             className="MenuHeader"
                             layout
 
@@ -185,7 +185,7 @@ const CreateYourOwn = () => {
                                     opacity:0
                                 }}
 
-                                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                                transition={{ duration: 0.25, ease: 'easeOut' }}
 
                                 key={stepNum}
 
@@ -282,7 +282,7 @@ const CreateYourOwn = () => {
             
             layout
 
-            transition={{ duration: 0.4, delay: 0.1, ease: 'easeInOut' }}
+            transition={{ duration: 0.4, delay: 0.1, ease: 'easeOut' }}
 
             style={{
                 backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${RestBack})`,

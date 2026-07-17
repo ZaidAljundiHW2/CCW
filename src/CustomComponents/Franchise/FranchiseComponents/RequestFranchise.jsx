@@ -56,7 +56,7 @@ const RequestFranchise = () => {
 
                         whileInView={{opacity:1, x:0}}
 
-                        transition={{duration:.5, ease:'easeInOut', delay:.3}}
+                        transition={{duration:.5, ease:'easeOut', delay:.3}}
                     >
                         WHO WE'RE LOOKING FOR
                     </motion.h1>
@@ -71,7 +71,7 @@ const RequestFranchise = () => {
 
                         whileInView={{opacity:1, x:0}}
 
-                        transition={{duration:.5, ease:'easeInOut', delay:.3}}
+                        transition={{duration:.5, ease:'easeOut', delay:.3}}
                     />
                 </Flex>
 
@@ -80,7 +80,7 @@ const RequestFranchise = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.2}}
+                    transition={{duration:.5, ease:'easeOut', delay:.2}}
                 >
                     PASSIONATE PARTNERS. DRIVEN TO SUCCEED.
                 </motion.h1>
@@ -90,7 +90,7 @@ const RequestFranchise = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                    transition={{duration:.5, ease:'easeOut', delay:.1}}
                 />
                 
 
@@ -100,7 +100,7 @@ const RequestFranchise = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut'}}
+                    transition={{duration:.5, ease:'easeOut'}}
                 >
                     We're looking for partners who love hospitality, have an entrepreneurial spirit, are community focused, and are team oriented.
                 </motion.p>
@@ -129,7 +129,7 @@ const RequestFranchise = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                    transition={{duration:.5, ease:'easeOut', delay:.1}}
                 >
                     LET'S START THE CONVERSATION
                 </motion.h1>

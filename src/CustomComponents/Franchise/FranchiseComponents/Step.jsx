@@ -29,7 +29,7 @@ const Step = ({CardItem, index}) => {
 
         whileInView={{opacity:1, x:0}}
 
-        transition={{duration:.5, ease:'easeInOut', delay:.2 * index}}
+        transition={{duration:.5, ease:'easeOut', delay:.2 * index}}
     >
 
     

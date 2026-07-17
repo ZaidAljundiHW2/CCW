@@ -62,7 +62,7 @@ const Steps = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.3}}
+                    transition={{duration:.5, ease:'easeOut', delay:.3}}
                 >
                     HOW IT WORKS
                 </motion.h1>
@@ -78,7 +78,7 @@ const Steps = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.3}}
+                    transition={{duration:.5, ease:'easeOut', delay:.3}}
 
                 />
             </Flex>
@@ -88,7 +88,7 @@ const Steps = () => {
 
                 whileInView={{opacity:1, x:0}}
 
-                transition={{duration:.5, ease:'easeInOut', delay:.2}}
+                transition={{duration:.5, ease:'easeOut', delay:.2}}
             >
                 YOUR JOURNEY TO OWNERSHIP
             </motion.h1>
@@ -98,7 +98,7 @@ const Steps = () => {
 
                 whileInView={{opacity:1, x:0}}
 
-                transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                transition={{duration:.5, ease:'easeOut', delay:.1}}
             />
             
 
@@ -108,7 +108,7 @@ const Steps = () => {
 
                 whileInView={{opacity:1, x:0}}
 
-                transition={{duration:.5, ease:'easeInOut'}}
+                transition={{duration:.5, ease:'easeOut'}}
             >
                 Simple steps. Powerful partnership.
             </motion.p>

@@ -96,16 +96,15 @@ const Navbar = () => {
                 </Box>
 
                 <Menu.Root >
-                    <Menu.Trigger asChild className='dropdown'>
+                    <Menu.Trigger asChild>
                         <Box 
                             className='
                                 flex 
                                 justify-center 
                                 items-center
                                 z-10
-                                w-[100px]
+                                
                                 cursor-pointer
-                                bg-red-500
                                 absolute
                                 left-[20px]
                                 top-[25px]

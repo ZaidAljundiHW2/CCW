@@ -70,7 +70,7 @@ const ExistingLocation = () => {
 
                             whileInView={{opacity:1, x:0}}
 
-                            transition={{duration:.5, ease:'easeInOut', delay:.2}}
+                            transition={{duration:.5, ease:'easeOut', delay:.2}}
                         >
                             <h1 className='ELH'>Our Home Port</h1>
 
@@ -92,7 +92,7 @@ const ExistingLocation = () => {
 
                             whileInView={{opacity:1, x:0}}
 
-                            transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                            transition={{duration:.5, ease:'easeOut', delay:.1}}
                         >
                             Burlington, Ontario
                         </motion.h1>
@@ -102,7 +102,7 @@ const ExistingLocation = () => {
 
                             whileInView={{opacity:1, x:0}}
 
-                            transition={{duration:.5, ease:'easeInOut'}}
+                            transition={{duration:.5, ease:'easeOut'}}
                         >
                             Visit our flagship location in the heart of Burlington - where every meal is a celebration of fresh seafood, community, and unforgettable flavor.
                         </motion.p>
@@ -165,7 +165,7 @@ const ExistingLocation = () => {
 
                     whileInView={{opacity:1, y:0}}
 
-                    transition={{duration:.5, ease:'easeInOut'}}
+                    transition={{duration:.5, ease:'easeOut'}}
                 >
                     Visit the flagship
                 </motion.h1>
@@ -177,7 +177,7 @@ const ExistingLocation = () => {
 
                     whileInView={{opacity:1, y:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                    transition={{duration:.5, ease:'easeOut', delay:.1}}
                 >
                     Our home port in the heart of burlington serving up bold flavours and good times
                 </motion.p>

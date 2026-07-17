@@ -39,7 +39,7 @@ const ComingSoon = () => {
 
                 whileInView={{opacity:1, x:0}}
 
-                transition={{duration:.5, ease:'easeInOut'}}
+                transition={{duration:.5, ease:'easeOut'}}
             >
                 <img src={Lighthouse}/>
             </motion.div>
@@ -51,7 +51,7 @@ const ComingSoon = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.2}}
+                    transition={{duration:.5, ease:'easeOut', delay:.2}}
                 >
                     MORE LOCATIONS COMING SOON.
                 </motion.h1>
@@ -66,7 +66,7 @@ const ComingSoon = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                    transition={{duration:.5, ease:'easeOut', delay:.1}}
                 />
 
                 <motion.p className='CST'
@@ -74,7 +74,7 @@ const ComingSoon = () => {
 
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut'}}
+                    transition={{duration:.5, ease:'easeOut'}}
                 >
                     We're setting sail for new shores! Captain's Crab is expanding to bring bold, craveable seafood experiences to communities across Canada.
                 </motion.p>    

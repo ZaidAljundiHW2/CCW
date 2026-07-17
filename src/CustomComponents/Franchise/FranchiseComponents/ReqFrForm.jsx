@@ -20,7 +20,7 @@ const ReqFrForm = () => {
 
         whileInView={{opacity:1, x:0}}
 
-        transition={{duration:.5, ease:'easeInOut', delay:.1}}
+        transition={{duration:.5, ease:'easeOut', delay:.1}}
     >
     
 

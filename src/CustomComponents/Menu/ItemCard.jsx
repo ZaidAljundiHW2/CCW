@@ -20,7 +20,7 @@ const ItemCard = ({ItemObj, incStep, incOrder}) => {
         '
 
         layout
-        transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeInOut' }}}
+        transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeOut' }}}
 
         style={{
             backgroundImage:`url(${resolveImg(ItemObj.Img)})`,

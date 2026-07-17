@@ -58,7 +58,7 @@ const WhyCC = () => {
                     
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut',delay:.3}}
+                    transition={{duration:.5, ease:'easeOut',delay:.3}}
                 >
                     WHY CAPTAIN'S CRAB
                 </motion.h1>
@@ -74,7 +74,7 @@ const WhyCC = () => {
                     
                     whileInView={{opacity:1, x:0}}
 
-                    transition={{duration:.5, ease:'easeInOut',delay:.3}}
+                    transition={{duration:.5, ease:'easeOut',delay:.3}}
                 />
             </Flex>
 
@@ -84,7 +84,7 @@ const WhyCC = () => {
                     
                 whileInView={{opacity:1, x:0}}
 
-                transition={{duration:.5, ease:'easeInOut',delay:.2}}
+                transition={{duration:.5, ease:'easeOut',delay:.2}}
             >
                 BUILT FOR FLAVOR. DESIGNED FOR SUCCESS.
             </motion.h1>
@@ -94,7 +94,7 @@ const WhyCC = () => {
                     
                 whileInView={{opacity:1, x:0}}
 
-                transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                transition={{duration:.5, ease:'easeOut', delay:.1}}
             />
 
             <motion.p style={{color:'#012447'}} className='WhyCCText'
@@ -102,7 +102,7 @@ const WhyCC = () => {
                     
                 whileInView={{opacity:1, x:0}}
 
-                transition={{duration:.5, ease:'easeInOut'}}
+                transition={{duration:.5, ease:'easeOut'}}
             >
                 We do more than serve seafood - we create unforgettable experiences and help our franchise partners build thriving businesses.
             </motion.p>

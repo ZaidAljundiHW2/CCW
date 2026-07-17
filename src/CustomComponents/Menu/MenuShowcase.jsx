@@ -42,7 +42,7 @@ const MenuShowcase = () => {
 
         whileInView={{opacity:1, y:0}}
 
-        transition={{duration:.7, ease:'easeInOut'}}
+        transition={{duration:.7, ease:'easeOut'}}
         
     > 
 
@@ -76,7 +76,7 @@ const MenuShowcase = () => {
 
                     transition={{
                         duration: 0.3,
-                        ease: 'easeInOut'
+                        ease: 'easeOut'
                     }}
 
                     style={{
@@ -111,7 +111,7 @@ const MenuShowcase = () => {
                             opacity:0
                         }}
 
-                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        transition={{ duration: 0.25, ease: 'easeOut' }}
 
                         key={index}
                     >

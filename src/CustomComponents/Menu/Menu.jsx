@@ -17,7 +17,7 @@ const Menu = () => {
 
         
 
-        transition={{ layout: { duration: 0.4, ease: 'easeInOut' }}}
+        transition={{ layout: { duration: 0.4, ease: 'easeOut' }}}
 
     
         id='menu'
@@ -33,7 +33,7 @@ const Menu = () => {
 
             whileInView={{opacity:1, y:0}}
 
-            transition={{duration:.5, ease:'easeInOut'}}
+            transition={{duration:.5, ease:'easeOut'}}
 
             viewport={{once:false}}
         >
