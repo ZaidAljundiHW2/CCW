@@ -45,7 +45,15 @@
 
 }
 
+.restbutton {
+    padding:20px;
+    border-width: 2px;
+    
+}
 
+.orderwrapper {
+    padding:20px
+}
 
 .orderbutton {
     border-width: 2px;
@@ -82,5 +90,10 @@
 
     .dropdown {
         display: block;
+    }
+
+    .orderwrapper {
+        padding:20px;
+        text-align: center;
     }
 }

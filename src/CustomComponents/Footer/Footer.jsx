@@ -11,8 +11,37 @@ import FacebookIcon from '@/assets/icons/facebook.png'
 import TiktokIcon from '@/assets/icons/tiktok.png'
 import './Footer.css'
 import WaveIcon3 from '@/assets/icons/waveicon3.png'
+import { useState } from 'react';
+import ToS from './ToS';
+import PrivacyPolicy from './PrivacyPolicy'
 
 const Footer = () => {
+
+    const [showPP, setShowPP] = useState(false);
+    const [showToS, setShowToS] = useState(false);
+
+    const handleNavLink = (event, targetID) => {
+
+        event.preventDefault();
+
+        const target = document.querySelector(targetID);
+        
+        if (target) {
+
+            const navbar = document.querySelector('#navbar');
+            const navbarheight = navbar?.offsetHeight || 0;
+            const offsetPosition = target.offsetTop - navbarheight;
+
+
+            window.scrollTo ({
+                top: offsetPosition,
+                behavior: 'smooth'
+
+            })
+
+        }
+    }
+
   return (
     <div
         className='
@@ -49,12 +78,12 @@ const Footer = () => {
                     QUICK LINKS
                 </h1>
 
-                <p className='footertext'>Home</p>
-                <p className='footertext'>Menu</p>
-                <p className='footertext'>Locations</p>
-                <p className='footertext'>Franchise</p>
-                <p className='footertext'>About Us</p>
-                <p className='footertext'>Contact</p>
+                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#home')}>Home</p>
+                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#menun')}>Menu</p>
+                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#locations')}>Locations</p>
+                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#franchise')}>Franchise</p>
+                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#about')}>About Us</p>
+                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#contact')}>Contact</p>
 
             </Flex>
 
@@ -95,9 +124,17 @@ const Footer = () => {
 
                 <Flex className='md:flex-row flex-col gap-2'>
 
-                    <img src={InstagramIcon} className='SMI'/>
-                    <img src={TiktokIcon} className='SMI'/>
-                    <img src={FacebookIcon} className='SMI'/>
+                    <a href='https://www.instagram.com/captainscrab'>
+                        <img src={InstagramIcon} className='SMI'/>
+                    </a>
+
+                    <a href='https://www.tiktok.com/@captainscrab'>
+                        <img src={TiktokIcon} className='SMI'/>
+                    </a>
+
+                    <a href='https://www.facebook.com/captainscrab'>
+                        <img src={FacebookIcon} className='SMI'/>
+                    </a>
 
                 </Flex>
 
@@ -142,13 +179,13 @@ const Footer = () => {
 
             <Flex className='gap-6 items-center justify-center'>
 
-                <h1 className='footertext'>
+                <h1 className='footertext footertextclickable' onClick={() => {setShowPP(true); setShowToS(false)}}>
                     Privacy Policy
                 </h1>
 
                 <Box className='h-[20px] w-[1px] bg-[#d9ebff]'/>
 
-                <h1 className='footertext'>
+                <h1 className='footertext footertextclickable' onClick={() => {setShowToS(true); setShowPP(false)}}>
                     Terms of Service
                 </h1>
 
@@ -156,6 +193,11 @@ const Footer = () => {
             
 
         </Flex>
+
+
+        {showPP && (<PrivacyPolicy setShowPP={setShowPP}/>)}
+
+        {showToS && (<ToS setShowToS={setShowToS}/>)}
 
 
       

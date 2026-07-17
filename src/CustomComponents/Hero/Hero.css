@@ -28,6 +28,11 @@
     color: white;
 }
 
+.herobutton:hover {
+
+    cursor:pointer;
+}
+
 .herotext {
     font-size: clamp(.8rem, 1vw, 1.2rem);
 }

@@ -31,13 +31,13 @@
 }
 
 .ELDir {
-    background-color: white;
-    color: orange;
+    background-color: #ef571b;
+    color: white;
 } 
 
 .ELDir:hover {
-    background-color: orange;
-    color:white
+    background-color: white;
+    color:#ef571b
 }
 
 @media (max-width:768px) {

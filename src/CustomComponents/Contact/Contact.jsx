@@ -99,41 +99,47 @@ const Contact = () => {
 
                     <Flex className='flex-1 flex-col md:gap-5 gap-2'>
 
-                        <Flex gap={'3'} className='items-center'>
+                        <a href='https://www.instagram.com/captainscrab'>
+                            <Flex gap={'3'} className='items-center'>
 
-                            <img src={InstagramIcon} style={{
-                                height:'40px',
-                                width:'40px'
-                            }}/>
-                            <Text className='CUT' style={{color:'white'}}>
-                                @captainscrab.ca
-                            </Text>
+                                <img src={InstagramIcon} style={{
+                                    height:'40px',
+                                    width:'40px'
+                                }}/>
+                                <Text className='CUT' style={{color:'white'}}>
+                                    @captainscrab.ca
+                                </Text>
 
-                        </Flex>
+                            </Flex>
+                        </a>
 
-                        <Flex gap={'3'} className='items-center'>
+                        <a href='https://www.tiktok.com/@captainscrab'>
+                            <Flex gap={'3'} className='items-center'>
 
-                            <img src={TiktokIcon} style={{
-                                height:'40px',
-                                width:'40px'
-                            }}/>
-                            <Text className='CUT' style={{color:'white'}}>
-                                @captainscrab.ca
-                            </Text>
+                                <img src={TiktokIcon} style={{
+                                    height:'40px',
+                                    width:'40px'
+                                }}/>
+                                <Text className='CUT' style={{color:'white'}}>
+                                    @captainscrab.ca
+                                </Text>
 
-                        </Flex>
+                            </Flex>
+                        </a>
+                        
+                        <a href='https://www.facebook.com/captainscrab'>
+                            <Flex gap={'3'} className='items-center'>
 
-                        <Flex gap={'3'} className='items-center'>
+                                <img src={FacebookIcon} style={{
+                                    height:'40px',
+                                    width:'40px'
+                                }}/>
+                                <Text className='CUT' style={{color:'white'}}>
+                                    /captainscrab.ca
+                                </Text>
 
-                            <img src={FacebookIcon} style={{
-                                height:'40px',
-                                width:'40px'
-                            }}/>
-                            <Text className='CUT' style={{color:'white'}}>
-                                /captainscrab.ca
-                            </Text>
-
-                        </Flex>
+                            </Flex>
+                        </a>
 
                     </Flex>
 

@@ -47,6 +47,10 @@
     color: white;
 }
 
+.footertextclickable:hover {
+    cursor: pointer;
+}
+
 
 
 .footerlogo {

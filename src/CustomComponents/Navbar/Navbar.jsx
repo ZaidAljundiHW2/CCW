@@ -10,14 +10,18 @@ import WheelIcon from '@/assets/icons/benefit-wheel.png'
 import { GiPaperBagFolded } from "react-icons/gi";
 import { AnimatePresence } from 'motion/react';
 import { Menu, Portal } from "@chakra-ui/react"
+import OrderPopup from './OrderPopup';
+import BookReservationPopup from './BookReservationPopup';
 
 const Navbar = () => {
 
 
-    const navcomponents = ['Home', 'Menu', 'Locations', 'About', 'Contact']
     // const navcomponents = ['Home']
     
     const [expandedMenu, setExpandedMenu] = useState(false);
+
+    const [showOrderPopup, setShowOrderPopup] = useState(false);
+    const [showBook, setShowBook] = useState(false);
 
 
     
@@ -99,7 +103,12 @@ const Navbar = () => {
                                 justify-center 
                                 items-center
                                 z-10
+                                w-[100px]
                                 cursor-pointer
+                                bg-red-500
+                                absolute
+                                left-[20px]
+                                top-[25px]
                             '
                             
                             onClick={toggleMenu}
@@ -111,9 +120,6 @@ const Navbar = () => {
                                 alt='wheel expanding menu icon' 
                                 style={{
                                     aspectRatio:'square',
-                                    width:'30%',
-                                    height:'auto',
-                                    flexShrink:'0'
                                 }}
                                 animate={{
                                     rotate: expandedMenu ? 360 : -360,
@@ -215,6 +221,8 @@ const Navbar = () => {
 
                             <button
                                 className='book'
+
+                                onClick={() => setShowBook(true)}
                             >
                                 Book Now
                             </button>
@@ -252,11 +260,14 @@ const Navbar = () => {
                     className='
                         orderbutton
                         rounded-full
+                        hover:cursor-pointer
                     ' 
 
                     style={{
                         background:'#ef571b'
                     }}
+
+                    onClick={() => setShowOrderPopup(true)}
                     
                 >
                     Order
@@ -276,6 +287,9 @@ const Navbar = () => {
             </Flex>
 
         </Flex>
+
+        {showOrderPopup && (<OrderPopup setShowOrderPopup={setShowOrderPopup}/>)}
+        {showBook && (<BookReservationPopup setShowBook={setShowBook}/>)}
       
     </div>
   )
