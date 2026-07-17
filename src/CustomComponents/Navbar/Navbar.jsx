@@ -9,6 +9,7 @@ import CompanyLogo from '@/assets/img/logo-full-transparent.png'
 import WheelIcon from '@/assets/icons/benefit-wheel.png'
 import { GiPaperBagFolded } from "react-icons/gi";
 import { AnimatePresence } from 'motion/react';
+import { Menu, Portal } from "@chakra-ui/react"
 
 const Navbar = () => {
 
@@ -83,10 +84,59 @@ const Navbar = () => {
                         animate={{
                             rotate: expandedMenu ? 360 : -360,
                         }}
+
+                        className='navicon'
                     />
 
 
                 </Box>
+
+                <Menu.Root >
+                    <Menu.Trigger asChild className='dropdown'>
+                        <Box 
+                            className='
+                                flex 
+                                justify-center 
+                                items-center
+                                z-10
+                                cursor-pointer
+                            '
+                            
+                            onClick={toggleMenu}
+
+                            
+                        >
+                            <motion.img 
+                                src={WheelIcon} 
+                                alt='wheel expanding menu icon' 
+                                style={{
+                                    aspectRatio:'square',
+                                    width:'30%',
+                                    height:'auto',
+                                    flexShrink:'0'
+                                }}
+                                animate={{
+                                    rotate: expandedMenu ? 360 : -360,
+                                }}
+                            />
+
+
+                        </Box>
+                    </Menu.Trigger>
+                    <Portal>
+                        <Menu.Positioner>
+                        <Menu.Content>
+                            <Menu.Item onClick={(e) => handleNavLink(e, "#home")}>Home</Menu.Item>
+                            <Menu.Item onClick={(e) => handleNavLink(e, '#menu')}>Menu</Menu.Item>
+                            <Menu.Item onClick={(e) => handleNavLink(e, '#locations')}>Locations</Menu.Item>
+                            <Menu.Item onClick={(e) => handleNavLink(e, '#franchise')}>Franchise</Menu.Item>
+                            <Menu.Item onClick={(e) => handleNavLink(e, '#about')}>About</Menu.Item>
+                            <Menu.Item onClick={(e) => handleNavLink(e, '#contact')}>Contact</Menu.Item>
+                            <Menu.Item value="export">Book</Menu.Item>
+                        </Menu.Content>
+                        </Menu.Positioner>
+                    </Portal>
+                    </Menu.Root>
 
 
                 <AnimatePresence>

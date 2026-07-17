@@ -60,6 +60,25 @@
     color:#ef571b;
 }
 
+.dropdown {
+    display: none;
+}
 
-    
+.navicon {
+    display: block;
+}
 
+
+@media (max-width:912px) {
+    .componentBar {
+        display: none;
+    }
+
+    .navicon {
+        display: none;
+    }
+
+    .dropdown {
+        display: block;
+    }
+}
