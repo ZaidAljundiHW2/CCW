@@ -103,7 +103,7 @@ const Navbar = () => {
                                 justify-center 
                                 items-center
                                 z-10
-                                
+                                w-[70px]
                                 cursor-pointer
                                 absolute
                                 left-[20px]
