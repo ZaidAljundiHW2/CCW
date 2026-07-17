@@ -2,10 +2,11 @@ import React from 'react'
 import './WhyCC.css'
 import { resolveImg } from '@/customLib/utils/resolveImage'
 import wave2 from '@/assets/icons/waveicon2.png'
+import { motion } from 'motion/react'
 
-const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
+const WhyCCCard = ({CardItem, wave=true, YNA=false, index}) => {
   return (
-    <div
+    <motion.div
         className='
             rounded-lg
             shadow-lg
@@ -21,6 +22,12 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
             borderColor:'white',
             background: YNA ? '#002342' : '#f2eeee'
         }}
+
+        initial={{opacity:0, x:-50}}
+
+        whileInView={{opacity:1, x:0}}
+
+        transition={{duration:.5, ease:'easeInOut', delay:.2 * index}}
     >
         <div className='w-full flex items-center justify-center h-[25%]'>
 
@@ -59,7 +66,7 @@ const WhyCCCard = ({CardItem, wave=true, YNA=false}) => {
 
 
       
-    </div>
+    </motion.div>
   )
 }
 

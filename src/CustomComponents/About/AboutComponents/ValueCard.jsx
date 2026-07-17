@@ -5,10 +5,11 @@ import './ValueCard.css'
 import { GiSadCrab } from "react-icons/gi";
 import { LuHeartHandshake } from "react-icons/lu";
 import { MdPeople } from "react-icons/md";
+import { motion } from 'motion/react';
 
-const ValueCard = ({Value}) => {
+const ValueCard = ({Value, index}) => {
   return (
-    <div
+    <motion.div
         className='
         
             flex-1
@@ -27,6 +28,12 @@ const ValueCard = ({Value}) => {
         style={{
             padding:'7% 20px 20px 20px',
         }}
+
+        initial={{opacity:0, y:-50}}
+
+        whileInView={{opacity:1, y:0}}
+
+        transition={{duration:.5, ease:'easeInOut', delay:index*.2}}
     >  
 
         <Flex className='flex-col justify-center items-center'>
@@ -72,7 +79,7 @@ const ValueCard = ({Value}) => {
             </p>
         </Flex>
       
-    </div>
+    </motion.div>
   )
 }
 

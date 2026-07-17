@@ -10,6 +10,7 @@ import DownArrow from '@/assets/icons/DownArrow.png'
 import WaveIcon from '@/assets/icons/waveicon.png'
 import WaveIcon2 from '@/assets/icons/waveicon2.png'
 import ELBack from '@/assets/img/Backgrounds/elback.png'
+import { motion } from 'motion/react'
 
 const ExistingLocation = () => {
 
@@ -63,7 +64,14 @@ const ExistingLocation = () => {
                         style={{padding:'3%', background:'rgb(255 255 255 / 85%) '}}
                     >
 
-                        <Flex className='w-full'>
+                        <motion.div className='flex w-full'
+                        
+                            initial={{opacity:0, x:-50}}
+
+                            whileInView={{opacity:1, x:0}}
+
+                            transition={{duration:.5, ease:'easeInOut', delay:.2}}
+                        >
                             <h1 className='ELH'>Our Home Port</h1>
 
                             <img 
@@ -75,15 +83,29 @@ const ExistingLocation = () => {
                                     objectFit:'contain'
                                 }}
                             />
-                        </Flex>
+                        </motion.div>
 
                         
 
-                        <h1 className='ELH2'>Burlington, Ontario</h1>
+                        <motion.h1 className='ELH2'
+                            initial={{opacity:0, x:-50}}
 
-                        <p className='ELT'>
+                            whileInView={{opacity:1, x:0}}
+
+                            transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                        >
+                            Burlington, Ontario
+                        </motion.h1>
+
+                        <motion.p className='ELT'
+                            initial={{opacity:0, x:-50}}
+
+                            whileInView={{opacity:1, x:0}}
+
+                            transition={{duration:.5, ease:'easeInOut'}}
+                        >
                             Visit our flagship location in the heart of Burlington - where every meal is a celebration of fresh seafood, community, and unforgettable flavor.
-                        </p>
+                        </motion.p>
 
                     </Box>
 
@@ -138,16 +160,32 @@ const ExistingLocation = () => {
                 className='flex h-full rounded-lg shadow-lg gap-2 flex-col justify-center relative w-full min-w-0'
                 style={{ padding: '5%', background:'#f2eeee' }}
             >
-                <h1 className='ELH2 min-w-0 break-words'>Visit the flagship</h1>
+                <motion.h1 className='ELH2 min-w-0 break-words'
+                    initial={{opacity:0, y:-50}}
+
+                    whileInView={{opacity:1, y:0}}
+
+                    transition={{duration:.5, ease:'easeInOut'}}
+                >
+                    Visit the flagship
+                </motion.h1>
 
                 
 
-                <p className='ELT'>Our home port in the heart of burlington serving up bold flavours and good times</p>
+                <motion.p className='ELT'
+                    initial={{opacity:0, y:-50}}
+
+                    whileInView={{opacity:1, y:0}}
+
+                    transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                >
+                    Our home port in the heart of burlington serving up bold flavours and good times
+                </motion.p>
 
                 <VStack className='w-full' align='stretch' spacing={2}>
 
-                    {InfoJSON.map((infopiece) => (
-                        <InfoSec info={infopiece} key={infopiece.Text}/>
+                    {InfoJSON.map((infopiece, i) => (
+                        <InfoSec info={infopiece} index={i} key={i}/>
                     ))}
 
                 </VStack>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Input, Textarea, Button } from '@chakra-ui/react'
 import '@/CustomComponents/Contact/ContactForm.css'
 import { Portal, Select, createListCollection } from "@chakra-ui/react"
+import { motion } from 'motion/react'
 
 const ReqFrForm = () => {
     const frameworks = createListCollection({
@@ -14,7 +15,13 @@ const ReqFrForm = () => {
 })
 
   return (
-    <div className='flex-col flex md:gap-5 gap-2 rounded-lg shadow-lg' style={{background:'#f2f0ef', padding:'20px'}}>
+    <motion.div className='flex-col flex md:gap-5 gap-2 rounded-lg shadow-lg' style={{background:'#f2f0ef', padding:'20px'}}
+        initial={{opacity:0, x:-50}}
+
+        whileInView={{opacity:1, x:0}}
+
+        transition={{duration:.5, ease:'easeInOut', delay:.1}}
+    >
     
 
         <Flex
@@ -72,7 +79,7 @@ const ReqFrForm = () => {
         </Button>
         
         
-    </div>
+    </motion.div>
   )
 }
 

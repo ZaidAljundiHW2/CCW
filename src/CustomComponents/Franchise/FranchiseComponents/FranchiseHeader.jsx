@@ -3,6 +3,7 @@ import SeafoodPile from '@/assets/img/seafood pile.png'
 import { Flex } from '@chakra-ui/react'
 import './FranchiseHeader.css'
 import OceanBack from '@/assets/img/Backgrounds/oceanback.jpg'
+import { motion } from 'motion/react'
 
 const FranchiseHeader = () => {
   return (
@@ -47,13 +48,26 @@ const FranchiseHeader = () => {
                 '
             >
 
-                <h1 className='FHH' style={{color:'white'}}>
-                    BRING THE <span style={{color:'#ef571b'}}> BOIL </span> TO YOUR CITY
-                </h1>
+                <motion.h1 className='FHH' style={{color:'white'}}
 
-                <p className='FHT' style={{color:'white'}}>
+                    initial={{opacity:0, x:-50}}
+
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                >
+                    BRING THE <span style={{color:'#ef571b'}}> BOIL </span> TO YOUR CITY
+                </motion.h1>
+
+                <motion.p className='FHT' style={{color:'white'}}
+                    initial={{opacity:0, x:-50}}
+
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeInOut'}}
+                >
                     Unforgettable flavors. Loyal guests. Powerful Support. Let's build something amazing - together.
-                </p>
+                </motion.p>
 
                
 

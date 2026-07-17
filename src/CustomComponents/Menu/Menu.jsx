@@ -1,6 +1,6 @@
 import MenuBackground from '@/assets/img/back4.png'
 import './Menu.css'
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 
 import InfiniteAppetizerCarousel from './InfiniteAppetizerCarousel';
 import CreateYourOwn from './CreateYourOwn';
@@ -15,7 +15,7 @@ const Menu = () => {
             padding:'5%'
         }}
 
-        layout
+        
 
         transition={{ layout: { duration: 0.4, ease: 'easeInOut' }}}
 
@@ -24,9 +24,22 @@ const Menu = () => {
         className='flex items-center flex-col gap-5'
     >
 
-        <h1 className='MenuHeader2' style={{color:'#012447'}}>
+        
+        <motion.h1 
+            className='MenuHeader2' 
+            style={{color:'#012447'}}
+
+            initial={{opacity:0, y:-50}}
+
+            whileInView={{opacity:1, y:0}}
+
+            transition={{duration:.5, ease:'easeInOut'}}
+
+            viewport={{once:false}}
+        >
             EXPLORE OUR MENU
-        </h1>
+        </motion.h1>
+
 
         <MenuShowcase />
 

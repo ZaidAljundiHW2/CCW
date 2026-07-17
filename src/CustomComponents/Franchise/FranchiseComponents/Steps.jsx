@@ -8,6 +8,7 @@ import './WhyCC.css'
 import WhyCCCard from './WhyCCCard'
 import FranchiseItemsJSON from '@/assets/JSONs/franchisecards.json'
 import Step from './Step'
+import { motion } from 'motion/react'
 
 const Steps = () => {
   return (
@@ -56,28 +57,61 @@ const Steps = () => {
             <Flex
                 className='items-center gap-5'
             >
-                <h1 className='WhyCCHead' style={{color: '#ef571b'}}>
-                    HOW IT WORKS
-                </h1>
+                <motion.h1 className='WhyCCHead' style={{color: '#ef571b'}}
+                    initial={{opacity:0, x:-50}}
 
-                <img src={waveicon} style={{
-                                    width:'20%',
-                                    height:'auto',
-                                    objectFit:'contain'
-                                }}/>
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeInOut', delay:.3}}
+                >
+                    HOW IT WORKS
+                </motion.h1>
+
+                <motion.img src={waveicon} 
+                    style={{
+                        width:'20%',
+                        height:'auto',
+                        objectFit:'contain'
+                    }}
+
+                    initial={{opacity:0, x:-50}}
+
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeInOut', delay:.3}}
+
+                />
             </Flex>
 
-            <h1 className='WhyCCHead2' style={{color:'#012447', lineHeight:1.1}}>
-                YOUR JOURNEY TO OWNERSHIP
-            </h1>
+            <motion.h1 className='WhyCCHead2' style={{color:'#012447', lineHeight:1.1}}
+                initial={{opacity:0, x:-50}}
 
-            <img src={waveicon4} style={{width:'100px', height:'auto', paddingTop:'10px'}}/>
+                whileInView={{opacity:1, x:0}}
+
+                transition={{duration:.5, ease:'easeInOut', delay:.2}}
+            >
+                YOUR JOURNEY TO OWNERSHIP
+            </motion.h1>
+
+            <motion.img src={waveicon4} style={{width:'100px', height:'auto', paddingTop:'10px'}}
+                initial={{opacity:0, x:-50}}
+
+                whileInView={{opacity:1, x:0}}
+
+                transition={{duration:.5, ease:'easeInOut', delay:.1}}
+            />
             
 
 
-            <p className='WhyCCText' style={{color:'#012477'}}>
+            <motion.p className='WhyCCText' style={{color:'#012477'}}
+                initial={{opacity:0, x:-50}}
+
+                whileInView={{opacity:1, x:0}}
+
+                transition={{duration:.5, ease:'easeInOut'}}
+            >
                 Simple steps. Powerful partnership.
-            </p>
+            </motion.p>
 
 
         </Flex>
@@ -91,7 +125,7 @@ const Steps = () => {
             {FranchiseItemsJSON[2].map((card, i) => (
                 
                 
-                <Step CardItem={card} key={i}/>
+                <Step CardItem={card} index={i} key={i}/>
 
                     
                 

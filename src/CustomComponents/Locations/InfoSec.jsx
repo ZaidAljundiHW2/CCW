@@ -4,10 +4,22 @@ import { Flex, Box } from '@chakra-ui/react'
 import ClockIcon from '@/assets/icons/contact-clock-orange.png'
 import './InfoSec.css'
 import { resolveImg } from '@/customLib/utils/resolveImage'
+import { motion } from 'motion/react'
 
-const InfoSec = ({info}) => {
+const InfoSec = ({info, index}) => {
+    console.log(index);
   return (
-    <div className='w-full flex gap-5 items-center'>
+    <motion.div className='w-full flex gap-5 items-center'
+
+        initial={{opacity:0, y:-50}}
+
+        whileInView={{opacity:1, y:0}}
+
+        transition={{duration:.5, ease:'easeInOut', delay:index*.2}}
+
+        
+
+    >
 
         <div className='md:w-10 w-5 aspect-square shrink-0 overflow-hidden'>
             <img
@@ -35,7 +47,7 @@ const InfoSec = ({info}) => {
 
 
 
-    </div>
+    </motion.div>
   )
 }
 

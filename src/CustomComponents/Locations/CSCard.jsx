@@ -3,11 +3,12 @@ import { Flex, Heading } from '@chakra-ui/react'
 import './CSCard.css'
 import TorontoSketch from '@/assets/img/torontosketch.jpg'
 import { IoLocationSharp } from "react-icons/io5";
+import { motion } from 'framer-motion';
 
-const CSCard = ({image, location}) => {
+const CSCard = ({image, location, index}) => {
   return (
     
-    <Flex
+    <motion.div
         className='
             rounded-lg
             shadow-lg
@@ -16,6 +17,7 @@ const CSCard = ({image, location}) => {
             overflow-hidden
             min-w-[0]
             md:flex-1
+            flex
             w-[45%]
             CSCard
             
@@ -27,6 +29,12 @@ const CSCard = ({image, location}) => {
             backgroundSize:'cover',
             backgroundPosition:'center'
         }}
+
+        initial={{opacity:0, x:-50}}
+
+        whileInView={{opacity:1, x:0}}
+
+        transition={{duration:.5, ease:'easeInOut', delay:.2 * index}}
     >
 
 
@@ -51,7 +59,7 @@ const CSCard = ({image, location}) => {
 
 
 
-    </Flex>
+    </motion.div>
 
   )
 }

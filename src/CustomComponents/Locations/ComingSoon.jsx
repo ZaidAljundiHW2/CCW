@@ -8,6 +8,7 @@ import TorontoSketch from '@/assets/img/torontosketch.jpg'
 import MississaugaSketch from '@/assets/img/mississaugasketch.jpg'
 import OttowaSketch from '@/assets/img/ottowasketch.jpg'
 import { HiH1 } from 'react-icons/hi2'
+import { motion } from 'motion/react'
 
 const ComingSoon = () => {
   return (
@@ -33,24 +34,50 @@ const ComingSoon = () => {
         {/* Text */}
         <Flex className='flex-1 gap-5 items-center justify-center'>
 
-            <div>
+            <motion.div
+                initial={{opacity:0, x:-50}}
+
+                whileInView={{opacity:1, x:0}}
+
+                transition={{duration:.5, ease:'easeInOut'}}
+            >
                 <img src={Lighthouse}/>
-            </div>
+            </motion.div>
 
             <Flex className='flex-col'>
 
-                <h1 className='CSH'>
+                <motion.h1 className='CSH'
+                    initial={{opacity:0, x:-50}}
+
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeInOut', delay:.2}}
+                >
                     MORE LOCATIONS COMING SOON.
-                </h1>
+                </motion.h1>
 
-                <img src={Wave2} style={{
-                    height:'20px',
-                    width:'auto'
-                }}/>
+                <motion.img src={Wave2} 
+                    style={{
+                        height:'20px',
+                        width:'auto'
+                    }}
 
-                <p className='CST'>
+                    initial={{opacity:0, x:-50}}
+
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeInOut', delay:.1}}
+                />
+
+                <motion.p className='CST'
+                    initial={{opacity:0, x:-50}}
+
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeInOut'}}
+                >
                     We're setting sail for new shores! Captain's Crab is expanding to bring bold, craveable seafood experiences to communities across Canada.
-                </p>    
+                </motion.p>    
 
             </Flex>
             
@@ -61,9 +88,9 @@ const ComingSoon = () => {
         {/* Cards */}
         <Flex className='flex-1 w-full gap-5 flex-wrap' style={{padding:'20px'}}>
 
-            <CSCard image={TorontoSketch} location={"Toronto"}/>
-            <CSCard image={MississaugaSketch} location={"Mississauga"}/>
-            <CSCard image={OttowaSketch} location={"Ottowa"}/>
+            <CSCard image={TorontoSketch} index={0} location={"Toronto"}/>
+            <CSCard image={MississaugaSketch} index={1} location={"Mississauga"}/>
+            <CSCard image={OttowaSketch} index={2} location={"Ottowa"}/>
 
         </Flex>
         

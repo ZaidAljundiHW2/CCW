@@ -10,6 +10,7 @@ import TiktokIcon from '@/assets/icons/tiktok.png'
 import BoilBag from '@/assets/img/boil-bag-cutout-transparent.png'
 import Tray from '@/assets/img/catering-trays-source.png'
 import Back3 from '@/assets/img/back3.png'
+import { motion } from 'motion/react'
 
 const Contact = () => {
   return (
@@ -28,11 +29,24 @@ const Contact = () => {
     
     >
 
-        <h1 className='CUH' style={{color:'white'}}>
-            CONTACT US
-        </h1>
+        <motion.h1 className='CUH' style={{color:'white'}}
+            initial={{opacity:0, x:-50}}
 
-        <Flex className='flex-1 md:flex-row contactwrapper flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg md:gap-5 gap-0' padding={'2%'}>
+            whileInView={{opacity:1, x:0}}
+
+            transition={{duration:.5, ease:'easeInOut', delay:.1}}
+        >
+            CONTACT US
+        </motion.h1>
+
+        <motion.Flex className='flex flex-1 md:flex-row contactwrapper flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg md:gap-5 gap-0' 
+            style={{padding:'2%'}}
+            initial={{opacity:0, y:-50}}
+
+            whileInView={{opacity:1, y:0}}
+
+            transition={{duration:.5, ease:'easeOut'}}
+        >
 
             {/* Contact Form */}
             <Flex
@@ -166,7 +180,7 @@ const Contact = () => {
 
             </Flex>
 
-        </Flex>
+        </motion.Flex>
 
         
       
