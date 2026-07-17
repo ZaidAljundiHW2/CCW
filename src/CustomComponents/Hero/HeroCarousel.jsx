@@ -57,11 +57,7 @@ const HeroCarousel = () => {
       >
 
         <Box
-          style={{
-            position:'absolute',
-            width:'auto',
-            aspectRatio:'auto'
-          }}
+          
 
           className='visualbox'
 

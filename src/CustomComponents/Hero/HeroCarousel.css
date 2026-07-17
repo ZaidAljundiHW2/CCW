@@ -11,7 +11,8 @@
 
 .visualbox {
   aspect-ratio: auto;
-  width:auto
+  position: absolute;
+  width:60%
 }
 
 
