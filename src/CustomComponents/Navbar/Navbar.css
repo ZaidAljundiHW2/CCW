@@ -50,6 +50,7 @@
 .orderbutton {
     border-width: 2px;
     border-color: white;
+    color: white;
     padding: 10px;
     display: flex;
     justify-content: center;
