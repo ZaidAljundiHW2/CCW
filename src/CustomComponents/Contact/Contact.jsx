@@ -28,7 +28,7 @@ const Contact = () => {
     
     >
 
-        <h1 className='CUH'>
+        <h1 className='CUH' style={{color:'white'}}>
             CONTACT US
         </h1>
 
@@ -88,7 +88,7 @@ const Contact = () => {
 
                     <Flex className='flex-col gap-0'>
 
-                        <h1 className='CUH2'>
+                        <h1 className='CUH2' style={{color:'white'}}>
                             FOLLOW US
                         </h1>
 
@@ -105,7 +105,7 @@ const Contact = () => {
                                 height:'40px',
                                 width:'40px'
                             }}/>
-                            <Text className='CUT'>
+                            <Text className='CUT' style={{color:'white'}}>
                                 @captainscrab.ca
                             </Text>
 
@@ -117,7 +117,7 @@ const Contact = () => {
                                 height:'40px',
                                 width:'40px'
                             }}/>
-                            <Text className='CUT'>
+                            <Text className='CUT' style={{color:'white'}}>
                                 @captainscrab.ca
                             </Text>
 
@@ -129,7 +129,7 @@ const Contact = () => {
                                 height:'40px',
                                 width:'40px'
                             }}/>
-                            <Text className='CUT'>
+                            <Text className='CUT' style={{color:'white'}}>
                                 /captainscrab.ca
                             </Text>
 

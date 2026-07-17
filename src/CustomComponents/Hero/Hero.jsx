@@ -65,6 +65,8 @@ const Hero = () => {
             <motion.h1 
               className='heroheader'
 
+              style={{color:'white'}}
+
               initial={{opacity:0, x:-100}}
 
               animate={{opacity:1, x:0}}
@@ -110,6 +112,8 @@ const Hero = () => {
             transition={{duration:1, ease:'easeInOut'}}
 
             className='herotext'
+
+            style={{color:'white'}}
           >
             Premium seafood boils, bold flavours, and an unforgettable experience - in Burlington and coming to communities across Canada.
           </motion.p>

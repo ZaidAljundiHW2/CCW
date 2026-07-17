@@ -157,6 +157,7 @@ const CreateYourOwn = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
+                            style={{color:'white'}}
                             transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeInOut' }}}
                             className="MenuHeader"
                             layout
@@ -230,7 +231,7 @@ const CreateYourOwn = () => {
                     
                     <motion.div layout='position'>
 
-                        <h1 className='MenuText'>
+                        <h1 className='MenuText' style={{color:'white'}}>
                             {order}
                         </h1>
 
@@ -342,7 +343,7 @@ const CreateYourOwn = () => {
                             "
                             
                         >
-                            <motion.h1 layout className='MenuHeader'>
+                            <motion.h1 layout className='MenuHeader' style={{color:'white'}}>
                                 {order}
                             </motion.h1>
 

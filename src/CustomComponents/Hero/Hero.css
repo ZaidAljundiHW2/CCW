@@ -25,6 +25,7 @@
     align-items: center;
     gap: 5px;
     font-size: clamp(.6rem, 1vw, 1.5rem);
+    color: white;
 }
 
 .herotext {

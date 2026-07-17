@@ -47,11 +47,11 @@ const FranchiseHeader = () => {
                 '
             >
 
-                <h1 className='FHH'>
+                <h1 className='FHH' style={{color:'white'}}>
                     BRING THE <span style={{color:'#ef571b'}}> BOIL </span> TO YOUR CITY
                 </h1>
 
-                <p className='FHT'>
+                <p className='FHT' style={{color:'white'}}>
                     Unforgettable flavors. Loyal guests. Powerful Support. Let's build something amazing - together.
                 </p>
 

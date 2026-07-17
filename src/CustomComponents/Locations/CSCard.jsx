@@ -42,7 +42,7 @@ const CSCard = ({image, location}) => {
 
 
             <Flex className='items-center justify-center bg-[#012447] rounded-lg CSCardbutton'>
-                <h1 className='CSCT'>
+                <h1 className='CSCT' style={{color:'white'}}>
                     Coming Soon
                 </h1>
 
