@@ -92,15 +92,8 @@ const HeroCarousel = () => {
                 muted
                 playsInline
                 onEnded={() => setVideoEnded(true)}
-                style={{
-                  position:'absolute',
-                  right:'7%',
-                  bottom:'35%',
-                  width:'200%',
-                  height:'200%',
-                  objectFit:'contain',
-                  mixBlendMode:'screen'
-                }}
+                className='smoke'
+                
 
                 initial={{opacity:0}}
                 animate={{opacity:1}}
@@ -123,15 +116,8 @@ const HeroCarousel = () => {
                 autoPlay
                 muted
                 playsInline
-                style={{
-                  position:'absolute',
-                  right:'7%',
-                  bottom:'35%',
-                  width:'200%',
-                  height:'200%',
-                  objectFit:'contain',
-                  mixBlendMode:'screen'
-                }}
+                className='smoke'
+
 
                 onEnded={updateLoopIndex}
                 initial={{opacity:0}}
@@ -153,15 +139,8 @@ const HeroCarousel = () => {
                 autoPlay
                 muted
                 playsInline
-                style={{
-                  position:'absolute',
-                  right:'7%',
-                  bottom:'35%',
-                  width:'200%',
-                  height:'200%',
-                  objectFit:'contain',
-                  mixBlendMode:'screen'
-                }}
+                className='smoke'
+
 
                 onEnded={updateLoopIndex}
                 initial={{opacity:0}}

@@ -1,37 +1,19 @@
-.carousel,
-.carousel-inner,
-.carousel-item {
-  height: 100%;
-}
-
-.herocarimg {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 .smoke {
-  mix-blend-mode: screen;
-  position: absolute;
-  width:10%;
-  height:auto;
-  top: -64%;
-  left:17%;
-  transform:scale(1.5);
+  position:absolute;
+  right:7%;
+  bottom:35%;
+  width:200%;
+  height:200%;
+  object-fit:contain;
+  mix-blend-mode:screen
 
 }
 
 .visualbox {
-  height:90%;
   aspect-ratio: auto;
   width:auto
 }
 
-.foodbucket {
-  width:100%;
-  height:100%
-}
 
 @media (max-width:912px) {
   
