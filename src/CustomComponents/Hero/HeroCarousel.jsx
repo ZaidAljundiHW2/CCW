@@ -24,7 +24,6 @@ const HeroCarousel = () => {
 
   }
 
-  document.querySelector('video').playbackRate = 0.25; // 75% speed 
   return (
     <div 
       className="
