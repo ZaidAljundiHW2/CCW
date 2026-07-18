@@ -305,6 +305,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
                 left-[50%]
                 md:w-[50%]
                 w-[90%]
+                h-[50%]
                 rounded-lg
                 shadow-lg
                 flex
