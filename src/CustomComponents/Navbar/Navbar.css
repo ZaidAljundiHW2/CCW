@@ -11,7 +11,7 @@
 
 }
 
-.componentBar button {
+.componentBar .Link {
     white-space: nowrap;
     flex-shrink: 0;
     height: 50px;
@@ -30,7 +30,7 @@
 }
 
 
-.componentBar button:hover {
+.componentBar .Link:hover {
 
     background: rgb(54, 54, 54);
     transition: .2s;
@@ -79,7 +79,8 @@
 }
 
 
-@media (max-width:912px) {
+
+@media (max-width:1024px) {
     .componentBar {
         display: none;
     }

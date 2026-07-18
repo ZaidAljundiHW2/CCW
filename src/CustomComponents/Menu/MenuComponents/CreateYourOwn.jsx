@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Flex, Grid, Button } from '@chakra-ui/react'
 import MenuBackground from '@/assets/img/back4.png'
-import './Menu.css'
+import '../Menu.css'
 import { IoArrowBackCircle } from "react-icons/io5";
 import ItemCard from './ItemCard';
 import MenuItemsJSON from '@/assets/JSONs/buildyourownitems.json'
@@ -12,7 +12,6 @@ import RestBack from '@/assets/img/Backgrounds/restback.jpg'
 // Bucket Imports
 import BucketImg from '@/assets/img/FoodShowcase/bucket.png'
 import BucketImagesJSON from '@/assets/JSONs/BucketImages.json'
-import InfiniteAppetizerCarousel from './InfiniteAppetizerCarousel';
 
 import { resolveImg } from '@/customLib/utils/resolveImage';
 

@@ -24,7 +24,7 @@ const Contact = () => {
 
         id='contact'
 
-        className='flex flex-col gap-5 aboutwrapper'
+        className='flex flex-col gap-5 contactwrapper'
         
     
     >
@@ -39,7 +39,7 @@ const Contact = () => {
             CONTACT US
         </motion.h1>
 
-        <motion.Flex className='flex flex-1 md:flex-row contactwrapper flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg md:gap-5 gap-0' 
+        <motion.Flex className='flex md:flex-row flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg md:gap-5 gap-0' 
             style={{padding:'2%'}}
             initial={{opacity:0, y:-50}}
 
@@ -181,6 +181,8 @@ const Contact = () => {
             </Flex>
 
         </motion.Flex>
+
+        
 
         
       

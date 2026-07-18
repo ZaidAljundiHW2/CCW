@@ -50,9 +50,11 @@ const MenuShowcase = () => {
         <Flex
             className='
                 w-full
-                justify-center
+                md:justify-center
+                justify-start
                 items-center
-
+                overflow-x-scroll
+                md:overflow-x-auto
                 gap-[5%]
             '
         >

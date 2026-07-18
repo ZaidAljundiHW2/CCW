@@ -1,5 +1,5 @@
 .msbutton {
-    padding:clamp(3px, 2%, 6px);
+    padding:clamp(0px, 2%, 6px);
     width: clamp(50px, 100%, 120px);
     width: clamp(50px, 100%, 120px);
     font-size: 1rem

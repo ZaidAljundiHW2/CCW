@@ -1,7 +1,7 @@
 import React from 'react'
-import ExistingLocation from './ExistingLocation'
-import FutureLocations from './FutureLocations'
-import ComingSoon from './ComingSoon'
+import ExistingLocation from './LocationsComponents/ExistingLocation'
+import FutureLocations from './LocationsComponents/FutureLocations'
+import ComingSoon from './LocationsComponents/ComingSoon'
 
 const Locations = () => {
   return (

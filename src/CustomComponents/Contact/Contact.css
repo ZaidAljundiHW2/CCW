@@ -3,14 +3,19 @@
     src: url('@/assets/personal_services/Personal Services.ttf');
 }
 
-.aboutwrapper {
-    padding:20px
+.contactwrapper {
+    padding:20px;
+    justify-content: center;
+    min-height: 0;
+    min-height: 100vh
+
 }
 
 .CUH {
     color: white;
     font-family: 'PersonalServices', sans-serif;
     font-size: clamp(2rem, 3vw, 3.5rem);
+    padding-top: 100px;
 
 }
 
@@ -54,10 +59,13 @@
         padding:5px
     }
 
-    .aboutwrapper {
-        padding:20px
+    .contactwrapper {
+        padding:20px;
     }
 
+    .CUH {
+        padding-top: ;
+    }
 
    
 
@@ -82,4 +90,5 @@
 
     }
 }
+
 

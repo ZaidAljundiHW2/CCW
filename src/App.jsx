@@ -13,7 +13,9 @@ import { useState, useEffect } from 'react'
 
 const App = () => {
 
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+
+  
 
   useEffect(() => {
     const handleLoad = () => setIsLoading(false)
@@ -33,23 +35,8 @@ const App = () => {
 
   return (
     <div className='overflow-hidden'>
-
-      <Navbar />
       
       <Hero />
-
-      <Menu />
-
-      <Locations />
-
-      <Franchise />
-
-      <About />
-
-      <Contact />
-
-      <Footer />
-
       
     </div>
   )

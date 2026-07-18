@@ -1,10 +1,8 @@
 import MenuBackground from '@/assets/img/back4.png'
 import './Menu.css'
 import { motion, AnimatePresence } from 'motion/react';
-
-import InfiniteAppetizerCarousel from './InfiniteAppetizerCarousel';
-import CreateYourOwn from './CreateYourOwn';
-import MenuShowcase from './MenuShowcase';
+import CreateYourOwn from './MenuComponents/CreateYourOwn';
+import MenuShowcase from './MenuComponents/MenuShowcase';
 
 const Menu = () => {
 
@@ -12,8 +10,10 @@ const Menu = () => {
     <motion.div 
         style={{
             background:'#f4f4f4',
-            padding:'5%'
+            
         }}
+
+        
 
         
 
@@ -21,7 +21,7 @@ const Menu = () => {
 
     
         id='menu'
-        className='flex items-center flex-col gap-5'
+        className='flex items-center flex-col gap-5 menuwrapper'
     >
 
         

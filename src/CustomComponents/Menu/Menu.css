@@ -22,9 +22,12 @@
 
 .MenuHeader2 {
     font-family: PersonalServices, 'sans-serif';
-    font-size: clamp(1.25rem, 3vw, 3.5rem);
+    font-size: clamp(1.5rem, 3vw, 3.5rem);
     color: #012447;
+    padding-top: 50px;
 }
+
+
 
 .MenuCard {
     background-image: linear-gradient(to right, #012447, #1c3752);
@@ -40,11 +43,16 @@
     padding:20px
 }
 
+.menuwrapper {
+    padding:5%;
+}
 
-@media (max-width:768px) {
+
+@media (max-width:912px) {
 
     .MenuHeader2 {
         text-align: center;
+        padding-top: 150px;
     }
 
     .MenuCard {
@@ -62,7 +70,24 @@
     .MenuHeader {
         text-align: center;
     }
+
+    .menuwrapper {
+        min-height: 100vh;
+    }
 }
+
+@media (width:1024px) {
+
+    .MenuHeader2 {
+        text-align: center;
+        padding-top: 15%;
+    }
+
+    .menuwrapper {
+        min-height: 100vh;
+    }
+}
+
 
 
 

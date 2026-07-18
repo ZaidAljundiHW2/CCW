@@ -10,11 +10,13 @@ const FranchiseHeader = () => {
     <div
         className='
             flex
-            items-center
+            items-end
             justify-center
             overflow-hidden
             gap-2
             md:gap-10
+            
+            
         '
 
         style={{
@@ -27,7 +29,7 @@ const FranchiseHeader = () => {
     >
 
         <div 
-            className='relative flex items-center justify-center w-[22%]'
+            className='relative flex items-center justify-center w-[22%] FHImgWr'
         >
             <img 
                 src={SeafoodPile}

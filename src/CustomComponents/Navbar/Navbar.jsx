@@ -12,6 +12,7 @@ import { AnimatePresence } from 'motion/react';
 import { Menu, Portal } from "@chakra-ui/react"
 import OrderPopup from './OrderPopup';
 import BookReservationPopup from './BookReservationPopup';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -96,7 +97,7 @@ const Navbar = () => {
                 </Box>
 
                 <Menu.Root >
-                    <Menu.Trigger asChild>
+                    <Menu.Trigger asChild className='dropdown'>
                         <Box 
                             className='
                                 flex 
@@ -131,13 +132,33 @@ const Navbar = () => {
                     <Portal>
                         <Menu.Positioner>
                         <Menu.Content>
-                            <Menu.Item onClick={(e) => handleNavLink(e, "#home")}>Home</Menu.Item>
-                            <Menu.Item onClick={(e) => handleNavLink(e, '#menu')}>Menu</Menu.Item>
-                            <Menu.Item onClick={(e) => handleNavLink(e, '#locations')}>Locations</Menu.Item>
-                            <Menu.Item onClick={(e) => handleNavLink(e, '#franchise')}>Franchise</Menu.Item>
-                            <Menu.Item onClick={(e) => handleNavLink(e, '#about')}>About</Menu.Item>
-                            <Menu.Item onClick={(e) => handleNavLink(e, '#contact')}>Contact</Menu.Item>
-                            <Menu.Item value="export">Book</Menu.Item>
+                            <Link to={'/'}>
+                                <Menu.Item>Home</Menu.Item>
+                            </Link>
+
+                            <Link to={'/Menu'}>
+                                <Menu.Item>Menu</Menu.Item>
+                            </Link>
+
+                            <Link to={'/Locations'}>
+                                <Menu.Item>Locations</Menu.Item>
+                            </Link>
+
+                            <Link to={'/Franchise'}>
+                                <Menu.Item>Franchise</Menu.Item>
+                            </Link>
+
+                            <Link to={'/About'}>
+                                <Menu.Item>About</Menu.Item>
+                            </Link>
+                            
+                            <Link to={'/Contact'}>
+                                <Menu.Item>Contact</Menu.Item>
+                            </Link>
+
+                            <Link>
+                                <Menu.Item value="export">Book</Menu.Item>
+                            </Link>
                         </Menu.Content>
                         </Menu.Positioner>
                     </Portal>
@@ -157,74 +178,41 @@ const Navbar = () => {
 
                             key={'navbar'}
 
-                            initial ={{
-                                opacity: 0,
-                                x:-100
-                            }}
-
-                            animate ={{
-                                opacity: 1,
-                                x:0
-                            }}
-
-                            exit={{
-                                opacity:0,
-                                x:-100
-                            }}
+                            initial ={{ opacity: 0, x:-100 }}
+                            animate ={{ opacity: 1, x:0 }}
+                            exit={{ opacity:0, x:-100 }}
 
                             
                         >
 
-                        
-                            <button
-            
-                                onClick={(e) => handleNavLink(e, "#home")}
-
-                               
-                            
-                            >
+                            <Link to={'/'} className='Link'>
                                 Home
-                            </button>
-
-                            <button onClick={(e) => handleNavLink(e, '#menu')}>
+                            </Link>
+                            
+                            <Link to={'/Menu'} className='Link'>
                                 Menu
-                            </button>
-
-                            <button
-                                onClick={(e) => handleNavLink(e, "#locations")}
-                            >
+                            </Link>
+                            
+                            <Link to={'/Locations'} className='Link'>
                                 Locations
-                            </button>
-
-                             <button
-                                onClick={(e) => handleNavLink(e, "#franchise")}
-                            >
+                            </Link>
+                            
+                            <Link to={'/Franchise'} className='Link'>
                                 Franchise
-                            </button>
+                            </Link>
 
-                            <button
-                                onClick={(e) => handleNavLink(e, "#about")}
-                            >
+                            <Link to={'/About'} className='Link'>
                                 About
-                            </button>
-
-                            <button
-                                onClick={(e) => handleNavLink(e, "#contact")}
-                            >
+                            </Link>
+                            
+                            <Link to={'/Contact'} className='Link'>
                                 Contact
-                            </button>
+                            </Link>
 
-                           
-
-
-
-                            <button
-                                className='book'
-
-                                onClick={() => setShowBook(true)}
-                            >
+                            
+                            <Link className='book Link' onClick={() => setShowBook(true)}>
                                 Book Now
-                            </button>
+                            </Link>
 
                             
 

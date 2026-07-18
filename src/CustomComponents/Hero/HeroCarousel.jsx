@@ -21,8 +21,10 @@ const HeroCarousel = () => {
     const updatedIndex = (currIndex + 1) % 2;
 
     setLoopIndex(updatedIndex);
+
   }
 
+  document.querySelector('video').playbackRate = 0.25; // 75% speed 
   return (
     <div 
       className="
@@ -90,7 +92,7 @@ const HeroCarousel = () => {
                 onEnded={() => setVideoEnded(true)}
                 className='smoke'
                 
-
+                
                 initial={{opacity:0}}
                 animate={{opacity:1}}
                 exit={{opacity:0}}

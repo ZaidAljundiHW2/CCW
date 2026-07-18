@@ -6,13 +6,17 @@
 .ELH {
     color: black;
     font-family: 'PersonalServices', sans-serif;
-    font-size: clamp(1rem, 1.5vw, 2rem);
+    font-size: clamp(1rem, 3vw, 5rem);
+}
+
+.SELW {
+    padding:20% 5% 5% 5%;
 }
 
 .ELH2 {
     color: #012447;
     font-family: 'PersonalServices', sans-serif;
-    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    font-size: clamp(1.5rem, 4vw, 5rem);
 }
 
 .ELT {
@@ -40,6 +44,14 @@
     color:#ef571b
 }
 
-@media (max-width:768px) {
+@media (max-width:912px) {
+
+    .ELFC {
+        padding-top: 30%;
+    }
+
+    .SELW {
+    padding:5% 5% 5% 5%;
+}
 
 }

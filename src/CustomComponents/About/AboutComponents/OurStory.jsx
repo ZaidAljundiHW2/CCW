@@ -13,10 +13,9 @@ const OurStory = () => {
       className='
         flex
         md:flex-row
-        md:min-h-[0vh]
         flex-col
-        
-        min-h-[50vh]
+        ourstorywrapper
+        min-h-[60vh]
       '
     >
 
@@ -25,7 +24,7 @@ const OurStory = () => {
       </Flex>
 
       {/* Content */}
-      <Flex className='flex-col md:w-[40%] md:h-full h-[40%] oscw' style={{background:'#e3f6fc'}}>
+      <Flex className='flex-col md:w-[40%] justify-center oscw' style={{background:'#e3f6fc'}}>
 
         <Flex
           className='items-center gap-5'
