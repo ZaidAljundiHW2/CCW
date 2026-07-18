@@ -106,6 +106,10 @@ const Footer = forwardRef((props, ref) => {
                     <p className='footertext footertextclickable'>Contact</p>
                 </Link>
 
+                <Link to={'/Book'}>
+                    <p className='footertext footertextclickable'>Book</p>
+                </Link>
+
             </Flex>
 
             {/* Contact */}

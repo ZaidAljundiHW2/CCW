@@ -32,6 +32,12 @@
 .ELBook {
     background-color: #012447;
     color: white;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding:10px;
+    border-radius: 20px;
 }
 
 .ELBook:hover {
@@ -42,6 +48,12 @@
 .ELDir {
     background-color: #ef571b;
     color: white;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding:10px;
+    border-radius: 20px;
 } 
 
 .ELDir:hover {

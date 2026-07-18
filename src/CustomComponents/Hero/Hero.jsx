@@ -9,6 +9,7 @@ import { FaDoorClosed } from "react-icons/fa";
 import backalt from '@/assets/img/altback.png'
 import BookReservationPopup from '../Navbar/BookReservationPopup'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
 
@@ -162,24 +163,24 @@ const Hero = () => {
             transition={{duration:1, ease:'easeInOut'}}
           >
 
-            <button className='herobutton' style={{background:'#ef571b'}} onClick={(e) => (handleNavLink(e, '#menu'))}>
+            <Link to={'/Menu'} className='herobutton' style={{background:'#ef571b'}}>
               View Menu
 
               <FaClipboard />
-            </button>
+            </Link>
 
-            <button className='herobutton' style={{background:'black'}} onClick={() => setShowBook(true)}>
+            <Link to={'/Book'} className='herobutton' style={{background:'black'}}>
               Book a Table
 
               <FaCalendarAlt />
-            </button>
+            </Link>
               
             
-            <button className='herobutton' style={{background:'#68a7d6'}} onClick={(e) => (handleNavLink(e,'#franchise'))}>
+            <Link to={'/Franchise'} className='herobutton' style={{background:'#68a7d6'}}>
               Request Franchise
 
               <FaDoorClosed />
-            </button>
+            </Link>
 
             
 

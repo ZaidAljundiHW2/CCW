@@ -11,6 +11,7 @@ import WaveIcon from '@/assets/icons/waveicon.png'
 import WaveIcon2 from '@/assets/icons/waveicon2.png'
 import ELBack from '@/assets/img/Backgrounds/elback.png'
 import { motion } from 'motion/react'
+import { Link } from 'react-router-dom'
 
 const ExistingLocation = () => {
 
@@ -160,18 +161,16 @@ const ExistingLocation = () => {
 
                 <Flex className='w-full items-center justify-center gap-5' padding={'5%'}>
 
-                    <Button className='flex-1 ELDir'>
+                    <button className='ELDir'>
 
                         Directions
 
-                    </Button>
+                    </button>
 
 
-                    <Button className='flex-1 ELBook'>
-
+                    <Link className='ELBook' to={'/Book'}>
                         Book
-
-                    </Button>
+                    </Link>
                 </Flex>
 
                 
