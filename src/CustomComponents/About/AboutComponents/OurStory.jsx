@@ -12,9 +12,10 @@ const OurStory = () => {
     <div
       className='
         flex
-        md:flex-row
         flex-col
+        md:flex-row
         ourstorywrapper
+        md:min-h-[100vh]
         min-h-[60vh]
       '
     >
@@ -24,7 +25,7 @@ const OurStory = () => {
       </Flex>
 
       {/* Content */}
-      <Flex className='flex-col md:w-[40%] justify-center oscw' style={{background:'#e3f6fc'}}>
+      <Flex className='w-[40%] flex-col justify-center oscw' style={{background:'#e3f6fc'}}>
 
         <Flex
           className='items-center gap-5'
@@ -57,7 +58,7 @@ const OurStory = () => {
             BORN BY THE COAST. MADE FOR YOU.
         </motion.h1> 
 
-        <Flex className='flex flex-col gap-5'>
+        <Flex className='flex flex-col'>
           <motion.p className='WhyCCText' style={{color:'#012477'}}
             initial={{opacity:0, x:50}}
 

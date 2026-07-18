@@ -29,7 +29,7 @@ const Contact = () => {
     
     >
 
-        <motion.h1 className='CUH' style={{color:'white'}}
+        <motion.h1 className='CUH' style={{color:'white', paddingTop:'var(--nav-height)'}}
             initial={{opacity:0, x:-50}}
 
             whileInView={{opacity:1, x:0}}

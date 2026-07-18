@@ -21,8 +21,10 @@ const ExistingLocation = () => {
             flex
             md:flex-row
             flex-col
-            md:min-h-[70vh]
+            
         '
+
+        
         
     >
 
@@ -32,6 +34,7 @@ const ExistingLocation = () => {
                 backgroundImage: `url(${ELBack})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
+
             }}
         >
 
@@ -51,7 +54,7 @@ const ExistingLocation = () => {
                     
                 '
 
-                style={{padding:'3%', background:'rgb(255 255 255 / 85%) '}}
+                style={{padding:'3%', background:'rgb(255 255 255 / 85%) ', paddingTop:'var(--nav-height)'}}
             >
 
                 <motion.div className='flex w-full'
@@ -119,7 +122,8 @@ const ExistingLocation = () => {
                 
             '
             style={{
-                padding:'1%'
+                paddingTop:'var(--nav-height)'
+
             }}
         >
 

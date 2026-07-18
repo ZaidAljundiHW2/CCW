@@ -24,7 +24,6 @@
     font-family: PersonalServices, 'sans-serif';
     font-size: clamp(1.5rem, 3vw, 3.5rem);
     color: #012447;
-    padding-top: 50px;
 }
 
 
@@ -44,16 +43,16 @@
 }
 
 .menuwrapper {
-    padding:5%;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    padding:20px
 }
+
 
 
 @media (max-width:912px) {
 
-    .MenuHeader2 {
-        text-align: center;
-        padding-top: 150px;
-    }
+    
 
     .MenuCard {
         gap:0
@@ -71,21 +70,7 @@
         text-align: center;
     }
 
-    .menuwrapper {
-        min-height: 100vh;
-    }
-}
-
-@media (width:1024px) {
-
-    .MenuHeader2 {
-        text-align: center;
-        padding-top: 15%;
-    }
-
-    .menuwrapper {
-        min-height: 100vh;
-    }
+    
 }
 
 

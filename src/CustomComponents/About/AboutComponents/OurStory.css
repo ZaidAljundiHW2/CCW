@@ -4,24 +4,21 @@
     background-position: center;
 }
 
-.oscw {
-    padding: 150px 40px 40px 40px;
-
-    width:40%
-}
 
 .ourstorywrapper {
-    min-height: 70vh;
-    flex-direction: row;
+    min-height: 100vh;
 }
 
-@media (max-width:912px) {
+.oscw {
+    padding:20px
+}
+
+@media (max-width:1024px) {
 
     .ourstorycontainer {
         background-image: url('/src/assets/img/Backgrounds/aboutusmobile2.png');
         background-size: 100% 100%;
         background-position: center;
-        padding-top: 150px;
     }
 
     .ourstorywrapper {

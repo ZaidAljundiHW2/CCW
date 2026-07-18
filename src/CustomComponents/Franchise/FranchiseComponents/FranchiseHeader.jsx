@@ -10,7 +10,7 @@ const FranchiseHeader = () => {
     <div
         className='
             flex
-            items-end
+            items-center
             justify-center
             overflow-hidden
             gap-2
@@ -34,6 +34,10 @@ const FranchiseHeader = () => {
             <img 
                 src={SeafoodPile}
                 className="w-full h-auto object-contain"
+                style={{
+                    paddingTop:'var(--nav-height)'
+
+                }}
             />
         </div>
 
@@ -50,13 +54,14 @@ const FranchiseHeader = () => {
                 '
             >
 
-                <motion.h1 className='FHH' style={{color:'white'}}
+                <motion.h1 className='FHH' style={{color:'white', paddingTop:'var(--nav-height)'}}
 
                     initial={{opacity:0, x:-50}}
 
                     whileInView={{opacity:1, x:0}}
 
                     transition={{duration:.5, ease:'easeOut', delay:.1}}
+
                 >
                     BRING THE <span style={{color:'#ef571b'}}> BOIL </span> TO YOUR CITY
                 </motion.h1>

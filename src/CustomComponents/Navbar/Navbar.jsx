@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Box, Flex, Button, Heading } from '@chakra-ui/react'
 import { CiCirclePlus } from "react-icons/ci";
 import './Navbar.css'
@@ -14,7 +14,7 @@ import OrderPopup from './OrderPopup';
 import BookReservationPopup from './BookReservationPopup';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = forwardRef((props, ref) => {
 
 
     // const navcomponents = ['Home']
@@ -55,7 +55,7 @@ const Navbar = () => {
 
   return (
 
-    <div className='fixed w-full z-50' id='navbar'>
+    <div className='fixed w-full z-50' id='navbar' ref={ref}>
 
         <Flex 
             className='w-full h-[12vh]'
@@ -280,6 +280,6 @@ const Navbar = () => {
       
     </div>
   )
-}
+})
 
 export default Navbar

@@ -27,7 +27,7 @@ const Menu = () => {
         
         <motion.h1 
             className='MenuHeader2' 
-            style={{color:'#012447'}}
+            style={{color:'#012447', paddingTop:'var(--nav-height)'}}
 
             initial={{opacity:0, y:-50}}
 
