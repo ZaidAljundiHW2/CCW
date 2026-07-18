@@ -6,7 +6,6 @@
 .contactwrapper {
     padding:20px;
     min-height: 0;
-    min-height: 100vh
 
 }
 
@@ -84,4 +83,11 @@
     }
 }
 
+@media (orientation: portrait) {
+
+    .contactwrapper {
+        
+        min-height: calc(100vh - var(--footer-height));
+    }
+}
 

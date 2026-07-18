@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex } from '@chakra-ui/react'
-import BookForm from './BookForm'
+import BookForm from '../Book/BookForm'
 import { useEffect } from 'react'
 
 const BookReservationPopup = ({setShowBook}) => {

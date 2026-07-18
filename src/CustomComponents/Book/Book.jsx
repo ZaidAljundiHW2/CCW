@@ -2,7 +2,7 @@ import React from 'react'
 import { Flex } from '@chakra-ui/react'
 import './Book.css'
 import bookback from '@/assets/img/Backgrounds/f2eeee.png'
-import BookForm from '../Navbar/BookForm'
+import BookForm from './BookForm'
 
 const Book = () => {
   return (
@@ -42,7 +42,6 @@ const Book = () => {
         {/* Form */}
         <Flex 
             className='
-                flex-1 
                 bookformwrapper 
                 landscape:items-center 
                 justify-center

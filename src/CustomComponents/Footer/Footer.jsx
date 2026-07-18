@@ -14,8 +14,9 @@ import WaveIcon3 from '@/assets/icons/waveicon3.png'
 import { useState } from 'react';
 import ToS from './ToS';
 import PrivacyPolicy from './PrivacyPolicy'
+import { forwardRef } from 'react';
 
-const Footer = () => {
+const Footer = forwardRef((props, ref) => {
 
     const [showPP, setShowPP] = useState(false);
     const [showToS, setShowToS] = useState(false);
@@ -60,6 +61,8 @@ const Footer = () => {
             
             
         }}
+
+        ref={ref}
     >
         
         
@@ -203,6 +206,6 @@ const Footer = () => {
       
     </div>
   )
-}
+})
 
 export default Footer

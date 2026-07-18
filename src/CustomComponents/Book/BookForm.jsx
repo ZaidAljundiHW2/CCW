@@ -15,10 +15,10 @@ const BookForm = ({setShowBook}) => {
 
 
   return (
-    <div className='w-full rounded-lg shadow-lg flex flex-col gap-5 bg-[#f2eeee]/90' style={{padding:'20px'}}>
+    <div className='landscape:w-full w-[80%] gap-5 rounded-lg shadow-lg flex flex-col bg-[#f2eeee]/90' style={{padding:'20px'}}>
 
         <Flex
-          className='landscape:gap-5 gap-2' 
+          className='landscape:flex-row flex-col gap-5' 
         >
           <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='First Name*' required/>
             
@@ -31,7 +31,7 @@ const BookForm = ({setShowBook}) => {
         <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Phone Number*'/>
 
         <Flex
-          className='landscape:gap-5 gap-2 landscape:flex-row flex-col' 
+          className='landscape:flex-row flex-col gap-5' 
         >
           <DatePicker.Root
             min={parseDate(today)}
@@ -71,11 +71,9 @@ const BookForm = ({setShowBook}) => {
 
         </Flex>
 
-        <Textarea className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Special Requests...*' required 
-          
-        />
+        <Textarea className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Special Requests...*' required />
 
-        <button className='restbutton w-[30%]' style={{background:'#f2eeee', color:'black'}}>
+        <button className='restbutton' style={{background:'#f2eeee', color:'black'}}>
 
           Submit Reservation
         </button>
