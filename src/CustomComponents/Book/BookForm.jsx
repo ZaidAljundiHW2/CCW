@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Input, Textarea } from '@chakra-ui/react'
 import { IoIosCloseCircle } from "react-icons/io";
-
+import { motion } from 'motion/react';
 import { DatePicker, Portal, parseDate } from "@chakra-ui/react"
 import { LuCalendar } from "react-icons/lu"
 
@@ -15,7 +15,13 @@ const BookForm = ({setShowBook}) => {
 
 
   return (
-    <div className='landscape:w-full w-[80%] gap-5 rounded-lg shadow-lg flex flex-col bg-[#f2eeee]/90' style={{padding:'20px'}}>
+    <motion.div 
+      className='landscape:w-full w-[80%] gap-5 rounded-lg shadow-lg flex flex-col bg-[#f2eeee]/90' 
+      style={{padding:'20px'}}
+      initial={{ opacity:0, x:50 }}
+      animate={{ opacity:1, x:0 }}
+      transition={{duration:.5, ease:'easeOut'}}
+    >
 
         <Flex
           className='landscape:flex-row flex-col gap-5' 
@@ -83,7 +89,7 @@ const BookForm = ({setShowBook}) => {
 
         
       
-    </div>
+    </motion.div>
   )
 }
 

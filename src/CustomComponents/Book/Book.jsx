@@ -3,6 +3,7 @@ import { Flex } from '@chakra-ui/react'
 import './Book.css'
 import bookback from '@/assets/img/Backgrounds/f2eeee.png'
 import BookForm from './BookForm'
+import { motion } from 'motion/react'
 
 const Book = () => {
   return (
@@ -25,17 +26,34 @@ const Book = () => {
         {/* Writing */}
         <Flex className='landscape:flex-1 flex-col booktext' style={{paddingTop:'var(--nav-height)'}}>
 
-            <h1 style={{color:'#ef571b'}}>
+            <motion.h1 
+                style={{color:'#ef571b'}}
+
+                initial={{ opacity:0, x:-50 }}
+                animate={{ opacity:1, x:0 }}
+                transition={{duration:.5, ease:'easeOut', delay:.2}}
+            
+            >
                 HUNGRY?
-            </h1>
+            </motion.h1>
 
-            <h1 style={{color:'#012447'}}>
+            <motion.h1 
+                style={{color:'#012447'}}
+                initial={{ opacity:0, x:-50 }}
+                animate={{ opacity:1, x:0 }}
+                transition={{duration:.5, ease:'easeOut', delay:.1}}
+            >
                 READY TO SATISFY YOUR CRAVINGS?
-            </h1>
+            </motion.h1>
 
-            <h1 style={{color:'#ef571b'}}>
+            <motion.h1 
+                style={{color:'#ef571b'}}
+                initial={{ opacity:0, x:-50 }}
+                animate={{ opacity:1, x:0 }}
+                transition={{duration:.5, ease:'easeOut'}}
+            >
                 BOOK YOUR TABLE
-            </h1>
+            </motion.h1>
 
         </Flex>
 

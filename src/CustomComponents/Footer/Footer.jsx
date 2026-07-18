@@ -15,6 +15,7 @@ import { useState } from 'react';
 import ToS from './ToS';
 import PrivacyPolicy from './PrivacyPolicy'
 import { forwardRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = forwardRef((props, ref) => {
 
@@ -81,12 +82,29 @@ const Footer = forwardRef((props, ref) => {
                     QUICK LINKS
                 </h1>
 
-                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#home')}>Home</p>
-                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#menun')}>Menu</p>
-                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#locations')}>Locations</p>
-                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#franchise')}>Franchise</p>
-                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#about')}>About Us</p>
-                <p className='footertext footertextclickable' onClick={(e) => handleNavLink(e, '#contact')}>Contact</p>
+                <Link to={'/'}>
+                    <p className='footertext footertextclickable'>Home</p>
+                </Link>
+                
+                <Link to={'/Menu'}>
+                    <p className='footertext footertextclickable'>Menu</p>
+                </Link>
+
+                <Link to={'/Locations'}>
+                    <p className='footertext footertextclickable'>Locations</p>
+                </Link>
+
+                <Link to={'/Franchise'}>
+                    <p className='footertext footertextclickable'>Franchise</p>
+                </Link>
+
+                <Link to={'/About'}>
+                    <p className='footertext footertextclickable'>About Us</p>
+                </Link>
+
+                <Link to={'/Contact'}>
+                    <p className='footertext footertextclickable'>Contact</p>
+                </Link>
 
             </Flex>
 
