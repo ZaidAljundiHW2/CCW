@@ -7,7 +7,6 @@ import { useRef, useState, useLayoutEffect } from 'react'
 const Layout = () => {
 
   const navRef = useRef(null)
-  const [navHeight, setNavHeight] = useState(0)
 
    useLayoutEffect(() => {
     const node = navRef.current
@@ -16,6 +15,7 @@ const Layout = () => {
     const updateHeight = () => {
       document.documentElement.style.setProperty('--nav-height', `${node.offsetHeight}px`)
     }
+
     updateHeight()
 
     const observer = new ResizeObserver(updateHeight)

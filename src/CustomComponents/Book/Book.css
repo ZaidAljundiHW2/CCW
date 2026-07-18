@@ -1,0 +1,38 @@
+@font-face {
+    font-family: PersonalServices;
+    src: url('@/assets/personal_services/Personal Services.ttf');
+}
+
+.booktext h1 {
+    font-family: PersonalServices, 'sans-serif';
+    font-size: clamp(2rem, 4vw, 200rem);
+}
+
+.booktext {
+
+    padding:20px
+}
+
+.bookformwrapper {
+    padding:20px;
+    padding-top: var(--nav-height);
+}
+
+@media (max-width:912px) {
+
+    .bookformwrapper {
+        padding:20px;
+        padding-top: 0;
+    }
+}
+
+@media (orientation: portrait) {
+    .bookformwrapper {
+        padding-top: 0;
+    }
+    
+    .bookwrapper {
+        min-height: 100vh;
+        text-align: center;
+    }
+}

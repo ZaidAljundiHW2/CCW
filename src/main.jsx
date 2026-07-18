@@ -12,6 +12,7 @@ import Locations from "./CustomComponents/Locations/Locations"
 import About from "./CustomComponents/About/About"
 import Contact from "./CustomComponents/Contact/Contact"
 import Layout from "./Layout"
+import Book from "./CustomComponents/Book/Book"
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: 'Franchise', element: <Franchise /> },
       { path: 'About', element: <About /> },
       { path: 'Contact', element: <Contact /> },
+      { path: 'Book', element: <Book />}
     ]
   }
 ], { basename: '/CCW' });

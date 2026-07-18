@@ -19,8 +19,8 @@ const ExistingLocation = () => {
         id='locations'
         className='
             flex
-            md:flex-row
-            flex-col
+            landscape:flex-row
+            portrait:flex-col
             
         '
 
@@ -29,7 +29,7 @@ const ExistingLocation = () => {
     >
 
         <Box
-            className='md:w-[60%] ELFC w-full flex items-center'
+            className='landscape:w-[60%] ELFC w-full flex items-center'
             style={{
                 backgroundImage: `url(${ELBack})`,
                 backgroundSize: 'cover',
@@ -50,11 +50,10 @@ const ExistingLocation = () => {
                     text-black
                     rounded-lg
                     shadow-lg
-                    md:h-[60%]
                     
                 '
 
-                style={{padding:'3%', background:'rgb(255 255 255 / 85%) ', paddingTop:'var(--nav-height)'}}
+                style={{padding:'3%', background:'rgb(255 255 255 / 85%) '}}
             >
 
                 <motion.div className='flex w-full'
@@ -119,12 +118,10 @@ const ExistingLocation = () => {
                 flex
                 justify-center
                 items-center
+                outerelwrapper
                 
             '
-            style={{
-                paddingTop:'var(--nav-height)'
-
-            }}
+            
         >
 
             <div

@@ -34,8 +34,12 @@ const ShowcaseItem = ({item}) => {
         <Flex
             className='
                 w-full
-                md:h-[50%]
+                lg:h-[50%]
                 gap-2
+
+                lg:flex-row
+                flex-col
+
                               
             '
 
@@ -45,6 +49,11 @@ const ShowcaseItem = ({item}) => {
             <Flex
                 className='
                     md:aspect-square 
+                    w-[80px]
+                    h-[80px]
+                    md:w-[120px]
+                    md:h-[120px]
+                    flex-shrink-0
                 '
 
                 
@@ -56,15 +65,14 @@ const ShowcaseItem = ({item}) => {
                     
                     src={resolveImg(item.Img)}
 
-                    className='
-                        rounded-full
-                    '
+                   
 
-                    style={{
-                        aspectRatio: '1 / 1',
-                        width:'100%',
-                        height:'100%',
-                    }}
+                    className="
+                        rounded-full
+                        w-full
+                        h-full
+                        object-cover
+                    "
                 />
 
             </Flex>
@@ -113,7 +121,6 @@ const ShowcaseItem = ({item}) => {
                 ' 
                 style={{
                     color:'#012447',
-                    fontSize: item.HasDescription ? 'clamp(.8rem, 1.5vw, 3rem)' : 'clamp(1rem, 2vw, 3.2rem)'
                 }}
             >
                 {item.Name}
@@ -121,7 +128,7 @@ const ShowcaseItem = ({item}) => {
 
             {item.HasDescription && (
 
-                <p style={{fontSize:'clamp(.5rem, .75vw, 1.5rem)', color:'#012447'}}>
+                <p style={{color:'#012447'}} className='itemdesc'>
                     {item.Description}
 
                 </p>

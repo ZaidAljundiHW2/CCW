@@ -42,11 +42,15 @@ const Hero = () => {
         w-full 
         min-h-[100vh]
         relative 
-        items-center
         herowrapper
         flex
-        items-start
-        md:items-center
+        portrait:items-start
+        portrait:justify-center
+        portrait:text-center
+        landscape:items-center 
+        landscape:justify-start
+        
+        
         
       '
 
@@ -69,8 +73,8 @@ const Hero = () => {
         {/* Hero Text */}
         <div
           className='
-            w-full
-            md:w-[40%]
+            portrait:w-[90%]
+            landscape:w-[40%]
             flex
             flex-col
             gap-0
@@ -81,54 +85,49 @@ const Hero = () => {
 
           
         >
-          <div
-            style={{
-              gap:'-10x'
-            }}
-          >
+          
 
           
-            <motion.h1 
-              className='heroheader'
+          <motion.h1 
+            className='heroheader'
 
-              style={{color:'white'}}
+            style={{color:'white'}}
 
-              initial={{opacity:0, x:-100}}
+            initial={{opacity:0, x:-100}}
 
-              animate={{opacity:1, x:0}}
+            animate={{opacity:1, x:0}}
 
-              transition={{duration:1, ease:'easeInOut', delay:.2}}
-              
-            >
-              FRESH CATCH.
-            </motion.h1>
+            transition={{duration:1, ease:'easeInOut', delay:.2}}
+            
+          >
+            FRESH CATCH.
+          </motion.h1>
 
-            <motion.h1 
-              className='heroheader' 
-              style={{color:'#ef571b'}}
+          <motion.h1 
+            className='heroheader' 
+            style={{color:'#ef571b'}}
 
-              initial={{opacity:0, x:-100}}
+            initial={{opacity:0, x:-100}}
 
-              animate={{opacity:1, x:0}}
+            animate={{opacity:1, x:0}}
 
-              transition={{duration:1, ease:'easeInOut', delay:.1}}
-            >
-              BIG FLAVOUR.
-            </motion.h1>
+            transition={{duration:1, ease:'easeInOut', delay:.1}}
+          >
+            BIG FLAVOUR.
+          </motion.h1>
 
-            <motion.h1 
-              className='heroheader' 
-              style={{color:'#68a7d6'}}
-              initial={{opacity:0, x:-100}}
+          <motion.h1 
+            className='heroheader' 
+            style={{color:'#68a7d6'}}
+            initial={{opacity:0, x:-100}}
 
-              animate={{opacity:1, x:0}}
+            animate={{opacity:1, x:0}}
 
-              transition={{duration:1, ease:'easeInOut'}}
-            >
-              FRANCHISE READY.
-            </motion.h1>
+            transition={{duration:1, ease:'easeInOut'}}
+          >
+            FRANCHISE READY.
+          </motion.h1>
 
-          </div>
 
           <motion.p
             initial={{opacity:0, x:-100}}
@@ -147,6 +146,8 @@ const Hero = () => {
           <motion.div
             className='
               flex
+              portrait:justify-center
+              portrait:items-center
               gap-5
             '
 

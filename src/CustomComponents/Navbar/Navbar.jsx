@@ -156,7 +156,7 @@ const Navbar = forwardRef((props, ref) => {
                                 <Menu.Item>Contact</Menu.Item>
                             </Link>
 
-                            <Link>
+                            <Link to={'/Book'}>
                                 <Menu.Item value="export">Book</Menu.Item>
                             </Link>
                         </Menu.Content>
@@ -210,7 +210,7 @@ const Navbar = forwardRef((props, ref) => {
                             </Link>
 
                             
-                            <Link className='book Link' onClick={() => setShowBook(true)}>
+                            <Link className='book Link' to={'/Book'}> 
                                 Book Now
                             </Link>
 

@@ -7,9 +7,20 @@
 .SIHeader {
 
     font-family: HeadingNow, 'sans-serif';
+    font-size: clamp(1rem, 2vw, 2.5rem);
 }
 
-@media (max-width:768px) {
+.showcaseItemCard {
+
+    font-size: 5rem;
+}
+
+.itemdesc {
+
+    font-size: clamp(.8rem, .75vw, 1.5rem);
+}
+
+@media (max-width:912px) {
     .showcaseitemcard {
         gap:5px;
         font-size: .5rem;
@@ -17,4 +28,18 @@
     }
 
     
+
+    
+}
+
+@media (min-width:1024px) and (min-height:1366px) {
+
+    .SIHeader {
+
+        font-size: 2rem;
+    }
+
+    .itemdesc {
+        font-size: 1rem;
+    }
 }
