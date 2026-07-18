@@ -60,7 +60,6 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
             gap-0\r
             z-10\r
             herotextwrapper\r
-            bg-red-500\r
             \r
           `,children:[(0,L.jsx)(Q.h1,{className:`heroheader`,style:{color:`white`},initial:{opacity:0,x:-100},animate:{opacity:1,x:0},transition:{duration:1,ease:`easeInOut`,delay:.2},children:`FRESH CATCH.`}),(0,L.jsx)(Q.h1,{className:`heroheader`,style:{color:`#ef571b`},initial:{opacity:0,x:-100},animate:{opacity:1,x:0},transition:{duration:1,ease:`easeInOut`,delay:.1},children:`BIG FLAVOUR.`}),(0,L.jsx)(Q.h1,{className:`heroheader`,style:{color:`#68a7d6`},initial:{opacity:0,x:-100},animate:{opacity:1,x:0},transition:{duration:1,ease:`easeInOut`},children:`FRANCHISE READY.`}),(0,L.jsx)(Q.p,{initial:{opacity:0,x:-100},animate:{opacity:1,x:0},transition:{duration:1,ease:`easeInOut`},className:`herotext`,style:{color:`white`},children:`Premium seafood boils, bold flavours, and an unforgettable experience - in Burlington and coming to communities across Canada.`}),(0,L.jsxs)(Q.div,{className:`\r
               flex\r
