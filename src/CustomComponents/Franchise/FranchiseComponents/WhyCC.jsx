@@ -111,7 +111,7 @@ const WhyCC = () => {
         </Flex>
 
         {/* Cards */}
-        <div className='grid grid-cols-2 landscape:grid-cols-4 landscape:gap-10 gap-3 items-stretch justify-center flex-1'>
+        <div className='grid grid-cols-2 md:grid-cols-4 landscape:gap-10 gap-3 items-stretch justify-center flex-1'>
 
             {FranchiseItemsJSON[0].map((card, i) => (
 
