@@ -16,7 +16,7 @@ const CSCard = ({image, location, index}) => {
             justify-center
             overflow-hidden
             min-w-[0]
-            md:flex-1
+            landscape:flex-1
             flex
             w-[45%]
             CSCard
@@ -40,7 +40,7 @@ const CSCard = ({image, location, index}) => {
 
         <Flex className='flex-col gap-5 justify-center items-center' style={{zIndex:'1'}}>
 
-            <Flex className='w-full md:flex-row flex-col justify-center items-center'>
+            <Flex className='w-full landscape:flex-row flex-col justify-center items-center'>
                 <h1 className='CSCH w-full min-w-0'>
                     {location}
                 </h1>

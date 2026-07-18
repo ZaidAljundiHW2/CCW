@@ -48,11 +48,11 @@ const ShowcaseItem = ({item}) => {
 
             <Flex
                 className='
-                    md:aspect-square 
+                    landscape:aspect-square 
                     w-[80px]
                     h-[80px]
-                    md:w-[120px]
-                    md:h-[120px]
+                    landscape:w-[120px]
+                    landscape:h-[120px]
                     flex-shrink-0
                 '
 

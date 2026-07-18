@@ -21,7 +21,7 @@ const InfoSec = ({info, index}) => {
 
     >
 
-        <div className='md:w-10 w-5 aspect-square shrink-0 overflow-hidden'>
+        <div className='landscape:w-10 w-5 aspect-square shrink-0 overflow-hidden'>
             <img
                 src={resolveImg(info.img)}
                 alt='icon'

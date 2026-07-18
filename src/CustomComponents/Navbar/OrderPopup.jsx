@@ -58,7 +58,7 @@ const OrderPopup = ({setShowOrderPopup}) => {
                     Choose a delivery partner or start a pickup request.
                 </p>
             </Flex>
-            <Flex className='flex-col w-full justify-center items-center md:flex-row md:gap-20 gap-5'>
+            <Flex className='flex-col w-full justify-center items-center landscape:flex-row landscape:gap-20 gap-5'>
 
             
                 <button className='restbutton rounded-lg' style={{background:'#00C1B2', borderColor:'white'}}>

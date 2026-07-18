@@ -19,7 +19,7 @@ const ComingSoon = () => {
             gap-5
             items-center
             justify-center
-            md:flex-row
+            landscape:flex-row
             flex-col
             
         '

@@ -112,7 +112,7 @@ const ExistingLocation = () => {
 
         <Box
             className='
-                md:w-[40%]
+                landscape:w-[40%]
                 w-full
                 bg-[#f2eeee]
                 flex

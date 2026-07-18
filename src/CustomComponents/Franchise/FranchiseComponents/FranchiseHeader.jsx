@@ -14,7 +14,7 @@ const FranchiseHeader = () => {
             justify-center
             overflow-hidden
             gap-2
-            md:gap-10
+            landscape:gap-10
             
             
         '
@@ -28,7 +28,7 @@ const FranchiseHeader = () => {
         }}
     >
 
-        <div 
+        {/* <div 
             className='relative flex items-center justify-center w-[22%] FHImgWr'
         >
             <img 
@@ -39,7 +39,7 @@ const FranchiseHeader = () => {
 
                 }}
             />
-        </div>
+        </div> */}
 
         <Flex
             className='

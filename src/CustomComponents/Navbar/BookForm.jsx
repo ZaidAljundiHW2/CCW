@@ -18,25 +18,25 @@ const BookForm = ({setShowBook}) => {
     <div className='w-full rounded-lg shadow-lg flex flex-col gap-5 bg-[#f2eeee]/90' style={{padding:'20px'}}>
 
         <Flex
-          className='md:gap-5 gap-2' 
+          className='landscape:gap-5 gap-2' 
         >
-          <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='First Name*' required/>
+          <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='First Name*' required/>
             
-          <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Last Name*' required/>
+          <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Last Name*' required/>
 
         </Flex>
 
-        <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Email Address*'/>
+        <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Email Address*'/>
         
-        <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Phone Number*'/>
+        <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Phone Number*'/>
 
         <Flex
-          className='md:gap-5 gap-2 md:flex-row flex-col' 
+          className='landscape:gap-5 gap-2 landscape:flex-row flex-col' 
         >
           <DatePicker.Root
             min={parseDate(today)}
             max={parseDate(nextMonthFormatted)}
-            size={{base:'xs', md:'md'}}
+            size={{base:'xs', landscape:'md'}}
             className='CFText'
           >
             <DatePicker.Control>
@@ -67,11 +67,11 @@ const BookForm = ({setShowBook}) => {
             </Portal>
           </DatePicker.Root>
             
-          <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Num. Guests*' required/>
+          <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Num. Guests*' required/>
 
         </Flex>
 
-        <Textarea className='CFText' size={{base:'xs', md:'md'}} placeholder='Special Requests...*' required 
+        <Textarea className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Special Requests...*' required 
           
         />
 

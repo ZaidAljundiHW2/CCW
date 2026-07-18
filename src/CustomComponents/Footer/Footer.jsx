@@ -47,7 +47,7 @@ const Footer = () => {
         className='
             flex
             flex-col
-            md:gap-5
+            landscape:gap-5
             gap-0
             items-center
             footerwrapper
@@ -63,7 +63,7 @@ const Footer = () => {
     >
         
         
-        <Flex className='md:gap-15 gap-5'>
+        <Flex className='landscape:gap-15 gap-5'>
 
             <Flex className='flex-1 items-center justify-center'>
 
@@ -94,22 +94,22 @@ const Footer = () => {
                     CONTACT US
                 </h1>
 
-                <Flex className='items-center md:gap-5 gap-1'>
+                <Flex className='items-center landscape:gap-5 gap-1'>
                     <CiLocationOn className='footericon' color='gold'/>
                     <p className='footertext'>1250 Brant Street, Burlington, ON LS7 1X6</p>
                 </Flex>
 
-                <Flex className='items-center md:gap-5 gap-1'>
+                <Flex className='items-center landscape:gap-5 gap-1'>
                     <CiPhone className='footericon' color='gold'/>
                     <p className='footertext'>647 271 3140</p>
                 </Flex>
 
-                <Flex className='items-center md:gap-5 gap-1'>
+                <Flex className='items-center landscape:gap-5 gap-1'>
                     <CiMail className='footericon' color='gold'/>
                     <p className='footertext'>captainscrab@gmail.com</p>
                 </Flex>
 
-                <Flex className='items-center md:gap-5 gap-1'>
+                <Flex className='items-center landscape:gap-5 gap-1'>
                     <CiClock2 className='footericon' color='gold'/>
                     <p className='footertext'>Mon - Sun: 11:00 AM - 10:00 PM</p>
                 </Flex>
@@ -122,7 +122,7 @@ const Footer = () => {
 
                 <h1 className='FH'>FOLLOW US</h1>
 
-                <Flex className='md:flex-row flex-col gap-2'>
+                <Flex className='landscape:flex-row flex-col gap-2'>
 
                     <a href='https://www.instagram.com/captainscrab'>
                         <img src={InstagramIcon} className='SMI'/>

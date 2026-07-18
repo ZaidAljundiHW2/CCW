@@ -29,7 +29,7 @@ const MenuShowcase = () => {
     <motion.div
         className='
             w-full
-            md:w-[80%]
+            landscape:w-[80%]
             flex
             flex-col
             items-center
@@ -50,11 +50,11 @@ const MenuShowcase = () => {
         <Flex
             className='
                 w-full
-                md:justify-center
+                landscape:justify-center
                 justify-start
                 items-center
                 overflow-x-scroll
-                md:overflow-x-auto
+                landscape:overflow-x-auto
                 gap-[5%]
             '
         >
@@ -122,7 +122,7 @@ const MenuShowcase = () => {
                 
                         {(!(selectedCat === "Build Your Own")) && (
 
-                            <SimpleGrid columns={{base:2, md:4}} gap={'6'}>
+                            <SimpleGrid columns={{_portrait:2, _landscape:4}} gap={'6'}>
 
 
                                 {MenuItemsJSON[index].Items.map((item) => (

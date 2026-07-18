@@ -199,7 +199,7 @@ const CreateYourOwn = () => {
                                         itemgrid
                                         
                                     '
-                                    gap={{base:2, md:5}}
+                                    gap={{base:2, landscape:5}}
                                     templateColumns="repeat(3, 1fr)"
 
                                     
@@ -274,7 +274,7 @@ const CreateYourOwn = () => {
                 min-w-0
                 overflow-hidden
                 CYOvisualContainer
-                md:flex-row
+                landscape:flex-row
                 flex-col
                 
             '
@@ -293,7 +293,7 @@ const CreateYourOwn = () => {
 
         >
 
-            <div className='md:w-[75%] w-full aspect-square flex relative' style={{maxWidth:'500px'}}>
+            <div className='landscape:w-[75%] w-full aspect-square flex relative' style={{maxWidth:'500px'}}>
 
         
                 <motion.img 
@@ -346,7 +346,7 @@ const CreateYourOwn = () => {
                                 {order}
                             </motion.h1>
 
-                            <Button className="md:w-[30%] w-[70%]" onClick={restartMenu}>
+                            <Button className="landscape:w-[30%] w-[70%]" onClick={restartMenu}>
                                 Restart
                             </Button>
                         </Box>

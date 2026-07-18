@@ -33,7 +33,7 @@ const BookReservationPopup = ({setShowBook}) => {
                 absolute 
                 top-[50%] 
                 left-[50%] 
-                md:w-[50%] 
+                landscape:w-[50%] 
                 w-[90%]
                 bg-black
                 rounded-lg

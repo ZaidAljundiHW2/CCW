@@ -18,9 +18,9 @@ const Steps = () => {
             
             w-full
             flex
-            md:gap-10
+            landscape:gap-10
             gap-3
-            md:flex-row
+            landscape:flex-row
             flex-col
             items-center
             justify-center
@@ -37,7 +37,7 @@ const Steps = () => {
         {/* Text */}
         <Flex
             className='
-                md:w-[30%]
+                landscape:w-[30%]
                 w-full
                 flex-col
                 
@@ -117,7 +117,7 @@ const Steps = () => {
         </Flex>
 
         {/* Cards */}
-        <div className='grid grid-cols-2 md:grid-cols-4 md:gap-10 gap-3 items-stretch justify-center flex-1'
+        <div className='grid grid-cols-2 md:grid-cols-4 landscape:gap-10 gap-3 items-stretch justify-center flex-1'
         
             
         >

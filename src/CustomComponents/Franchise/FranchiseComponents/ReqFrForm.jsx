@@ -15,7 +15,7 @@ const ReqFrForm = () => {
 })
 
   return (
-    <motion.div className='flex-col flex md:gap-5 gap-2 rounded-lg shadow-lg' style={{background:'#f2f0ef', padding:'20px'}}
+    <motion.div className='flex-col flex landscape:gap-5 gap-2 rounded-lg shadow-lg' style={{background:'#f2f0ef', padding:'20px'}}
         initial={{opacity:0, x:-50}}
 
         whileInView={{opacity:1, x:0}}
@@ -25,25 +25,25 @@ const ReqFrForm = () => {
     
 
         <Flex
-            className='md:gap-5 gap-2'
+            className='landscape:gap-5 gap-2'
         >
-            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Full Name*' required/>
+            <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Full Name*' required/>
             
-            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Email Address*' required/>
+            <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Email Address*' required/>
 
         </Flex>
 
         <Flex
             className='gap-5'
         >
-            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='City*' required/>
+            <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='City*' required/>
             
-            <Input className='CFText' size={{base:'xs', md:'md'}} placeholder='Phone Number*' required/>
+            <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Phone Number*' required/>
 
         </Flex>
         
 
-        <Select.Root collection={frameworks} size={{base:'xs', md:'md'}} width="100%">
+        <Select.Root collection={frameworks} size={{base:'xs', landscape:'md'}} width="100%">
             <Select.HiddenSelect />
             <Select.Control>
                 <Select.Trigger>
@@ -70,7 +70,7 @@ const ReqFrForm = () => {
 
         
 
-        <Textarea className='CFText' size={{base:'xs', md:'md'}} placeholder='Message...*' required style={{
+        <Textarea className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Message...*' required style={{
             height:'103px'
         }} />
 

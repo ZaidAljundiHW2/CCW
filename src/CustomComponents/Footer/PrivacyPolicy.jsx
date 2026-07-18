@@ -37,7 +37,7 @@ const PrivacyPolicy = ({setShowPP}) => {
                 absolute
                 top-[50%]
                 left-[50%]
-                md:w-[50%]
+                landscape:w-[50%]
                 w-[90%]
                 h-[50%]
                 rounded-lg

@@ -14,7 +14,7 @@ const RequestFranchise = () => {
     <div
         className='
             flex
-            md:flex-row
+            landscape:flex-row
             flex-col
         '
 
@@ -31,7 +31,7 @@ const RequestFranchise = () => {
                 
             }}
 
-            className='md:w-[35%] w-full flex-col items-center justify-center'
+            className='landscape:w-[35%] w-full flex-col items-center justify-center'
 
             
         >   
@@ -120,7 +120,7 @@ const RequestFranchise = () => {
         >
 
             {/* Franchise form */}
-            <Flex className='md:w-[65%] w-full flex-col gap-3' style={{padding:'20px'}}>
+            <Flex className='landscape:w-[65%] w-full flex-col gap-3' style={{padding:'20px'}}>
 
                 <motion.h1 
                     className='WhyCCHead2' 
