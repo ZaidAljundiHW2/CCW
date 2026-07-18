@@ -39,6 +39,7 @@ const PrivacyPolicy = ({setShowPP}) => {
                 left-[50%]
                 md:w-[50%]
                 w-[90%]
+                h-[50%]
                 rounded-lg
                 shadow-lg
                 flex
