@@ -45,6 +45,7 @@ const Book = () => {
                 bookformwrapper 
                 landscape:items-center 
                 justify-center
+                landscape:flex-1
                 
             '
             
