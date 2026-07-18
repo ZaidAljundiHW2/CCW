@@ -1,14 +1,5 @@
-import React from 'react'
-import Navbar from './CustomComponents/Navbar/Navbar'
 import Hero from './CustomComponents/Hero/Hero'
-import Separator from './CustomComponents/Separator/Separator'
-import Menu from './CustomComponents/Menu/Menu'
-import Locations from './CustomComponents/Locations/Locations'
-import Contact from './CustomComponents/Contact/Contact'
-import Footer from './CustomComponents/Footer/Footer'
-import About from './CustomComponents/About/About'
 import Loader from './CustomComponents/Loader/Loader'
-import Franchise from './CustomComponents/Franchise/Franchise'
 import { useState, useEffect } from 'react'
 
 const App = () => {
