@@ -81,7 +81,6 @@ const Hero = () => {
             gap-0
             z-10
             herotextwrapper
-            bg-red-500
             
           '
 
