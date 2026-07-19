@@ -1,4 +1,4 @@
-CREATE DATABASE CaptainsCrabDatabase;
+CREATE DATABASE CaptainsCrabDatabase
 
 CREATE TABLE Menu (
 
@@ -6,6 +6,6 @@ CREATE TABLE Menu (
     ItemName varchar(255),
     HasDesc boolean,
     ItemDescription text,
-    FoodImage VARCHAR(500),
+    FoodImage VARCHAR(500)
 
-);
+)
