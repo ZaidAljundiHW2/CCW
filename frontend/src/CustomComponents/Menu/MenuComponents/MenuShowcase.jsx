@@ -10,12 +10,77 @@ import CreateYourOwn from './CreateYourOwn'
 import { AnimatePresence } from 'motion/react'
 import { resolveImg } from '@/customLib/utils/resolveImage'
 import './ShowcaseItem.css'
+import { useLayoutEffect, useEffect, useRef } from 'react'
+
 const MenuShowcase = () => {
 
-    const options = ['Main Courses', 'Salads', 'Sides', 'Sauces', 'Drinks', 'Build Your Own'];
+    const API = 'http://localhost:5000'
 
-    const [selectedCat, setSelectedCat] = useState("Main Courses");
+    const [selectedCat, setSelectedCat] = useState("");
+    
     const [index, setIndex] = useState(0);
+    const [options, setOptions] = useState([]);
+    const [catitems, setCatItems] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const catJsons = useRef([]);
+
+    const getMenuItems = async () => {
+
+        try {
+
+            const response = await fetch(API + '/menu/menu-items');
+            const menuitems = await response.json();
+            console.log("CCC");
+            console.log(menuitems);
+            const collections = []
+            console.log(catJsons);
+
+            for (const cat of catJsons.current) {
+                
+                collections.push(menuitems.filter(item => item.categoryid === cat.categoryid));
+
+            }
+
+            console.log("AAA")
+            console.log(collections);
+            setCatItems(collections);
+            
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const getCategories = async () => {
+
+        try {
+            
+            const response = await fetch(API + '/menu/menu-categories', {
+
+                method:"GET",
+                headers: {
+                    Host: "captainscrab",
+                    Accept: "applications/json"
+                    
+                }
+            })
+
+            const jsonData = await response.json();
+            const categories = jsonData.map(item => item.category);
+
+            console.log(categories);
+            console.log(jsonData);
+            catJsons.current = jsonData;
+            setOptions(categories);
+            setSelectedCat(categories[0]);
+
+        } catch (error) {
+
+            console.error(error);
+            
+        }
+    }
 
     const changeCat = (option) => {
 
@@ -24,6 +89,22 @@ const MenuShowcase = () => {
         setIndex(options.indexOf(option));
 
     };
+
+
+    useEffect(() => {
+
+        const load = async () => {
+            await getCategories();
+            await getMenuItems();
+
+            setIsLoading(false);
+            console.log("Website Loaded!")
+            
+        };
+
+        load();
+
+    },[]);
 
   return (
     <motion.div
@@ -119,18 +200,35 @@ const MenuShowcase = () => {
                     >
 
                     
-                
+                        
                         {(!(selectedCat === "Build Your Own")) && (
 
-                            <SimpleGrid columns={{_portrait:2, _landscape:4}} gap={'6'}>
+                            isLoading ? (
+
+                                <p style={{color:'black'}}>Loading...</p> 
+
+                            )
+                            
+                            : 
+
+                            (
+
+                                <SimpleGrid columns={{_portrait:2, _landscape:4}} gap={'6'}>
 
 
-                                {MenuItemsJSON[index].Items.map((item) => (
-                                    <ShowcaseItem item={item} key={item.Name} />
-                                ))}
+                                    {catitems[index]?.map((item,i) => (
+                                        <ShowcaseItem item={item} key={item.fooditemid} />
+                                        
+                                    ))}
 
 
-                            </SimpleGrid>
+                                </SimpleGrid>
+
+                            )
+
+                            
+
+                            
                         )}
 
                         {(selectedCat === "Build Your Own") && (

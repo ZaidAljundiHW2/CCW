@@ -63,7 +63,7 @@ const ShowcaseItem = ({item}) => {
 
                 <img 
                     
-                    src={resolveImg(item.Img)}
+                    src={item.foodimage}
 
                    
 
@@ -89,7 +89,7 @@ const ShowcaseItem = ({item}) => {
             >
 
                 <h1 style={{color:"#012447", fontWeight:'bold', fontSize:'clamp(.5rem, 1vw, 1.5rem)'}}>
-                    {item.Price}
+                    {item.price}
                 </h1>
 
             </Flex>
@@ -111,7 +111,7 @@ const ShowcaseItem = ({item}) => {
             '
 
             style={{
-                justifyContent: item.HasDescription ? 'start' : 'center'
+                justifyContent: item.hasdesc ? 'start' : 'center'
             }}
         >
 
@@ -123,13 +123,13 @@ const ShowcaseItem = ({item}) => {
                     color:'#012447',
                 }}
             >
-                {item.Name}
+                {item.itemname}
             </h1>
 
-            {item.HasDescription && (
+            {item.hasdesc && (
 
                 <p style={{color:'#012447'}} className='itemdesc'>
-                    {item.Description}
+                    {item.itemdescription}
 
                 </p>
 

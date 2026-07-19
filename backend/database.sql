@@ -1,31 +1,22 @@
 CREATE DATABASE CaptainsCrabDatabase
 
-CREATE TABLE Menu (
+CREATE TABLE MenuCategories (
 
-    FoodItemID SERIAL PRIMARY KEY,
-    ItemName varchar(255),
-    HasDesc boolean,
-    ItemDescription text,
-    FoodImage VARCHAR(500)
+    CategoryID SERIAL PRIMARY KEY,
+    Category varchar(255),
+    DisplayOrder INT NOT NULL UNIQUE
 
-)
+);
 
-INSERT INTO menu (
-    itemname, 
-    hasdesc, 
-    itemdescription, 
-    foodimage,
-    itemtype,
-    price
+INSERT INTO menucategories (category, displayorder) VALUES ('Build Your Own', (SELECT MAX(displayorder) + 1 FROM menucategories));
+
+INSERT INTO MenuCategories (
+    Category, 
+    DisplayOrder 
 ) VALUES (
-    'Snow Crab Leg Boil',
-    TRUE,
-    'Sweet snow crab legs, shrimp, corn, and potatoes seasoned to perfection.',
-    'https://drive.google.com/file/d/1cUH5cogkz57SvVsLEdclgMZE8W_-cCDr/view?usp=sharing',
-    'Main Course',
-    '54.99'
-
-)
+    'Drinks',
+    5
+);
 
 INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, itemtype, price)
 VALUES ('Lemonade', FALSE, '', 'https://drive.google.com/file/d/1HQhyRLHd4_bpRndZl3cfKfdkKiLhCCpG/view?usp=sharing', 'Drinks', '3.49');
