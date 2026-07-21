@@ -1,0 +1,157 @@
+import React, { useEffect } from 'react'
+import { Flex, Input } from '@chakra-ui/react'
+import { useState, useRef } from 'react';
+
+const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
+
+    const [value, setValue] = useState("");
+    const label = useRef(editedItem.label);
+
+    const API = 'http://localhost:5000'
+
+    const updateVal = async (e) => {
+
+        console.log("AAA");
+
+        e.preventDefault();
+
+        try {
+            
+            console.log("BBB");
+            const body = {
+                val: value,
+            };
+
+            console.log("CCC");
+
+            const response = await fetch(API + `/admin/CMS/general-details/${label.current}`, {
+
+                method:"PUT",
+                headers:{ "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+
+            });
+
+            console.log("DDD");
+
+
+            console.log(response);
+
+            fetchAll();
+
+
+            setShowEdit(false);
+
+            
+            
+        } catch (error) {
+
+            console.error(error)
+            
+        }
+    }
+
+  return (
+    <div
+        className='
+            fixed
+            inset-0
+            bg-black/70
+            z-40
+        '
+    >
+
+        <Flex
+            className='
+                absolute
+                top-[50%]
+                left-[50%]
+                w-[50%]
+                
+                rounded-lg
+                shadow-lg
+                flex-col
+                GDWrapper
+                bg-white
+                justify-center
+                
+            '
+
+            style={{
+                transform:'translate(-50%,-50%)'
+            }}
+        >
+            <h1 className='CMSHead'>
+                Update Details
+            </h1>
+
+            <h1 className='editText'>
+                Current:
+            </h1>
+            
+            <h1 className='editText'>
+                {editedItem.val}
+            </h1>
+
+            <h1 className='editText'>
+                Updated:
+            </h1>
+
+            <form onSubmit={updateVal}>
+                <Input onChange={(e) => setValue(e.target.value)} style={{color:'black'}}/>
+                <h1 className='editText'>
+                    Make sure to include 'https://' for links.
+                </h1>
+
+                <Flex
+                    className='
+                        justify-end
+                        gap-3
+                    '
+                >
+
+                    <button
+
+                        className='
+                            rounded-lg
+                            shadow-lg
+                            cursor-pointer
+                            
+                        '
+                        
+                        type='button'
+                        style={{
+                            background:'red',
+                            padding:'10px'
+                        }}
+
+                        onClick={() => setShowEdit(false)}
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        className='
+                            editButton
+                            rounded-lg
+                            
+                        '
+
+                        
+                        type='submit'
+                        
+                        
+                    >
+                        Update
+                    </button>
+
+                </Flex>
+            </form>
+
+        </Flex>
+      
+    </div>
+  )
+}
+
+export default EditGenDet

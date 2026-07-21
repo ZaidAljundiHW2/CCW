@@ -12,7 +12,7 @@ import { resolveImg } from '@/customLib/utils/resolveImage'
 import './ShowcaseItem.css'
 import { useLayoutEffect, useEffect, useRef } from 'react'
 
-const MenuShowcase = () => {
+const MenuShowcase = ({edit = false}) => {
 
     const API = 'http://localhost:5000'
 
@@ -108,14 +108,15 @@ const MenuShowcase = () => {
 
   return (
     <motion.div
-        className='
+        className={`
             w-full
-            landscape:w-[80%]
+            ${edit ? 'landscape:w-full' : 'landscape:w-[80%]'}
+            ${edit ? 'overflow-y-scroll' : 'overflow-y-auto'}
             flex
             flex-col
             items-center
             gap-5
-        '
+        `}
 
         layout
 
@@ -216,7 +217,7 @@ const MenuShowcase = () => {
                                 <SimpleGrid columns={{_portrait:2, _landscape:4}} gap={'6'}>
 
 
-                                    {catitems[index]?.map((item,i) => (
+                                    {catitems[index]?.map((item) => (
                                         <ShowcaseItem item={item} key={item.fooditemid} />
                                         
                                     ))}

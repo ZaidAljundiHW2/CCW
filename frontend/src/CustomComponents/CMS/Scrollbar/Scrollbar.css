@@ -1,0 +1,25 @@
+.scrollbar h1, .scrollbar button {
+
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    
+    
+
+}
+
+.scrollbar h1 {
+    font-size: 2rem;
+}
+
+.scrollbar button:hover {
+
+    background-color: #142b42;
+    cursor: pointer;
+}
+
+.scrollbar {
+    overflow-y: scroll;
+    padding: 20px;
+}

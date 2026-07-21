@@ -1,0 +1,34 @@
+.CMSHead {
+
+    color:#012447;
+    font-size: 3rem;
+}
+
+.editButton {
+
+    padding:5px;
+    width: 70px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0076df;
+}
+
+.editButton:hover {
+    cursor:pointer
+}
+
+.InfoBlockWrapper {
+    padding:10px;
+    align-items: center;
+}
+
+.editText {
+    color:#012447
+}
+
+.InfoBlockWrapper h1 {
+
+    color: #012447;
+}

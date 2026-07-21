@@ -1,0 +1,10 @@
+.GDWrapper {
+    padding:20px;
+}
+
+.GDWrapperC {
+
+    padding:20px;
+    overflow-y: scroll;
+
+}

@@ -1,12 +1,68 @@
 CREATE DATABASE CaptainsCrabDatabase
 
-CREATE TABLE MenuCategories (
+CREATE TABLE generaldetails (
 
-    CategoryID SERIAL PRIMARY KEY,
-    Category varchar(255),
-    DisplayOrder INT NOT NULL UNIQUE
+    generaldetailsid SERIAL PRIMARY KEY,
+    label varchar(255),
+    val varchar(255),
+    type varchar(255)
 
 );
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Instagram',
+    'https://www.instagram.com/captainscrab',
+    'Social Media'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Facebook',
+    'https://www.facebook.com/captainscrab',
+    'Social Media'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'TikTok',
+    'https://www.tiktok.com/@captainscrab',
+    'Social Media'
+);
+
+
+
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Phone Number',
+    '647 271 3140',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Address',
+    '1250 Brant Street, Burlington, ON LS7 1X6',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Location',
+    'Undefined',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Email',
+    'captainscrab@gmail.com',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Timings',
+    'Mon - Sun: 11:00 AM - 10:00 PM',
+    'Footer'
+);
+
+
+
+
 
 INSERT INTO menucategories (category, displayorder) VALUES ('Build Your Own', (SELECT MAX(displayorder) + 1 FROM menucategories));
 
