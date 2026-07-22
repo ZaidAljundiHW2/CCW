@@ -91,18 +91,68 @@ app.put('/admin/CMS/general-details/:id', async (req, res) => {
 //Update menu category rank and name
 app.put('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
 
-    const id = req.params.id;
-    const newName = req.body.newName;
-    const newRank = req.body.newRank;
+    try {
 
-    const updateCat = await pool.query("UPDATE menucategories SET category = $1, displayorder = $2 WHERE categoryid = $3",
-        [newName, newRank, id]
-    );
+        const id = req.params.id;
+        const newName = req.body.newName;
+        const newRank = req.body.newRank;
+
+        const updateCat = await pool.query("UPDATE menucategories SET category = $1, displayorder = $2 WHERE categoryid = $3",
+            [newName, newRank, id]
+        );
+        
+        res.json("Category updated");
+        
+    } catch (error) {
+        console.error(error)
+    }
     
-    res.json("Category updated");
+})
+
+//Delete menu category
+app.delete('/admin/CMD/menu/menu-categories/:id', async (req, res) => {
+
+    try {
+        const catID = req.params.id;
+
+        const deleteCat = await pool.query("DELETE FROM menucategories WHERE categoryid = $1",
+            [catID]
+        );
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error)
+    }
+    
+
+
+})
+
+//Delete category items
+app.delete('/admin/CMD/menu/menu-categoryitems/:id', async (req, res) => {
+
+    try {
+
+        const catID = req.params.id;
+
+        const deleteItems = await pool.query("DELETE FROM menu WHERE categoryid = $1",
+            [catID]
+        );
+
+      
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(error.message);
+
+    }
 })
 
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")
 })
+

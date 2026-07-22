@@ -4,9 +4,9 @@ import './CatEditPopup.css'
 import { useState } from 'react'
 import { Table } from "@chakra-ui/react"
 import { Input, Field, Button } from '@chakra-ui/react'
+import DeleteCat from './DeleteCat'
 
-
-const CatEditPopup = ({cats, catItem}) => {
+const CatEditPopup = ({cats, catItem, setShowEdit}) => {
 
     
     const [selectedCat, setSelectedCat] = useState("");
@@ -16,6 +16,8 @@ const CatEditPopup = ({cats, catItem}) => {
     const [isNameError, setIsNameError] = useState(false);
     const [rankInput, setRankInput] = useState();
     const [selectedName, setSelectedName] = useState('');
+    const [showDelete, setShowDelete] = useState(false);
+    const [selectedItem, setSelectedItem] = useState();
 
     const handleRankInputChange = (e) => setRankInput(e.target.value);
     const handleNameInputChange = (e) => setSelectedName(e.target.value);
@@ -116,11 +118,12 @@ const CatEditPopup = ({cats, catItem}) => {
 
             });
 
-            console.log(response);
 
             
-
+            
         }
+
+        setShowEdit(false);
         
 
 
@@ -148,29 +151,7 @@ const CatEditPopup = ({cats, catItem}) => {
         return output;
     }
 
-    const deleteCat = (category, categories) => {
-
-        let output = categories;
-
-        let catNames = categories.map(item => item.category);
-
-        if (!(category.category in catNames)) {
-            setRankErrorMessage("Category does not exist");
-            setIsNameError(true);
-            return;
-        }
-
-        for (let i = categories.findIndex(item => item.category === category.category) + 1; i < categories.length; i++) {
-
-            
-            output[i].displayOrder-=1;
-        }
-
-        //API DELETE call instead
-        output.splice(categories.findIndex(item => item.category === category.category), 1);
-
-        return output;
-    }
+    
 
   return (
     <div
@@ -224,7 +205,15 @@ const CatEditPopup = ({cats, catItem}) => {
                     <Table.Body>
 
                         {catItem.map((item) => (
-                            <Table.Row key={item.categoryid} onClick={() => { setSelectedCat(item.category); setRankInput(item.displayorder); setSelectedName(item.category) }}>
+                            <Table.Row 
+                                className='CMSboxh1'
+                                key={item.categoryid} 
+                                onClick={() => { 
+                                    setSelectedCat(item.category); 
+                                    setRankInput(item.displayorder); 
+                                    setSelectedName(item.category);
+                                    setSelectedItem(item); 
+                                }}>
                                 <Table.Cell>{item.category}</Table.Cell>
                                 <Table.Cell>{item.displayorder}</Table.Cell>
                             </Table.Row>
@@ -249,43 +238,83 @@ const CatEditPopup = ({cats, catItem}) => {
                 '
                 
             >
+                {selectedCat && (
+                    <div
+                        className='
+                            flex
+                            flex-col
+                            gap-2
+                        '
+                    >
 
-                <h1 className='editText'>
-                    Selected category: {selectedCat}
-                </h1>
-                
-                <Field.Root invalid={isNameError}>
-                    <Field.Label className='editText'>Category Name</Field.Label>
-                    <Input value={selectedName} onChange={handleNameInputChange} placeholder="New Order Rank" style={{color:'black'}} />
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                         {nameErrorMessage}
-                    </Field.ErrorText>
-                </Field.Root>
+                    
 
-                <Field.Root invalid={isRankError}>
-                    <Field.Label className='editText'>Display Order Rank</Field.Label>
-                    <Input value={rankInput} onChange={handleRankInputChange} placeholder="New Order Rank" style={{color:'black'}} />
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                         {rankErrorMessage}
-                    </Field.ErrorText>
-                </Field.Root>
+                        <h1 className='editText'>
+                            Selected category: {selectedCat}
+                        </h1>
+                        
+                        <Field.Root invalid={isNameError}>
+                            <Field.Label className='editText'>Category Name</Field.Label>
+                            <Input 
+                                value={selectedName} 
+                                onChange={handleNameInputChange} 
+                                placeholder="New name" 
+                                style={{color:'black'}} 
+                                disabled={selectedName === 'Build Your Own'}
+                            />
+                            <Field.ErrorText width="full">
+                                <Field.ErrorIcon />
+                                {nameErrorMessage}
+                            </Field.ErrorText>
+                        </Field.Root>
 
-                <Flex className='w-full gap-5'>
+                        <Field.Root invalid={isRankError}>
+                            <Field.Label className='editText'>Display Order Rank</Field.Label>
+                            <Input 
+                                value={rankInput} 
+                                onChange={handleRankInputChange} 
+                                placeholder="New order rank" 
+                                style={{color:'black'}} 
+                            />
+                            <Field.ErrorText width="full">
+                                <Field.ErrorIcon />
+                                {rankErrorMessage}
+                            </Field.ErrorText>
+                        </Field.Root>
 
-                    <Button className='editButton flex-1' onClick={() => handleUpdate(selectedCat, rankInput, selectedName, catItem)}>
+                        <Flex className='w-full gap-5'>
 
-                        Update
+                            <Button className='editButton flex-1' onClick={() => handleUpdate(selectedCat, rankInput, selectedName, catItem)}>
 
+                                Update
+
+                            </Button>
+
+                            <Button className='editButton flex-1' style={{background:'red'}} onClick={() => setShowDelete(true)}>
+
+                                Delete
+
+                            </Button>
+                        </Flex>
+                    </div>
+
+                )}
+
+                <Flex
+                    className='
+                        w-full
+                        justify-end
+                        items-end
+                    '
+                >
+
+                    <Button className='editButton' style={{background:'red'}} onClick={() => setShowEdit(false)}>
+                        Cancel
                     </Button>
 
-                    <Button className='editButton flex-1' style={{background:'red'}}>
-
-                        Delete
-
-                    </Button>
                 </Flex>
+
+                
 
 
 
@@ -293,6 +322,8 @@ const CatEditPopup = ({cats, catItem}) => {
             </Flex>
 
         </Flex>
+
+        {showDelete && (<DeleteCat item={selectedItem} setShowDelete={setShowDelete} categories={catItem} setShowEdit={setShowEdit}/>)}
       
     </div>
   )

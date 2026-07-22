@@ -44,8 +44,7 @@ const MenuCMS = () => {
                 str = str + " " + category + ",";
             }
 
-            console.log("DDD");
-            console.log(jsonData)
+            
             setCategoriesList(cat);
             setCatObject(jsonData);
             setCatString(str);
@@ -58,10 +57,13 @@ const MenuCMS = () => {
         }
     }
 
+    
+
     useEffect(() => {
 
         const load = async () => {
 
+            setIsLoading(true);
             await getCategories();
             setIsLoading(false);
         };
@@ -69,7 +71,7 @@ const MenuCMS = () => {
         load();
 
 
-    }, [])
+    }, [showEdit]);
 
 
   return (
@@ -113,6 +115,8 @@ const MenuCMS = () => {
                     <InfoBlock 
                         label={'Menu Categories'} 
                         val={catString}
+                        setShowEdit={setShowEdit}
+                        add={true}
                     />
                 )
 
@@ -144,7 +148,7 @@ const MenuCMS = () => {
 
         </Flex>
 
-        {!isLoading && (<CatEditPopup cats={categoriesList} catItem={catObject}/>)}
+        {!isLoading && showEdit && (<CatEditPopup cats={categoriesList} setShowEdit={setShowEdit} catItem={catObject}/>)}
         
 
       

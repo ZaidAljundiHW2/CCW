@@ -1,8 +1,15 @@
 import React from 'react'
-import { Flex } from '@chakra-ui/react'
+import { Flex, Button } from '@chakra-ui/react'
 import './CMS.css'
 
-const InfoBlock = ({item={}, setShowEdit = () => {}, setEditedObj = () => {}, label="", val=""}) => {
+const InfoBlock = ({
+    item={}, 
+    setShowEdit = () => {}, 
+    setEditedObj = () => {}, 
+    label="", 
+    val="",
+    add=false
+}) => {
   return (
     <div
         className='
@@ -30,11 +37,19 @@ const InfoBlock = ({item={}, setShowEdit = () => {}, setEditedObj = () => {}, la
         </Flex>
 
         {/* Edit button */}
-        <Flex className='flex-1 justify-end'>
+        <Flex className='flex-1 justify-end gap-3'>
 
-            <button className='rounded-lg editButton' onClick={() => {setShowEdit(true); setEditedObj(item)}}>
+            {add && (
+                <Button className='rounded-lg editButton' style={{background:'#4BB543'}}>
+                Add
+            </Button>
+            )}
+
+            <Button className='rounded-lg editButton' onClick={() => {setShowEdit(true); setEditedObj(item)}}>
                 Edit
-            </button>
+            </Button>
+
+            
 
 
         </Flex>

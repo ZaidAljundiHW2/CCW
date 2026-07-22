@@ -97,3 +97,15 @@ VALUES ('Sprite', FALSE, '', 'https://drive.google.com/file/d/1ORQHEZNLT4Vh7EQaR
 
 INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, itemtype, price)
 VALUES ('Orange Juice', FALSE, '', 'https://drive.google.com/file/d/1paZ-IehYLdtKEseGvfez-8Baw-HYPFVD/view?usp=sharing', 'Drinks', '2.99');
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Garlic Butter', FALSE, '', 'https://drive.google.com/thumbnail?id=1zq0pOmKr8v46CiXVeYZlIvwaXOHkLvX4', '2.99', 12);
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Lemon Butter', FALSE, '', 'https://drive.google.com/thumbnail?id=1B2e1IUmCtd5ZDIiATyKVWsKz4PpNaMmt', '2.99', 12);
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Cajun Remoulade', FALSE, '', 'https://drive.google.com/thumbnail?id=1bmWU2QuLe5dRi0qTMo0e2-d4vxYhZm0L', '2.99', 12);
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Captain''s Fire Sauce', FALSE, '', 'https://drive.google.com/thumbnail?id=1ZUCxUA2_lzrbv7dAVFW7yVUkYu3Uo8mY', '2.99', 12);
