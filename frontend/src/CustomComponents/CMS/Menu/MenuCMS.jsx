@@ -3,15 +3,16 @@ import { Flex } from '@chakra-ui/react'
 import { useState, useRef } from 'react'
 import InfoBlock from '../InfoBlock'
 import MenuShowcase from '@/CustomComponents/Menu/MenuComponents/MenuShowcase'
+import CatEditPopup from './CatEditPopup'
 
 const MenuCMS = () => {
     
     const API = 'http://localhost:5000'
 
-    const catJsons = useRef([]);
-    const [categories, setCategories] = useState([]);
+    const [categoriesList, setCategoriesList] = useState([]);
     const [catString, setCatString] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [catObject, setCatObject] = useState();
     const [showEdit, setShowEdit] = useState(false);
     const [editedObj, setEditedObj] = useState();
 
@@ -43,8 +44,10 @@ const MenuCMS = () => {
                 str = str + " " + category + ",";
             }
 
-            console.log(cat);
-            setCategories(cat);
+            console.log("DDD");
+            console.log(jsonData)
+            setCategoriesList(cat);
+            setCatObject(jsonData);
             setCatString(str);
             
 
@@ -109,8 +112,6 @@ const MenuCMS = () => {
                 (
                     <InfoBlock 
                         label={'Menu Categories'} 
-                        setEditedObj={setEditedObj} 
-                        setShowEdit={setShowEdit}
                         val={catString}
                     />
                 )
@@ -142,6 +143,8 @@ const MenuCMS = () => {
 
 
         </Flex>
+
+        {!isLoading && (<CatEditPopup cats={categoriesList} catItem={catObject}/>)}
         
 
       

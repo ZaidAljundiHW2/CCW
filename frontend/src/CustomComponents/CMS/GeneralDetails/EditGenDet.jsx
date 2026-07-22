@@ -11,18 +11,15 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
 
     const updateVal = async (e) => {
 
-        console.log("AAA");
 
         e.preventDefault();
 
         try {
             
-            console.log("BBB");
             const body = {
                 val: value,
             };
 
-            console.log("CCC");
 
             const response = await fetch(API + `/admin/CMS/general-details/${label.current}`, {
 
@@ -32,7 +29,6 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
 
             });
 
-            console.log("DDD");
 
 
             console.log(response);

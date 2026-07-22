@@ -1,0 +1,13 @@
+.CMSboxh1 {
+
+    padding: 20px;
+    border-width: 0 0 2px 0;
+    border-color: gray;
+
+}
+
+.CMSboxh1:hover {
+
+    background: lightgray;
+    cursor: pointer;
+}

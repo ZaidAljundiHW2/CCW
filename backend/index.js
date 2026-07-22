@@ -71,29 +71,35 @@ app.get('/admin/CMS/general-details/footer', async (req, res) => {
 //Update general details item
 app.put('/admin/CMS/general-details/:id', async (req, res) => {
 
-    console.log("AAA");
     try {
 
-        console.log("BBB");
         const id = req.params.id;
 
-        console.log("CCC");
         const val = req.body.val;
-
-        console.log("DDD");
-        console.log(val);
-        console.log(id);
 
         const updateDetails = await pool.query("UPDATE generaldetails SET val = $1 WHERE label = $2",
             [val, id]
         );
 
-        console.log("EEE");
         res.json("General detail item updated");
         
     } catch (error) {
         console.error(error);
     }
+})
+
+//Update menu category rank and name
+app.put('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
+
+    const id = req.params.id;
+    const newName = req.body.newName;
+    const newRank = req.body.newRank;
+
+    const updateCat = await pool.query("UPDATE menucategories SET category = $1, displayorder = $2 WHERE categoryid = $3",
+        [newName, newRank, id]
+    );
+    
+    res.json("Category updated");
 })
 
 

@@ -32,10 +32,7 @@ const MenuShowcase = ({edit = false}) => {
 
             const response = await fetch(API + '/menu/menu-items');
             const menuitems = await response.json();
-            console.log("CCC");
-            console.log(menuitems);
             const collections = []
-            console.log(catJsons);
 
             for (const cat of catJsons.current) {
                 
@@ -43,8 +40,6 @@ const MenuShowcase = ({edit = false}) => {
 
             }
 
-            console.log("AAA")
-            console.log(collections);
             setCatItems(collections);
             
         } catch (error) {
@@ -69,8 +64,7 @@ const MenuShowcase = ({edit = false}) => {
             const jsonData = await response.json();
             const categories = jsonData.map(item => item.category);
 
-            console.log(categories);
-            console.log(jsonData);
+            
             catJsons.current = jsonData;
             setOptions(categories);
             setSelectedCat(categories[0]);
