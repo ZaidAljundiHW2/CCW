@@ -110,7 +110,7 @@ app.put('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
 })
 
 //Delete menu category
-app.delete('/admin/CMD/menu/menu-categories/:id', async (req, res) => {
+app.delete('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
 
     try {
         const catID = req.params.id;
@@ -130,7 +130,7 @@ app.delete('/admin/CMD/menu/menu-categories/:id', async (req, res) => {
 })
 
 //Delete category items
-app.delete('/admin/CMD/menu/menu-categoryitems/:id', async (req, res) => {
+app.delete('/admin/CMS/menu/menu-categoryitems/:id', async (req, res) => {
 
     try {
 
@@ -148,6 +148,29 @@ app.delete('/admin/CMD/menu/menu-categoryitems/:id', async (req, res) => {
         console.error(error);
         res.status(500).json(error.message);
 
+    }
+})
+
+//Add category
+app.post('/admin/CMS/menu/menu-categories', async (req, res) => {
+
+    try {
+
+        const category = req.body.category;
+        const displayorder = req.body.displayorder;
+
+        const addCat = await pool.query("INSERT INTO menucategories (category, displayorder) VALUES ($1, $2)",
+            [category, displayorder]
+        );
+
+        res.json("success");
+
+        
+        
+    } catch (error) {
+
+        console.error(error);
+        
     }
 })
 

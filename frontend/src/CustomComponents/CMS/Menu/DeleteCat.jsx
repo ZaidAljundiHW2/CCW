@@ -39,13 +39,13 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
 
       //API category menu items DELETE
-      const deleteItems = await fetch(API + `/admin/CMD/menu/menu-categoryitems/${category.categoryid}`, {
+      const deleteItems = await fetch(API + `/admin/CMS/menu/menu-categoryitems/${category.categoryid}`, {
 
         method:"DELETE"
       })
 
       //API category DELETE 
-      const deleteCat = await fetch(API + `/admin/CMD/menu/menu-categories/${category.categoryid}`, {
+      const deleteCat = await fetch(API + `/admin/CMS/menu/menu-categories/${category.categoryid}`, {
 
         method:"DELETE"
       })

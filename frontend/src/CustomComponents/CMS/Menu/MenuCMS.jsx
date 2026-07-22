@@ -4,6 +4,7 @@ import { useState, useRef } from 'react'
 import InfoBlock from '../InfoBlock'
 import MenuShowcase from '@/CustomComponents/Menu/MenuComponents/MenuShowcase'
 import CatEditPopup from './CatEditPopup'
+import AddCat from './AddCat'
 
 const MenuCMS = () => {
     
@@ -14,6 +15,7 @@ const MenuCMS = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [catObject, setCatObject] = useState();
     const [showEdit, setShowEdit] = useState(false);
+    const [showAdd, setShowAdd] = useState(false);
     const [editedObj, setEditedObj] = useState();
 
     const getCategories = async () => {
@@ -71,7 +73,7 @@ const MenuCMS = () => {
         load();
 
 
-    }, [showEdit]);
+    }, [showEdit, showAdd]);
 
 
   return (
@@ -116,6 +118,7 @@ const MenuCMS = () => {
                         label={'Menu Categories'} 
                         val={catString}
                         setShowEdit={setShowEdit}
+                        setShowAdd={setShowAdd}
                         add={true}
                     />
                 )
@@ -150,6 +153,7 @@ const MenuCMS = () => {
 
         {!isLoading && showEdit && (<CatEditPopup cats={categoriesList} setShowEdit={setShowEdit} catItem={catObject}/>)}
         
+        {!isLoading && showAdd && (<AddCat setShowAdd={setShowAdd} categories={catObject}/>)}
 
       
     </div>

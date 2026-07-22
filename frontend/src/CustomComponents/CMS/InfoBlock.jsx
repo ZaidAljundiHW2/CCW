@@ -8,7 +8,8 @@ const InfoBlock = ({
     setEditedObj = () => {}, 
     label="", 
     val="",
-    add=false
+    add=false,
+    setShowAdd = () => {}
 }) => {
   return (
     <div
@@ -40,9 +41,9 @@ const InfoBlock = ({
         <Flex className='flex-1 justify-end gap-3'>
 
             {add && (
-                <Button className='rounded-lg editButton' style={{background:'#4BB543'}}>
-                Add
-            </Button>
+                <Button className='rounded-lg editButton' style={{background:'#4BB543'}} onClick={() => setShowAdd(true)}>
+                    Add
+                </Button>
             )}
 
             <Button className='rounded-lg editButton' onClick={() => {setShowEdit(true); setEditedObj(item)}}>
