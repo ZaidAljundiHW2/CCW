@@ -6,8 +6,51 @@ import waveicon4 from '@/assets/icons/waveicon4.png'
 import waveicon3 from '@/assets/icons/waveicon3.png'
 import './OurStory.css'
 import { motion } from 'motion/react'
+import { useState, useEffect } from 'react'
 
 const OurStory = () => {
+
+  const [story, setStory] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const API = 'http://localhost:5000';
+
+  const getStory = async() => {
+
+      try {
+          
+
+          const response = await fetch(API + '/admin/CMS/about/story', {
+              method:"GET"
+          });
+
+          console.log(response);
+
+
+          const jsonData = await response.json();
+
+          
+          const storyPieces = jsonData.aboutcontent.split('\n');
+
+          setStory(storyPieces);
+
+          
+      } catch (error) {
+          console.error(error);
+      }
+
+  }
+
+  useEffect(() => {
+
+    const load = async() => {
+
+      await getStory();
+      setIsLoading(false);
+    }
+
+    load();
+  },[]);
+
   return (
     <div
       className='
@@ -59,37 +102,38 @@ const OurStory = () => {
         </motion.h1> 
 
         <Flex className='flex flex-col'>
-          <motion.p className='WhyCCText' style={{color:'#012477'}}
-            initial={{opacity:0, x:50}}
+          
+          {(isLoading) ? (
+              <p style={{color:'black'}}>Loading...</p>
+            )
 
-            whileInView={{opacity:1, x:0}}
+            :
 
-            transition={{duration:.5, ease:'easeOut', delay:.2}}
-          >
-            Captain's Crab began with a simple belief: everyone deserves premium seafood, big flavors, and good times around the table.
+            (
 
-          </motion.p>
+              <div className='flex flex-col gap-3'>
 
-          <motion.p className='WhyCCText' style={{color:'#012477'}}
-            initial={{opacity:0, x:50}}
+          
+                {story.map((storypiece, i) => (
 
-            whileInView={{opacity:1, x:0}}
+                  
+                  <motion.p className='WhyCCText' style={{color:'#012477'}}
+                    initial={{opacity:0, x:50}}
 
-            transition={{duration:.5, ease:'easeOut', delay:.1}}
-          >
-              Inspired by coastal traditions and crafted with a modern twist, we created a place where friends and families can dig in, connect, and make memories that last.
+                    whileInView={{opacity:1, x:0}}
 
-          </motion.p>
+                    transition={{duration:.3*(i+1), ease:'easeOut'}}
+                  >
+                    {storypiece}
+                  </motion.p>
 
-          <motion.p className='WhyCCText' style={{color:'#012477'}}
-            initial={{opacity:0, x:50}}
+                ))}
+              </div>
 
-            whileInView={{opacity:1, x:0}}
-
-            transition={{duration:.5, ease:'easeOut'}}
-          >
-            From our signature boils to our crave-worthy sauces, every detail is made with fresh ingredients, real passion, and a promise to always deliver more.
-          </motion.p>
+            )
+          
+          }
+          
 
         </Flex>
         

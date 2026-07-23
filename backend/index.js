@@ -275,6 +275,67 @@ app.delete('/admin/CMS/menu/menu-item/:id', async(req, res) => {
     }
 })
 
+//Get about content
+app.get('/admin/CMS/about', async(req,res) => {
+
+    try {
+
+        const getSections = await pool.query("SELECT * FROM about");
+
+        res.json(getSections.rows);
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Update about content
+app.put('/admin/CMS/about/:id', async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+        const content = req.body.content;
+
+        const updateContent = await pool.query("UPDATE about SET aboutcontent = $2 WHERE aboutid = $1",
+            [id, content]
+        );
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get story
+app.get('/admin/CMS/about/story', async(req,res) => {
+
+    try {
+
+        const getStory = await pool.query("SELECT * FROM about WHERE aboutsection = 'Our Story'");
+
+        res.json(getStory.rows[0]);
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get mission
+app.get('/admin/CMS/about/mission', async(req,res) => {
+
+    try {
+
+        const getMission = await pool.query("SELECT * FROM about WHERE aboutsection = 'Our Mission'");
+
+        res.json(getMission.rows[0]);
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")

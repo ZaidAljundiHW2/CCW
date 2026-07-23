@@ -20,6 +20,7 @@ const InfoBlock = ({
             shadow-lg
             flex
             InfoBlockWrapper
+            gap-5
         '
     >
         
@@ -31,7 +32,7 @@ const InfoBlock = ({
                 {label}
             </h1>
 
-            <h1>
+            <h1 className='whitespace-pre-line'>
                 {item.val}
                 {val}
             </h1>

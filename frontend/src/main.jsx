@@ -16,6 +16,7 @@ import Book from "./CustomComponents/Book/Book"
 import LayoutCMS from "./LayoutCMS"
 import GeneralDetails from "./CustomComponents/CMS/GeneralDetails/GeneralDetails"
 import MenuCMS from "./CustomComponents/CMS/Menu/MenuCMS"
+import AboutCMS from "./CustomComponents/CMS/About/AboutCMS"
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,8 @@ const router = createBrowserRouter([
     element: <LayoutCMS />,
     children: [
       {path:'General', element: <GeneralDetails />},
-      {path: 'Menu', element: <MenuCMS />}
+      {path: 'Menu', element: <MenuCMS />},
+      {path: 'About', element: <AboutCMS />}
     ]
   }
 ], { basename: '/CCW' });

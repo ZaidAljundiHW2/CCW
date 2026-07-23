@@ -40,7 +40,7 @@ const Scrollbar = () => {
             </button>
         </Link>
 
-        <Link className='w-full'>
+        <Link className='w-full' to={'About'}>
             <button>
                 About
             </button>

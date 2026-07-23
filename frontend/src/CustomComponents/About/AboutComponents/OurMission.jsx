@@ -1,12 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import creamwall from '@/assets/img/Backgrounds/sand2.png'
 import { Flex } from '@chakra-ui/react'
 import waveicon from '@/assets/icons/waveicon.png'
 import './OurMission.css'
 import logo from '@/assets/img/logo-overflow.png'
 import { motion } from 'motion/react'
+import { useState } from 'react'
 
 const OurMission = () => {
+
+  const [mission, setMission] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const API = 'http://localhost:5000';
+
+  const getMission = async() => {
+
+      try {
+          
+
+          const response = await fetch(API + '/admin/CMS/about/mission', {
+              method:"GET"
+          });
+
+          console.log(response);
+
+
+          const jsonData = await response.json();
+
+          const missionPieces = jsonData.aboutcontent.split('\n');
+
+          setMission(missionPieces);
+
+          
+      } catch (error) {
+          console.error(error);
+      }
+
+  }
+
+  useEffect(() => {
+
+    const load = async() => {
+
+      getMission();
+      setIsLoading(false);
+    };
+
+    load();
+
+  },[])
+
+  
+
   return (
     <div
 
@@ -44,7 +89,7 @@ const OurMission = () => {
               transition={{duration:.5, ease:'easeOut', delay:.3}}
               viewport={{once:true}}
             >
-                OUR STORY
+                OUR MISSION
             </motion.h1>
 
             <motion.img src={waveicon} 
@@ -101,18 +146,40 @@ const OurMission = () => {
 
 
       <Flex className='flex-1 justify-center items-center'>
-        <motion.p className='WhyCCText md:text-left text-center' style={{color:'#012447'}}
-          initial={{opacity:0, x:-50}}
 
-          whileInView={{opacity:1, x:0}}
+        {(isLoading) ? (
+            <p style={{color:'black'}}>Loading...</p>
+          )
 
-          transition={{duration:.5, ease:'easeOut'}}
+          :
 
-          viewport={{once:true}}
-        >
-          We're on a mission to serve the freshest seafood with bold flavors and warm hospitality - creating experiences that bring people together and keep them coming back.
+          (
 
-        </motion.p>
+            <div className='flex flex-col gap-3'>
+
+              {mission.map((misitem,i) => (
+
+                <motion.p className='WhyCCText md:text-left text-center' style={{color:'#012447'}}
+                  initial={{opacity:0, x:-50}}
+
+                  whileInView={{opacity:1, x:0}}
+
+                  transition={{duration:.3*(i + 1), ease:'easeOut'}}
+
+                  viewport={{once:true}}
+                >
+                  {misitem}
+
+                </motion.p>
+
+              ))}
+              
+            </div>
+
+          )
+      
+        }
+        
       </Flex>
       
       
