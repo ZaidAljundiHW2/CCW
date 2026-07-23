@@ -174,6 +174,38 @@ app.post('/admin/CMS/menu/menu-categories', async (req, res) => {
     }
 })
 
+//Disable Build Your Own
+app.delete('/admin/CMD/menu/menu-categories/byo', async (req, res) => {
+
+    try {
+
+        const deleteBYO = await pool.query("DELETE FROM menucategories WHERE category='Build Your Own'");
+
+        res.json("Success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Enable Build Your Own
+app.post('/admin/CMD/menu/menu-categories/byo', async(req, res) => {
+
+    try {
+
+        const displayorder = req.body.displayorder;
+
+        const addBYO = await pool.query("INSERT INTO menucategories (category, displayorder) VALUES ('Build Your Own', $1)",
+            [displayorder]
+        );
+
+        res.json('Success');
+        
+    } catch (error) {
+        console.error(error);   
+    }
+})
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")

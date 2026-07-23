@@ -12,7 +12,11 @@ import { resolveImg } from '@/customLib/utils/resolveImage'
 import './ShowcaseItem.css'
 import { useLayoutEffect, useEffect, useRef } from 'react'
 
-const MenuShowcase = ({edit = false}) => {
+const MenuShowcase = ({
+    edit = false,
+    setSelectedMenuItem = () => {},
+    setShowMenuItemEdit = () => {}
+}) => {
 
     const API = 'http://localhost:5000'
 
@@ -212,7 +216,13 @@ const MenuShowcase = ({edit = false}) => {
 
 
                                     {catitems[index]?.map((item) => (
-                                        <ShowcaseItem item={item} key={item.fooditemid} />
+                                        <ShowcaseItem 
+                                            item={item} 
+                                            key={item.fooditemid} 
+                                            setSelectedMenuItem={setSelectedMenuItem}
+                                            edit={edit}
+                                            setShowMenuItemEdit={setShowMenuItemEdit}
+                                        />
                                         
                                     ))}
 

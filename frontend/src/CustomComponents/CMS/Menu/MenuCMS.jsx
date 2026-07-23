@@ -5,6 +5,8 @@ import InfoBlock from '../InfoBlock'
 import MenuShowcase from '@/CustomComponents/Menu/MenuComponents/MenuShowcase'
 import CatEditPopup from './CatEditPopup'
 import AddCat from './AddCat'
+import ToggleBYO from './ToggleBYO'
+import EditMenuItem from './EditMenuItem'
 
 const MenuCMS = () => {
     
@@ -16,6 +18,9 @@ const MenuCMS = () => {
     const [catObject, setCatObject] = useState();
     const [showEdit, setShowEdit] = useState(false);
     const [showAdd, setShowAdd] = useState(false);
+    const [showToggle, setShowToggle] = useState(false);
+    const [showMenuItemEdit, setShowMenuItemEdit] = useState(false);
+    const [selectedMenuItem, setSelectedMenuItem] = useState();
     const [editedObj, setEditedObj] = useState();
 
     const getCategories = async () => {
@@ -73,7 +78,7 @@ const MenuCMS = () => {
         load();
 
 
-    }, [showEdit, showAdd]);
+    }, [showEdit, showAdd, showToggle]);
 
 
   return (
@@ -124,6 +129,30 @@ const MenuCMS = () => {
                 )
 
             )}
+
+
+            {(
+
+                isLoading ? (
+                    <p style={{color:'black'}}>Loading...</p>
+                )
+
+                :
+
+                (
+                    <InfoBlock 
+                        label={'Build Your Own'} 
+                        val={
+                            
+                            categoriesList.includes("Build Your Own") ?
+                                "Enabled" :
+                                "Disabled"
+                        }
+                        setShowEdit={setShowToggle}
+                    />
+                )
+
+            )}
             
 
         </Flex>
@@ -146,7 +175,7 @@ const MenuCMS = () => {
                 
             />
 
-            <MenuShowcase edit={true}/>
+            <MenuShowcase edit={true} setSelectedMenuItem={setSelectedMenuItem} setShowMenuItemEdit={setShowMenuItemEdit}/>
 
 
         </Flex>
@@ -154,6 +183,10 @@ const MenuCMS = () => {
         {!isLoading && showEdit && (<CatEditPopup cats={categoriesList} setShowEdit={setShowEdit} catItem={catObject}/>)}
         
         {!isLoading && showAdd && (<AddCat setShowAdd={setShowAdd} categories={catObject}/>)}
+
+        {!isLoading && showToggle && (<ToggleBYO cats={categoriesList} setShowToggle={setShowToggle} categories={catObject}/>)}
+
+        {!isLoading && showMenuItemEdit && (<EditMenuItem setShowMenuItemEdit={setShowMenuItemEdit} menuitem={selectedMenuItem} />)}
 
       
     </div>

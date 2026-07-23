@@ -4,7 +4,23 @@ import { resolveImg } from '@/customLib/utils/resolveImage'
 import './ShowcaseItem.css'
 import { AnimatePresence, motion } from 'motion/react'
 
-const ShowcaseItem = ({item}) => {
+const ShowcaseItem = ({
+    item,
+    setSelectedMenuItem = () => {},
+    edit=false,
+    setShowMenuItemEdit = () => {}
+}) => {
+
+    const handleMenuEditToggle = (item) => {
+
+        if (edit == false) {
+            return;
+        }
+
+        setShowMenuItemEdit(true);
+        setSelectedMenuItem(item);
+    }
+
   return (
 
 
@@ -25,7 +41,10 @@ const ShowcaseItem = ({item}) => {
 
         style={{
             padding:'20px',
+            cursor: edit ? 'pointer' : 'auto'
         }}
+
+        onClick={() => handleMenuEditToggle(item)}
 
         
     >
