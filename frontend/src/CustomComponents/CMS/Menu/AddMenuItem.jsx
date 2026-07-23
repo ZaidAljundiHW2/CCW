@@ -1,92 +1,10 @@
 import React from 'react'
-import { Flex, Field, Input, InputGroup, Span, Button, Textarea } from '@chakra-ui/react'
-import { useState } from 'react';
-import { FileUpload } from "@chakra-ui/react"
+import { Flex, Field, Button, Input, Select, Span, Textarea, FileUpload } from '@chakra-ui/react'
 import { HiUpload } from "react-icons/hi"
-import { Portal, Select, createListCollection } from "@chakra-ui/react"
 
-
-
-const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
-
-    const [inputName, setInputName] = useState(menuitem.itemname);
-    const [isNameError, setIsNameError] = useState(false);
-    const [nameErrorMessage, setNameErrorMessage] = useState("");
-    const [discErrorMessage, setDiscErrorMessage] = useState("");
-    const [inputDesc, setInputDesc] = useState(menuitem.itemdescription);
-    const [inputPrice, setInputPrice] = useState(menuitem.price);
-    const [priceErrorMessage, setPriceErrorMessage] = useState("");
-    const [isPriceError, setIsPriceError] = useState(false);
-    const [img, setImg] = useState(null);
-
-    const API = 'http://localhost:5000'
-
-    const catList = categories.map(item => item.category);
-
-    const categoryCollection = createListCollection({
-        items: categories,
-        itemToString: (item) => item.category,
-        itemToValue: (item) => item.category,
-    });
-
-    const [selectedCategory, setSelectedCategory] = useState(() => {
-        const match = categories.find(cat => cat.categoryid === menuitem.categoryid);
-        return match ? match.category : "";
-    });
-
-    
-    const handleUpdate = async (item, categories) => {
-
-        if (inputName.trim().length === 0) {
-            setIsNameError(true);
-            setNameErrorMessage("Input a value");
-            return;
-        }
-
-        if (inputPrice.trim().length === 0) {
-            setIsPriceError(true);
-            setNameErrorMessage("Input a value");
-            return;
-        }
-
-
-
-        try {
-
-            const categoryid = categories.find(cat => cat.category === selectedCategory).categoryid;
-            const fooditemid = item.fooditemid;
-
-            const body = {
-
-                "itemname": inputName,
-                "hasdesc": (inputDesc.trim().length > 0),
-                "itemdescription": inputDesc,
-                "foodimage": item.foodimage,
-                "price": inputPrice,
-                "categoryid": categoryid
-            }
-
-            const response = await fetch(API + `/admin/CMS/menu/menu-item/${fooditemid}`, {
-
-                method:"PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(body)
-            });
-
-            console.log(response);
-            setShowMenuItemEdit(false);
-            
-        } catch (error) {
-            console.error(error);
-        }
-
-        
-    }
-    
-
+const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
   return (
+
     <div
         className='
 
@@ -222,7 +140,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 </Field.Root>
 
                 {/* Price */}
-                <Field.Root invalid={isPriceError} className='w-full'>
+                <Field.Root invalid={isNameError} className='w-full'>
                     <Field.Label className='editText'>Item Price</Field.Label>
                     
                     <div className="relative">
@@ -308,9 +226,9 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
             </Flex>
 
         </Flex>
-      
+        
     </div>
   )
 }
 
-export default EditMenuItem
+export default AddMenuItem

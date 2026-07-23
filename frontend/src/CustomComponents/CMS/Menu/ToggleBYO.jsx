@@ -9,7 +9,7 @@ const ToggleBYO = ({cats, setShowToggle, categories}) => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMD/menu/menu-categories/byo', {
+            const response = await fetch(API + '/admin/CMS/menu/menu-categories/toggle/byo', {
 
                 method:'DELETE'
             })
@@ -33,7 +33,7 @@ const ToggleBYO = ({cats, setShowToggle, categories}) => {
                 displayorder: nextDisplay
             };
 
-            const response = await fetch(API + '/admin/CMD/menu/menu-categories/byo', {
+            const response = await fetch(API + '/admin/CMS/menu/menu-categories/toggle/byo', {
                 
                 method:'POST',
                 headers: {

@@ -7,6 +7,7 @@ import CatEditPopup from './CatEditPopup'
 import AddCat from './AddCat'
 import ToggleBYO from './ToggleBYO'
 import EditMenuItem from './EditMenuItem'
+import AddMenuItem from './AddMenuItem'
 
 const MenuCMS = () => {
     
@@ -16,10 +17,13 @@ const MenuCMS = () => {
     const [catString, setCatString] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [catObject, setCatObject] = useState();
+
     const [showEdit, setShowEdit] = useState(false);
     const [showAdd, setShowAdd] = useState(false);
     const [showToggle, setShowToggle] = useState(false);
     const [showMenuItemEdit, setShowMenuItemEdit] = useState(false);
+    const [showMenuItemAdd, setShowMenuItemAdd] = useState(false);
+
     const [selectedMenuItem, setSelectedMenuItem] = useState();
     const [editedObj, setEditedObj] = useState();
 
@@ -78,7 +82,7 @@ const MenuCMS = () => {
         load();
 
 
-    }, [showEdit, showAdd, showToggle]);
+    }, [showEdit, showAdd, showToggle, showMenuItemEdit]);
 
 
   return (
@@ -172,10 +176,12 @@ const MenuCMS = () => {
 
             <InfoBlock 
                 label={'Menu Items'} 
+                add={true}
+                edit={false}
                 
             />
 
-            <MenuShowcase edit={true} setSelectedMenuItem={setSelectedMenuItem} setShowMenuItemEdit={setShowMenuItemEdit}/>
+            {!isLoading && (<MenuShowcase edit={true} setSelectedMenuItem={setSelectedMenuItem} setShowMenuItemEdit={setShowMenuItemEdit}/>)}
 
 
         </Flex>
@@ -186,7 +192,9 @@ const MenuCMS = () => {
 
         {!isLoading && showToggle && (<ToggleBYO cats={categoriesList} setShowToggle={setShowToggle} categories={catObject}/>)}
 
-        {!isLoading && showMenuItemEdit && (<EditMenuItem setShowMenuItemEdit={setShowMenuItemEdit} menuitem={selectedMenuItem} />)}
+        {!isLoading && showMenuItemEdit && (<EditMenuItem setShowMenuItemEdit={setShowMenuItemEdit} menuitem={selectedMenuItem} categories={catObject}/>)}
+
+        {!isLoading && showMenuItemAdd && (<AddMenuItem setShowMenuItemAdd={setShowMenuItemEdit} categories={catObject}/>)}
 
       
     </div>

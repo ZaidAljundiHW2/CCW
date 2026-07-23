@@ -9,7 +9,8 @@ const InfoBlock = ({
     label="", 
     val="",
     add=false,
-    setShowAdd = () => {}
+    setShowAdd = () => {},
+    edit=true
 }) => {
   return (
     <div
@@ -46,9 +47,14 @@ const InfoBlock = ({
                 </Button>
             )}
 
-            <Button className='rounded-lg editButton' onClick={() => {setShowEdit(true); setEditedObj(item)}}>
-                Edit
-            </Button>
+            {edit && (
+
+                <Button className='rounded-lg editButton' onClick={() => {setShowEdit(true); setEditedObj(item)}}>
+                    Edit
+                </Button>
+
+            )}
+            
 
             
 

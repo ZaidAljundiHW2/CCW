@@ -129,6 +129,20 @@ app.delete('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
 
 })
 
+//Disable Build Your Own
+app.delete('/admin/CMS/menu/menu-categories/toggle/byo', async (req, res) => {
+
+    try {
+
+        const deleteBYO = await pool.query("DELETE FROM menucategories WHERE category='Build Your Own'");
+
+        res.json("Success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 //Delete category items
 app.delete('/admin/CMS/menu/menu-categoryitems/:id', async (req, res) => {
 
@@ -174,22 +188,10 @@ app.post('/admin/CMS/menu/menu-categories', async (req, res) => {
     }
 })
 
-//Disable Build Your Own
-app.delete('/admin/CMD/menu/menu-categories/byo', async (req, res) => {
 
-    try {
-
-        const deleteBYO = await pool.query("DELETE FROM menucategories WHERE category='Build Your Own'");
-
-        res.json("Success");
-        
-    } catch (error) {
-        console.error(error);
-    }
-})
 
 //Enable Build Your Own
-app.post('/admin/CMD/menu/menu-categories/byo', async(req, res) => {
+app.post('/admin/CMS/menu/menu-categories/toggle/byo', async(req, res) => {
 
     try {
 
@@ -203,6 +205,32 @@ app.post('/admin/CMD/menu/menu-categories/byo', async(req, res) => {
         
     } catch (error) {
         console.error(error);   
+    }
+})
+
+//Update menu item
+app.put('/admin/CMS/menu/menu-item/:id', async(req, res) => {
+
+    try {
+        
+        const fooditemid = req.params.id;
+
+        const itemname = req.body.itemname;
+        const hasdesc = req.body.hasdesc;
+        const itemdescription = req.body.itemdescription;
+        const price = req.body.price;
+        const categoryid = req.body.categoryid;
+        const foodimg = req.body.foodimage;
+
+        const updateItem = await pool.query(" UPDATE menu SET itemname=$2, hasdesc=$3, itemdescription=$4, foodimage=$5, price=$6, categoryid=$7 WHERE fooditemid=$1",
+            [fooditemid, itemname, hasdesc, itemdescription, foodimg, price, categoryid]
+        );
+
+        res.json("Success");
+
+
+    } catch (error) {
+        console.error(error);
     }
 })
 
