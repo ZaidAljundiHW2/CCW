@@ -15,22 +15,58 @@ const GeneralDetails = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [editedObj, setEditedObj] = useState();
     const [showEdit, setShowEdit] = useState(false);
+    const [legal, setLegal] = useState();
+    const [isLegal, setIsLegal] = useState(false);
 
     const getSocialMedia = async () => {
 
-        const res = await fetch(API + '/admin/CMS/general-details/social-media');
-        const socialmediaitems = await res.json();
+        try {
 
-        setSocialMediaObjs(socialmediaitems);
+            const res = await fetch(API + '/admin/CMS/general-details/social-media');
+            const socialmediaitems = await res.json();
+
+            setSocialMediaObjs(socialmediaitems);
+            
+        } catch (error) {
+            console.error(error);
+        }
+
+        
 
     };
 
     const getFooterItems = async () => {
 
-        const res = await fetch(API + '/admin/CMS/general-details/footer');
-        const items = await res.json();
+        try {
 
-        setFooterItems(items);
+            const res = await fetch(API + '/admin/CMS/general-details/footer');
+            const items = await res.json();
+
+            setFooterItems(items);
+            
+        } catch (error) {
+            console.error(error);
+        }
+
+        
+
+    }
+
+    const getLegal = async() => {
+
+        try {
+            const res = await fetch(API + '/admin/CMS/general-details/legal');
+            const items = await res.json();
+
+            setLegal(items);
+            
+        } catch (error) {
+            console.error(error);
+        }
+
+        
+
+
 
     }
 
@@ -38,6 +74,7 @@ const GeneralDetails = () => {
 
         await getSocialMedia();
         await getFooterItems();
+        await getLegal();
     }
 
 
@@ -46,6 +83,7 @@ const GeneralDetails = () => {
         const load = async () => {
 
             await fetchAll();
+
             setIsLoading(false);
 
             
@@ -153,6 +191,48 @@ const GeneralDetails = () => {
 
         </Flex>
 
+        {/* Legal Information */}
+        <Flex 
+            className='
+                GDWrapper 
+                rounded-lg 
+                shadow-lg
+                flex-col
+            '
+        >
+
+            <h1 className='CMSHead'>
+                Legal Information
+            </h1>
+
+            {(
+
+                isLoading ? (
+                    <p style={{color:'black'}}>Loading...</p>
+                )
+
+                :
+
+                (
+                    <div>
+                        {legal.map((item,i) => (
+
+                            <InfoBlock 
+                                key={i} 
+                                setShowEdit={setShowEdit}
+                                setEditedObj={setEditedObj}
+                                item={item}
+                            />
+                        ))}
+                    </div>
+                )
+
+            )}
+
+            
+
+        </Flex>
+
         {/* Logo */}
         {/* <Flex 
             className='
@@ -173,7 +253,12 @@ const GeneralDetails = () => {
 
         </Flex> */}
 
-        {showEdit && (<EditGenDet editedItem={editedObj} setShowEdit={setShowEdit} fetchAll={fetchAll}/>)}
+        {showEdit && 
+            (<EditGenDet 
+                editedItem={editedObj} 
+                setShowEdit={setShowEdit} 
+                fetchAll={fetchAll}
+            />)}
       
     </div>
   )

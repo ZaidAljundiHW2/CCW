@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
-import { Flex, Input } from '@chakra-ui/react'
+import { Flex, Input, Textarea } from '@chakra-ui/react'
 import { useState, useRef } from 'react';
 
 const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
+
+    const textarea = editedItem.type === "Legal";
 
     const [value, setValue] = useState("");
     const label = useRef(editedItem.label);
@@ -69,12 +71,13 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
                 flex-col
                 GDWrapper
                 bg-white
-                justify-center
+                max-h-[50%]
                 
             '
 
             style={{
-                transform:'translate(-50%,-50%)'
+                transform:'translate(-50%,-50%)',
+                overflowY:'scroll'
             }}
         >
             <h1 className='CMSHead'>
@@ -94,7 +97,11 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
             </h1>
 
             <form onSubmit={updateVal}>
-                <Input onChange={(e) => setValue(e.target.value)} style={{color:'black'}}/>
+
+
+                {!textarea && (<Input onChange={(e) => setValue(e.target.value)} style={{color:'black'}}/>)}
+
+                {textarea && (<Textarea onChange={(e) => setValue(e.target.value)} style={{color:'black'}}/>)}
                 <h1 className='editText'>
                     Make sure to include 'https://' for links.
                 </h1>

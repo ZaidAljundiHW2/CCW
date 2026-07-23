@@ -10,7 +10,8 @@ const InfoBlock = ({
     val="",
     add=false,
     setShowAdd = () => {},
-    edit=true
+    edit=true,
+    setIsLegal = () => {}
 }) => {
   return (
     <div

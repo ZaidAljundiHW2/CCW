@@ -53,6 +53,19 @@ app.get('/admin/CMS/general-details/social-media', async (req, res) => {
     }
 })
 
+//Get legal information
+app.get('/admin/CMS/general-details/legal', async(req,res) => {
+
+    try {
+        
+        const getLegal = await pool.query("SELECT * FROM generaldetails WHERE type = 'Legal'");
+        res.json(getLegal.rows);
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 //Get footer information
 app.get('/admin/CMS/general-details/footer', async (req, res) => {
 

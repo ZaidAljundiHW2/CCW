@@ -3,6 +3,11 @@ import './Scrollbar.css'
 import { Link } from 'react-router-dom'
 
 const Scrollbar = () => {
+
+    const getGeneralDetails = async() => {
+        
+    }
+
   return (
     <div
         className='

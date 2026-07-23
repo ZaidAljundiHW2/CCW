@@ -9,30 +9,48 @@ const Layout = () => {
   const navRef = useRef(null)
   const footerRef = useRef(null)
 
-   useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const node = navRef.current
-    const nodefooter = footerRef.current;
-    if (!nodefooter) return
+    const nodefooter = footerRef.current
+
     if (!node) return
 
     const updateHeight = () => {
-      document.documentElement.style.setProperty('--nav-height', `${node.offsetHeight}px`)
-    }
-
-    const updateNegFooterSpace = () => {
-      document.documentElement.style.setProperty('--footer-height', `${nodefooter.offsetHeight}px`)
+        document.documentElement.style.setProperty(
+            '--nav-height',
+            `${node.offsetHeight}px`
+        )
     }
 
     updateHeight()
-    updateNegFooterSpace()
 
     const observer = new ResizeObserver(updateHeight)
-    const observer2 = new ResizeObserver(updateNegFooterSpace)
     observer.observe(node)
-    observer2.observe(nodefooter)
 
-    return () => {observer.disconnect(); observer2.disconnect()}
-  }, [])
+
+    let observer2;
+
+    if (nodefooter) {
+        const updateFooterHeight = () => {
+            document.documentElement.style.setProperty(
+                '--footer-height',
+                `${nodefooter.offsetHeight}px`
+            )
+        }
+
+        updateFooterHeight()
+
+        observer2 = new ResizeObserver(updateFooterHeight)
+        observer2.observe(nodefooter)
+    }
+
+
+    return () => {
+        observer.disconnect()
+        observer2?.disconnect()
+    }
+
+  }, []);
 
   return (
     <>
