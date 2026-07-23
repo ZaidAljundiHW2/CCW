@@ -179,12 +179,16 @@ const Footer = forwardRef((props, ref) => {
                         CONTACT US
                     </h1>
 
-                    <Flex className='items-center landscape:gap-5 gap-1'>
-                        <CiLocationOn className='footericon' color='gold'/>
-                        <p className='footertext'>
-                            {genDetails.find(item => item.label === "Address")?.val}
-                        </p>
-                    </Flex>
+                    <a href={genDetails.find(item => item.label === "Location")?.val} className='cursor-pointer'>
+                        <Flex className='items-center landscape:gap-5 gap-1'>
+                            <CiLocationOn className='footericon' color='gold'/>
+                            
+                                <p className='footertext'>
+                                    {genDetails.find(item => item.label === "Address")?.val}
+                                </p>
+                            
+                        </Flex>
+                    </a>
 
                     <Flex className='items-center landscape:gap-5 gap-1'>
                         <CiPhone className='footericon' color='gold'/>
