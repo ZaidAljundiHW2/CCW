@@ -41,17 +41,21 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
     
     const handleUpdate = async (item, categories) => {
 
-        if (inputName.trim().length === 0) {
+        let end = false;
+
+        if (inputName.trim().length == 0) {
             setIsNameError(true);
             setNameErrorMessage("Input a value");
-            return;
+            end = true;
         }
 
-        if (inputPrice.trim().length === 0) {
+        if (inputPrice.trim().length == 0) {
             setIsPriceError(true);
             setPriceErrorMessage("Input a value");
-            return;
+            end = true;
         }
+
+        if (end) return;
 
 
 

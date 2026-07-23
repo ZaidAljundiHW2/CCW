@@ -173,7 +173,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                         <Textarea
                             value={inputDesc}
                             onChange={(e) => setInputDesc(e.currentTarget.value.slice(0, 255))}
-                            placeholder="New name"
+                            placeholder="New description"
                             style={{ color: 'black', paddingRight: '4.5rem' }}
                             maxLength={255}
                             className="w-full"
@@ -206,7 +206,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                                 w-[20%]
                             '
                         /> */}
-
+                        
                         <FileUpload.Root>
                             <FileUpload.HiddenInput />
                             <FileUpload.Trigger asChild>
@@ -228,14 +228,14 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                 </Field.Root>
 
                 {/* Price */}
-                <Field.Root invalid={isNameError} className='w-full'>
+                <Field.Root invalid={isPriceError} className='w-full'>
                     <Field.Label className='editText'>Item Price</Field.Label>
                     
                     <div className="relative">
                         <Input
                             value={inputPrice}
                             onChange={(e) => setInputPrice(e.currentTarget.value.slice(0, 255))}
-                            placeholder="New name"
+                            placeholder="New price"
                             style={{ color: 'black', paddingRight: '4.5rem' }}
                             maxLength={20}
                         />
