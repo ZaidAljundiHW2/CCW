@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { FileUpload } from "@chakra-ui/react"
 import { HiUpload } from "react-icons/hi"
 import { Portal, Select, createListCollection } from "@chakra-ui/react"
-
-
+import DeleteItem from './DeleteItem'
 
 const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
@@ -22,6 +21,8 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
     const [isSelectCategoryError, setIsSelectCategoryError] = useState();
     const [selectedCategoryErrorMessage, setSelectedCategoryErrorMessage] = useState("");
+
+    const [showDeleteConf, setShowDeleteConf] = useState(false);
 
     const [img, setImg] = useState(null);
 
@@ -41,25 +42,27 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
     
     const handleUpdate = async (item, categories) => {
 
-        let end = false;
-
-        if (inputName.trim().length == 0) {
-            setIsNameError(true);
-            setNameErrorMessage("Input a value");
-            end = true;
-        }
-
-        if (inputPrice.trim().length == 0) {
-            setIsPriceError(true);
-            setPriceErrorMessage("Input a value");
-            end = true;
-        }
-
-        if (end) return;
+        
 
 
 
         try {
+
+            let end = false;
+
+            if (inputName.trim().length == 0) {
+                setIsNameError(true);
+                setNameErrorMessage("Input a value");
+                end = true;
+            }
+
+            if (inputPrice.trim().length == 0) {
+                setIsPriceError(true);
+                setPriceErrorMessage("Input a value");
+                end = true;
+            }
+
+            if (end) return;
 
             const categoryid = categories.find(cat => cat.category === selectedCategory).categoryid;
             const fooditemid = item.fooditemid;
@@ -302,6 +305,17 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 
             </form>
 
+            <Flex>
+
+                <Button className='editButton' 
+                    style={{background:'red'}} 
+                    onClick={() => setShowDeleteConf(true)}>
+                    Delete
+                </Button>
+
+                
+            </Flex>
+
             <Flex className='justify-end gap-3'>
 
                 <Button className='editButton' 
@@ -316,6 +330,8 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
             </Flex>
 
         </Flex>
+
+        {showDeleteConf && (<DeleteItem setShowDelete={setShowMenuItemEdit} item={menuitem} />)}
       
     </div>
   )

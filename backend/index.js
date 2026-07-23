@@ -258,6 +258,23 @@ app.post('/admin/CMS/menu/menu-item', async(req, res) => {
     }
 }) 
 
+//Delete menu item
+app.delete('/admin/CMS/menu/menu-item/:id', async(req, res) => {
+
+    try {
+
+        const id = req.params.id;
+        const deleteItem = await pool.query("DELETE FROM menu WHERE fooditemid = $1", [id]);
+
+        res.json("Success");
+        
+    } catch (error) {
+
+        console.error(error);
+        
+    }
+})
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")
