@@ -1,8 +1,101 @@
 import React from 'react'
 import { Flex, Field, Button, Input, Select, Span, Textarea, FileUpload } from '@chakra-ui/react'
 import { HiUpload } from "react-icons/hi"
+import { useState } from 'react'
+import { createListCollection, Portal } from '@chakra-ui/react'
 
 const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
+
+    
+    const [isNameError, setIsNameError] = useState("");
+    const [inputName, setInputName] = useState("");
+    const [nameErrorMessage, setNameErrorMessage] = useState("");
+
+    const [inputDesc, setInputDesc] = useState("");
+    const [imgErrorMessage, setImgErrorMessage] = useState("");
+    
+    const [inputPrice, setInputPrice] = useState("");
+    const [isPriceError, setIsPriceError] = useState("");
+    const [priceErrorMessage, setPriceErrorMessage] = useState("");
+
+    const [selectedCategory, setSelectedCategory] = useState("");
+    const [isSelectCategoryError, setIsSelectCategoryError] = useState();
+    const [selectedCategoryErrorMessage, setSelectedCategoryErrorMessage] = useState("");
+
+    const API = 'http://localhost:5000'
+
+
+    const categoryCollection = createListCollection({
+        items: categories,
+        itemToString: (item) => item.category,
+        itemToValue: (item) => item.category,
+    });
+
+    const placeholderImgsrc = 'https://drive.google.com/thumbnail?id=1HVFwBvKrLDQKjtUe8KiYP3W-GYacn1Up';
+
+    const addItem = async(itemname, itemprice, itemimg, itemdesc, itemcat, categories) => {
+
+        
+        try {
+
+            let end = false;
+
+            if (itemname.trim().length == 0) {
+
+                setIsNameError(true);
+                setNameErrorMessage("Enter a value.");
+                end = true;
+            }
+
+            if (itemprice.trim().length == 0) {
+                setIsPriceError(true);
+                setPriceErrorMessage("Enter a value.")
+                end = true;
+            }
+
+            if (itemcat.trim().length == 0) {
+                setIsSelectCategoryError(true);
+                setSelectedCategoryErrorMessage("Choose a category.");
+                end = true;
+            }
+
+            if (end) return;
+
+            const hasDesc = itemdesc.trim().length > 0;
+
+            const catid = categories.find(item => item.category === itemcat).categoryid;
+
+            const body = {
+
+                "itemname": itemname,
+                "hasdesc":hasDesc,
+                "itemdescription": itemdesc,
+                "foodimage": itemimg,
+                "price": itemprice,
+                "categoryid": catid
+            }
+
+            const response = await fetch(API + '/admin/CMS/menu/menu-item', {
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body:JSON.stringify(body)
+
+            });
+
+            setShowMenuItemAdd(false);
+
+            console.log(response);
+
+
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+
   return (
 
     <div
@@ -28,7 +121,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                 text-center
                 gap-3
                 max-h-[50%]
-                w-[50%]
+                min-w-[50%]
             '
             
             style={{
@@ -38,12 +131,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
         >
 
             <h1 className='CMSHead'>
-                Edit Menu Item
-            </h1>
-
-            <h1 className='editText'>
-
-                {menuitem.itemname}
+                Add Menu Item
             </h1>
 
             <form className='w-full flex gap-5 flex-col'>
@@ -100,10 +188,10 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                         </Span>
                     </div>
 
-                    <Field.ErrorText width="full">
+                    {/* <Field.ErrorText width="full">
                         <Field.ErrorIcon />
                         {discErrorMessage}
-                    </Field.ErrorText>
+                    </Field.ErrorText> */}
                 </Field.Root>
                 
                 {/* Image */}
@@ -112,12 +200,12 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                     
                     <div className="relative flex flex-col gap-3 w-full">
 
-                        <img src={menuitem.foodimage} 
+                        {/* <img src={menuitem.foodimage} 
                             className='
                                 aspect-square
                                 w-[20%]
                             '
-                        />
+                        /> */}
 
                         <FileUpload.Root>
                             <FileUpload.HiddenInput />
@@ -135,7 +223,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
                     <Field.ErrorText width="full">
                         <Field.ErrorIcon />
-                        {discErrorMessage}
+                        {imgErrorMessage}
                     </Field.ErrorText>
                 </Field.Root>
 
@@ -168,7 +256,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                 </Field.Root>
 
                 {/* Category */}
-                <Field.Root invalid={isNameError} className='w-full'>
+                <Field.Root invalid={isSelectCategoryError} className='w-full'>
                     <Field.Label className='editText'>Item Category</Field.Label>
                     
                         <Select.Root 
@@ -182,7 +270,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                             <Select.HiddenSelect />
                             <Select.Control>
                                 <Select.Trigger>
-                                <Select.ValueText color={'black'} placeholder="Select framework" />
+                                <Select.ValueText color={'black'} placeholder="Select category" />
                                 </Select.Trigger>
                                 <Select.IndicatorGroup>
                                 <Select.Indicator />
@@ -204,7 +292,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
                     <Field.ErrorText width="full">
                         <Field.ErrorIcon />
-                        {priceErrorMessage}
+                        {selectedCategoryErrorMessage}
                     </Field.ErrorText>
                 </Field.Root>
                 
@@ -215,12 +303,12 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
             <Flex className='justify-end gap-3'>
 
                 <Button className='editButton' 
-                    style={{background:'#0076df'}} 
-                    onClick={() => handleUpdate(menuitem, categories)}>
-                    Update
+                    style={{background:'#4BB543'}} 
+                    onClick={() => addItem(inputName, inputPrice, placeholderImgsrc, inputDesc, selectedCategory, categories)}>
+                    Add
                 </Button>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowMenuItemEdit(false)}>
+                <Button className='editButton' style={{background:'red'}} onClick={() => setShowMenuItemAdd(false)}>
                     Cancel
                 </Button>
             </Flex>

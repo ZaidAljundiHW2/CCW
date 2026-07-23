@@ -234,6 +234,30 @@ app.put('/admin/CMS/menu/menu-item/:id', async(req, res) => {
     }
 })
 
+//Add menu item
+app.post('/admin/CMS/menu/menu-item', async(req, res) => {
+
+    try {
+        
+        const itemname = req.body.itemname;
+        const hasdesc = req.body.hasdesc;
+        const itemdescription = req.body.itemdescription;
+        const price = req.body.price;
+        const categoryid = req.body.categoryid;
+        const foodimg = req.body.foodimage;
+
+        const addItem = await pool.query("INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid) VALUES ($1, $2, $3, $4, $5, $6)", [
+            itemname, hasdesc, itemdescription, foodimg, price, categoryid
+        ]);
+
+        res.json("success");
+
+
+    } catch (error) {
+        console.error(error);
+    }
+}) 
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")

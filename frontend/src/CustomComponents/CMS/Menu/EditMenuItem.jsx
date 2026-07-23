@@ -17,11 +17,15 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
     const [inputPrice, setInputPrice] = useState(menuitem.price);
     const [priceErrorMessage, setPriceErrorMessage] = useState("");
     const [isPriceError, setIsPriceError] = useState(false);
+    const [isImgError, setIsImgError] = useState(false);
+    const [imgErrorMessage, setImgErrorMessage] = useState("");
+
+    const [isSelectCategoryError, setIsSelectCategoryError] = useState();
+    const [selectedCategoryErrorMessage, setSelectedCategoryErrorMessage] = useState("");
+
     const [img, setImg] = useState(null);
 
     const API = 'http://localhost:5000'
-
-    const catList = categories.map(item => item.category);
 
     const categoryCollection = createListCollection({
         items: categories,
@@ -45,7 +49,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
         if (inputPrice.trim().length === 0) {
             setIsPriceError(true);
-            setNameErrorMessage("Input a value");
+            setPriceErrorMessage("Input a value");
             return;
         }
 
@@ -217,7 +221,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
                     <Field.ErrorText width="full">
                         <Field.ErrorIcon />
-                        {discErrorMessage}
+                        {imgErrorMessage}
                     </Field.ErrorText>
                 </Field.Root>
 
@@ -250,7 +254,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 </Field.Root>
 
                 {/* Category */}
-                <Field.Root invalid={isNameError} className='w-full'>
+                <Field.Root invalid={isSelectCategoryError} className='w-full'>
                     <Field.Label className='editText'>Item Category</Field.Label>
                     
                         <Select.Root 
@@ -286,7 +290,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
                     <Field.ErrorText width="full">
                         <Field.ErrorIcon />
-                        {priceErrorMessage}
+                        {selectedCategoryErrorMessage}
                     </Field.ErrorText>
                 </Field.Root>
                 

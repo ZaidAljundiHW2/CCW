@@ -72,6 +72,16 @@ const MenuCMS = () => {
 
     useEffect(() => {
 
+        if (
+            showEdit ||
+            showAdd ||
+            showToggle ||
+            showMenuItemEdit ||
+            showMenuItemAdd 
+        ) {
+            return;
+        }
+
         const load = async () => {
 
             setIsLoading(true);
@@ -82,7 +92,7 @@ const MenuCMS = () => {
         load();
 
 
-    }, [showEdit, showAdd, showToggle, showMenuItemEdit]);
+    }, [showEdit, showAdd, showToggle, showMenuItemEdit, showMenuItemAdd]);
 
 
   return (
@@ -178,8 +188,11 @@ const MenuCMS = () => {
                 label={'Menu Items'} 
                 add={true}
                 edit={false}
+                setShowAdd={setShowMenuItemAdd}
                 
             />
+
+
 
             {!isLoading && (<MenuShowcase edit={true} setSelectedMenuItem={setSelectedMenuItem} setShowMenuItemEdit={setShowMenuItemEdit}/>)}
 
@@ -194,7 +207,7 @@ const MenuCMS = () => {
 
         {!isLoading && showMenuItemEdit && (<EditMenuItem setShowMenuItemEdit={setShowMenuItemEdit} menuitem={selectedMenuItem} categories={catObject}/>)}
 
-        {!isLoading && showMenuItemAdd && (<AddMenuItem setShowMenuItemAdd={setShowMenuItemEdit} categories={catObject}/>)}
+        {!isLoading && showMenuItemAdd && (<AddMenuItem setShowMenuItemAdd={setShowMenuItemAdd} categories={catObject}/>)}
 
       
     </div>
