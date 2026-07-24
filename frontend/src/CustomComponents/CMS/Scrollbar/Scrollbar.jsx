@@ -75,7 +75,7 @@ const Scrollbar = () => {
                 </button>
             </Link>
 
-            <Link className='w-full'>
+            <Link className='w-full' to={'Book'}>
                 <button>
                     Booking Reservation Queries
                 </button>
@@ -126,7 +126,7 @@ const Scrollbar = () => {
                             <Menu.Item>Franchise Queries</Menu.Item>
                         </Link>
 
-                        <Link>
+                        <Link to={'Book'}>
                             <Menu.Item>Booking Reservation Queries</Menu.Item>
                         </Link>
                     </Menu.Content>

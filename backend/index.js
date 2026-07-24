@@ -418,6 +418,24 @@ app.put('/admin/CMS/contact/new/:id', async(req, res) => {
     }
 })
 
+//Mark complete contact queries as new
+app.put('/admin/CMS/contact/complete/:id', async(req, res) => {
+
+    try {
+        
+        const id = req.params.id;
+
+        const updateStatus = await pool.query("UPDATE contact SET status='new' WHERE contactid=$1",
+            [id]
+        );
+
+        res.json("success");
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 //Delete contact query
 app.delete('/admin/CMS/contact/:id', async(req,res) => {
 
@@ -436,6 +454,42 @@ app.delete('/admin/CMS/contact/:id', async(req,res) => {
     }
 })
 
+//Add booking reservation
+app.post('/admin/CMS/booking', async(req,res) => {
+
+    try {
+
+        const name = req.body.name;
+        const email = req.body.email;
+        const number = req.body.phonenumber;
+        const date = req.body.date;
+        const numguests = req.body.numguests;
+        const special = req.body.specialrequests;
+
+        const addRes = await pool.query("INSERT INTO bookings (name, email, phonenumber, date, numguests, specialrequests) VALUES ($1,$2,$3,$4,$5,$6)",[
+            name, email, number, date, numguests, special
+        ]);
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error
+    }
+})
+
+//Get locations
+app.get('/locations', async(req,res) => {
+
+    try {
+        
+        const getLocations = await pool.query("SELECT * FROM locations");
+        
+        res.json(getLocations.rows);
+
+    } catch (error) {
+        console.error(error);
+    }
+})
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")

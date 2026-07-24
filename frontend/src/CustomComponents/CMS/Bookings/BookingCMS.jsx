@@ -4,7 +4,7 @@ import { Flex } from '@chakra-ui/react';
 import ContactBlock from './ContactBlock';
 import DeleteQuery from './DeleteQuery';
 
-const ContactCMS = () => {
+const BookingCMS = () => {
 
 
     const API = 'http://localhost:5000';
@@ -125,13 +125,7 @@ const ContactCMS = () => {
 
             {completedItems.map((item) => (
 
-                <ContactBlock 
-                    mark={false} 
-                    contactItem={item} 
-                    setShowDelete={setShowDelete} 
-                    setContactItem={setSelectedQuery}
-                    setRefresh={setRefresh}
-                />
+                <ContactBlock mark={false} contactItem={item} setShowDelete={setShowDelete} setContactItem={setSelectedQuery}/>
 
             ))}
 
@@ -144,4 +138,4 @@ const ContactCMS = () => {
   )
 }
 
-export default ContactCMS
+export default BookingCMS

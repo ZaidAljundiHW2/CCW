@@ -34,28 +34,6 @@ const ContactBlock = ({contactItem,
         }
     }
 
-    const markNew = async(contactItem) => {
-
-        try {
-
-            const response = await fetch(API + `/admin/CMS/contact/complete/${contactItem.contactid}`, {
-                method:"PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-
-            console.log(response);
-
-            if(response.ok){
-                setRefresh(prev => !prev);
-            }
-            
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
   return (
     <div
         className='
@@ -122,14 +100,6 @@ const ContactBlock = ({contactItem,
 
                 <Button className='rounded-lg editButton' style={{background:'#4BB543'}} onClick={() => markComplete(contactItem)}>
                     Mark complete
-                </Button>
-
-            )}
-
-            {!mark && (
-
-                <Button className='rounded-lg editButton' onClick={() => markNew(contactItem)}>
-                    Mark new
                 </Button>
 
             )}

@@ -56,9 +56,9 @@ const OurStory = () => {
       className='
         flex
         flex-col
-        md:flex-row
+        landscape:flex-row
         ourstorywrapper
-        md:min-h-[100vh]
+        landscape:min-h-[100vh]
         min-h-[60vh]
       '
     >

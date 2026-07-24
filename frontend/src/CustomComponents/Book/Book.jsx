@@ -24,7 +24,7 @@ const Book = () => {
     >
 
         {/* Writing */}
-        <Flex className='landscape:flex-1 flex-col booktext' style={{paddingTop:'var(--nav-height)'}}>
+        <Flex className='landscape:flex-1 flex-none flex-col booktext' style={{paddingTop:'var(--nav-height)'}}>
 
             <motion.h1 
                 style={{color:'#ef571b'}}
@@ -60,10 +60,11 @@ const Book = () => {
         {/* Form */}
         <Flex 
             className='
-                bookformwrapper 
-                landscape:items-center 
+                bookformwrapper
+                landscape:items-center
                 justify-center
                 landscape:flex-1
+                flex-1
                 
             '
             

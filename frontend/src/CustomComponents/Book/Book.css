@@ -15,7 +15,7 @@
 
 .bookformwrapper {
     padding:20px;
-    padding-top: var(--nav-height);
+    min-height: calc(100vh - var(--footer-height));
 }
 
 @media (max-width:912px) {
@@ -27,12 +27,13 @@
 }
 
 @media (orientation: portrait) {
-    .bookformwrapper {
-        padding-top: 0;
-    }
-    
     .bookwrapper {
         min-height: calc(100vh - var(--footer-height));
-        text-align: center;
+        width:100%;
+        text-align:center;
+    }
+
+    .bookformwrapper {
+        padding-top:0;
     }
 }

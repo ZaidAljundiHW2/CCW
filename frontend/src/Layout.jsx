@@ -6,8 +6,9 @@ import { useRef, useState, useLayoutEffect } from 'react'
 
 const Layout = () => {
 
-  const navRef = useRef(null)
-  const footerRef = useRef(null)
+  const navRef = useRef(null);
+  const dropdown = useRef(null);
+  const footerRef = useRef(null);
 
   useLayoutEffect(() => {
     const node = navRef.current

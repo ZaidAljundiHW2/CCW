@@ -1,88 +1,555 @@
-import React from 'react'
-import { Flex, Input, Textarea } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
+import { Flex, Input, Textarea, Field, Button } from '@chakra-ui/react'
 import { IoIosCloseCircle } from "react-icons/io";
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { DatePicker, Portal, parseDate } from "@chakra-ui/react"
 import { LuCalendar } from "react-icons/lu"
+import { useState } from 'react';
+import { FaRegPaperPlane } from "react-icons/fa6";
+import Thank from '../Contact/Thank';
+import { NativeSelect } from "@chakra-ui/react"
 
-const BookForm = ({setShowBook}) => {
+const BookForm = () => {
   const today = new Date().toISOString().split('T')[0];
   const nextMonth = new Date();
   nextMonth.setMonth(nextMonth.getMonth() + 1);
 
   const nextMonthFormatted = nextMonth.toISOString().split("T")[0];
 
+  const API = 'http://localhost:5000';
+  
+      
+  const [name, setName] = useState("");
+  const [isNameError, setIsNameError] = useState(false);
+  const [nameErrorMessage, setNameErrorMessage] = useState("");
 
+  const [email, setEmail] = useState("");
+  const [isEmailError, setIsEmailError] = useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = useState(""); 
+
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [isPhoneNumberError, setIsPhoneNumberError] = useState(false);
+  const [phoneNumberErrorMessage, setPhoneNUmberErrorMessage] = useState("");
+
+  const [date, setDate] = useState("");
+  const [isDateError, setIsDateError] = useState(false);
+  const [dateErrorMessage, setDateErrorMessage] = useState("");
+
+  const [numGuests, setNumGuests] = useState(1);
+  const [isNumGuestsError, SetIsNumGuestsError] = useState(false);
+  const [numGuestsErrorMessage, setNumGuestsErrorMessage] = useState("");
+
+  const [specialRequests, setSpecialRequests] = useState("");
+  const [isSpecialRequestsError, setIsSpecialRequestsError] = useState(false);
+  const [specialRequestsErrorMessage, setSpecialRequestsErrorMessage] = useState("");
+
+  const [time, setTime] = useState("");
+  const [isTimeError, setIsTimeError] = useState(false);
+  const [timeErrorMessage, setTimeErrorMessage] = useState("");
+
+  const [location, setLocation] = useState();
+  const [isLocationError, setIsLocationError] = useState(false);
+  const [locationErrorMessage, setLocationErrorMessage] = useState("");
+
+  const [isSuccessfulSubmission, setIsSuccessfulSubmission] = useState(false);
+
+  const [locations, setLocations] = useState();
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getLocations = async() => {
+
+    try {
+
+        const response = await fetch(API + '/locations');
+        const jsonData = await response.json();
+
+        setLocations(jsonData);
+
+        console.log(jsonData);
+
+        
+    } catch (error) {
+        console.error(error);
+    }
+  }
+
+
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
+  const phoneRegex = /^\+?[0-9\s().-]{7,20}$/;
+  
+  useEffect(() => {
+
+    const load = async() => {
+        await getLocations();
+        setIsLoading(false);
+    }
+
+    load();
+
+  },[])
+
+
+  const generateTimes = (open, close) => {
+    const times = [];
+
+    let start = new Date(`2000-01-01T${open}`);
+    let end = new Date(`2000-01-01T${close}`);
+
+    // remove last hour from closing time
+    end.setHours(end.getHours() - 1);
+
+    while (start <= end) {
+        times.push(
+            start.toLocaleTimeString([], {
+                hour: 'numeric',
+                minute: '2-digit'
+            })
+        );
+
+        start.setMinutes(start.getMinutes() + 30);
+    }
+
+    return times;
+  };
+
+  const uploadBooking = async(name, email, phonenumber, date, numguests, requests) => {
+
+      try {
+
+          console.log("DATE RECEIVED:", date);
+
+
+          let end = false;
+          
+          if (name.trim().length === 0) {
+
+              setIsNameError(true);
+              setNameErrorMessage("Input a value");
+              end = true;
+
+          }
+
+          if (email.trim().length === 0) {
+
+              setIsEmailError(true);
+              setEmailErrorMessage("Input a value");
+              end = true;
+
+          }
+
+          else if (!emailRegex.test(email)) {
+              setIsEmailError(true);
+              setEmailErrorMessage("Enter a valid email address.");
+              end = true;
+          }
+
+          if (!phoneRegex.test(phonenumber) && phonenumber.trim().length > 0) {
+              setIsPhoneNumberError(true);
+              setPhoneNUmberErrorMessage("Enter a valid phone number.");
+              end = true;
+          }
+
+          if (date.trim().length === 0) {
+
+              setIsDateError(true);
+              setDateErrorMessage("Input a value");
+              end = true;
+
+          }
+
+          if (end) return;
+
+          const body = {
+              "name": name,
+              "email": email,
+              "phonenumber": phonenumber,
+              "date": date,
+              "numguests": numguests,
+              "specialrequests": requests,
+              "status": 'new'
+          }
+
+          console.log("FFFF");
+          const response = await fetch(API + '/admin/CMS/booking', {
+
+              method:"POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(body)
+          });
+
+          console.log("XXXX");
+
+
+
+          if(response.ok){
+
+
+              setIsNameError(false);
+              setIsEmailError(false);
+              setIsPhoneNumberError(false);
+              setIsDateError(false);
+              setIsSpecialRequestsError(false);
+
+              setName("");
+              setEmail("");
+              setPhoneNumber("");
+              setDate("");
+              setSpecialRequests("");
+
+              setIsSuccessfulSubmission(true);
+
+              setTimeout(() => {
+                  setIsSuccessfulSubmission(false);
+              },1500);
+          }
+
+          
+          
+      } catch (error) {
+          console.error(error);
+      }
+      
+
+  }
+
+  if (isLoading) {
+    return (
+        <p style={{color:'black'}}>Loading...</p>
+    )
+  }
 
   return (
     <motion.div 
-      className='landscape:w-full w-[80%] gap-5 rounded-lg shadow-lg flex flex-col bg-[#f2eeee]/90' 
+      className='landscape:w-full w-[90%] gap-5 rounded-lg shadow-lg flex flex-col bg-[#f2eeee]/90' 
       style={{padding:'20px'}}
       initial={{ opacity:0, x:50 }}
       animate={{ opacity:1, x:0 }}
       transition={{duration:.5, ease:'easeOut'}}
     >
 
-        <Flex
-          className='landscape:flex-row flex-col gap-5' 
-        >
-          <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='First Name*' required/>
+
+        <form className='flex gap-3 flex-col'>
+      
+            <Flex
+                className='landscape:gap-5 gap-2' 
+            >
+
+                {/* Name */}
+                <Field.Root invalid={isNameError} className='w-full' required>
+                    <Field.Label className='editText'>Name<Field.RequiredIndicator /></Field.Label>
+                    
+                    <Input
+                        value={name}
+                        onChange={(e) => setName(e.currentTarget.value.slice(0, 255))}
+                        style={{ color: 'black', background:'white'}}
+                        maxLength={255}
+                        className='CFText'
+                        
+                    />
+                        
+
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {nameErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+                
+                {/* Email */}
+                <Field.Root invalid={isEmailError} className='w-full' required>
+                    <Field.Label className='editText'>Email<Field.RequiredIndicator /></Field.Label>
+                    
+                    <Input
+                        value={email}
+                        onChange={(e) => setEmail(e.currentTarget.value.slice(0, 255))}
+                        style={{ color: 'black', background:'white'}}
+
+                        maxLength={255}
+                        className='CFText'
+                        type='email'
+                    />
+                        
+
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {emailErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+
+            </Flex>
             
-          <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Last Name*' required/>
+            {/* Phone Number */}
+            <Field.Root invalid={isPhoneNumberError} required className='w-full'>
+                <Field.Label className='editText'>Phone Number<Field.RequiredIndicator /></Field.Label>
+                
+                <Input
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.currentTarget.value.slice(0, 255))}
+                    style={{ color: 'black', background:'white'}}
+                    maxLength={255}
+                    className='CFText'
+                    type='tel'
+                    
+                />
+                    
 
-        </Flex>
+                <Field.ErrorText width="full">
+                    <Field.ErrorIcon />
+                    {phoneNumberErrorMessage}
+                </Field.ErrorText>
+            </Field.Root>
 
-        <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Email Address*'/>
+            <Flex
+                className='landscape:flex-row flex-col gap-5' 
+            >
+                {/* Date */}
+                <Field.Root invalid={isDateError} className='w-full' required>
+                    <Field.Label className='editText'>Date <Field.RequiredIndicator /></Field.Label>
+                    
+                    <DatePicker.Root
+                        min={parseDate(today)}
+                        max={parseDate(nextMonthFormatted)}
+                        className='CFText'
+                        onValueChange={(e) => {
+                            setDate(e.value[0].toString());
+                            console.log(e.value[0].toString());
+                        }}   
+                        style={{ color: 'black', background:'white'}}
+            
+                    >
+                    <DatePicker.Control>
+                        <DatePicker.Input readOnly color={'black'} />
+                        <DatePicker.IndicatorGroup>
+                        <DatePicker.Trigger>
+                            <LuCalendar />
+                        </DatePicker.Trigger>
+                        </DatePicker.IndicatorGroup>
+                    </DatePicker.Control>
+                    <Portal>
+                        <DatePicker.Positioner>
+                        <DatePicker.Content>
+                            <DatePicker.View view="day">
+                            <DatePicker.Header />
+                            <DatePicker.DayTable />
+                            </DatePicker.View>
+                            <DatePicker.View view="month">
+                            <DatePicker.Header />
+                            <DatePicker.MonthTable />
+                            </DatePicker.View>
+                            <DatePicker.View view="year">
+                            <DatePicker.Header />
+                            <DatePicker.YearTable />
+                            </DatePicker.View>
+                        </DatePicker.Content>
+                        </DatePicker.Positioner>
+                    </Portal>
+                    </DatePicker.Root>
+                        
+
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {dateErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+
+                {/* NumGuests */}
+                <Field.Root invalid={isNumGuestsError} className='w-full' required>
+                    <Field.Label className='editText'>Number of Guests <Field.RequiredIndicator /></Field.Label>
+                    
+                    <Input
+                        value={numGuests}
+                        onChange={(e) => {
+                            let value = Number(e.currentTarget.value);
+
+                            if (value > 20) {
+                                value = 20;
+                            }
+
+                            if (value < 1) {
+                                value = 1;
+                            }
+
+                            setNumGuests(value);
+                        }}
+                        style={{ color: 'black', background:'white'}}
+                        className='CFText'
+                        type='number'
+                        min={1}
+                        max={20}
+                        
+                    />  
+
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {numGuestsErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+
+
+            </Flex>
+            
         
-        <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Phone Number*'/>
+            <Flex
+                className='landscape:flex-row flex-col gap-5' 
+            > 
+                {/* Location */}
+                <Field.Root invalid={isDateError} className='w-full' required>
+                    <Field.Label className='editText'>Location <Field.RequiredIndicator /></Field.Label>
+                    
+                        <NativeSelect.Root>
+                            <NativeSelect.Field 
+                                color="black"
+                                bg="white"
+                                onChange={(e) => {
+                                    const selected = locations[e.target.value];
+                                    setLocation(selected);
+                                    setTime("");
+                                }}
+                            >
 
-        <Flex
-          className='landscape:flex-row flex-col gap-5' 
-        >
-          <DatePicker.Root
-            min={parseDate(today)}
-            max={parseDate(nextMonthFormatted)}
-            size={{base:'xs', landscape:'md'}}
-            className='CFText'
-          >
-            <DatePicker.Control>
-              <DatePicker.Input />
-              <DatePicker.IndicatorGroup>
-                <DatePicker.Trigger>
-                  <LuCalendar />
-                </DatePicker.Trigger>
-              </DatePicker.IndicatorGroup>
-            </DatePicker.Control>
-            <Portal>
-              <DatePicker.Positioner>
-                <DatePicker.Content>
-                  <DatePicker.View view="day">
-                    <DatePicker.Header />
-                    <DatePicker.DayTable />
-                  </DatePicker.View>
-                  <DatePicker.View view="month">
-                    <DatePicker.Header />
-                    <DatePicker.MonthTable />
-                  </DatePicker.View>
-                  <DatePicker.View view="year">
-                    <DatePicker.Header />
-                    <DatePicker.YearTable />
-                  </DatePicker.View>
-                </DatePicker.Content>
-              </DatePicker.Positioner>
-            </Portal>
-          </DatePicker.Root>
+                                {locations.map((location, i) => (
+                                    <option value={i} key={i}
+                                        style={{
+                                            color: "black",
+                                            backgroundColor: "white"
+                                        }}
+                                    >
+                                        {location.locationname}
+                                    </option>
+                                ))}
+                                
+                            </NativeSelect.Field>
+                            <NativeSelect.Indicator />
+                        </NativeSelect.Root>
+                        
+
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {locationErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+
+                {/* Time */}
+                <Field.Root invalid={isTimeError} className='w-full' required>
+                    <Field.Label className='editText'> Time <Field.RequiredIndicator /></Field.Label>
+                    
+                        
+                        <NativeSelect.Root>
+                            <NativeSelect.Field
+                                color="black"
+                                bg="white"
+                                value={time}
+                                onChange={(e) => setTime(e.target.value)}
+                            >
+                                <option value="" style={{ color: 'black', background:'white'}}
+>
+                                    Select a time
+                                </option>
+
+                                {location && generateTimes(
+                                    location.opentime,
+                                    location.closetime
+                                ).map((timeOption) => (
+                                    <option 
+                                        key={timeOption}
+                                        value={timeOption}
+                                        style={{
+                                            color:'black',
+                                            background:'white'
+                                        }}
+                                    >
+                                        {timeOption}
+                                    </option>
+                                ))}
+                            </NativeSelect.Field>
+                            <NativeSelect.Indicator />
+                        </NativeSelect.Root>
+                        
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {numGuestsErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+
+
+            </Flex>
+
+            {/* Special Requests */}
+            <Field.Root invalid={isSpecialRequestsError} className='w-full' required>
+                <Field.Label className='editText'>Special Requests <Field.RequiredIndicator /></Field.Label>
+                
+                <Textarea
+                    value={specialRequests}
+                    onChange={(e) => setSpecialRequests(e.currentTarget.value.slice(0, 255))}
+                    style={{ color: 'black', height:'100px', background:'white'}}
+                    maxLength={800}
+                    className='CFText'
+                    
+                />  
+
+                <Field.ErrorText width="full">
+                    <Field.ErrorIcon />
+                    {specialRequestsErrorMessage}
+                </Field.ErrorText>
+            </Field.Root>
+
+
             
-          <Input className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Num. Guests*' required/>
 
-        </Flex>
+            <Button bg={'#ef571b'} color={'white'} onClick={() => uploadBooking(name, email, phoneNumber, date, numGuests, specialRequests)}>
+                Submit Reservation
+                <FaRegPaperPlane />
+            </Button>
 
-        <Textarea className='CFText' size={{base:'xs', landscape:'md'}} placeholder='Special Requests...*' required />
+      </form>
 
-        <button className='restbutton' style={{background:'#f2eeee', color:'black'}}>
 
-          Submit Reservation
-        </button>
+      <AnimatePresence>
+          {isSuccessfulSubmission && (
+          
+              <motion.div 
+                  className="
+                      fixed
+                      inset-0
+                      z-50
+                      flex
+                      items-center
+                      justify-center
+                  "
+                  initial={{
+                      opacity: 0,
+                      y: 100
+                  }}
+                  animate={{
+                      opacity: 1,
+                      y: 0
+                  }}
+                  exit={{
+                      opacity: 0,
+                      y: 100
+                  }}
+                  transition={{
+                      duration: 0.2,
+                      ease: "easeInOut"
+                  }}
+
+                  style={{
+                      padding:'20px'
+                  }}
+              >
+              
+                  <Thank />
+
+              </motion.div>
+
+          )}
+      </AnimatePresence>
+
+        
 
 
         
