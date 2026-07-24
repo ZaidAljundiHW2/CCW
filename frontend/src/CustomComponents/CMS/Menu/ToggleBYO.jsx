@@ -67,7 +67,8 @@ const ToggleBYO = ({cats, setShowToggle, categories}) => {
                 absolute
                 top-[50%]
                 left-[50%]
-                w-[50%]
+                landscape:w-[50%]
+                portrait:w-[80%]
                 rounded-lg
                 shadow-lg
                 GDWrapper

@@ -10,8 +10,7 @@ import OttowaSketch from '@/assets/img/ottowasketch.jpg'
 import { motion, AnimatePresence } from 'motion/react'
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5'
 
-// Add more locations here whenever you have them — the carousel
-// automatically paginates in groups of CARDS_PER_PAGE.
+
 const locations = [
     { image: TorontoSketch, location: 'Toronto' },
     { image: MississaugaSketch, location: 'Mississauga' },

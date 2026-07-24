@@ -10,8 +10,7 @@ const InfoBlock = ({
     val="",
     add=false,
     setShowAdd = () => {},
-    edit=true,
-    setIsLegal = () => {}
+    edit=true
 }) => {
   return (
     <div
@@ -22,21 +21,28 @@ const InfoBlock = ({
             flex
             InfoBlockWrapper
             gap-5
+            md:flex-row
+            flex-col
         '
     >
         
         {/* Label and Info */}
-        <Flex className='gap-3'>
+        <Flex className='gap-3 min-w-0 md:flex-row flex-col'>
 
             <h1>
                 {item.label}
                 {label}
             </h1>
 
-            <h1 className='whitespace-pre-line'>
-                {item.val}
-                {val}
-            </h1>
+            <div className='break-words min-w-0 flex-1'>
+
+                <h1 className='whitespace-pre-line '>
+                    {item.val}
+                    {val}
+                </h1>
+
+            </div>
+            
 
         </Flex>
 

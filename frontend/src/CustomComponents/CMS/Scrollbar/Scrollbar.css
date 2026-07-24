@@ -23,3 +23,11 @@
     overflow-y: scroll;
     padding: 20px;
 }
+
+.scrollbar .menu-trigger-btn {
+  color: #012447 !important;
+}
+
+.scrollbar .menu-trigger-btn[data-state="open"] {
+  color: #ffffff !important;
+}

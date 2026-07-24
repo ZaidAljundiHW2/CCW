@@ -167,7 +167,8 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
                 absolute
                 top-[50%]
                 left-[50%]
-                w-[50%]
+                landscape:w-[50%]
+                portrait:w-[80%]
                 h-[50%]
                 
                 rounded-lg

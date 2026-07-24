@@ -50,76 +50,32 @@ const ShowcaseItem = ({
     >
 
         {/* Image and price */}
-        <Flex
-            className='
-                w-full
-                lg:h-[50%]
-                gap-2
+        <div className="w-full flex flex-col lg:flex-row landscape:items-center justify-center gap-2">
 
-                lg:flex-row
-                flex-col
-
-                              
-            '
-
-            
-        >
-
-            <Flex
-                className='
-                    landscape:aspect-square 
-                    w-[80px]
-                    h-[80px]
-                    landscape:w-[120px]
-                    landscape:h-[120px]
-                    flex-shrink-0
-                '
-
-                
-
-                
-            >
-
-                <img 
-                    
-                    src={item.foodimage}
-
-                   
-
-                    className="
-                        rounded-full
-                        w-full
-                        h-full
-                        object-cover
-                    "
+            <div className="relative w-full portrait:w-[50%] lg:w-1/2 aspect-square bg-green-500 overflow-hidden rounded-full">
+                <div
+                    className="absolute inset-0 w-full h-full rounded-full"
+                    style={{
+                        backgroundImage: `url(${item.foodimage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
                 />
+            </div>
 
-            </Flex>
-
-
-            <Flex
-                className='
-                    justify-end
-                    items-center
-                    flex-1
-                '
-
-               
+            <div 
+                className="flex justify-center items-center w-full lg:w-1/2"
+                style={{ containerType: 'inline-size' }}
             >
-
-                <h1 style={{color:"#012447", fontWeight:'bold', fontSize:'clamp(.5rem, 1vw, 1.5rem)'}}>
-                    {item.price}
+                <h1 style={{
+                    color: "#012447",
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(1rem, 12cqi, 2.5rem)'
+                }}>
+                    {item.price + "$"}
                 </h1>
-
-            </Flex>
-
-            
-
-            
-
-            
-
-        </Flex>
+            </div>
+        </div>
 
         <Flex
             className='

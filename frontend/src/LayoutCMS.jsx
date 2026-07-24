@@ -4,7 +4,7 @@ import Scrollbar from './CustomComponents/CMS/Scrollbar/Scrollbar'
 
 const LayoutCMS = () => {
   return (
-    <div className='flex h-screen'>
+    <div className='flex landscape:flex-row portrait:flex-col'>
         
 
         <Scrollbar />

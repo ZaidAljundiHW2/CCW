@@ -51,7 +51,7 @@ const AboutCMS = () => {
     <div
         className='
             w-full
-            h-full
+            h-screen
             GDWrapperC
             flex
             flex-col
