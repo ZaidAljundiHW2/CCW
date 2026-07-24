@@ -349,6 +349,93 @@ app.get('/admin/CMS/about/mission', async(req,res) => {
     }
 })
 
+//Add contact query
+app.post('/admin/CMS/contact', async(req,res) => {
+
+    try {
+        
+        const name = req.body.name;
+        const email = req.body.email;
+        const phonenumber = req.body.phonenumber;
+        const subject = req.body.subject;
+        const message = req.body.message;
+        const status = req.body.status;
+
+        const addContact = await pool.query("INSERT INTO contact (name, email, phonenumber, subject, message, status) VALUES ($1, $2, $3, $4, $5, $6)",
+            [name, email, phonenumber, subject, message, status]
+        );
+
+        res.json("success");
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get new contact queries
+app.get('/admin/CMS/contact/new', async(req, res) => {
+
+    try {
+        
+        const getNewQueries = await pool.query("SELECT * FROM contact WHERE status='new'");
+
+        res.json(getNewQueries.rows);
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get completed contact queries
+app.get('/admin/CMS/contact/complete', async(req, res) => {
+
+    try {
+        
+        const getNewQueries = await pool.query("SELECT * FROM contact WHERE status='complete'");
+
+        res.json(getNewQueries.rows);
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Mark new contact queries as complete
+app.put('/admin/CMS/contact/new/:id', async(req, res) => {
+
+    try {
+        
+        const id = req.params.id;
+
+        const updateStatus = await pool.query("UPDATE contact SET status='complete' WHERE contactid=$1",
+            [id]
+        );
+
+        res.json("success");
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Delete contact query
+app.delete('/admin/CMS/contact/:id', async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+
+        const deleteQuery = await pool.query("DELETE FROM contact WHERE contactid = $1",
+            [id]
+        );
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")

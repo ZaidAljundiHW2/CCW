@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
-import { Flex, Input, Textarea } from '@chakra-ui/react'
+import { Flex, Input, Textarea, Field, Span } from '@chakra-ui/react'
 import { useState, useRef } from 'react';
 
 const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
 
     const textarea = editedItem.type === "Legal";
 
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(editedItem.val);
     const label = useRef(editedItem.label);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [isError, setIsError] = useState(false);
 
     const API = 'http://localhost:5000'
 
@@ -99,9 +101,45 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
             <form onSubmit={updateVal}>
 
 
-                {!textarea && (<Input onChange={(e) => setValue(e.target.value)} style={{color:'black'}}/>)}
+                {!textarea && (
 
-                {textarea && (<Textarea onChange={(e) => setValue(e.target.value)} style={{color:'black'}}/>)}
+
+                        <Field.Root invalid={isError}>
+                            <Field.Label className='editText'></Field.Label>
+                            <Input 
+                                onChange={(e) => setValue(e.target.value)} 
+                                style={{color:'black'}}
+                                value={value}
+                            />
+
+                            <Field.ErrorText width="full">
+                                <Field.ErrorIcon />
+                                {errorMessage}
+                            </Field.ErrorText>
+                        </Field.Root>
+                    )
+                }
+
+                {textarea && (
+                        <Field.Root invalid={isError}>
+                            <Field.Label className='editText'></Field.Label>
+                            <Textarea 
+                                onChange={(e) => setValue(e.target.value)} 
+                                style={{color:'black'}}
+                                value={value}
+                            />
+                            <Field.ErrorText width="full">
+                                <Field.ErrorIcon />
+                                {errorMessage}
+                            </Field.ErrorText>
+                        </Field.Root>
+                    )
+                }
+                
+                
+                
+                
+                
                 <h1 className='editText'>
                     Make sure to include 'https://' for links.
                 </h1>
