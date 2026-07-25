@@ -1,4 +1,4 @@
-import Hero from './CustomComponents/Hero/Hero'
+import Home from './CustomComponents/Home/Home'
 import Loader from './CustomComponents/Loader/Loader'
 import { useState, useEffect } from 'react'
 
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div className='overflow-hidden'>
       
-      <Hero />
+      <Home />
       
     </div>
   )
