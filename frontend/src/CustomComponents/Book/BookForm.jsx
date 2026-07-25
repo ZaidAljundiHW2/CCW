@@ -29,7 +29,7 @@ const BookForm = () => {
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isPhoneNumberError, setIsPhoneNumberError] = useState(false);
-  const [phoneNumberErrorMessage, setPhoneNUmberErrorMessage] = useState("");
+  const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState("");
 
   const [date, setDate] = useState("");
   const [isDateError, setIsDateError] = useState(false);
@@ -47,7 +47,7 @@ const BookForm = () => {
   const [isTimeError, setIsTimeError] = useState(false);
   const [timeErrorMessage, setTimeErrorMessage] = useState("");
 
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState("");
   const [isLocationError, setIsLocationError] = useState(false);
   const [locationErrorMessage, setLocationErrorMessage] = useState("");
 
@@ -115,12 +115,11 @@ const BookForm = () => {
     return times;
   };
 
-  const uploadBooking = async(name, email, phonenumber, date, numguests, requests) => {
+  const uploadBooking = async(name, email, phonenumber, date, numguests, requests, location, time) => {
 
       try {
 
-          console.log("DATE RECEIVED:", date);
-
+          const locationid = location.locationid;
 
           let end = false;
           
@@ -132,12 +131,16 @@ const BookForm = () => {
 
           }
 
+          else {
+            setIsNameError(false);
+            setNameErrorMessage("");
+          }
+
           if (email.trim().length === 0) {
 
               setIsEmailError(true);
               setEmailErrorMessage("Input a value");
               end = true;
-
           }
 
           else if (!emailRegex.test(email)) {
@@ -146,10 +149,27 @@ const BookForm = () => {
               end = true;
           }
 
+          else {
+            setIsEmailError(false);
+            setEmailErrorMessage("");
+          }
+
           if (!phoneRegex.test(phonenumber) && phonenumber.trim().length > 0) {
               setIsPhoneNumberError(true);
-              setPhoneNUmberErrorMessage("Enter a valid phone number.");
+              setPhoneNumberErrorMessage("Enter a valid phone number.");
               end = true;
+          }
+
+          else if (phonenumber.trim().length === 0) {
+
+            setIsPhoneNumberError(true);
+            setPhoneNumberErrorMessage("Input a value");
+            end = true;
+          }
+
+          else {
+            setIsPhoneNumberError(false);
+            setPhoneNumberErrorMessage("");
           }
 
           if (date.trim().length === 0) {
@@ -160,7 +180,39 @@ const BookForm = () => {
 
           }
 
+          else {
+            setIsDateError(false);
+            setDateErrorMessage("");
+          }
+
+          if (location === "") {
+
+            setIsLocationError(true);
+            setLocationErrorMessage("Input a value");
+            end = true;
+          }
+
+          else {
+            setIsLocationError(false);
+            setLocationErrorMessage("");
+          }
+
+          if (time === "") {
+
+            setIsTimeError(true);
+            setTimeErrorMessage("Input a value");
+            end = true;
+          }
+
+          else {
+            setIsTimeError(false);
+            setTimeErrorMessage("");
+          }
+
           if (end) return;
+
+          const now = new Date();
+
 
           const body = {
               "name": name,
@@ -169,11 +221,13 @@ const BookForm = () => {
               "date": date,
               "numguests": numguests,
               "specialrequests": requests,
-              "status": 'new'
+              "status": 'new',
+              "datetime": now.toLocaleString(),
+              "locationid": locationid,
+              "reservationtime": time
           }
 
-          console.log("FFFF");
-          const response = await fetch(API + '/admin/CMS/booking', {
+          const response = await fetch(API + '/admin/booking', {
 
               method:"POST",
               headers: {
@@ -181,8 +235,6 @@ const BookForm = () => {
               },
               body: JSON.stringify(body)
           });
-
-          console.log("XXXX");
 
 
 
@@ -194,12 +246,16 @@ const BookForm = () => {
               setIsPhoneNumberError(false);
               setIsDateError(false);
               setIsSpecialRequestsError(false);
+              setIsTimeError(false);
+              setIsDateError(false);
 
               setName("");
               setEmail("");
               setPhoneNumber("");
               setDate("");
               setSpecialRequests("");
+              setTime("");
+              setDate("");
 
               setIsSuccessfulSubmission(true);
 
@@ -216,6 +272,26 @@ const BookForm = () => {
       
 
   }
+
+    const dayNameToNumber = {
+        Sunday: 0,
+        Monday: 1,
+        Tuesday: 2,
+        Wednesday: 3,
+        Thursday: 4,
+        Friday: 5,
+        Saturday: 6,
+    };
+
+    const isDateUnavailable = (date) => {
+        if (!location || !location.closeddays) return false;
+
+        const dayOfWeek = date.toDate("UTC").getDay();
+
+        return location.closeddays.some(
+            (day) => dayNameToNumber[day] === dayOfWeek
+        );
+    };
 
   if (isLoading) {
     return (
@@ -314,6 +390,7 @@ const BookForm = () => {
                         min={parseDate(today)}
                         max={parseDate(nextMonthFormatted)}
                         className='CFText'
+                        isDateUnavailable={isDateUnavailable}
                         onValueChange={(e) => {
                             setDate(e.value[0].toString());
                             console.log(e.value[0].toString());
@@ -397,7 +474,7 @@ const BookForm = () => {
                 className='landscape:flex-row flex-col gap-5' 
             > 
                 {/* Location */}
-                <Field.Root invalid={isDateError} className='w-full' required>
+                <Field.Root invalid={isLocationError} className='w-full' required>
                     <Field.Label className='editText'>Location <Field.RequiredIndicator /></Field.Label>
                     
                         <NativeSelect.Root>
@@ -405,11 +482,16 @@ const BookForm = () => {
                                 color="black"
                                 bg="white"
                                 onChange={(e) => {
-                                    const selected = locations[e.target.value];
-                                    setLocation(selected);
+                                    
+                                    const value = locations[e.target.value];
+                                    setLocation(value);
                                     setTime("");
                                 }}
                             >
+
+                                <option value={""} style={{color:'black', background:'white'}}>
+                                    Select a branch
+                                </option>
 
                                 {locations.map((location, i) => (
                                     <option value={i} key={i}
@@ -434,7 +516,7 @@ const BookForm = () => {
                 </Field.Root>
 
                 {/* Time */}
-                <Field.Root invalid={isTimeError} className='w-full' required>
+                <Field.Root invalid={isTimeError} className='w-full' required disabled={location === ""}>
                     <Field.Label className='editText'> Time <Field.RequiredIndicator /></Field.Label>
                     
                         
@@ -443,10 +525,13 @@ const BookForm = () => {
                                 color="black"
                                 bg="white"
                                 value={time}
-                                onChange={(e) => setTime(e.target.value)}
+                                onChange={(e) => {setTime(e.target.value)}}
                             >
-                                <option value="" style={{ color: 'black', background:'white'}}
->
+                                <option 
+                                    value="" 
+                                    style={{ color: 'black', background:'white'}}
+                                    
+                                >
                                     Select a time
                                 </option>
 
@@ -479,8 +564,8 @@ const BookForm = () => {
             </Flex>
 
             {/* Special Requests */}
-            <Field.Root invalid={isSpecialRequestsError} className='w-full' required>
-                <Field.Label className='editText'>Special Requests <Field.RequiredIndicator /></Field.Label>
+            <Field.Root invalid={isSpecialRequestsError} className='w-full'>
+                <Field.Label className='editText'>Special Requests </Field.Label>
                 
                 <Textarea
                     value={specialRequests}
@@ -500,12 +585,12 @@ const BookForm = () => {
 
             
 
-            <Button bg={'#ef571b'} color={'white'} onClick={() => uploadBooking(name, email, phoneNumber, date, numGuests, specialRequests)}>
+            <Button bg={'#ef571b'} color={'white'} onClick={() => uploadBooking(name, email, phoneNumber, date, numGuests, specialRequests, location, time)}>
                 Submit Reservation
                 <FaRegPaperPlane />
             </Button>
 
-      </form>
+        </form>
 
 
       <AnimatePresence>
@@ -520,26 +605,12 @@ const BookForm = () => {
                       items-center
                       justify-center
                   "
-                  initial={{
-                      opacity: 0,
-                      y: 100
-                  }}
-                  animate={{
-                      opacity: 1,
-                      y: 0
-                  }}
-                  exit={{
-                      opacity: 0,
-                      y: 100
-                  }}
-                  transition={{
-                      duration: 0.2,
-                      ease: "easeInOut"
-                  }}
+                  initial={{opacity: 0, y: 100}}
+                  animate={{opacity: 1, y: 0}}
+                  exit={{opacity: 0, y: 100}}
+                  transition={{duration: 0.2, ease: "easeInOut"}}
 
-                  style={{
-                      padding:'20px'
-                  }}
+                  style={{padding:'20px'}}
               >
               
                   <Thank />

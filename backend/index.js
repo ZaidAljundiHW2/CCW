@@ -360,9 +360,10 @@ app.post('/admin/CMS/contact', async(req,res) => {
         const subject = req.body.subject;
         const message = req.body.message;
         const status = req.body.status;
+        const datetime = req.body.datetime;
 
-        const addContact = await pool.query("INSERT INTO contact (name, email, phonenumber, subject, message, status) VALUES ($1, $2, $3, $4, $5, $6)",
-            [name, email, phonenumber, subject, message, status]
+        const addContact = await pool.query("INSERT INTO contact (name, email, phonenumber, subject, message, status, datetime) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+            [name, email, phonenumber, subject, message, status, datetime]
         );
 
         res.json("success");
@@ -455,7 +456,7 @@ app.delete('/admin/CMS/contact/:id', async(req,res) => {
 })
 
 //Add booking reservation
-app.post('/admin/CMS/booking', async(req,res) => {
+app.post('/admin/booking', async(req,res) => {
 
     try {
 
@@ -465,9 +466,15 @@ app.post('/admin/CMS/booking', async(req,res) => {
         const date = req.body.date;
         const numguests = req.body.numguests;
         const special = req.body.specialrequests;
+        const reservationtime = req.body.reservationtime;
+        const locationid = req.body.locationid;
 
-        const addRes = await pool.query("INSERT INTO bookings (name, email, phonenumber, date, numguests, specialrequests) VALUES ($1,$2,$3,$4,$5,$6)",[
-            name, email, number, date, numguests, special
+        const datetime = req.body.datetime;
+
+        const status = req.body.status;
+
+        const addRes = await pool.query("INSERT INTO bookings (name, email, phonenumber, reservationdate, numguests, specialrequests, reservationtime, locationid, datetime, status) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",[
+            name, email, number, date, numguests, special, reservationtime, locationid, datetime, status
         ]);
 
         res.json("success");
@@ -486,6 +493,97 @@ app.get('/locations', async(req,res) => {
         
         res.json(getLocations.rows);
 
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get new booking reservations
+app.get('/admin/CMS/bookings/new', async(req,res) => {
+
+    try {
+        
+        const getNewRes = await pool.query("SELECT * FROM bookings WHERE status='new'");
+        res.json(getNewRes.rows);
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get completed booking reservations
+app.get('/admin/CMS/bookings/complete', async(req,res) => {
+
+    try {
+        
+        const getNewRes = await pool.query("SELECT * FROM bookings WHERE status='complete'");
+        res.json(getNewRes.rows);
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Mark new reservations as complete
+app.put('/admin/CMS/bookings/new/:id', async(req, res) => {
+
+    try {
+        
+        const id = req.params.id;
+
+        const updateStatus = await pool.query("UPDATE bookings SET status='complete' WHERE locationid=$1",
+            [id]
+        );
+
+        res.json("success");
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Mark complete reservations as new
+app.put('/admin/CMS/bookings/complete/:id', async(req, res) => {
+
+    try {
+        
+        const id = req.params.id;
+
+        const updateStatus = await pool.query("UPDATE bookings SET status='new' WHERE locationid=$1",
+            [id]
+        );
+
+        res.json("success");
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Update reservation
+app.put('/admin/CMS/bookings/:id', async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+
+        const name = req.body.name;
+        const email = req.body.email;
+        const phonenumber = req.body.phonenumber;
+        const reservationdate = req.body.reservationdate;
+        const numguests = req.body.numguests;
+        const specialrequests = req.body.specialrequests;
+        const status = req.body.status;
+        const locationid = req.body.locationid;
+        const datetime = req.body.datetime;
+        const reservationtime = req.body.reservationtime;
+
+        const updateReservation = await pool.query("UPDATE bookings SET name=$1, email=$2, phonenumber=$3, reservationdate=$4, numguests=$5, specialrequests=$6, status=$7, locationid=$8, datetime=$9, reservationtime=$10 WHERE bookingid=$11", [
+            name, email, phonenumber, reservationdate, numguests, specialrequests, status, locationid, datetime, reservationtime, id
+        ])
+
+        res.json("success");
+        
     } catch (error) {
         console.error(error);
     }

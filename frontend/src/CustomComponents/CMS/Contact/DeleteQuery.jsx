@@ -31,9 +31,9 @@ const DeleteQuery = ({item, setShowDelete}) => {
   return (
     <div
         className='
-        fixed
-        inset-0
-        bg-black/70
+            fixed
+            inset-0
+            bg-black/70
         '
     >
 

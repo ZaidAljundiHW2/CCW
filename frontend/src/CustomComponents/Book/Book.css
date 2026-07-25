@@ -16,6 +16,7 @@
 .bookformwrapper {
     padding:20px;
     min-height: calc(100vh - var(--footer-height));
+    padding-top: var(--nav-height);
 }
 
 @media (max-width:912px) {

@@ -1,64 +1,109 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Flex } from '@chakra-ui/react';
-import ContactBlock from './ContactBlock';
+import ReservationBlock from './ReservationBlock';
 import DeleteQuery from './DeleteQuery';
+import { Button, Menu, Portal } from "@chakra-ui/react"
+import BookingEdit from './BookingEdit';
 
 const BookingCMS = () => {
 
 
     const API = 'http://localhost:5000';
 
-    const [newItems, setNewItems] = useState([]);
-    const [completedItems, setCompletedItems] = useState([]);
+    const [allNewItems, setAllNewItems] = useState([]);
+    const [allCompletedItems, setAllCompletedItems] = useState([]);
+
+    const [selectedNewItems, setSelectedNewItems] = useState([]);
+    const [selectedCompletedItems, setSelectedCompletedItems] = useState([]);
 
     const [isLoading, setIsLoading] = useState(true);
 
     const [showDelete, setShowDelete] = useState(false);
-    const [selectedQuery, setSelectedQuery] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
+
+    const [reservationItem, setReservationItem] = useState();
+
+    const [locations, setLocations] = useState();
+    const [location, setLocation] = useState();
 
     const [refresh, setRefresh] = useState(false);
 
-    const getNewQueries = async() => {
+    const getNewReservations = async() => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/contact/new');
+            const response = await fetch(API + '/admin/CMS/bookings/new');
             const jsonData = await response.json();
-            setNewItems(jsonData);
-            console.log("AAAAAA");
-            console.log(jsonData);
+            setAllNewItems(jsonData);
+            
             
         } catch (error) {
             console.error(error);
         }
     }
 
-    const getCompletedQueries = async() => {
+    const getCompletedReservations = async() => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/contact/complete');
+            const response = await fetch(API + '/admin/CMS/bookings/complete');
             const jsonData = await response.json();
-            setCompletedItems(jsonData);
+            setAllCompletedItems(jsonData);
             
         } catch (error) {
             console.error(error);
         }
+    }
+
+    const getLocations = async() => {
+
+        try {
+
+            const response = await fetch(API + '/locations');
+            const jsonData = await response.json();
+            setLocations(jsonData);
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const handleLocationChange = (details) => {
+
+        const currLocationID = details.value;
+        setLocation(currLocationID);
+
+        const currNewItems = allNewItems.filter(item => item.locationid == currLocationID);
+        const currCompletedItems = allCompletedItems.filter(item => item.locationid == currLocationID);
+
+        setSelectedNewItems(currNewItems);
+        setSelectedCompletedItems(currCompletedItems);
+
     }
 
 
     useEffect(() => {
 
         const load = async() => {
-            await getNewQueries();
-            await getCompletedQueries();
+            await getNewReservations();
+            await getCompletedReservations();
+            await getLocations();
             setIsLoading(false);
-
         }
 
         load();
-    }, [showDelete, refresh]);
+    }, [showDelete, refresh, showEdit]);
+
+    useEffect(() => {
+        if (!location) return;
+
+        const currNewItems = allNewItems.filter(item => item.locationid == location);
+        const currCompletedItems = allCompletedItems.filter(item => item.locationid == location);
+
+        setSelectedNewItems(currNewItems);
+        setSelectedCompletedItems(currCompletedItems);
+    }, [allNewItems, allCompletedItems, location, setShowEdit]);
 
     if (isLoading) {
         return (
@@ -78,61 +123,118 @@ const BookingCMS = () => {
             bg-white
         '
     >
-        <h1 className='CMSHead'>
-            Contact
-        </h1>
 
-        <Flex 
-            className='
-                GDWrapper 
-                rounded-lg 
-                shadow-lg
-                flex-col
-            '
-        >
+        {isLoading ? (
 
-            <h1 className='CMSHead'>
-                New Queries
-            </h1>
+                <p style={{color:'black'}}>Loading...</p>
 
-            {newItems.map((item) => (
+            )
 
-                <ContactBlock 
-                    mark={true}
-                    contactItem={item}
-                    setShowDelete={setShowDelete}
-                    setContactItem={setSelectedQuery}
-                    setRefresh={setRefresh}
-                />
+            :
 
-            ))}
+            (
 
+                <div>
+                    <h1 className='CMSHead'>
+                        Booking Reservations
+                    </h1>
+
+                    <Menu.Root onSelect={handleLocationChange}>
+                        <Menu.Trigger asChild>
+                            <Button color={'black'} style={{borderWidth:'2px', borderColor:'black'}}>
+                                Locations
+                            </Button>
+                        </Menu.Trigger>
+                        <Portal>
+                            <Menu.Positioner>
+                            <Menu.Content >
+                                
+                                {locations.map((location,i) => (
+
+                                    <Menu.Item value={location.locationid} key={location.locationid}>
+                                        {location.locationname}
+                                    </Menu.Item>
+
+                                ))}
+                            </Menu.Content>
+                            </Menu.Positioner>
+                        </Portal>
+                    </Menu.Root>
+
+
+
+                    <Flex 
+                        className='
+                            GDWrapper 
+                            rounded-lg 
+                            shadow-lg
+                            flex-col
+                        '
+                    >
+
+                        <h1 className='CMSHead'>
+                            New Reservations
+                        </h1>
+
+                        {selectedNewItems.map((item) => (
+
+                            <ReservationBlock 
+                                mark={true}
+                                reservationItem={item}
+                                setShowDelete={setShowDelete}
+                                setReservationItem={setReservationItem}
+                                setRefresh={setRefresh}
+                                setShowEdit={setShowEdit}
+                                location={locations.find(location => location.locationid === item.locationid).locationname}
+
+                            />
+
+                        ))}
+
+                        
+                    </Flex>
+
+                    <Flex 
+                        className='
+                            GDWrapper 
+                            rounded-lg 
+                            shadow-lg
+                            flex-col
+                        '
+                    >
+
+                        <h1 className='CMSHead'>
+                            Completed Reservations
+                        </h1>
+
+                        {selectedCompletedItems.map((item) => (
+
+                            <ReservationBlock 
+                                mark={false} 
+                                reservationItem={item} 
+                                setShowDelete={setShowDelete} 
+                                setReservationItem={setReservationItem}
+                                setRefresh={setRefresh}
+                                setShowEdit={setShowEdit}
+                                location={locations.find(location => location.locationid === item.locationid).locationname}
+
+                            />
+
+                        ))}
+
+                        
+                    </Flex>
+
+                    {showDelete && (<DeleteQuery item={reservationItem} setShowDelete={setShowDelete}/>)}
+
+                    {showEdit && (<BookingEdit selectedReservation={reservationItem} setShowEdit={setShowEdit}/>)}
+                </div>
+
+            )
             
-        </Flex>
-
-        <Flex 
-            className='
-                GDWrapper 
-                rounded-lg 
-                shadow-lg
-                flex-col
-            '
-        >
-
-            <h1 className='CMSHead'>
-                Completed Queries
-            </h1>
-
-            {completedItems.map((item) => (
-
-                <ContactBlock mark={false} contactItem={item} setShowDelete={setShowDelete} setContactItem={setSelectedQuery}/>
-
-            ))}
-
-            
-        </Flex>
-
-        {showDelete && (<DeleteQuery item={selectedQuery} setShowDelete={setShowDelete}/>)}
+        
+        }
+        
       
     </div>
   )

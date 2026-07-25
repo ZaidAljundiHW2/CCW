@@ -2,21 +2,23 @@ import React from 'react'
 import { Flex, Button } from '@chakra-ui/react';
 import DeleteQuery from './DeleteQuery';
 
-const ContactBlock = ({contactItem,
+const ReservationBlock = ({reservationItem,
     mark=true,
-    setContactItem,
+    setReservationItem,
     setShowDelete,
-    setRefresh
+    setRefresh,
+    location,
+    setShowEdit
 }) => {
 
     const API = 'http://localhost:5000'
 
     
-    const markComplete = async(contactItem) => {
+    const markComplete = async(reservationItem) => {
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/contact/new/${contactItem.contactid}`, {
+            const response = await fetch(API + `/admin/CMS/bookings/new/${reservationItem.locationid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -38,7 +40,7 @@ const ContactBlock = ({contactItem,
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/contact/complete/${contactItem.contactid}`, {
+            const response = await fetch(API + `/admin/CMS/bookings/complete/${contactItem.locationid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -74,13 +76,17 @@ const ContactBlock = ({contactItem,
         <Flex className='gap-3 min-w-0 flex-col'>
 
             <h1>
-                Name: {contactItem.name}
+                Booking ID: {reservationItem.bookingid}
+            </h1>
+
+            <h1>
+                Name: {reservationItem.name}
             </h1>
 
             <div className='break-words min-w-0 flex-1'>
 
                 <h1 className='whitespace-pre-line '>
-                    Email: {contactItem.email}
+                    Email: {reservationItem.email}
                 </h1>
 
             </div>
@@ -88,7 +94,7 @@ const ContactBlock = ({contactItem,
             <div className='break-words min-w-0 flex-1'>
 
                 <h1 className='whitespace-pre-line '>
-                    Phone Number: {contactItem.phonenumber}
+                    Phone Number: {reservationItem.phonenumber}
                 </h1>
 
             </div>
@@ -96,7 +102,7 @@ const ContactBlock = ({contactItem,
             <div className='break-words min-w-0 flex-1'>
 
                 <h1 className='whitespace-pre-line '>
-                    Subject: {contactItem.subject}
+                    Location: {location}
                 </h1>
 
             </div>
@@ -104,7 +110,7 @@ const ContactBlock = ({contactItem,
             <div className='break-words min-w-0 flex-1'>
 
                 <h1 className='whitespace-pre-line '>
-                    Message: {contactItem.message}
+                    Reservation Date: {reservationItem.reservationdate}
                 </h1>
 
             </div>
@@ -112,7 +118,31 @@ const ContactBlock = ({contactItem,
             <div className='break-words min-w-0 flex-1'>
 
                 <h1 className='whitespace-pre-line '>
-                    Date submitted: {contactItem.datetime}
+                    Reservation Time: {reservationItem.reservationtime}
+                </h1>
+
+            </div>
+
+            <div className='break-words min-w-0 flex-1'>
+
+                <h1 className='whitespace-pre-line '>
+                    Num. Guests: {reservationItem.numguests}
+                </h1>
+
+            </div>
+
+            <div className='break-words min-w-0 flex-1'>
+
+                <h1 className='whitespace-pre-line '>
+                    Special Requests: {reservationItem.specialrequests}
+                </h1>
+
+            </div>
+
+            <div className='break-words min-w-0 flex-1'>
+
+                <h1 className='whitespace-pre-line '>
+                    Date Submitted: {reservationItem.datetime}
                 </h1>
 
             </div>
@@ -127,8 +157,8 @@ const ContactBlock = ({contactItem,
         <Flex className='flex-1 justify-end gap-3'>
 
             {mark && (
-
-                <Button className='rounded-lg editButton' style={{background:'#4BB543'}} onClick={() => markComplete(contactItem)}>
+            
+                <Button className='rounded-lg editButton' style={{background:'#4BB543'}} onClick={() => markComplete(reservationItem)}>
                     Mark complete
                 </Button>
 
@@ -136,17 +166,21 @@ const ContactBlock = ({contactItem,
 
             {!mark && (
 
-                <Button className='rounded-lg editButton' onClick={() => markNew(contactItem)}>
+                <Button className='rounded-lg editButton' onClick={() => markNew(reservationItem)}>
                     Mark new
                 </Button>
 
             )}
             
+            <Button className='rounded-lg editButton' onClick={() => {setReservationItem(reservationItem); setShowEdit(true)}}>
+                Edit
+            </Button>
 
-
-            <Button className='rounded-lg editButton' style={{background:'red'}} onClick={() => {setShowDelete(true); setContactItem(contactItem)}}>
+            <Button className='rounded-lg editButton' style={{background:'red'}} onClick={() => {setShowDelete(true); setReservationItem(reservationItem)}}>
                 Delete
             </Button>
+
+            
 
             
 
@@ -160,4 +194,4 @@ const ContactBlock = ({contactItem,
   )
 }
 
-export default ContactBlock
+export default ReservationBlock

@@ -15,7 +15,8 @@ const ContactCMS = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const [showDelete, setShowDelete] = useState(false);
-    const [selectedQuery, setSelectedQuery] = useState(false);
+    
+    const [selectedQuery, setSelectedQuery] = useState();
 
     const [refresh, setRefresh] = useState(false);
 
@@ -26,8 +27,7 @@ const ContactCMS = () => {
             const response = await fetch(API + '/admin/CMS/contact/new');
             const jsonData = await response.json();
             setNewItems(jsonData);
-            console.log("AAAAAA");
-            console.log(jsonData);
+            
             
         } catch (error) {
             console.error(error);
@@ -60,11 +60,7 @@ const ContactCMS = () => {
         load();
     }, [showDelete, refresh]);
 
-    if (isLoading) {
-        return (
-            <p style={{color:'black'}}>Loading...</p>
-        )
-    }
+    
 
 
   return (
@@ -78,67 +74,85 @@ const ContactCMS = () => {
             bg-white
         '
     >
-        <h1 className='CMSHead'>
-            Contact
-        </h1>
 
-        <Flex 
-            className='
-                GDWrapper 
-                rounded-lg 
-                shadow-lg
-                flex-col
-            '
-        >
+        {isLoading ? (
 
-            <h1 className='CMSHead'>
-                New Queries
-            </h1>
+                <p style={{color:'black'}}>Loading...</p>
 
-            {newItems.map((item) => (
+            )
 
-                <ContactBlock 
-                    mark={true}
-                    contactItem={item}
-                    setShowDelete={setShowDelete}
-                    setContactItem={setSelectedQuery}
-                    setRefresh={setRefresh}
-                />
+            :
 
-            ))}
+            (
 
-            
-        </Flex>
+                <div>
+                    <h1 className='CMSHead'>
+                        Contact
+                    </h1>
 
-        <Flex 
-            className='
-                GDWrapper 
-                rounded-lg 
-                shadow-lg
-                flex-col
-            '
-        >
+                    <Flex 
+                        className='
+                            GDWrapper 
+                            rounded-lg 
+                            shadow-lg
+                            flex-col
+                        '
+                    >
 
-            <h1 className='CMSHead'>
-                Completed Queries
-            </h1>
+                        <h1 className='CMSHead'>
+                            New Queries
+                        </h1>
 
-            {completedItems.map((item) => (
+                        {newItems.map((item) => (
 
-                <ContactBlock 
-                    mark={false} 
-                    contactItem={item} 
-                    setShowDelete={setShowDelete} 
-                    setContactItem={setSelectedQuery}
-                    setRefresh={setRefresh}
-                />
+                            <ContactBlock 
+                                mark={true}
+                                contactItem={item}
+                                setShowDelete={setShowDelete}
+                                setContactItem={setSelectedQuery}
+                                setRefresh={setRefresh}
+                            />
 
-            ))}
+                        ))}
 
-            
-        </Flex>
+                        
+                    </Flex>
 
-        {showDelete && (<DeleteQuery item={selectedQuery} setShowDelete={setShowDelete}/>)}
+                    <Flex 
+                        className='
+                            GDWrapper 
+                            rounded-lg 
+                            shadow-lg
+                            flex-col
+                        '
+                    >
+
+                        <h1 className='CMSHead'>
+                            Completed Queries
+                        </h1>
+
+                        {completedItems.map((item) => (
+
+                            <ContactBlock 
+                                mark={false} 
+                                contactItem={item} 
+                                setShowDelete={setShowDelete} 
+                                setContactItem={setSelectedQuery}
+                                setRefresh={setRefresh}
+                            />
+
+                        ))}
+
+                        
+                    </Flex>
+
+                    {showDelete && (<DeleteQuery item={selectedQuery} setShowDelete={setShowDelete}/>)}
+                </div>
+
+            )
+        
+        }
+        
       
     </div>
   )

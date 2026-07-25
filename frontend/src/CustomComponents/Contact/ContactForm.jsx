@@ -21,7 +21,7 @@ const ContactForm = () => {
 
     const [phoneNumber, setPhoneNumber] = useState("");
     const [isPhoneNumberError, setIsPhoneNumberError] = useState(false);
-    const [phoneNumberErrorMessage, setPhoneNUmberErrorMessage] = useState("");
+    const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState("");
 
     const [subject, setSubject] = useState("");
     const [isSubjectError, setIsSubjectError] = useState(false);
@@ -42,8 +42,6 @@ const ContactForm = () => {
 
         try {
 
-            console.log("VVVV");
-
             let end = false;
             
             if (name.trim().length === 0) {
@@ -52,6 +50,11 @@ const ContactForm = () => {
                 setNameErrorMessage("Input a value");
                 end = true;
 
+            }
+
+            else {
+                setIsNameError(false);
+                setNameErrorMessage("");
             }
 
             if (email.trim().length === 0) {
@@ -68,10 +71,20 @@ const ContactForm = () => {
                 end = true;
             }
 
+            else {
+                setIsEmailError(false);
+                setEmailErrorMessage("");
+            }
+
             if (!phoneRegex.test(phonenumber) && phonenumber.trim().length > 0) {
                 setIsPhoneNumberError(true);
-                setPhoneNUmberErrorMessage("Enter a valid phone number.");
+                setPhoneNumberErrorMessage("Enter a valid phone number.");
                 end = true;
+            }
+
+            else {
+                setIsPhoneNumberError(false);
+                setPhoneNumberErrorMessage("");
             }
 
             if (subject.trim().length === 0) {
@@ -82,6 +95,11 @@ const ContactForm = () => {
 
             }
 
+            else {
+                setIsSubjectError(false);
+                setSubjectErrorMessage("");
+            }
+
             if (message.trim().length === 0) {
 
                 setIsMessageError(true);
@@ -90,9 +108,14 @@ const ContactForm = () => {
 
             }
 
+            else {
+                setIsMessageError(false);
+                setMessageErrorMessage("");
+            }
+
             if (end) return;
 
-            console.log("BBBB");
+            const now = new Date();
 
             const body = {
                 "name": name,
@@ -100,11 +123,9 @@ const ContactForm = () => {
                 "phonenumber": phonenumber,
                 "subject": subject,
                 "message": message,
-                "status": 'new'
+                "status": 'new',
+                "datetime":now.toLocaleString()
             }
-
-            console.log("CCCC");
-
 
             const response = await fetch(API + '/admin/CMS/contact', {
 
@@ -115,14 +136,7 @@ const ContactForm = () => {
                 body: JSON.stringify(body)
             });
 
-            console.log(response);
-
-            console.log("KKKK");
-
-
             if(response.ok){
-
-                console.log("JJJJ");
 
                 setIsNameError(false);
                 setIsEmailError(false);
