@@ -604,6 +604,29 @@ app.delete('/admin/CMS/bookings/:id', async(req,res) => {
     }
 })
 
+//Add franchise query
+app.post('/franchise', async(req,res) => {
+
+    try {
+
+        const name = req.body.name;
+        const email = req.body.email;
+        const city = req.body.city;
+        const phonenumber = req.body.phonenumber;
+        const investmentinterest = req.body.investmentinterest;
+        const message = req.body.message;
+
+        const addFranchise = await pool.query("INSERT INTO franchise (name, email, city, phonenumber, investmentinterest, message) VALUES ($1,$2,$3,$4,$5,$6)", [
+            name, email, city, phonenumber, investmentinterest, message
+        ]);
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 app.listen(5000, () => {
     console.log("Server started on port 5000.")
 })

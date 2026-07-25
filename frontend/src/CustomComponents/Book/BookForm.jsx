@@ -597,32 +597,32 @@ const BookForm = () => {
         </form>
 
 
-      <AnimatePresence>
-          {isSuccessfulSubmission && (
-          
-              <motion.div 
-                  className="
-                      fixed
-                      inset-0
-                      z-50
-                      flex
-                      items-center
-                      justify-center
-                  "
-                  initial={{opacity: 0, y: 100}}
-                  animate={{opacity: 1, y: 0}}
-                  exit={{opacity: 0, y: 100}}
-                  transition={{duration: 0.2, ease: "easeInOut"}}
+        <AnimatePresence>
+            {isSuccessfulSubmission && (
+            
+                <motion.div 
+                    className="
+                        fixed
+                        inset-0
+                        z-50
+                        flex
+                        items-center
+                        justify-center
+                    "
+                    initial={{opacity: 0, y: 100}}
+                    animate={{opacity: 1, y: 0}}
+                    exit={{opacity: 0, y: 100}}
+                    transition={{duration: 0.2, ease: "easeInOut"}}
 
-                  style={{padding:'20px'}}
-              >
-              
-                  <Thank />
+                    style={{padding:'20px'}}
+                >
+                
+                    <Thank />
 
-              </motion.div>
+                </motion.div>
 
-          )}
-      </AnimatePresence>
+            )}
+        </AnimatePresence>
 
         
 

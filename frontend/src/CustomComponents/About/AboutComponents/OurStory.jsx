@@ -123,6 +123,8 @@ const OurStory = () => {
                     whileInView={{opacity:1, x:0}}
 
                     transition={{duration:.3*(i+1), ease:'easeOut'}}
+
+                    key={i}
                   >
                     {storypiece}
                   </motion.p>
