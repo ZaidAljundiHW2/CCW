@@ -402,6 +402,8 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                             }}  
                             defaultValue={[parseDate(selectedReservation.reservationdate)]}
                             style={{ color: 'black', background:'white'}}
+                            value={date ? [parseDate(date)] : []}
+                            
                 
                         >
                         <DatePicker.Control>
@@ -493,6 +495,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                                         const value = locations[e.target.value];
                                         setLocation(value);
                                         setTime("");
+                                        setDate("");
                                     }}
                                 >
 

@@ -383,7 +383,7 @@ const BookForm = () => {
                 className='landscape:flex-row flex-col gap-5' 
             >
                 {/* Date */}
-                <Field.Root invalid={isDateError} className='w-full' required>
+                <Field.Root invalid={isDateError} className='w-full' required disabled={location === ""}>
                     <Field.Label className='editText'>Date <Field.RequiredIndicator /></Field.Label>
                     
                     <DatePicker.Root
@@ -396,6 +396,9 @@ const BookForm = () => {
                             console.log(e.value[0].toString());
                         }}   
                         style={{ color: 'black', background:'white'}}
+                        disabled={location === ""}
+                        value={date ? [parseDate(date)] : []}
+
             
                     >
                     <DatePicker.Control>
@@ -486,6 +489,7 @@ const BookForm = () => {
                                     const value = locations[e.target.value];
                                     setLocation(value);
                                     setTime("");
+                                    setDate("");
                                 }}
                             >
 

@@ -6,13 +6,13 @@ const DeleteQuery = ({item, setShowDelete}) => {
 
     const API = 'http://localhost:5000';
 
-    const deleteContact = async(item) => {
+    const deleteBooking = async(item) => {
 
         try {
 
-            const id = item.contactid;
+            const id = item.bookingid;
 
-            const response = await fetch(API + `/admin/CMS/contact/${id}`, {
+            const response = await fetch(API + `/admin/CMS/bookings/${id}`, {
                 method:"DELETE",
                 headers: {
                     "Content-Type": "application/json"
@@ -20,7 +20,10 @@ const DeleteQuery = ({item, setShowDelete}) => {
                 body: JSON.stringify({})
             });
 
-            setShowDelete(false);
+            if (response.ok) {
+                setShowDelete(false);
+
+            }
             
         } catch (error) {
             console.error(error);
@@ -60,7 +63,7 @@ const DeleteQuery = ({item, setShowDelete}) => {
         >
 
         <h1 className='CMSHead' style={{lineHeight:1}}>
-            Are you sure you want to delete this query?
+            Are you sure you want to delete this booking?
         </h1>
 
         <Flex className='w-full gap-5 justify-center'>
@@ -73,7 +76,7 @@ const DeleteQuery = ({item, setShowDelete}) => {
 
             </Button>
 
-            <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteContact(item)}>
+            <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteBooking(item)}>
 
             Yes
 

@@ -25,7 +25,8 @@ const BookingCMS = () => {
     const [reservationItem, setReservationItem] = useState();
 
     const [locations, setLocations] = useState();
-    const [location, setLocation] = useState();
+    const [location, setLocation] = useState("");
+    const [locationName, setLocationName] = useState("");
 
     const [refresh, setRefresh] = useState(false);
 
@@ -73,6 +74,8 @@ const BookingCMS = () => {
 
         const currLocationID = details.value;
         setLocation(currLocationID);
+        console.log(locations);
+        setLocationName(locations.find(item => item.locationid == currLocationID).locationname);
 
         const currNewItems = allNewItems.filter(item => item.locationid == currLocationID);
         const currCompletedItems = allCompletedItems.filter(item => item.locationid == currLocationID);
@@ -160,7 +163,10 @@ const BookingCMS = () => {
                             </Menu.Positioner>
                         </Portal>
                     </Menu.Root>
-
+                    
+                    <h1 className='editText'>
+                        Selected Location: {locationName}
+                    </h1>
 
 
                     <Flex 
@@ -181,6 +187,7 @@ const BookingCMS = () => {
                             <ReservationBlock 
                                 mark={true}
                                 reservationItem={item}
+                                key={item.bookingid}
                                 setShowDelete={setShowDelete}
                                 setReservationItem={setReservationItem}
                                 setRefresh={setRefresh}
@@ -212,6 +219,7 @@ const BookingCMS = () => {
                             <ReservationBlock 
                                 mark={false} 
                                 reservationItem={item} 
+                                key={item.bookingid}
                                 setShowDelete={setShowDelete} 
                                 setReservationItem={setReservationItem}
                                 setRefresh={setRefresh}

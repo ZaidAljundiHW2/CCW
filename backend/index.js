@@ -589,6 +589,21 @@ app.put('/admin/CMS/bookings/:id', async(req,res) => {
     }
 })
 
+app.delete('/admin/CMS/bookings/:id', async(req,res) => {
+
+    try {
+        
+        const id = req.params.id;
+
+        const deleteItem = await pool.query("DELETE FROM bookings WHERE bookingid=$1", [id]);
+
+        res.json("success");
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 app.listen(5000, () => {
     console.log("Server started on port 5000.")
 })
