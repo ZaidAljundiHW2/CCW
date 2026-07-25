@@ -154,6 +154,9 @@ const ReqFrForm = () => {
 
             if (end) return;
 
+            const now = new Date();
+
+
             const body = {
 
                 "name":name,
@@ -161,8 +164,9 @@ const ReqFrForm = () => {
                 "phonenumber":phoneNumber,
                 "investmentinterest":investmentInterest,
                 "city":city,
-                "message":specialRequests
-
+                "message":specialRequests,
+                "datetime": now.toLocaleString(),
+                "status":'new'
             }
 
             const response = await fetch(API + '/franchise', {
@@ -175,6 +179,13 @@ const ReqFrForm = () => {
 
 
             if (response.ok) {
+
+                setName("");
+                setEmail("");
+                setCity("");
+                setPhoneNumber("");
+                setInvestmentInterest("");
+                setSpecialRequests("");
 
                 setIsNameError(false);
                 setIsEmailError(false);
@@ -316,6 +327,8 @@ const ReqFrForm = () => {
                             color="black"
                             bg="white"
                             onChange={(e) => setInvestmentInterest(e.target.value)}
+                            value={investmentInterest}
+
                         >
 
                             <option value={""} style={{color:'black', background:'white'}}>

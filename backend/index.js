@@ -589,6 +589,7 @@ app.put('/admin/CMS/bookings/:id', async(req,res) => {
     }
 })
 
+//Delete booking
 app.delete('/admin/CMS/bookings/:id', async(req,res) => {
 
     try {
@@ -615,12 +616,96 @@ app.post('/franchise', async(req,res) => {
         const phonenumber = req.body.phonenumber;
         const investmentinterest = req.body.investmentinterest;
         const message = req.body.message;
+        const datetime = req.body.datetime;
+        const status = req.body.status;
 
-        const addFranchise = await pool.query("INSERT INTO franchise (name, email, city, phonenumber, investmentinterest, message) VALUES ($1,$2,$3,$4,$5,$6)", [
-            name, email, city, phonenumber, investmentinterest, message
+        const addFranchise = await pool.query("INSERT INTO franchise (name, email, city, phonenumber, investmentinterest, message, datetime, status) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)", [
+            name, email, city, phonenumber, investmentinterest, message, datetime, status
         ]);
 
         res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get new franchise requests
+app.get('/admin/CMS/franchise/new', async(req,res) => {
+
+    try {
+
+        const getNewFranchiseRequests = await pool.query("SELECT * FROM franchise WHERE status='new'");
+
+        res.json(getNewFranchiseRequests.rows);
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Get complete franchise requests
+app.get('/admin/CMS/franchise/complete', async(req,res) => {
+
+    try {
+
+        const getNewFranchiseRequests = await pool.query("SELECT * FROM franchise WHERE status='complete'");
+
+        res.json(getNewFranchiseRequests.rows);
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Mark new franchise requests as complete
+app.put('/admin/CMS/franchise/new/:id', async(req,res) => {
+    
+    try {
+
+        const id = req.params.id;
+
+        const markComplete = await pool.query("UPDATE franchise SET status='complete' WHERE franchiseid = $1", [
+            id
+        ])
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Mark complete franchise requests as new
+app.put('/admin/CMS/franchise/complete/:id', async(req,res) => {
+    
+    try {
+
+        const id = req.params.id;
+
+        const markNew = await pool.query("UPDATE franchise SET status='new' WHERE franchiseid = $1", [
+            id
+        ])
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Delete franchise request
+app.delete('/admin/CMS/franchise/:id', async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+
+        const deleteItem = await pool.query("DELETE FROM franchise WHERE franchiseid = $1", [
+            id
+        ])
+
+        res.json("Success");
         
     } catch (error) {
         console.error(error);
