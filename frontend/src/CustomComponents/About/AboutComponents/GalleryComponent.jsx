@@ -1,32 +1,54 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Carousel, IconButton, Image, Flex, Box } from "@chakra-ui/react"
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
-import groupdining from '@/assets/img/group-dining.png'
-import familydining from '@/assets/img/family-dining.png'
-import groupdining2 from '@/assets/img/group-dining-new.png'
-import rest1 from '@/assets/img/restaurant-exterior.png'
-import rest2 from '@/assets/img/restaurant-front.png'
-import deliv1 from '@/assets/img/delivery-door.png'
-import deliv2 from '@/assets/img/delivery-car.png'
+
 
 const GalleryComponent = () => {
-  const items = [
-    { label: "groupdining", url: groupdining },
-    { label: "familydining", url: familydining },
-    { label: "groupdining2", url: groupdining2 },
-    { label: 'rest1', url: rest1 },
-    { label: "rest2", url: rest2 },
-    { label: 'deliv1', url: deliv1 },
-    { label: 'deliv2', url: deliv2 }
-  ]
+  
 
-  const [page, setPage] = useState(0)
-  const scrollRef = useRef(null)
+  const [page, setPage] = useState(0);
+  const scrollRef = useRef(null);
 
   const scrollThumbs = (dir) => {
     const el = scrollRef.current
     if (!el) return
     el.scrollBy({ left: dir * (el.clientWidth * 0.8), behavior: 'smooth' })
+  }
+
+  const [images, setImages] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const API = 'http://localhost:5000';
+
+
+  const getImages = async() => {
+
+    try {
+
+      const response = await fetch(API + '/gallery');
+      const jsonData = await response.json();
+
+      setImages(jsonData);
+      
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+
+    const load = async() => {
+      await getImages()
+      setIsLoading(false);
+    }
+
+    load();
+
+  }, []);
+
+  if (isLoading) {
+    return (
+      <p style={{color:'black'}}>Loading...</p>
+    )
   }
 
   return (
@@ -37,7 +59,7 @@ const GalleryComponent = () => {
 
       {/* Main showcase carousel */}
       <Carousel.Root
-        slideCount={items.length}
+        slideCount={images.length}
         page={page}
         onPageChange={(details) => setPage(details.page)}
         maxW="5xl"
@@ -60,12 +82,11 @@ const GalleryComponent = () => {
 
           <Box width="full" minW={0} overflow="hidden" borderRadius="lg">
             <Carousel.ItemGroup width="full" minW={0}>
-              {items.map((item, index) => (
+              {images.map((item, index) => (
                 <Carousel.Item key={index} index={index}>
                   <Image
                     aspectRatio="16/9"
                     src={item.url}
-                    alt={item.label}
                     w="100%"
                     h="100%"
                     objectFit="cover"
@@ -117,7 +138,7 @@ const GalleryComponent = () => {
             scrollbarWidth: 'none',
           }}
         >
-          {items.map((item, index) => {
+          {images.map((item, index) => {
             const isActive = index === page
             return (
               <Image
@@ -126,7 +147,6 @@ const GalleryComponent = () => {
                 w={{ base: "20", sm: "28", md: "40" }}
                 aspectRatio="16/9"
                 src={item.url}
-                alt={item.label}
                 objectFit="cover"
                 cursor="pointer"
                 borderRadius="8px"

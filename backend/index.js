@@ -238,8 +238,6 @@ app.post('/admin/CMS/menu/menu-categories', async (req, res) => {
     }
 })
 
-
-
 //Enable Build Your Own
 app.post('/admin/CMS/menu/menu-categories/toggle/byo', async(req, res) => {
 
@@ -887,6 +885,78 @@ app.delete('/edit/menu/category/folder/:cat', async(req,res) => {
         console.error(error);
     }
 })
+
+//get gallery images
+app.get('/gallery', async(req,res) => {
+
+    try {
+
+        const getGallery = await pool.query("SELECT * FROM galleryimages");
+
+        res.json(getGallery.rows);
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//add and upload gallery image
+app.post('/upload/gallery/image', upload.single("my_file"), async(req,res) => {
+
+    try {
+
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const cldRes = await handleUpload(dataURI, {
+            folder: `gallery`,
+            use_filename: true,
+            unique_filename: false,
+            overwrite: true,
+        });
+
+        const url = cldRes.secure_url;
+
+        const uploadImage = await pool.query(
+            "INSERT INTO galleryimages (URL) VALUES ($1)",
+            [url]
+        );
+
+        res.json(cldRes);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: error.message });
+    }
+
+
+})
+
+//delete gallery image
+app.delete('/delete/gallery/image/:id', async(req,res) => {
+
+    try {
+
+        const imageURL = req.body.image;
+        const imageid = req.params.id;
+        const publicId = getPublicIdFromUrl(imageURL);
+
+        if (publicId && !imageURL.includes("placeholder")) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+
+        const deleteImage = await pool.query("DELETE FROM galleryimages WHERE imageid=$1", [
+            imageid
+        ]);
+
+
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")

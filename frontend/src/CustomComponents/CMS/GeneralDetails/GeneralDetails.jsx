@@ -267,7 +267,7 @@ const GeneralDetails = () => {
         >
 
             <h1 className='CMSHead'>
-                Legal Information
+                Gallery Images
             </h1>
 
             {(
@@ -282,6 +282,7 @@ const GeneralDetails = () => {
                     
 
                     <InfoBlock 
+                        label='Gallery Images'
                         setShowEdit={setShowEditGallery}
                     />
                     
@@ -300,7 +301,7 @@ const GeneralDetails = () => {
                 fetchAll={fetchAll}
             />)}
 
-        {showEditGallery && (<EditGallery setShowEdit={showEditGallery}/>)}
+        {showEditGallery && (<EditGallery setShowEdit={setShowEditGallery}/>)}
       
     </div>
   )
