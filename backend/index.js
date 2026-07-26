@@ -2,9 +2,35 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const pool = require('./db');
+require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
+
+
+//cloudinary initialisation
+// Require the cloudinary library
+const cloudinary = require('cloudinary').v2;
+const Multer = require("multer");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+async function handleUpload(file, options = {}) {
+  const res = await cloudinary.uploader.upload(file, {
+    resource_type: "auto",
+    ...options
+  });
+  return res;
+}
+
+const storage = new Multer.memoryStorage();
+const upload = Multer({
+  storage,
+});
+
 
 //ROUTES
 
@@ -259,12 +285,16 @@ app.post('/admin/CMS/menu/menu-item', async(req, res) => {
         const categoryid = req.body.categoryid;
         const foodimg = req.body.foodimage;
 
-        const addItem = await pool.query("INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid) VALUES ($1, $2, $3, $4, $5, $6)", [
+        const addItem = await pool.query("INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid) VALUES ($1, $2, $3, $4, $5, $6) RETURNING fooditemid", [
             itemname, hasdesc, itemdescription, foodimg, price, categoryid
         ]);
 
-        res.json("success");
+        const fooditemid = addItem.rows[0].fooditemid;
 
+        res.json({
+            fooditemid:fooditemid,
+            success:true
+        })
 
     } catch (error) {
         console.error(error);
@@ -711,6 +741,38 @@ app.delete('/admin/CMS/franchise/:id', async(req,res) => {
         console.error(error);
     }
 })
+
+//upload an image for a menu item
+app.post("/upload/menu/item/:id", upload.single("my_file"), async (req, res) => {
+  try {
+
+    const cat = req.body.category;
+    const itemid = req.params.id;
+    const b64 = Buffer.from(req.file.buffer).toString("base64");
+    let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+    const cldRes = await handleUpload(dataURI, {
+        folder: `menuitems/${cat}`,
+        use_filename: true,
+        unique_filename: false,
+        overwrite: true,
+    });
+
+    const url = cldRes.secure_url;
+
+    const uploadImage = await pool.query(
+        "UPDATE menu SET foodimage=$1 WHERE fooditemid=$2",
+        [url, itemid]
+    );
+
+    res.json(cldRes);
+
+  } catch (error) {
+    console.log(error);
+    res.send({
+      message: error.message,
+    });
+  }
+});
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")

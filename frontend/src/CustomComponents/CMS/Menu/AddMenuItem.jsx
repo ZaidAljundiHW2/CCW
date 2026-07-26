@@ -3,6 +3,7 @@ import { Flex, Field, Button, Input, Select, Span, Textarea, FileUpload } from '
 import { HiUpload } from "react-icons/hi"
 import { useState } from 'react'
 import { createListCollection, Portal } from '@chakra-ui/react'
+import axios from 'axios'
 
 const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
@@ -12,6 +13,8 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
     const [nameErrorMessage, setNameErrorMessage] = useState("");
 
     const [inputDesc, setInputDesc] = useState("");
+
+    const [img, setImg] = useState(null);
     const [imgErrorMessage, setImgErrorMessage] = useState("");
     
     const [inputPrice, setInputPrice] = useState("");
@@ -24,6 +27,38 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
     const API = 'http://localhost:5000'
 
+    const [file, setFile] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [res, setRes] = useState({});
+
+    const [isFileChosen, setIsFileChosen] = useState(false);
+    const [fileImg, setFileImg] = useState();
+
+    const handleSelectFile = (e) => {
+        const selected = e.target.files[0];
+        if (fileImg) URL.revokeObjectURL(fileImg);
+        setFile(selected);
+        setIsFileChosen(true);
+        setFileImg(URL.createObjectURL(selected));
+    };
+
+    
+    const handleUpload = async (itemid, category) => {
+        try {
+        setLoading(true);
+        const data = new FormData();
+        data.append("my_file", file);
+        const safeCat = category.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
+        data.append("category", safeCat);
+        const res = await axios.post(API + `/upload/menu/item/${itemid}`, data);
+        setRes(res.data);
+        } catch (error) {
+        alert(error.message);
+        } finally {
+        setLoading(false);
+        }
+    };
+
 
     const categoryCollection = createListCollection({
         items: categories,
@@ -31,7 +66,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
         itemToValue: (item) => item.category,
     });
 
-    const placeholderImgsrc = 'https://drive.google.com/thumbnail?id=1HVFwBvKrLDQKjtUe8KiYP3W-GYacn1Up';
+    const placeholderImgsrc = 'https://res.cloudinary.com/pyitrlll/image/upload/v1785008926/placeholder_yyqeqs.jpg';
 
     const addItem = async(itemname, itemprice, itemimg, itemdesc, itemcat, categories) => {
 
@@ -83,6 +118,18 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                 body:JSON.stringify(body)
 
             });
+
+            const menuitem = await response.json();
+
+            const fooditemid = menuitem.fooditemid;
+
+            if (file !== null) {
+                await handleUpload(fooditemid, itemcat);
+
+            }
+
+
+            
 
             setShowMenuItemAdd(false);
 
@@ -198,28 +245,47 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                 <Field.Root className='w-full'>
                     <Field.Label className='editText'>Item Image</Field.Label>
                     
-                    <div className="relative flex flex-col gap-3 w-full">
+                        <div className="App">
+                            <label htmlFor="file">
 
-                        {/* <img src={menuitem.foodimage} 
-                            className='
-                                aspect-square
-                                w-[20%]
-                            '
-                        /> */}
-                        
-                        <FileUpload.Root>
-                            <FileUpload.HiddenInput />
-                            <FileUpload.Trigger asChild>
-                                <Button colorPalette={'black'} variant="outline" size="sm">
-                                <HiUpload /> Upload file
+                                <Button as='span' style={{color:'black', borderWidth:'2px', borderColor:'black'}}>
+                                    {" "}
+                                    Select File
                                 </Button>
-                            </FileUpload.Trigger>
-                            <FileUpload.List />
-                        </FileUpload.Root>
-
-
-                        
-                    </div>
+                                
+                            </label>
+                            {file && isFileChosen && <center style={{color:'black'}}> {file.name}</center>}
+                            {file && isFileChosen && (
+                                <img src={fileImg}/>
+                            )}
+                            <input
+                                id="file"
+                                type="file"
+                                onChange={handleSelectFile}
+                                multiple={false}
+                                style={{ display: 'none' }}
+                                accept="image/png, image/jpeg" 
+                            />
+                            <code>
+                                {Object.keys(res).length > 0
+                                ? Object.keys(res).map((key) => (
+                                    <p className="output-item" key={key}>
+                                        <span>{key}:</span>
+                                        <span>
+                                        {typeof res[key] === "object" ? "object" : res[key]}
+                                        </span>
+                                    </p>
+                                    ))
+                                : null}
+                            </code>
+                            {/* {file && (
+                                <>
+                                <button onClick={handleUpload} className="btn-green">
+                                    {loading ? "uploading..." : "upload to cloudinary"}
+                                </button>
+                                </>
+                            )} */}
+                        </div>
 
                     <Field.ErrorText width="full">
                         <Field.ErrorIcon />

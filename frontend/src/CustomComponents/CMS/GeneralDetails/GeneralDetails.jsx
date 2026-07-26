@@ -5,6 +5,7 @@ import '../CMS.css'
 import InfoBlock from '../InfoBlock'
 import { useEffect, useState } from 'react'
 import EditGenDet from './EditGenDet'
+import EditGallery from './EditGallery'
 
 const GeneralDetails = () => {
 
@@ -17,6 +18,8 @@ const GeneralDetails = () => {
     const [showEdit, setShowEdit] = useState(false);
     const [legal, setLegal] = useState();
     const [isLegal, setIsLegal] = useState(false);
+
+    const [showEditGallery, setShowEditGallery] = useState(false);
 
     const getSocialMedia = async () => {
 
@@ -253,12 +256,51 @@ const GeneralDetails = () => {
 
         </Flex> */}
 
+        {/* Gallery Edit */}
+        <Flex 
+            className='
+                GDWrapper 
+                rounded-lg 
+                shadow-lg
+                flex-col
+            '
+        >
+
+            <h1 className='CMSHead'>
+                Legal Information
+            </h1>
+
+            {(
+
+                isLoading ? (
+                    <p style={{color:'black'}}>Loading...</p>
+                )
+
+                :
+
+                (
+                    
+
+                    <InfoBlock 
+                        setShowEdit={setShowEditGallery}
+                    />
+                    
+                )
+
+            )}
+
+            
+
+        </Flex>
+
         {showEdit && 
             (<EditGenDet 
                 editedItem={editedObj} 
                 setShowEdit={setShowEdit} 
                 fetchAll={fetchAll}
             />)}
+
+        {showEditGallery && (<EditGallery setShowEdit={showEditGallery}/>)}
       
     </div>
   )

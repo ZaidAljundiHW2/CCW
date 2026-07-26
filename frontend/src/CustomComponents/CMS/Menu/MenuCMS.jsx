@@ -207,7 +207,7 @@ const MenuCMS = () => {
 
         {!isLoading && showMenuItemEdit && (<EditMenuItem setShowMenuItemEdit={setShowMenuItemEdit} menuitem={selectedMenuItem} categories={catObject}/>)}
 
-        {!isLoading && showMenuItemAdd && (<AddMenuItem setShowMenuItemAdd={setShowMenuItemAdd} categories={catObject}/>)}
+        {!isLoading && showMenuItemAdd && (<AddMenuItem setShowMenuItemAdd={setShowMenuItemAdd} categories={catObject.filter(item => item.category !== "Build Your Own")}/>)}
 
       
     </div>
