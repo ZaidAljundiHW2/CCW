@@ -5,6 +5,7 @@ import { FileUpload } from "@chakra-ui/react"
 import { HiUpload } from "react-icons/hi"
 import { Portal, Select, createListCollection } from "@chakra-ui/react"
 import DeleteItem from './DeleteItem'
+import axios from 'axios';
 
 const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
@@ -26,7 +27,22 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
     const [img, setImg] = useState(null);
 
-    const API = 'http://localhost:5000'
+    const API = 'http://localhost:5000';
+
+    const [file, setFile] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [res, setRes] = useState({});
+
+    const [isFileChosen, setIsFileChosen] = useState(false);
+    const [fileImg, setFileImg] = useState();
+
+    const handleSelectFile = (e) => {
+        const selected = e.target.files[0];
+        if (fileImg) URL.revokeObjectURL(fileImg);
+        setFile(selected);
+        setIsFileChosen(true);
+        setFileImg(URL.createObjectURL(selected));
+    };
 
     const categoryCollection = createListCollection({
         items: categories,
@@ -38,6 +54,21 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
         const match = categories.find(cat => cat.categoryid === menuitem.categoryid);
         return match ? match.category : "";
     });
+
+    const handleUpload = async (itemid, currImgURL) => {
+        try {
+        setLoading(true);
+        const data = new FormData();
+        data.append("my_file", file);
+        data.append("curr_image", currImgURL);
+        const res = await axios.post(API + `/upload/menu/item/${itemid}`, data);
+        setRes(res.data);
+        } catch (error) {
+        alert(error.message);
+        } finally {
+        setLoading(false);
+        }
+    };
 
     
     const handleUpdate = async (item, categories) => {
@@ -88,6 +119,11 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
             console.log(response);
             setShowMenuItemEdit(false);
+
+            if (file !== null) {
+                await handleUpload(fooditemid, item.foodimage);
+
+            }
             
         } catch (error) {
             console.error(error);
@@ -203,28 +239,47 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 <Field.Root className='w-full'>
                     <Field.Label className='editText'>Item Image</Field.Label>
                     
-                    <div className="relative flex flex-col gap-3 w-full">
+                        <div className="App">
+                            <label htmlFor="file">
 
-                        <img src={menuitem.foodimage} 
-                            className='
-                                aspect-square
-                                w-[20%]
-                            '
-                        />
-
-                        <FileUpload.Root>
-                            <FileUpload.HiddenInput />
-                            <FileUpload.Trigger asChild>
-                                <Button colorPalette={'black'} variant="outline" size="sm">
-                                <HiUpload /> Upload file
+                                <Button as='span' style={{color:'black', borderWidth:'2px', borderColor:'black'}}>
+                                    {" "}
+                                    Select File
                                 </Button>
-                            </FileUpload.Trigger>
-                            <FileUpload.List />
-                        </FileUpload.Root>
-
-
-                        
-                    </div>
+                                
+                            </label>
+                            {file && isFileChosen && <center style={{color:'black'}}> {file.name}</center>}
+                            {file && isFileChosen && (
+                                <img src={fileImg}/>
+                            )}
+                            <input
+                                id="file"
+                                type="file"
+                                onChange={handleSelectFile}
+                                multiple={false}
+                                style={{ display: 'none' }}
+                                accept="image/png, image/jpeg" 
+                            />
+                            <code>
+                                {Object.keys(res).length > 0
+                                ? Object.keys(res).map((key) => (
+                                    <p className="output-item" key={key}>
+                                        <span>{key}:</span>
+                                        <span>
+                                        {typeof res[key] === "object" ? "object" : res[key]}
+                                        </span>
+                                    </p>
+                                    ))
+                                : null}
+                            </code>
+                            {/* {file && (
+                                <>
+                                <button onClick={handleUpload} className="btn-green">
+                                    {loading ? "uploading..." : "upload to cloudinary"}
+                                </button>
+                                </>
+                            )} */}
+                        </div>
 
                     <Field.ErrorText width="full">
                         <Field.ErrorIcon />

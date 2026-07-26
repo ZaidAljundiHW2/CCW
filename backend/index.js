@@ -31,6 +31,17 @@ const upload = Multer({
   storage,
 });
 
+function getPublicIdFromUrl(url) {
+    try {
+        const afterUpload = url.split("/upload/")[1];        // v1234567/menuitems/photo.jpg
+        const withoutVersion = afterUpload.replace(/^v\d+\//, ""); // menuitems/photo.jpg
+        return withoutVersion.replace(/\.[^/.]+$/, "");       // menuitems/photo
+    } catch {
+        return null;
+    }
+}
+
+
 
 //ROUTES
 
@@ -742,8 +753,8 @@ app.delete('/admin/CMS/franchise/:id', async(req,res) => {
     }
 })
 
-//upload an image for a menu item
-app.post("/upload/menu/item/:id", upload.single("my_file"), async (req, res) => {
+//upload an image for a new menu item
+app.post("/upload/menu/item/new/:id", upload.single("my_file"), async (req, res) => {
   try {
 
     const cat = req.body.category;
@@ -773,6 +784,61 @@ app.post("/upload/menu/item/:id", upload.single("my_file"), async (req, res) => 
     });
   }
 });
+
+//replace image of existing menu item
+app.post("/upload/menu/item/:id", upload.single("my_file"), async (req, res) => {
+  try {
+    const itemid = req.params.id;
+    const oldUrl = req.body.curr_image;
+
+    const b64 = Buffer.from(req.file.buffer).toString("base64");
+    const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+    const cldRes = await handleUpload(dataURI, {
+        folder: "menuitems",
+        use_filename: true,
+        unique_filename: false,
+        overwrite: true,
+    });
+    const url = cldRes.secure_url;
+
+    await pool.query(
+        "UPDATE menu SET foodimage=$1 WHERE fooditemid=$2",
+        [url, itemid]
+    );
+
+    if (oldUrl && oldUrl !== url && !oldUrl.includes("placeholder")) {
+        const publicId = getPublicIdFromUrl(oldUrl);
+        if (publicId) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+    }
+
+    res.json(cldRes);
+  } catch (error) {
+    console.log(error);
+    res.send({ message: error.message });
+  }
+});
+
+//delete menu item image
+app.delete('/delete/menu/item', async(req,res) => {
+
+    try {
+
+        const imageURL = req.body.curr_image;
+
+        const publicId = getPublicIdFromUrl(imageURL);
+
+        if (publicId && !imageURL.includes("placeholder")) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+
+        res.json()
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
 
 app.listen(5000, () => {
     console.log("Server started on port 5000.")
