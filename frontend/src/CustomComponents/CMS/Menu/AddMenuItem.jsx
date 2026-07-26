@@ -42,13 +42,13 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
     
     const handleUpload = async (itemid, category) => {
         try {
-        setLoading(true);
-        const data = new FormData();
-        data.append("my_file", file);
-        const safeCat = category.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
-        data.append("category", safeCat);
-        const res = await axios.post(API + `/upload/menu/item/${itemid}`, data);
-        setRes(res.data);
+            setLoading(true);
+            const data = new FormData();
+            data.append("my_file", file);
+            const safeCat = category.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
+            data.append("category", safeCat);
+            const res = await axios.post(API + `/upload/menu/item/${itemid}`, data);
+            setRes(res.data);
         } catch (error) {
         alert(error.message);
         } finally {
@@ -263,18 +263,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                                 style={{ display: 'none' }}
                                 accept="image/png, image/jpeg" 
                             />
-                            <code>
-                                {Object.keys(res).length > 0
-                                ? Object.keys(res).map((key) => (
-                                    <p className="output-item" key={key}>
-                                        <span>{key}:</span>
-                                        <span>
-                                        {typeof res[key] === "object" ? "object" : res[key]}
-                                        </span>
-                                    </p>
-                                    ))
-                                : null}
-                            </code>
+                            
                             {/* {file && (
                                 <>
                                 <button onClick={handleUpload} className="btn-green">

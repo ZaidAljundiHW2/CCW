@@ -956,6 +956,63 @@ app.delete('/delete/gallery/image/:id', async(req,res) => {
     }
 })
 
+//upload coming soon image
+app.post('/upload/comingsoon/image/:id', upload.single("my_file"), async (req,res) => {
+
+    
+    try {
+
+        const id = req.params.id;
+
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const cldRes = await handleUpload(dataURI, {
+            folder: `comingsoon`,
+            use_filename: true,
+            unique_filename: false,
+            overwrite: true,
+        });
+
+        const url = cldRes.secure_url;
+
+        const uploadImage = await pool.query(
+            "UPDATE comingsoon SET imageURL = $1 WHERE csid= $2",
+            [url, id]
+        );
+
+        res.json(cldRes);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: error.message });
+    }
+
+
+})
+
+//add coming soon item
+app.post('/admin/CMS/locations/coming-soon', async(req,res) => {
+
+    try {
+
+        const location = req.body.location;
+        const imageURL = req.body.imageURL;
+
+        const addCS = await pool.query("INSERT INTO comingsoon (location, imageURL) VALUES ($1, $2) RETURNING csid", [
+            location, imageURL
+        ]);
+
+        const csid = addCS.rows[0].csid;
+
+        res.json({
+            csid:csid,
+            success:true
+        });
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 
 
 app.listen(5000, () => {

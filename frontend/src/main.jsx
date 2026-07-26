@@ -20,6 +20,7 @@ import AboutCMS from "./CustomComponents/CMS/About/AboutCMS"
 import ContactCMS from "./CustomComponents/CMS/Contact/ContactCMS"
 import BookingCMS from "./CustomComponents/CMS/Bookings/BookingCMS"
 import FranchiseCMS from "./CustomComponents/CMS/Franchise/FranchiseCMS"
+import LocationCMS from "./CustomComponents/CMS/Locations/LocationCMS"
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,8 @@ const router = createBrowserRouter([
       {path: 'About', element: <AboutCMS />},
       {path: 'Contact', element: <ContactCMS />},
       {path: 'Book', element: <BookingCMS />},
-      {path: 'Franchise', element: <FranchiseCMS />}
+      {path: 'Franchise', element: <FranchiseCMS />},
+      {path: 'Location', element: <LocationCMS />}
     ]
   }
 ], { basename: '/CCW' });
