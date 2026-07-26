@@ -1,6 +1,4 @@
-import React from 'react'
-import { Flex, Field, Button, Input, Select, Span, Textarea, FileUpload } from '@chakra-ui/react'
-import { HiUpload } from "react-icons/hi"
+import { Flex, Field, Button, Input, Select, Span, Textarea } from '@chakra-ui/react'
 import { useState } from 'react'
 import { createListCollection, Portal } from '@chakra-ui/react'
 import axios from 'axios'
@@ -14,7 +12,6 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
     const [inputDesc, setInputDesc] = useState("");
 
-    const [img, setImg] = useState(null);
     const [imgErrorMessage, setImgErrorMessage] = useState("");
     
     const [inputPrice, setInputPrice] = useState("");

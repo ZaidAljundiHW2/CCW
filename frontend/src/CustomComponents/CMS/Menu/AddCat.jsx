@@ -8,7 +8,25 @@ const AddCat = ({categories, setShowAdd}) => {
     const handleNameInputChange = (e) => setSelectedName(e.target.value);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const API = 'http://localhost:5000'
+    const API = 'http://localhost:5000';
+
+    const createCloudinaryFolder = async(catName) => {
+
+        try {
+
+            const safeCat = catName.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
+
+            const response = await fetch(API + `/create/menu/category/folder/${safeCat}`, {
+                method:"POST"
+            });
+
+            console.log(response);
+
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const AddCategory = async(catName, categories) => {
 
@@ -46,6 +64,9 @@ const AddCat = ({categories, setShowAdd}) => {
                 }
             );
 
+            
+            await createCloudinaryFolder(catName);
+            
             console.log(response);
             setShowAdd(false);
             

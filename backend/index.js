@@ -840,6 +840,54 @@ app.delete('/delete/menu/item', async(req,res) => {
     }
 })
 
+//create category folder
+app.post('/create/menu/category/folder/:cat', async(req,res) => {
+
+    try {
+        
+        const cat = req.params.cat;
+
+        const response = await cloudinary.api.create_folder(`/menuitems/${cat}`);
+
+        res.json("success");
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//edit category folder name
+app.put('/edit/menu/category/folder/:cat', async(req,res) => {
+    try {
+        const oldCat = req.params.cat;
+        const newCat = req.body.newcat;
+
+        const result = await cloudinary.api.rename_folder(`menuitems/${oldCat}`, `menuitems/${newCat}`);
+
+        res.json('success');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: error.message });  // always send something
+    }
+})
+
+//delete category folder
+app.delete('/edit/menu/category/folder/:cat', async(req,res) => {
+
+    try {
+
+        const cat = req.params.cat;
+        
+        await cloudinary.api.delete_resources_by_prefix(`/menuitems/${cat}`);
+        await cloudinary.api.delete_folder(`/menuitems/${cat}`);
+
+        res.json('success')
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 app.listen(5000, () => {
     console.log("Server started on port 5000.")
 })

@@ -29,7 +29,40 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
         return typeof val === 'string' && val.trim() !== '' && !isNaN(val) && isFinite(val);
     }
 
-    const handleUpdate = (originalName, newRank, newName, categories) => {
+    const createCloudinaryFolder = async(oldCat, newCat) => {
+
+        try {
+
+            console.log("JJJJJJJJJ");
+            const safeCat = newCat.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
+
+            const body = {
+                "newcat": safeCat
+            };
+
+            const response = await fetch(API + `/edit/menu/category/folder/${oldCat}`, {
+
+                method:"PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            });
+
+            console.log("CCCC");
+
+
+            console.log(response);
+            
+        } catch (error) {
+            console.error(error);
+        }
+
+        
+
+    }
+
+    const handleUpdate = async(originalName, newRank, newName, categories) => {
 
         if(newName.trim().length === 0) {
 
@@ -51,6 +84,10 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
             "newCat": newName,
             "categoryID": categories[categories.findIndex(item => item.category === originalName)].categoryid
         };
+
+        if (originalName !== newName) {
+            await createCloudinaryFolder(originalName, newName);
+        }
 
         reorder(newCatObj, categories);
 
@@ -84,7 +121,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
             }
 
             output[output.findIndex(item => item.category === category.category)].displayorder = category.displayOrder;
-
+            output[output.findIndex(item => item.category === category.category)].category = category.newCat;
         }
 
         else if (category.displayOrder > categories[categories.findIndex(item => item.category === category.category)].displayorder) {
@@ -99,6 +136,8 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
             output[output.findIndex(item => item.category === category.category)].displayorder = category.displayOrder;
 
         }
+
+        output[output.findIndex(item => item.category === category.category)].category = category.newCat;
 
 
         for (const item of output) {
@@ -118,6 +157,8 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
 
             });
 
+            console.log(response);
+
 
             
             
@@ -134,22 +175,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
         return output;
     }
 
-    const addCat = (category, categories) => {
-
-        let output = categories;
-        category.displayOrder = categories.length + 1;
-
-        if (categories[categories.findIndex(item => item.category === category.category)]) {
-            setNameErrorMessage("Category already exists");
-            setIsNameError(true);
-            return;
-        }
-
-        //API POST call instead
-        output.push(category);
-
-        return output;
-    }
+    
 
     
 
@@ -211,7 +237,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
                                 key={item.categoryid} 
                                 onClick={() => { 
                                     setSelectedCat(item.category); 
-                                    setRankInput(item.displayorder); 
+                                    setRankInput(String(item.displayorder)); 
                                     setSelectedName(item.category);
                                     setSelectedItem(item); 
                                 }}>
@@ -285,7 +311,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
 
                         <Flex className='w-full gap-5'>
 
-                            <Button className='editButton flex-1' onClick={() => handleUpdate(selectedCat, rankInput, selectedName, catItem)}>
+                            <Button className='editButton flex-1' onClick={async() => await handleUpdate(selectedCat, rankInput, selectedName, catItem)}>
 
                                 Update
 

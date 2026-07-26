@@ -5,6 +5,24 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
   const API = 'http://localhost:5000';
 
+  const deleteCloudinaryFolder = async(catname) => {
+
+    try {
+
+        const safeCat = catname.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
+
+        const response = await fetch(API + `/edit/menu/category/folder/${safeCat}`, {
+          method:"DELETE"
+        });
+
+        console.log(response);
+
+      
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const deleteCat = async(category, categories) => {
     
     try {
@@ -34,6 +52,8 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
         });
 
+        
+
         console.log(response);
       }
 
@@ -48,7 +68,9 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
       const deleteCat = await fetch(API + `/admin/CMS/menu/menu-categories/${category.categoryid}`, {
 
         method:"DELETE"
-      })
+      });
+
+      await deleteCloudinaryFolder(category.category);
 
       console.log(deleteItems);
       console.log(deleteCat);
