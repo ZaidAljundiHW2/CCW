@@ -1,26 +1,28 @@
-import { Flex, Field, Button, Input, Select, Span, Textarea } from '@chakra-ui/react'
-import { useState } from 'react'
-import { createListCollection, Portal } from '@chakra-ui/react'
-import axios from 'axios'
+import React from 'react'
+import { Flex, Button, Field, Input, Span } from '@chakra-ui/react'
+import { useState } from 'react';
+import axios from 'axios';
+import DeleteCS from './DeleteCS';
 
-const AddCS = ({setShowAddCS}) => {
-
+const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {    
     
-    const [isNameError, setIsNameError] = useState("");
-    const [inputName, setInputName] = useState("");
-    const [nameErrorMessage, setNameErrorMessage] = useState("");
-    const [imgErrorMessage, setImgErrorMessage] = useState("");
-
-    const API = 'http://localhost:5000'
-
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [res, setRes] = useState({});
 
     const [isFileChosen, setIsFileChosen] = useState(false);
-    const [fileImg, setFileImg] = useState();
+    const [fileImg, setFileImg] = useState(CSItem.imageurl);
 
     const [isFileError, setIsFileError] = useState(false);
+
+    const API = import.meta.env.VITE_API_URL;
+
+    const [isNameError, setIsNameError] = useState("");
+    const [inputName, setInputName] = useState(CSItem.location);
+    const [nameErrorMessage, setNameErrorMessage] = useState("");
+    const [imgErrorMessage, setImgErrorMessage] = useState("");
+
+    const [showDelete, setShowDelete] = useState(false);
 
     const handleSelectFile = (e) => {
         const selected = e.target.files[0];
@@ -31,12 +33,13 @@ const AddCS = ({setShowAddCS}) => {
     };
 
     
-    const handleUpload = async (itemid) => {
+    const handleUpload = async (itemid, oldurl) => {
         try {
             setLoading(true);
             const data = new FormData();
             data.append("my_file", file);
-            const res = await axios.post(API + `/upload/comingsoon/image/${itemid}`, data);
+            data.append("curr_image", oldurl);
+            const res = await axios.post(API + `/replace/comingsoon/image/${itemid}`, data);
             setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -45,73 +48,54 @@ const AddCS = ({setShowAddCS}) => {
         }
     };
 
-    const addCS = async(itemname) => {
 
-        
+    const updateCS = async() => {
+
         try {
 
-            let end = false;
-
-            if (itemname.trim().length == 0) {
+            if (inputName.trim().length === 0) {
 
                 setIsNameError(true);
-                setNameErrorMessage("Enter a value.");
-                end = true;
+                setNameErrorMessage("Input a value");
+                return;
             }
 
-            if (file === null) {
-                setIsFileError(true);
-                setImgErrorMessage("Select an image");
-                end = true;
-            }
-
-            if (end) return;
+            const csid = CSItem.csid;
+            const currimg = CSItem.imageurl;
 
             const body = {
-
-                "location": itemname,
-                "imageURL": ""
+                "location": inputName,                
             };
 
-            const response = await fetch(API + '/admin/CMS/locations/coming-soon', {
-                method:"POST",
+            const response = await fetch(API + `/admin/CMS/locations/coming-soon/${csid}`, {
+                
+                method:"PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body:JSON.stringify(body)
-
+                
+                body: JSON.stringify(body)
             });
 
-            const csitem = await response.json();
+            if (file !== null) {
+                await handleUpload(csid, currimg);
+            }
 
-            const csid = csitem.csid;
-
-            await handleUpload(csid);
-
-            setShowAddCS(false);
-
-            console.log(response);
-
-            setShowAddCS(false);
-
-
+            setShowEditCSItem(false);
+            setShowEditCS(false);
             
         } catch (error) {
             console.error(error);
         }
     }
-    
 
   return (
-
     <div
         className='
-
             bg-black/70
             fixed
             inset-0
         '
-
     >
 
         <Flex
@@ -136,12 +120,10 @@ const AddCS = ({setShowAddCS}) => {
             }}
         >
 
-            <h1 className='CMSHead'>
-                Add Menu Item
-            </h1>
+
 
             <form className='w-full flex gap-5 flex-col'>
-
+            
                 {/* Name */}
                 <Field.Root invalid={isNameError} className='w-full'>
                     <Field.Label className='editText'>Location Name</Field.Label>
@@ -187,9 +169,9 @@ const AddCS = ({setShowAddCS}) => {
                                 
                             </label>
                             {file && isFileChosen && <center style={{color:'black'}}> {file.name}</center>}
-                            {file && isFileChosen && (
-                                <img src={fileImg}/>
-                            )}
+                            
+                            <img src={fileImg}/>
+                            
                             <input
                                 id="file"
                                 type="file"
@@ -218,21 +200,32 @@ const AddCS = ({setShowAddCS}) => {
 
             <Flex className='justify-end gap-3'>
 
-                <Button className='editButton' 
-                    style={{background:'#4BB543'}} 
-                    onClick={() => addCS(inputName)}>
-                    Add
+                <Button className='editButton'  
+                    onClick={() => updateCS(inputName)}>
+                    Update
                 </Button>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowAddCS(false)}>
-                    Cancel
+                <Button className='editButton' style={{background:'red'}} onClick={() => setShowDelete(true)}>
+                    Delete
                 </Button>
             </Flex>
 
+            <Button className='editButton' style={{background:'red', alignSelf:'end'}} onClick={() => setShowEditCSItem(false)}>
+                Cancel
+            </Button>
+
+
+
         </Flex>
+
+        {showDelete && (<DeleteCS setShowDelete={setShowDelete} CSItem={CSItem} setShowEditCSItem={setShowEditCSItem} setShowEditCS={setShowEditCS} />)}
+
+
+
+
         
     </div>
   )
 }
 
-export default AddCS
+export default EditCSItem

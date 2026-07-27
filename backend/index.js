@@ -1013,6 +1013,103 @@ app.post('/admin/CMS/locations/coming-soon', async(req,res) => {
     }
 })
 
+//Get coming soon locations
+app.get('/coming-soon', async(req,res) => {
+
+    try {
+        
+        const getCS = await pool.query("SELECT * FROM comingsoon");
+
+        res.json(getCS.rows);
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Replace coming soon location name
+app.put('/admin/CMS/locations/coming-soon/:id', async(req,res) => {
+
+    try {
+        
+        const csid = req.params.id;
+
+        const name = req.body.location;
+
+        const updateItem = await pool.query("UPDATE comingsoon SET location = $1 WHERE csid = $2", [
+            name, csid
+        ])
+
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//Update coming soon location image
+app.post('/replace/comingsoon/image/:id', upload.single("my_file"), async (req,res) => {
+
+    
+    try {
+
+        const id = req.params.id;
+
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const cldRes = await handleUpload(dataURI, {
+            folder: `comingsoon`,
+            use_filename: true,
+            unique_filename: false,
+            overwrite: true,
+        });
+
+        const url = cldRes.secure_url;
+
+        const uploadImage = await pool.query(
+            "UPDATE comingsoon SET imageURL = $1 WHERE csid= $2",
+            [url, id]
+        );
+
+        const oldUrl = req.body.curr_image;
+
+        if (oldUrl && oldUrl !== url) {
+            const publicId = getPublicIdFromUrl(oldUrl);
+            if (publicId) {
+                await cloudinary.uploader.destroy(publicId);
+            }
+        }
+
+        res.json(cldRes);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: error.message });
+    }
+
+
+})
+
+app.delete('/delete/comingsoon/image/:id', async(req,res) => {
+
+    try {
+
+        const imageURL = req.body.image;
+        const csid = req.params.id;
+        const publicId = getPublicIdFromUrl(imageURL);
+
+        if (publicId) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+
+        const deleteImage = await pool.query("DELETE FROM comingsoon WHERE csid=$1", [
+            csid
+        ]);
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 
 
 app.listen(5000, () => {

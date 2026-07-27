@@ -1,48 +1,62 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Flex, Heading, VStack } from '@chakra-ui/react'
 import Lighthouse from '@/assets/img/lighthouse.png'
 import Wave2 from '@/assets/icons/waveicon2.png'
 import "./ComingSoon.css"
 import CSCard from './CSCard'
-import TorontoSketch from '@/assets/img/torontosketch.jpg'
-import MississaugaSketch from '@/assets/img/mississaugasketch.jpg'
-import OttowaSketch from '@/assets/img/ottowasketch.jpg'
 import { motion, AnimatePresence } from 'motion/react'
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5'
-
-
-const locations = [
-    { image: TorontoSketch, location: 'Toronto' },
-    { image: MississaugaSketch, location: 'Mississauga' },
-    { image: OttowaSketch, location: 'Ottowa' },
-]
-
-const CARDS_PER_PAGE = 3
+import {
+  Badge,
+  Box,
+  Carousel,
+  HStack,
+  Icon,
+  IconButton,
+  Image,
+  Span,
+  Stack,
+} from "@chakra-ui/react"
+import { FaStar } from "react-icons/fa"
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
 
 const ComingSoon = () => {
-    const [page, setPage] = useState(0)
-    const [direction, setDirection] = useState(1)
 
-    const totalPages = Math.ceil(locations.length / CARDS_PER_PAGE)
-    const canCycle = locations.length > CARDS_PER_PAGE
+    const API = import.meta.env.VITE_API_URL;
 
-    const start = page * CARDS_PER_PAGE
-    const visibleCards = locations.slice(start, start + CARDS_PER_PAGE)
+    const [isLoading, setIsLoading] = useState(false);
+    
+    const [comingSoonItems, setComingSoonItems] = useState([]);
 
-    const handleNext = () => {
-        setDirection(1)
-        setPage((prev) => (prev + 1) % totalPages)
+    const slidesPerPage = 3;
+    const pageCount = Math.ceil(comingSoonItems.length / slidesPerPage);
+    const showArrows = pageCount > 1;
+
+    const getCS = async() => {
+
+        try {
+
+            const response = await fetch(API + '/coming-soon');
+            const jsonData = await response.json();
+
+            setComingSoonItems(jsonData);
+            
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    const handlePrev = () => {
-        setDirection(-1)
-        setPage((prev) => (prev - 1 + totalPages) % totalPages)
-    }
+    useEffect(() => {
 
-    const goToPage = (i) => {
-        setDirection(i > page ? 1 : -1)
-        setPage(i)
-    }
+        const load = async() => {
+
+            await getCS();
+            setIsLoading(false);
+        }
+
+        load();
+
+    },[])
 
     return (
         <div
@@ -104,77 +118,45 @@ const ComingSoon = () => {
             </Flex>
 
             {/* Cards Carousel */}
-            <Flex className='flex-1 w-full flex-col gap-4 items-center' style={{padding:'20px'}}>
+            <Flex className='flex-1 w-full flex-col gap-4' style={{padding:'20px'}}>
 
-                <Flex className='w-full items-center justify-center gap-3'>
+                {isLoading ? (
+                    <p style={{color:'black', alignSelf:'center'}}>Loading...</p>
+                ) : (
+                    <Carousel.Root slideCount={comingSoonItems.length} slidesPerPage={slidesPerPage} gap="3" w="full">
+                        <HStack align="stretch" gap="2" w="full" h="280px">
+                            {showArrows && (
+                                <Carousel.PrevTrigger asChild>
+                                    <IconButton size="xs" variant="subtle" alignSelf="center">
+                                        <LuChevronLeft />
+                                    </IconButton>
+                                </Carousel.PrevTrigger>
+                            )}
 
-                    {canCycle && (
-                        <button
-                            onClick={handlePrev}
-                            className='CSCarouselArrow'
-                            aria-label='Previous locations'
-                        >
-                            <IoChevronBack size={22} />
-                        </button>
-                    )}
+                            <Box flex="1" minW="0" h="full">
+                                <Carousel.ItemGroup h="full">
+                                    {comingSoonItems.map((CSLocation, index) => (
+                                        <Carousel.Item
+                                            key={CSLocation.csid}
+                                            index={index}
+                                            h="full"
+                                        >
+                                            <CSCard csitem={CSLocation} index={index}/>
+                                        </Carousel.Item>
+                                    ))}
+                                </Carousel.ItemGroup>
+                            </Box>
 
-                    <Flex className='flex-1' style={{overflow:'hidden'}}>
-                        <AnimatePresence mode='wait' custom={direction}>
-                            <motion.div
-                                key={page}
-                                className='flex gap-5 flex-wrap justify-center w-full'
-                                custom={direction}
-                                initial={(dir) => ({opacity:0, x: dir * 60})}
-                                animate={{opacity:1, x:0}}
-                                exit={(dir) => ({opacity:0, x: dir * -60})}
-                                transition={{duration:.4, ease:'easeOut'}}
-                            >
-                                {visibleCards.map((card, i) => (
-                                    <CSCard
-                                        key={start + i}
-                                        image={card.image}
-                                        index={i}
-                                        location={card.location}
-                                    />
-                                ))}
-                            </motion.div>
-                        </AnimatePresence>
-                    </Flex>
-
-                    {canCycle && (
-                        <button
-                            onClick={handleNext}
-                            className='CSCarouselArrow'
-                            aria-label='Next locations'
-                        >
-                            <IoChevronForward size={22} />
-                        </button>
-                    )}
-
-                </Flex>
-
-                {canCycle && (
-                    <Flex className='gap-2 items-center justify-center'>
-                        {Array.from({length: totalPages}).map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => goToPage(i)}
-                                aria-label={`Go to page ${i + 1}`}
-                                style={{
-                                    width:'8px',
-                                    height:'8px',
-                                    borderRadius:'50%',
-                                    background: i === page ? '#012447' : '#d9d9d9',
-                                    border:'none',
-                                    cursor:'pointer',
-                                    padding:0,
-                                    transition:'background .2s ease',
-                                }}
-                            />
-                        ))}
-                    </Flex>
+                            {showArrows && (
+                                <Carousel.NextTrigger asChild>
+                                    <IconButton size="xs" variant="subtle" alignSelf="center">
+                                        <LuChevronRight />
+                                    </IconButton>
+                                </Carousel.NextTrigger>
+                            )}
+                        </HStack>
+                    </Carousel.Root>
                 )}
-
             </Flex>
 
         </div>
