@@ -1110,6 +1110,47 @@ app.delete('/delete/comingsoon/image/:id', async(req,res) => {
     }
 })
 
+//get locations
+app.get('/locations', async(req,res) => {
+
+    try {
+
+        const getLocations = await pool.query("SELECT * FROM locations");
+
+        res.json(getLocations.rows);
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+app.put('/admin/CMS/locations/update/:id', async(req,res) => {
+
+    try {
+
+
+        const id = req.params.id;
+
+        const locationname = req.body.locationname;
+        const closeddays = req.body.closeddays;
+        const opentime = req.body.opentime;
+        const closetime = req.body.closetime;
+        const directions = req.body.directions;
+        const openingtext = req.body.openingtext;
+        const image = req.body.image;
+
+        const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7 WHERE locationid = $8", [
+            locationname, closeddays, opentime, closetime, directions, image, openingtext, id
+        ])
+
+        res.json("success");
+        
+    } catch (error) {
+        
+        console.error(error);
+    }
+})
+
 
 
 app.listen(5000, () => {

@@ -1,19 +1,15 @@
 // ExistingLocation.jsx
-import React from 'react'
-import { Box, Flex, VStack, Button, Heading } from '@chakra-ui/react'
-import HomeMapBackground from '@/assets/img/home-map-background-pin.png'
+import { Box, Flex, VStack, Button } from '@chakra-ui/react'
 import InfoSec from './InfoSec'
 import './ExistingLocation.css'
-import { useState, useEffect } from 'react'
-import InfoJSON from '@/assets/JSONs/infosec.json'
-import DownArrow from '@/assets/icons/DownArrow.png'
 import WaveIcon from '@/assets/icons/waveicon.png'
-import WaveIcon2 from '@/assets/icons/waveicon2.png'
-import ELBack from '@/assets/img/Backgrounds/elback.png'
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
+import { CiClock2 } from "react-icons/ci";
+import { CiParking1 } from "react-icons/ci";
+import { IoLocationSharp } from "react-icons/io5";
 
-const ExistingLocation = () => {
+const ExistingLocation = ({ locationitem }) => {
 
   return (
     <div
@@ -23,25 +19,19 @@ const ExistingLocation = () => {
             landscape:flex-row
             portrait:flex-col
             
-        '
-
-        
-        
+        '   
     >
 
         <Box
             className='landscape:w-[60%] ELFC w-full flex items-center'
             style={{
-                backgroundImage: `url(${ELBack})`,
+                backgroundImage: `url(${locationitem.image})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
 
             }}
         >
 
-           
-
-                
             <Box
                 className='
                     max-w-[60%]
@@ -87,7 +77,7 @@ const ExistingLocation = () => {
 
                     transition={{duration:.5, ease:'easeOut', delay:.1}}
                 >
-                    Burlington, Ontario
+                    {locationitem.locationname}
 
                 </motion.h1>
 
@@ -153,19 +143,21 @@ const ExistingLocation = () => {
 
                 <VStack className='w-full' align='stretch' spacing={2}>
 
-                    {InfoJSON.map((infopiece, i) => (
-                        <InfoSec info={infopiece} index={i} key={i}/>
-                    ))}
+                    <InfoSec icon={CiClock2} text={locationitem.openingtext} index={0}/>
+
+                    <InfoSec icon={IoLocationSharp} text={'Dine in • Takout • Catering • Group Orders'} index={1}/>
+                    
+                    <InfoSec icon={CiParking1} text={locationitem.parking} index={2}/>
 
                 </VStack>
 
                 <Flex className='w-full items-center justify-center gap-5' padding={'5%'}>
 
-                    <button className='ELDir'>
+                    <Button className='ELDir'>
 
                         Directions
 
-                    </button>
+                    </Button>
 
 
                     <Link className='ELBook' to={'/Book'}>

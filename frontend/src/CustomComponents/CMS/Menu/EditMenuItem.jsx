@@ -25,8 +25,6 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
     const [showDeleteConf, setShowDeleteConf] = useState(false);
 
-    const [img, setImg] = useState(null);
-
     const API = 'http://localhost:5000';
 
     const [file, setFile] = useState(null);
@@ -72,10 +70,6 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
     
     const handleUpdate = async (item, categories) => {
-
-        
-
-
 
         try {
 
