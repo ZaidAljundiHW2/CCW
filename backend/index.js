@@ -1087,6 +1087,7 @@ app.post('/replace/comingsoon/image/:id', upload.single("my_file"), async (req,r
 
 })
 
+//delete coming soon location image
 app.delete('/delete/comingsoon/image/:id', async(req,res) => {
 
     try {
@@ -1124,6 +1125,7 @@ app.get('/locations', async(req,res) => {
     }
 })
 
+//update location
 app.put('/admin/CMS/locations/update/:id', async(req,res) => {
 
     try {
@@ -1138,9 +1140,11 @@ app.put('/admin/CMS/locations/update/:id', async(req,res) => {
         const directions = req.body.directions;
         const openingtext = req.body.openingtext;
         const image = req.body.image;
+        const parking = req.body.parking;
+        const is24hrs = req.body.is24hrs;
 
-        const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7 WHERE locationid = $8", [
-            locationname, closeddays, opentime, closetime, directions, image, openingtext, id
+        const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7, parking = $8, is24hrs = $9 WHERE locationid = $10", [
+            locationname, closeddays, opentime, closetime, directions, image, openingtext, parking, id, is24hrs
         ])
 
         res.json("success");
@@ -1151,6 +1155,102 @@ app.put('/admin/CMS/locations/update/:id', async(req,res) => {
     }
 })
 
+//replace location image
+app.put('/admin/CMS/locations/update-image/:id', upload.single("my_file"), async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const cldRes = await handleUpload(dataURI, {
+            folder: `locations`,
+            use_filename: true,
+            unique_filename: false,
+            overwrite: true,
+        });
+
+        const url = cldRes.secure_url;
+
+        const uploadImage = await pool.query(
+            "UPDATE locations SET image = $1 WHERE locationid = $2",
+            [url, id]
+        );
+
+        const oldUrl = req.body.curr_image;
+
+        if (oldUrl && oldUrl !== url) {
+            const publicId = getPublicIdFromUrl(oldUrl);
+            if (publicId) {
+                await cloudinary.uploader.destroy(publicId);
+            }
+        }
+
+        res.json(cldRes);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: error.message });
+    }
+})
+
+//add location
+app.post('/admin/CMS/locations', async(req,res) => {
+
+    try {
+
+        const locationname = req.body.locationname;
+        const closeddays = req.body.closeddays;
+        const opentime = req.body.opentime;
+        const closetime = req.body.closetime;
+        const directions = req.body.directions;
+        const openingtext = req.body.openingtext;
+        const parking = req.body.parking;
+        const image = req.body.image;
+        const is24hrs = req.body.is24hrs;
+
+        const addLocation = await pool.query("INSERT INTO locations (locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, ismainbranch, is24hrs) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING locationid", [
+            locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, false, is24hrs
+        ])
+
+        res.json(addLocation.rows[0].locationid);
+        
+    } catch (error) {
+        console.error(error);
+        
+    }
+})
+
+//upload location image
+app.post('/admin/CMS/locations/upload-image/:id', upload.single("my_file"), async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const cldRes = await handleUpload(dataURI, {
+            folder: `locations`,
+            use_filename: true,
+            unique_filename: false,
+            overwrite: true,
+        });
+
+        const url = cldRes.secure_url;
+
+        const uploadImage = await pool.query(
+            "UPDATE locations SET image = $1 WHERE locationid = $2",
+            [url, id]
+        );
+
+        res.json(cldRes);
+
+    } catch (error) {
+        console.log(error);
+        res.send({ message: error.message });
+    }
+})
 
 
 app.listen(5000, () => {

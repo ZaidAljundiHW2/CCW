@@ -6,6 +6,7 @@ import {
     Input,
     Span,
     Select,
+    NativeSelect,
     Combobox,
     Tag,
     Wrap,
@@ -13,6 +14,8 @@ import {
     useListCollection,
     createListCollection
 } from '@chakra-ui/react'
+import axios from 'axios'
+
 
 const DAYS_OF_WEEK = [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
@@ -38,7 +41,6 @@ const EditLocation = ({ item, setShowEdit }) => {
 
     const API = import.meta.env.VITE_API_URL;
 
-    const mainbranch = item.ismainbranch;
 
     const [openingtext, setOpeningtext] = useState(item.openingtext || "");
     const [isOpeningtextError, setIsOpeningtextError] = useState(false);
@@ -53,7 +55,10 @@ const EditLocation = ({ item, setShowEdit }) => {
     const [closedDays, setClosedDays] = useState(item.closeddays || [])
 
     const [imgErrorMessage, setImgErrorMessage] = useState("");
-    
+
+    // Is 24 hours
+    const [is24hrs, setIs24hrs] = useState(item.is24hrs ? "yes" : "no")
+
     // Open / close time (stored as "HH:MM:SS" to match DB)
     const [openTime, setOpenTime] = useState(item.opentime)
     const [closeTime, setCloseTime] = useState(item.closetime)
@@ -62,6 +67,10 @@ const EditLocation = ({ item, setShowEdit }) => {
     const [directionsLink, setDirectionsLink] = useState(item.directions)
     const [isDirectionsError, setIsDirectionsError] = useState(false)
     const [directionsErrorMessage, setDirectionsErrorMessage] = useState("")
+
+    const [parking, setParking] = useState(item.parking);
+    const [isParkingError, setIsParkingError] = useState(false);
+    const [parkingErrorMessage, setParkingErrorMessage] = useState("");
 
     const [locationImage, setLocationImage] = useState(null);
     const [isLocationImageError, setIsLocationImageError] = useState(false);
@@ -112,7 +121,7 @@ const EditLocation = ({ item, setShowEdit }) => {
         const data = new FormData();
         data.append("my_file", file);
         data.append("curr_image", currImgURL);
-        const res = await axios.post(API + `/upload/menu/item/${itemid}`, data);
+        const res = await axios.put(API + `/admin/CMS/locations/update-image/${itemid}`, data);
         setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -167,17 +176,20 @@ const EditLocation = ({ item, setShowEdit }) => {
             }
 
 
-            const image = mainbranch ? item.image : locationImage;
+            
+
             const locationid = item.locationid;
 
             const body = {
                 "locationname": name,
                 "closeddays": closedDays,
-                "opentime": openTime,
-                "closetime": closeTime,
+                "is24hrs": is24hrs === "yes",
+                "opentime": is24hrs === "yes" ? null : openTime,
+                "closetime": is24hrs === "yes" ? null : closeTime,
                 "directions": directionsLink,
                 "openingtext": openingtext,
-                "image": image
+                "parking": parking,
+                "image": item.image
             };
 
             const response = await fetch(API + `/admin/CMS/locations/update/${locationid}`, {
@@ -187,6 +199,10 @@ const EditLocation = ({ item, setShowEdit }) => {
                 },
                 body: JSON.stringify(body)
             });
+
+            if (file !== null) {
+                await handleUpload(locationid, item.image);
+            }
 
             if (response.ok) {
                 setShowEdit(false);
@@ -244,8 +260,8 @@ const EditLocation = ({ item, setShowEdit }) => {
                 <form className='w-full flex gap-5 flex-col'>
 
                     {/* Location Name */}
-                    <Field.Root invalid={isNameError} className='w-full'>
-                        <Field.Label className='editText'>Location</Field.Label>
+                    <Field.Root invalid={isNameError} className='w-full' required>
+                        <Field.Label className='editText'>Location <Field.RequiredIndicator /></Field.Label>
 
                         <div className="relative w-full">
                             <Input
@@ -318,79 +334,99 @@ const EditLocation = ({ item, setShowEdit }) => {
                         </Wrap>
                     </Field.Root>
 
-                    {/* Open Time */}
-                    <Field.Root className='w-full'>
-                        <Field.Label className='editText'>Open Time</Field.Label>
-                        <h1 className='editText'>For reservation form programming only.</h1>
-                        <Select.Root
-                            collection={timeCollection}
-                            value={[openTime]}
-                            size="sm"
-                            width="320px"
-                            onValueChange={(details) => setOpenTime(details.value[0])}
-                        >
-                            <Select.HiddenSelect />
-                            <Select.Control>
-                                <Select.Trigger>
-                                    <Select.ValueText color={'black'} placeholder="Select open time" />
-                                </Select.Trigger>
-                                <Select.IndicatorGroup>
-                                    <Select.Indicator />
-                                </Select.IndicatorGroup>
-                            </Select.Control>
-                            <Portal>
-                                <Select.Positioner>
-                                    <Select.Content>
-                                        {timeCollection.items.map((time) => (
-                                            <Select.Item item={time} key={time}>
-                                                {formatTimeLabel(time)}
-                                                <Select.ItemIndicator />
-                                            </Select.Item>
-                                        ))}
-                                    </Select.Content>
-                                </Select.Positioner>
-                            </Portal>
-                        </Select.Root>
+                    {/* Is 24 Hours */}
+                    <Field.Root className='w-full' required>
+                        <Field.Label className='editText'>Open 24 Hours? <Field.RequiredIndicator /></Field.Label>
+                        <NativeSelect.Root size="sm" width="320px">
+                            <NativeSelect.Field
+                                value={is24hrs}
+                                onChange={(e) => setIs24hrs(e.currentTarget.value)}
+                                style={{ color: 'black', background:'white' }}
+                            >
+                                <option value="no" style={{ color: 'black', background:'white' }}>No</option>
+                                <option value="yes" style={{ color: 'black', background:'white' }}>Yes</option>
+                            </NativeSelect.Field>
+                            <NativeSelect.Indicator />
+                        </NativeSelect.Root>
                     </Field.Root>
 
-                    {/* Close Time */}
-                    <Field.Root className='w-full'>
-                        <Field.Label className='editText'>Close Time</Field.Label>
-                        <h1 className='editText'>For reservation form programming only.</h1>
-                        <Select.Root
-                            collection={timeCollection}
-                            value={[closeTime]}
-                            size="sm"
-                            width="320px"
-                            onValueChange={(details) => setCloseTime(details.value[0])}
-                        >
-                            <Select.HiddenSelect />
-                            <Select.Control>
-                                <Select.Trigger>
-                                    <Select.ValueText color={'black'} placeholder="Select close time" />
-                                </Select.Trigger>
-                                <Select.IndicatorGroup>
-                                    <Select.Indicator />
-                                </Select.IndicatorGroup>
-                            </Select.Control>
-                            <Portal>
-                                <Select.Positioner>
-                                    <Select.Content>
-                                        {timeCollection.items.map((time) => (
-                                            <Select.Item item={time} key={time}>
-                                                {formatTimeLabel(time)}
-                                                <Select.ItemIndicator />
-                                            </Select.Item>
-                                        ))}
-                                    </Select.Content>
-                                </Select.Positioner>
-                            </Portal>
-                        </Select.Root>
-                    </Field.Root>
+                    {is24hrs === "no" && (
+                        <>
+                            {/* Open Time */}
+                            <Field.Root className='w-full' required>
+                                <Field.Label className='editText'>Open Time <Field.RequiredIndicator /></Field.Label>
+                                <h1 className='editText'>For reservation form programming only.</h1>
+                                <Select.Root
+                                    collection={timeCollection}
+                                    value={[openTime]}
+                                    size="sm"
+                                    width="320px"
+                                    onValueChange={(details) => setOpenTime(details.value[0])}
+                                >
+                                    <Select.HiddenSelect />
+                                    <Select.Control>
+                                        <Select.Trigger>
+                                            <Select.ValueText color={'black'} placeholder="Select open time" />
+                                        </Select.Trigger>
+                                        <Select.IndicatorGroup>
+                                            <Select.Indicator />
+                                        </Select.IndicatorGroup>
+                                    </Select.Control>
+                                    <Portal>
+                                        <Select.Positioner>
+                                            <Select.Content>
+                                                {timeCollection.items.map((time) => (
+                                                    <Select.Item item={time} key={time}>
+                                                        {formatTimeLabel(time)}
+                                                        <Select.ItemIndicator />
+                                                    </Select.Item>
+                                                ))}
+                                            </Select.Content>
+                                        </Select.Positioner>
+                                    </Portal>
+                                </Select.Root>
+                            </Field.Root>
+
+                            {/* Close Time */}
+                            <Field.Root className='w-full' required>
+                                <Field.Label className='editText'>Close Time <Field.RequiredIndicator /></Field.Label>
+                                <h1 className='editText'>For reservation form programming only.</h1>
+                                <Select.Root
+                                    collection={timeCollection}
+                                    value={[closeTime]}
+                                    size="sm"
+                                    width="320px"
+                                    onValueChange={(details) => setCloseTime(details.value[0])}
+                                >
+                                    <Select.HiddenSelect />
+                                    <Select.Control>
+                                        <Select.Trigger>
+                                            <Select.ValueText color={'black'} placeholder="Select close time" />
+                                        </Select.Trigger>
+                                        <Select.IndicatorGroup>
+                                            <Select.Indicator />
+                                        </Select.IndicatorGroup>
+                                    </Select.Control>
+                                    <Portal>
+                                        <Select.Positioner>
+                                            <Select.Content>
+                                                {timeCollection.items.map((time) => (
+                                                    <Select.Item item={time} key={time}>
+                                                        {formatTimeLabel(time)}
+                                                        <Select.ItemIndicator />
+                                                    </Select.Item>
+                                                ))}
+                                            </Select.Content>
+                                        </Select.Positioner>
+                                    </Portal>
+                                </Select.Root>
+                            </Field.Root>
+                        </>
+                    )}
 
                     {/* Opening text */}
-                    <Field.Root invalid={isOpeningtextError} className='w-full'>
-                        <Field.Label className='editText'>Location</Field.Label>
+                    <Field.Root invalid={isOpeningtextError} className='w-full' required>
+                        <Field.Label className='editText'>Opening times/days text <Field.RequiredIndicator /></Field.Label>
                         <h1 className='editText'>The opening/closing time details and schedule details shown on the locations page.</h1>
                         <div className="relative w-full">
                             <Input
@@ -418,8 +454,8 @@ const EditLocation = ({ item, setShowEdit }) => {
                     </Field.Root>
 
                     {/* Image */}
-                    <Field.Root className='w-full'>
-                        <Field.Label className='editText'>Location Image</Field.Label>
+                    <Field.Root className='w-full' required={item.locationid ? false : true}>
+                        <Field.Label className='editText'>Set new location image <Field.RequiredIndicator /></Field.Label>
                         
                             <div className="App">
                                 <label htmlFor="file">
@@ -451,9 +487,38 @@ const EditLocation = ({ item, setShowEdit }) => {
                         </Field.ErrorText>
                     </Field.Root>
 
+                    {/* Parking */}
+                    <Field.Root invalid={isParkingError} className='w-full'>
+                        <Field.Label className='editText'>Parking text</Field.Label>
+
+                        <div className="relative w-full">
+                            <Input
+                                value={parking}
+                                onChange={(e) => setParking(e.currentTarget.value.slice(0, 100))}
+                                placeholder="Parking text"
+                                style={{ color: 'black', paddingRight: '4.5rem' }}
+                                maxLength={100}
+                                className="w-full"
+                            />
+                            <Span
+                                color="fg.muted"
+                                textStyle="xs"
+                                className="absolute right-3 top-1/2"
+                                style={{ transform: 'translateY(-50%)', width: '3.5rem', textAlign: 'right' }}
+                            >
+                                {parking.length}/100
+                            </Span>
+                        </div>
+
+                        <Field.ErrorText width="full">
+                            <Field.ErrorIcon />
+                            {parkingErrorMessage}
+                        </Field.ErrorText>
+                    </Field.Root>
+
                     {/* Directions Link */}
-                    <Field.Root invalid={isDirectionsError} className='w-full'>
-                        <Field.Label className='editText'>Directions Link</Field.Label>
+                    <Field.Root invalid={isDirectionsError} className='w-full' required>
+                        <Field.Label className='editText'>Directions Link <Field.RequiredIndicator /></Field.Label>
 
                         <div className="relative w-full">
                             <Input

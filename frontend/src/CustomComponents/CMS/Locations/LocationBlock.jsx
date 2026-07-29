@@ -44,18 +44,47 @@ const LocationBlock = ({
 
             </div>
 
+            {item.is24hrs ? (
+
+                    <h1>
+                        Open 24 hours: {String(item.is24hrs)}
+                    </h1>
+
+                )
+
+                :
+
+                (
+
+                    <>
+                        <h1>
+                            Open 24 hours: {String(item.is24hrs)}
+                        </h1>
+
+                        <div className='break-words min-w-0 flex-1'>
+
+                            <h1 className='whitespace-pre-line '>
+                                Open time: {item.opentime}
+                            </h1>
+
+                        </div>
+
+                        <div className='break-words min-w-0 flex-1'>
+
+                            <h1 className='whitespace-pre-line '>
+                                Close time: {item.closetime}
+                            </h1>
+
+                        </div>
+                    </>
+                )
+            }
+            
+
             <div className='break-words min-w-0 flex-1'>
 
                 <h1 className='whitespace-pre-line '>
-                    Open time: {item.opentime}
-                </h1>
-
-            </div>
-
-            <div className='break-words min-w-0 flex-1'>
-
-                <h1 className='whitespace-pre-line '>
-                    Close time: {item.closetime}
+                    Parking text: {item.parking}
                 </h1>
 
             </div>

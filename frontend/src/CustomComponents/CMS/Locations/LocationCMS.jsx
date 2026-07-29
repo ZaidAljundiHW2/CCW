@@ -5,6 +5,8 @@ import EditCS from './EditCS'
 import { useState } from 'react'
 import LocationBlock from './LocationBlock'
 import EditLocation from './EditLocation'
+import AddLocation from './AddLocation'
+import { Flex } from '@chakra-ui/react'
 
 const LocationCMS = () => {
 
@@ -12,6 +14,7 @@ const LocationCMS = () => {
     const [showEditCS, setShowEditCS] = useState(false);
     const [showEditCSItem, setShowEditCSItem] = useState(false);
     const [showEditLocation, setShowEditLocation] = useState(false);
+    const [showAdd, setShowAdd] = useState(false);
 
     const [mainBranch, setMainBranch] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -31,11 +34,6 @@ const LocationCMS = () => {
 
             setLocations(jsonData);
             setMainBranch(jsonData.find(item => item.ismainbranch === true));
-
-            console.log(jsonData);
-            console.log(jsonData.find(item => item.locationname === 'Ontario'));
-
-
             
         } catch (error) {
             console.error(error);
@@ -52,7 +50,7 @@ const LocationCMS = () => {
 
         load();
 
-    },[showEditLocation, showAddCS, showEditCS])
+    },[showEditLocation, showAddCS, showEditCS, showAdd])
 
   return (
     <div
@@ -101,6 +99,17 @@ const LocationCMS = () => {
 
             />
         }
+
+        <InfoBlock add={true} edit={false} setShowAdd={setShowAdd} label='Other locations:'/>
+
+        <Flex className='rounded-lg shadow-lg flex-col'>
+
+            {locations.filter(item => item.ismainbranch !== true).map((item,i) => (
+
+                <LocationBlock edit={true} item={item} key={i} setShowEdit={setShowEditLocation} setEditedObj={item}/>
+            ))}
+
+        </Flex>
         
 
 
@@ -111,7 +120,7 @@ const LocationCMS = () => {
 
         {showEditLocation && (<EditLocation item={selectedLocation} setShowEdit={setShowEditLocation}/>)}
 
-
+        {showAdd && (<AddLocation setShowAdd={setShowAdd}/>)}
         
     </div>
   )
