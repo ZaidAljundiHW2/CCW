@@ -106,6 +106,7 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
           top-[50%]
           left-[50%]
           w-[50%]
+          portrait:w-[90%]
           rounded-lg
           shadow-lg
           GDWrapper

@@ -152,6 +152,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 gap-3
                 max-h-[50%]
                 w-[50%]
+                portrait:w-[90%]
             '
             
             style={{

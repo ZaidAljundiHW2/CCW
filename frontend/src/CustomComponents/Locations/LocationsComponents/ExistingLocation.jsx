@@ -152,12 +152,12 @@ const ExistingLocation = ({ locationitem }) => {
                 </VStack>
 
                 <Flex className='w-full items-center justify-center gap-5' padding={'5%'}>
-
-                    <Button className='ELDir'>
+                    
+                    <a href={locationitem.directions} className='ELDir'>
 
                         Directions
 
-                    </Button>
+                    </a>
 
 
                     <Link className='ELBook' to={'/Book'}>

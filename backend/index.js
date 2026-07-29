@@ -1116,7 +1116,7 @@ app.get('/locations', async(req,res) => {
 
     try {
 
-        const getLocations = await pool.query("SELECT * FROM locations");
+        const getLocations = await pool.query("SELECT * FROM locations ORDER BY locationid ASC");
 
         res.json(getLocations.rows);
         
@@ -1142,9 +1142,10 @@ app.put('/admin/CMS/locations/update/:id', async(req,res) => {
         const image = req.body.image;
         const parking = req.body.parking;
         const is24hrs = req.body.is24hrs;
+        const description = req.body.description;
 
-        const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7, parking = $8, is24hrs = $9 WHERE locationid = $10", [
-            locationname, closeddays, opentime, closetime, directions, image, openingtext, parking, is24hrs, id
+        const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7, parking = $8, is24hrs = $9, description = $10 WHERE locationid = $11", [
+            locationname, closeddays, opentime, closetime, directions, image, openingtext, parking, is24hrs, description, id
         ])
 
         res.json("success");
@@ -1208,9 +1209,10 @@ app.post('/admin/CMS/locations', async(req,res) => {
         const parking = req.body.parking;
         const image = req.body.image;
         const is24hrs = req.body.is24hrs;
+        const description = req.body.description;
 
-        const addLocation = await pool.query("INSERT INTO locations (locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, ismainbranch, is24hrs) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING locationid", [
-            locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, false, is24hrs
+        const addLocation = await pool.query("INSERT INTO locations (locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, ismainbranch, is24hrs, description) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING locationid", [
+            locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, false, is24hrs, description
         ])
 
         res.json(addLocation.rows[0].locationid);
@@ -1266,9 +1268,14 @@ app.delete('/admin/CMS/locations/delete/:id', async(req,res) => {
             await cloudinary.uploader.destroy(publicId);
         }
 
+        const deleteBookings = await pool.query("DELETE FROM bookings WHERE locationid = $1", [
+            id
+        ]);
+
         const deleteLocation = await pool.query("DELETE FROM locations WHERE locationid = $1", [
             id
         ]);
+
 
         res.json("success");
         

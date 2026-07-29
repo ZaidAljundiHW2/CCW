@@ -101,6 +101,7 @@ const AddCat = ({categories, setShowAdd}) => {
                 bg-white
                 justify-center
                 text-center
+                portrait:w-[90%]
             '
 
             style={{

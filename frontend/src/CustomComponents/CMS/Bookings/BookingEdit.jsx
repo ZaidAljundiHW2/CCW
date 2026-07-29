@@ -97,27 +97,49 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
     },[])
 
 
-    const generateTimes = (open, close) => {
-    const times = [];
+    const generateTimes = (open, close, is24hrs) => {
+        const times = [];
 
-    let start = new Date(`2000-01-01T${open}`);
-    let end = new Date(`2000-01-01T${close}`);
+        if (is24hrs) {
+            let start = new Date(`2000-01-01T00:00:00`);
+            const end = new Date(`2000-01-02T00:00:00`);
 
-    // remove last hour from closing time
-    end.setHours(end.getHours() - 1);
+            while (start < end) {
+                times.push(
+                    start.toLocaleTimeString([], {
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    })
+                );
+                start.setMinutes(start.getMinutes() + 30);
+            }
 
-    while (start <= end) {
-        times.push(
-            start.toLocaleTimeString([], {
-                hour: 'numeric',
-                minute: '2-digit'
-            })
-        );
+            return times;
+        }
 
-        start.setMinutes(start.getMinutes() + 30);
-    }
+        let start = new Date(`2000-01-01T${open}`);
+        let end = new Date(`2000-01-01T${close}`);
 
-    return times;
+        // Overnight range (e.g. opens 6 AM, closes 2 AM the next day)
+        if (end <= start) {
+            end.setDate(end.getDate() + 1);
+        }
+
+        // remove last hour from closing time
+        end.setHours(end.getHours() - 1);
+
+        while (start <= end) {
+            times.push(
+                start.toLocaleTimeString([], {
+                    hour: 'numeric',
+                    minute: '2-digit'
+                })
+            );
+
+            start.setMinutes(start.getMinutes() + 30);
+        }
+
+        return times;
     };
 
     const dayNameToNumber = {
@@ -547,7 +569,8 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
 
                                     {location && generateTimes(
                                         location.opentime,
-                                        location.closetime
+                                        location.closetime,
+                                        location.is24hrs
                                     ).map((timeOption) => {
                                         const normalized = normalizeTime(timeOption);
                                         return (

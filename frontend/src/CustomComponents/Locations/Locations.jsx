@@ -1,10 +1,12 @@
 import React from 'react'
 import ExistingLocation from './LocationsComponents/ExistingLocation'
-import FutureLocations from './LocationsComponents/FutureLocations'
 import ComingSoon from './LocationsComponents/ComingSoon'
 import { useState, useEffect } from 'react'
+import OtherLocations from './LocationsComponents/OtherLocations'
+import './Locations.css'
 
 const Locations = () => {
+
 
   const API = import.meta.env.VITE_API_URL;
 
@@ -27,11 +29,28 @@ const Locations = () => {
     }
   }
 
+  const [comingSoonItems, setComingSoonItems] = useState([]);
+
+  const getCS = async() => {
+
+        try {
+
+        const response = await fetch(API + '/coming-soon');
+        const jsonData = await response.json();
+
+        setComingSoonItems(jsonData);
+        
+    } catch (error) {
+        console.error(error);
+    }
+  }
+
   useEffect(() => {
 
     const load = async() => {
 
       await getLocations();
+      await getCS();
       setIsLoading(false);
     }
 
@@ -46,13 +65,13 @@ const Locations = () => {
   }
 
   return (
-    <div>
+    <div className='locationswrapper'>
 
         <ExistingLocation locationitem={locations.find(item => item.ismainbranch == true)}/>
 
-        {/* <FutureLocations /> */}
+        {locations.filter(item => item.ismainbranch == false) && (<OtherLocations items={locations.filter(item => item.ismainbranch == false)} />)}
 
-        <ComingSoon />
+        {(comingSoonItems.length > 0) && (<ComingSoon locations={comingSoonItems}/>)}
 
       
     </div>

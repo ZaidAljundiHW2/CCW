@@ -39,6 +39,14 @@ const LocationBlock = ({
             <div className='break-words min-w-0 flex-1'>
 
                 <h1 className='whitespace-pre-line '>
+                    Location description: {item.description}
+                </h1>
+
+            </div>
+
+            <div className='break-words min-w-0 flex-1'>
+
+                <h1 className='whitespace-pre-line '>
                     Closed days: {item.closeddays}
                 </h1>
 

@@ -77,6 +77,10 @@ const DeleteLocation = ({item, setShowDelete, setShowEdit}) => {
         </h1>
 
         <h1 className='editText' style={{lineHeight:1}}>
+            Deleting this location will delete all of its associated booking reservations.
+        </h1>
+
+        <h1 className='editText' style={{lineHeight:1}}>
             {item.locationname}
         </h1>
 

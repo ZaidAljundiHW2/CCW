@@ -127,7 +127,7 @@ const AddCS = ({setShowAddCS}) => {
                 text-center
                 gap-3
                 max-h-[50%]
-                min-w-[50%]
+                portrait:w-[90%]
             '
             
             style={{
@@ -137,7 +137,7 @@ const AddCS = ({setShowAddCS}) => {
         >
 
             <h1 className='CMSHead'>
-                Add Menu Item
+                Add Coming Soon Location 
             </h1>
 
             <form className='w-full flex gap-5 flex-col'>

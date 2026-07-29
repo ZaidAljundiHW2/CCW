@@ -80,6 +80,8 @@ const DeleteItem = ({setShowDelete, item}) => {
                 flex-col
                 text-center
                 gap-3
+                portrait:w-[90%]
+
             '
 
             style={{

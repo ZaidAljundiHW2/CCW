@@ -20,43 +20,17 @@ import {
 import { FaStar } from "react-icons/fa"
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
 
-const ComingSoon = () => {
+const ComingSoon = ({locations}) => {
 
     const API = import.meta.env.VITE_API_URL;
 
     const [isLoading, setIsLoading] = useState(false);
     
-    const [comingSoonItems, setComingSoonItems] = useState([]);
-
     const slidesPerPage = 3;
-    const pageCount = Math.ceil(comingSoonItems.length / slidesPerPage);
+    const pageCount = Math.ceil(locations.length / slidesPerPage);
     const showArrows = pageCount > 1;
 
-    const getCS = async() => {
-
-        try {
-
-            const response = await fetch(API + '/coming-soon');
-            const jsonData = await response.json();
-
-            setComingSoonItems(jsonData);
-            
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    useEffect(() => {
-
-        const load = async() => {
-
-            await getCS();
-            setIsLoading(false);
-        }
-
-        load();
-
-    },[])
+    
 
     return (
         <div
@@ -123,7 +97,7 @@ const ComingSoon = () => {
                 {isLoading ? (
                     <p style={{color:'black', alignSelf:'center'}}>Loading...</p>
                 ) : (
-                    <Carousel.Root slideCount={comingSoonItems.length} slidesPerPage={slidesPerPage} gap="3" w="full">
+                    <Carousel.Root slideCount={locations.length} slidesPerPage={slidesPerPage} gap="3" w="full">
                         <HStack align="stretch" gap="2" w="full" h="280px">
                             {showArrows && (
                                 <Carousel.PrevTrigger asChild>
@@ -135,7 +109,7 @@ const ComingSoon = () => {
 
                             <Box flex="1" minW="0" h="full">
                                 <Carousel.ItemGroup h="full">
-                                    {comingSoonItems.map((CSLocation, index) => (
+                                    {locations.map((CSLocation, index) => (
                                         <Carousel.Item
                                             key={CSLocation.csid}
                                             index={index}

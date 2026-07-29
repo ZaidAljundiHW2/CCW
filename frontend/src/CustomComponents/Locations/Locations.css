@@ -1,0 +1,6 @@
+.locationswrapper {
+    min-height: calc(100vh - var(--footer-height));
+    display: flex;
+    background: #f2eeee;
+
+}

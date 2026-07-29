@@ -77,6 +77,8 @@ const AddLocation = ({setShowAdd}) => {
     const [isParkingError, setIsParkingError] = useState(false);
     const [parkingErrorMessage, setParkingErrorMessage] = useState("");
 
+    const [description, setDescription] = useState("");
+
     // --- Closed days: only offer days not already selected ---
     const availableDays = useMemo(
         () => DAYS_OF_WEEK.filter((day) => !closedDays.includes(day)),
@@ -226,6 +228,7 @@ const AddLocation = ({setShowAdd}) => {
                 "openingtext": openingtext,
                 "parking": parking,
                 "image": "",
+                "description": description
                 
             };
 
@@ -324,6 +327,32 @@ const AddLocation = ({setShowAdd}) => {
                         <Field.ErrorIcon />
                         {nameErrorMessage}
                     </Field.ErrorText>
+                </Field.Root>
+
+                {/* Description */}
+                <Field.Root className='w-full'>
+                    <Field.Label className='editText'>Description</Field.Label>
+
+                    <div className="relative w-full">
+                        <Input
+                            value={description}
+                            onChange={(e) => setDescription(e.currentTarget.value.slice(0, 255))}
+                            placeholder="Description"
+                            style={{ color: 'black', paddingRight: '4.5rem' }}
+                            maxLength={255}
+                            className="w-full"
+                        />
+                        <Span
+                            color="fg.muted"
+                            textStyle="xs"
+                            className="absolute right-3 top-1/2"
+                            style={{ transform: 'translateY(-50%)', width: '3.5rem', textAlign: 'right' }}
+                        >
+                            {description.length}/255
+                        </Span>
+                    </div>
+
+                    
                 </Field.Root>
 
                 {/* Closed Days */}

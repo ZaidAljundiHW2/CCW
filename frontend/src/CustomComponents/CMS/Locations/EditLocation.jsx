@@ -77,6 +77,8 @@ const EditLocation = ({ item, setShowEdit }) => {
     const [isParkingError, setIsParkingError] = useState(false);
     const [parkingErrorMessage, setParkingErrorMessage] = useState("");
 
+    const [description, setDescription] = useState(item.description || "");
+
     const [isButtonLoading, setIsButtonLoading] = useState(false);
 
     // --- Closed days: only offer days not already selected ---
@@ -217,7 +219,8 @@ const EditLocation = ({ item, setShowEdit }) => {
                 "directions": directionsLink,
                 "openingtext": openingtext,
                 "parking": parking,
-                "image": item.image
+                "image": item.image,
+                "description": description
             };
 
             setIsButtonLoading(true);
@@ -301,7 +304,7 @@ const EditLocation = ({ item, setShowEdit }) => {
                             <Input
                                 value={name}
                                 onChange={(e) => setName(e.currentTarget.value.slice(0, 100))}
-                                placeholder="New name"
+                                placeholder="Name"
                                 style={{ color: 'black', paddingRight: '4.5rem' }}
                                 maxLength={100}
                                 className="w-full"
@@ -320,6 +323,32 @@ const EditLocation = ({ item, setShowEdit }) => {
                             <Field.ErrorIcon />
                             {nameErrorMessage}
                         </Field.ErrorText>
+                    </Field.Root>
+
+                    {/* Description */}
+                    <Field.Root className='w-full'>
+                        <Field.Label className='editText'>Description</Field.Label>
+
+                        <div className="relative w-full">
+                            <Input
+                                value={description}
+                                onChange={(e) => setDescription(e.currentTarget.value.slice(0, 255))}
+                                placeholder="Description"
+                                style={{ color: 'black', paddingRight: '4.5rem' }}
+                                maxLength={255}
+                                className="w-full"
+                            />
+                            <Span
+                                color="fg.muted"
+                                textStyle="xs"
+                                className="absolute right-3 top-1/2"
+                                style={{ transform: 'translateY(-50%)', width: '3.5rem', textAlign: 'right' }}
+                            >
+                                {description.length}/255
+                            </Span>
+                        </div>
+
+                        
                     </Field.Root>
 
                     {/* Closed Days */}
