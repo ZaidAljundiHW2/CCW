@@ -1144,7 +1144,7 @@ app.put('/admin/CMS/locations/update/:id', async(req,res) => {
         const is24hrs = req.body.is24hrs;
 
         const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7, parking = $8, is24hrs = $9 WHERE locationid = $10", [
-            locationname, closeddays, opentime, closetime, directions, image, openingtext, parking, id, is24hrs
+            locationname, closeddays, opentime, closetime, directions, image, openingtext, parking, is24hrs, id
         ])
 
         res.json("success");
@@ -1249,6 +1249,31 @@ app.post('/admin/CMS/locations/upload-image/:id', upload.single("my_file"), asyn
     } catch (error) {
         console.log(error);
         res.send({ message: error.message });
+    }
+})
+
+//delete location and image
+app.delete('/admin/CMS/locations/delete/:id', async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+        const image = req.body.image;
+
+        const publicId = getPublicIdFromUrl(image);
+
+        if (publicId) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+
+        const deleteLocation = await pool.query("DELETE FROM locations WHERE locationid = $1", [
+            id
+        ]);
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
     }
 })
 

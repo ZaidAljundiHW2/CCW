@@ -106,7 +106,7 @@ const LocationCMS = () => {
 
             {locations.filter(item => item.ismainbranch !== true).map((item,i) => (
 
-                <LocationBlock edit={true} item={item} key={i} setShowEdit={setShowEditLocation} setEditedObj={item}/>
+                <LocationBlock edit={true} item={item} key={i} setShowEdit={setShowEditLocation} setEditedObj={setSelectedLocation}/>
             ))}
 
         </Flex>

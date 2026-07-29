@@ -15,7 +15,7 @@ import {
     createListCollection
 } from '@chakra-ui/react'
 import axios from 'axios'
-
+import DeleteLocation from './DeleteLocation'
 
 const DAYS_OF_WEEK = [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
@@ -56,12 +56,17 @@ const EditLocation = ({ item, setShowEdit }) => {
 
     const [imgErrorMessage, setImgErrorMessage] = useState("");
 
-    // Is 24 hours
-    const [is24hrs, setIs24hrs] = useState(item.is24hrs ? "yes" : "no")
+    // Is 24 hours (boolean)
+    const [is24hrs, setIs24hrs] = useState(!!item.is24hrs)
 
-    // Open / close time (stored as "HH:MM:SS" to match DB)
-    const [openTime, setOpenTime] = useState(item.opentime)
-    const [closeTime, setCloseTime] = useState(item.closetime)
+    // Open / close time (stored as "HH:MM:SS" to match DB) — prefilled from item
+    const [openTime, setOpenTime] = useState(item.opentime || "");
+    const [isOpenTimeError, setIsOpenTimeError] = useState(false);
+    const [openTimeErrorMessage, setOpenTimeErrorMessage] = useState("");
+
+    const [closeTime, setCloseTime] = useState(item.closetime || "")
+    const [isCloseTimeError, setIsCloseTimeError] = useState(false);
+    const [closeTimeErrorMessage, setCloseTimeErrorMessage] = useState("");
 
     // Directions link
     const [directionsLink, setDirectionsLink] = useState(item.directions)
@@ -72,8 +77,7 @@ const EditLocation = ({ item, setShowEdit }) => {
     const [isParkingError, setIsParkingError] = useState(false);
     const [parkingErrorMessage, setParkingErrorMessage] = useState("");
 
-    const [locationImage, setLocationImage] = useState(null);
-    const [isLocationImageError, setIsLocationImageError] = useState(false);
+    const [isButtonLoading, setIsButtonLoading] = useState(false);
 
     // --- Closed days: only offer days not already selected ---
     const availableDays = useMemo(
@@ -106,6 +110,8 @@ const EditLocation = ({ item, setShowEdit }) => {
 
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
+
+    const [showDelete, setShowDelete] = useState(false);
 
     const handleSelectFile = (e) => {
         const selected = e.target.files[0];
@@ -171,6 +177,28 @@ const EditLocation = ({ item, setShowEdit }) => {
                 setOpeningtextErrorMessage("");
             }
 
+            if (!is24hrs && openTime.trim().length === 0) {
+                setIsOpenTimeError(true);
+                setOpenTimeErrorMessage("Input a value");
+                end = true;
+            }
+
+            else {
+                setIsOpenTimeError(false);
+                setOpenTimeErrorMessage("");
+            }
+
+            if (!is24hrs && closeTime.trim().length === 0) {
+                setIsCloseTimeError(true);
+                setCloseTimeErrorMessage("Input a value");
+                end = true;
+            }
+
+            else {
+                setIsCloseTimeError(false);
+                setCloseTimeErrorMessage("");
+            }
+
             if (end == true) {
                 return;
             }
@@ -183,14 +211,16 @@ const EditLocation = ({ item, setShowEdit }) => {
             const body = {
                 "locationname": name,
                 "closeddays": closedDays,
-                "is24hrs": is24hrs === "yes",
-                "opentime": is24hrs === "yes" ? null : openTime,
-                "closetime": is24hrs === "yes" ? null : closeTime,
+                "is24hrs": is24hrs,
+                "opentime": is24hrs ? null : openTime,
+                "closetime": is24hrs ? null : closeTime,
                 "directions": directionsLink,
                 "openingtext": openingtext,
                 "parking": parking,
                 "image": item.image
             };
+
+            setIsButtonLoading(true);
 
             const response = await fetch(API + `/admin/CMS/locations/update/${locationid}`, {
                 method:"PUT",
@@ -212,8 +242,12 @@ const EditLocation = ({ item, setShowEdit }) => {
             
         } catch (error) {
             console.error(error);
+        } finally {
+            setIsButtonLoading(false);
         }
     }
+
+    
 
     return (
         <div
@@ -339,8 +373,8 @@ const EditLocation = ({ item, setShowEdit }) => {
                         <Field.Label className='editText'>Open 24 Hours? <Field.RequiredIndicator /></Field.Label>
                         <NativeSelect.Root size="sm" width="320px">
                             <NativeSelect.Field
-                                value={is24hrs}
-                                onChange={(e) => setIs24hrs(e.currentTarget.value)}
+                                value={is24hrs ? "yes" : "no"}
+                                onChange={(e) => setIs24hrs(e.currentTarget.value === "yes")}
                                 style={{ color: 'black', background:'white' }}
                             >
                                 <option value="no" style={{ color: 'black', background:'white' }}>No</option>
@@ -350,10 +384,10 @@ const EditLocation = ({ item, setShowEdit }) => {
                         </NativeSelect.Root>
                     </Field.Root>
 
-                    {is24hrs === "no" && (
+                    {!is24hrs && (
                         <>
                             {/* Open Time */}
-                            <Field.Root className='w-full' required>
+                            <Field.Root className='w-full' required invalid={isOpenTimeError}>
                                 <Field.Label className='editText'>Open Time <Field.RequiredIndicator /></Field.Label>
                                 <h1 className='editText'>For reservation form programming only.</h1>
                                 <Select.Root
@@ -385,10 +419,15 @@ const EditLocation = ({ item, setShowEdit }) => {
                                         </Select.Positioner>
                                     </Portal>
                                 </Select.Root>
+
+                                <Field.ErrorText width="full">
+                                    <Field.ErrorIcon />
+                                    {openTimeErrorMessage}
+                                </Field.ErrorText>
                             </Field.Root>
 
                             {/* Close Time */}
-                            <Field.Root className='w-full' required>
+                            <Field.Root className='w-full' required invalid={isCloseTimeError}>
                                 <Field.Label className='editText'>Close Time <Field.RequiredIndicator /></Field.Label>
                                 <h1 className='editText'>For reservation form programming only.</h1>
                                 <Select.Root
@@ -420,6 +459,11 @@ const EditLocation = ({ item, setShowEdit }) => {
                                         </Select.Positioner>
                                     </Portal>
                                 </Select.Root>
+
+                                <Field.ErrorText width="full">
+                                    <Field.ErrorIcon />
+                                    {closeTimeErrorMessage}
+                                </Field.ErrorText>
                             </Field.Root>
                         </>
                     )}
@@ -549,16 +593,23 @@ const EditLocation = ({ item, setShowEdit }) => {
 
                 <Flex className='justify-end gap-3'>
 
-                    <Button className='editButton' onClick={() => updateLocation()}>
+                    <Button className='editButton' loading={isButtonLoading} onClick={() => updateLocation()}>
                         Update
                     </Button>
-
-                    <Button className='editButton' style={{ background: 'red' }} onClick={() => setShowEdit(false)}>
-                        Cancel
+                    
+                    <Button className='editButton' disabled={item.ismainbranch} style={{ background: 'red' }} onClick={() => setShowDelete(true)}>
+                        Delete
                     </Button>
+                    
                 </Flex>
 
+                <Button className='editButton' style={{ background: 'red', alignSelf:'end' }} onClick={() => setShowEdit(false)}>
+                    Cancel
+                </Button>
+
             </Flex>
+
+            {showDelete && (<DeleteLocation setShowDelete={setShowDelete} setShowEdit={setShowEdit} item={item}/>)}
 
         </div>
     )

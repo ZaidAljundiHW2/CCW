@@ -92,11 +92,33 @@ const BookForm = () => {
   },[])
 
 
-  const generateTimes = (open, close) => {
+  const generateTimes = (open, close, is24hrs) => {
     const times = [];
+
+    if (is24hrs) {
+        let start = new Date(`2000-01-01T00:00:00`);
+        const end = new Date(`2000-01-02T00:00:00`);
+
+        while (start < end) {
+            times.push(
+                start.toLocaleTimeString([], {
+                    hour: 'numeric',
+                    minute: '2-digit'
+                })
+            );
+            start.setMinutes(start.getMinutes() + 30);
+        }
+
+        return times;
+    }
 
     let start = new Date(`2000-01-01T${open}`);
     let end = new Date(`2000-01-01T${close}`);
+
+    // Overnight range (e.g. opens 6 AM, closes 2 AM the next day)
+    if (end <= start) {
+        end.setDate(end.getDate() + 1);
+    }
 
     // remove last hour from closing time
     end.setHours(end.getHours() - 1);
@@ -541,7 +563,8 @@ const BookForm = () => {
 
                                 {location && generateTimes(
                                     location.opentime,
-                                    location.closetime
+                                    location.closetime,
+                                    location.is24hrs
                                 ).map((timeOption) => (
                                     <option 
                                         key={timeOption}
