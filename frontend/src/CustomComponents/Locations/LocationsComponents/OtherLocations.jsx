@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Carousel } from "@chakra-ui/react"
 import OtherCard from './OtherCard'
+import Back2 from '@/assets/img/back2.png'
 
 const OtherLocations = ({ items = [] }) => {
     const [page, setPage] = useState(0)
@@ -25,7 +26,17 @@ const OtherLocations = ({ items = [] }) => {
     if (items.length === 0) return null
 
     return (
-        <div className='w-full flex flex-col items-center' style={{ padding: '20px', gap: '16px' }}>
+        <div 
+            className='w-full flex flex-col items-center bg-red-500' 
+            style={{ 
+                padding: '20px', 
+                gap: '16px',
+                backgroundImage: `url(${Back2})`,
+                backgroundSize:'cover',
+                width:'100%',
+            }}
+        
+        >
 
             <style>{`
                 .other-locations-nav::-webkit-scrollbar { display: none; }
@@ -37,6 +48,10 @@ const OtherLocations = ({ items = [] }) => {
                     background-color: rgba(255, 255, 255, 0.15);
                 }
             `}</style>
+
+            <h1 className='ELH2' style={{color:'white'}}>
+                Our Other Locations
+            </h1>
 
             <Carousel.Root
                 slideCount={items.length}
