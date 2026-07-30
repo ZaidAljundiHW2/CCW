@@ -83,8 +83,8 @@ const App = () => {
           { index: true, element: user ? <Navigate to="/admin/General" replace /> : <Login setUser={setUser} /> },
         ],
       },
-    ], { basename: "/CCW" })
-  }, [user]) // only rebuilds when user changes, not on every render
+    ]) // basename removed
+  }, [user])
 
   if (loading) return <Loader />
 
