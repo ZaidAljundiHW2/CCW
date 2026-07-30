@@ -57,7 +57,9 @@ const GeneralDetails = () => {
     const getLegal = async() => {
 
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/legal`);
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/legal`, {
+                credentials:'include',
+            });
             const items = await res.json();
 
             setLegal(items);

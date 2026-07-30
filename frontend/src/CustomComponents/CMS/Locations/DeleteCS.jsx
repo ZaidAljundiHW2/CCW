@@ -19,6 +19,7 @@ const DeleteCS = ({setShowDelete, CSItem, setShowEditCSItem, setShowEditCS}) => 
       const response = await fetch(`${import.meta.env.VITE_API_URL}/delete/comingsoon/image/${CSItem.csid}`, {
 
         method:"DELETE",
+        credentials:'include',
         headers: {
           "Content-Type": "application/json"
         },

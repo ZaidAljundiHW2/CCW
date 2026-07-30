@@ -32,7 +32,9 @@ const BookingCMS = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/new`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/new`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
             setAllNewItems(jsonData);
             
@@ -46,7 +48,9 @@ const BookingCMS = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/complete`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/complete`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
             setAllCompletedItems(jsonData);
             
@@ -59,7 +63,9 @@ const BookingCMS = () => {
 
         try {
 
-            const response = await fetch( `${import.meta.env.VITE_API_URL}/locations`);
+            const response = await fetch( `${import.meta.env.VITE_API_URL}/locations`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
             setLocations(jsonData);
             

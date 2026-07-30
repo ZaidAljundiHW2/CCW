@@ -42,6 +42,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/edit/menu/category/folder/${oldCat}`, {
 
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -151,6 +152,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/${item.categoryid}`, {
 
                 method:"PUT",
+                credentials:'include',
                 headers:{ "Content-Type": "application/json" },
                 body: JSON.stringify(body)
 

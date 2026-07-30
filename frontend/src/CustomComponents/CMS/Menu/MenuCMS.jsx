@@ -32,6 +32,7 @@ const MenuCMS = () => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/menu/menu-categories`, {
 
                 method:"GET",
+                credentials:'include',
                 headers: {
                     Host: "captainscrab",
                     Accept: "applications/json"

@@ -11,6 +11,7 @@ const FranchiseBlock = ({franchiseItem, mark=true, setFranchiseItem, setShowDele
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/new/${franchiseItem.franchiseid}`, {
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -33,6 +34,7 @@ const FranchiseBlock = ({franchiseItem, mark=true, setFranchiseItem, setShowDele
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/complete/${franchiseItem.franchiseid}`, {
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 }

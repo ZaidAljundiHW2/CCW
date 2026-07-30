@@ -26,6 +26,7 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/${label.current}`, {
 
                 method:"PUT",
+                credentials:'include',
                 headers:{ "Content-Type": "application/json" },
                 body: JSON.stringify(body)
 

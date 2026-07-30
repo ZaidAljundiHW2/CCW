@@ -108,6 +108,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-item`, {
                 method:"POST",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

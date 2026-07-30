@@ -32,7 +32,9 @@ const EditCS = ({setShowEdit}) => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/coming-soon`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/coming-soon`, {
+                credentials:'include',
+            });
 
             const jsonData = await response.json();
 

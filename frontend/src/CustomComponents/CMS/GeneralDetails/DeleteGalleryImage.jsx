@@ -17,6 +17,7 @@ const DeleteGalleryImage = ({setShowEdit, imageobj, setShowDelete}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/delete/gallery/image/${imageobj.imageid}`, {
 
                 method:"DELETE",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

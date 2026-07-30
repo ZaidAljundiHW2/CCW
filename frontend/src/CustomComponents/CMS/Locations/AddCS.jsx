@@ -73,6 +73,7 @@ const AddCS = ({setShowAddCS}) => {
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/coming-soon`, {
                 method:"POST",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

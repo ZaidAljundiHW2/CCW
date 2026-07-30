@@ -58,7 +58,9 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/locations`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/locations`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
 
             setLocations(jsonData);
@@ -276,6 +278,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/${selectedReservation.bookingid}`, {
 
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

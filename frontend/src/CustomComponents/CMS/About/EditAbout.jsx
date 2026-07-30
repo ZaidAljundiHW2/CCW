@@ -28,6 +28,7 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
             const response = await fetch( `${import.meta.env.VITE_API_URL}/admin/CMS/about/${aboutitem.aboutid}`, {
 
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

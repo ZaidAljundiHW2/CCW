@@ -70,6 +70,7 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/coming-soon/${csid}`, {
                 
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

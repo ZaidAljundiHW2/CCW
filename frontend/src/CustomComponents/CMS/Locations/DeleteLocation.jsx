@@ -23,6 +23,7 @@ const DeleteLocation = ({item, setShowDelete, setShowEdit}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/delete/${item.locationid}`, {
 
                 method:"DELETE",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

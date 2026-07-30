@@ -23,7 +23,9 @@ const ContactCMS = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/new`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/new`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
             setNewItems(jsonData);
             
@@ -37,7 +39,9 @@ const ContactCMS = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/complete`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/complete`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
             setCompletedItems(jsonData);
             

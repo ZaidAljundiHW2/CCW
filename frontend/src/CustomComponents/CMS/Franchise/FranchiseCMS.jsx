@@ -23,7 +23,9 @@ const FranchiseCMS = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/new`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/new`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
             setNewItems(jsonData);
             
@@ -37,7 +39,9 @@ const FranchiseCMS = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/complete`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/complete`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
             setCompletedItems(jsonData);
             

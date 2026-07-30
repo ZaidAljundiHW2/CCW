@@ -11,7 +11,9 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
         const safeCat = catname.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
 
         const response = await fetch(`${import.meta.env.VITE_API_URL}/edit/menu/category/folder/${safeCat}`, {
-          method:"DELETE"
+          method:"DELETE",
+          credentials:'include',
+
         });
 
         console.log(response);
@@ -46,6 +48,7 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/${item.categoryid}`, {
 
             method:"PUT",
+            credentials:'include',
             headers:{ "Content-Type": "application/json" },
             body: JSON.stringify(body)
 
@@ -60,13 +63,16 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
       //API category menu items DELETE
       const deleteItems = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categoryitems/${category.categoryid}`, {
 
-        method:"DELETE"
+        method:"DELETE",
+        credentials:'include',
+
       })
 
       //API category DELETE 
       const deleteCat = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/${category.categoryid}`, {
 
-        method:"DELETE"
+        method:"DELETE",
+        credentials:'include',
       });
 
       await deleteCloudinaryFolder(category.category);

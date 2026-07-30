@@ -227,6 +227,7 @@ const EditLocation = ({ item, setShowEdit }) => {
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/update/${locationid}`, {
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },

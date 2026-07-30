@@ -63,7 +63,9 @@ const EditGallery = ({setShowEdit}) => {
     try {
 
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/gallery`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/gallery`, {
+        credentials:'include',
+      });
       const jsonData = await response.json();
 
       setImages(jsonData);

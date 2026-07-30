@@ -19,6 +19,7 @@ const ReservationBlock = ({reservationItem,
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/new/${reservationItem.locationid}`, {
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -41,6 +42,7 @@ const ReservationBlock = ({reservationItem,
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/complete/${contactItem.locationid}`, {
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 }

@@ -16,7 +16,8 @@ const AboutCMS = () => {
             
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/about`, {
-                method:"GET"
+                method:"GET",
+                credentials:'include',
             });
 
             console.log(response);

@@ -17,6 +17,7 @@ const ContactBlock = ({contactItem,
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/new/${contactItem.contactid}`, {
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -39,6 +40,7 @@ const ContactBlock = ({contactItem,
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/complete/${contactItem.contactid}`, {
                 method:"PUT",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 }

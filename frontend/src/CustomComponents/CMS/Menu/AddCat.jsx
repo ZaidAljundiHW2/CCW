@@ -16,7 +16,8 @@ const AddCat = ({categories, setShowAdd}) => {
             const safeCat = catName.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/create/menu/category/folder/${safeCat}`, {
-                method:"POST"
+                method:"POST",
+                credentials:'include',
             });
 
             console.log(response);
@@ -56,6 +57,7 @@ const AddCat = ({categories, setShowAdd}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories`,
                 {
                     method:"POST",
+                    credentials:'include',
                     headers:{
                         "Content-Type":"application/json"
                     },

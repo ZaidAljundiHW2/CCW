@@ -29,7 +29,9 @@ const LocationCMS = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/locations`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/locations`, {
+                credentials:'include',
+            });
             const jsonData = await response.json();
 
             setLocations(jsonData);

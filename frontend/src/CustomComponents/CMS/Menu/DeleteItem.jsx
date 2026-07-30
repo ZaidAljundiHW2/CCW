@@ -15,6 +15,7 @@ const DeleteItem = ({setShowDelete, item}) => {
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/delete/menu/item`, {
                 method: "DELETE",
+                credentials:'include',
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -39,7 +40,8 @@ const DeleteItem = ({setShowDelete, item}) => {
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-item/${item.fooditemid}`, {
 
-                method:"DELETE"
+                method:"DELETE",
+                credentials:'include',
             });
 
             console.log(response);
