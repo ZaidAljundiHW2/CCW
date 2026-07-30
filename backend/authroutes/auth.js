@@ -21,36 +21,36 @@ const generateToken = (id) => {
 }
 
 //register
-router.post('/register', async(req,res) => {
-    try {
+// router.post('/register', async(req,res) => {
+//     try {
 
-        const { username, email, password } = req.body;
+//         const { username, email, password } = req.body;
 
-        if (!username || !email || !password) {
-            return res.status(400).json({ message: 'Please provide all required fields' });
-        }
+//         if (!username || !email || !password) {
+//             return res.status(400).json({ message: 'Please provide all required fields' });
+//         }
 
-        const userExists = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+//         const userExists = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 
-        if (userExists.rows.length > 0) {
-            return res.status(400).json({ message: 'User already exists' });
-        }
+//         if (userExists.rows.length > 0) {
+//             return res.status(400).json({ message: 'User already exists' });
+//         }
 
-        const bcryptedPassword = await bcrypt.hash(password, 10);
+//         const bcryptedPassword = await bcrypt.hash(password, 10);
 
-        const newuser = await pool.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email', [username, email, bcryptedPassword]);
+//         const newuser = await pool.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email', [username, email, bcryptedPassword]);
         
-        const token = generateToken(newuser.rows[0].id);
+//         const token = generateToken(newuser.rows[0].id);
 
-        res.cookie('token', token, cookieOptions);
+//         res.cookie('token', token, cookieOptions);
 
-        return res.status(201).json({ user: newuser.rows[0]});
+//         return res.status(201).json({ user: newuser.rows[0]});
 
-    } catch (error) {
-        console.error(error);
-    }
+//     } catch (error) {
+//         console.error(error);
+//     }
 
-})
+// })
 
 router.post('/login', async(req,res) => {
 
