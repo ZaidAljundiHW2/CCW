@@ -402,7 +402,7 @@ app.get('/admin/CMS/about/mission', async(req,res) => {
 })
 
 //Add contact query
-app.post('/admin/CMS/contact', protect, async(req,res) => {
+app.post('/admin/CMS/contact', async(req,res) => {
 
     try {
         
@@ -426,7 +426,7 @@ app.post('/admin/CMS/contact', protect, async(req,res) => {
 })
 
 //Get new contact queries
-app.get('/admin/CMS/contact/new', async(req, res) => {
+app.get('/admin/CMS/contact/new', protect, async(req, res) => {
 
     try {
         
@@ -440,7 +440,7 @@ app.get('/admin/CMS/contact/new', async(req, res) => {
 })
 
 //Get completed contact queries
-app.get('/admin/CMS/contact/complete', async(req, res) => {
+app.get('/admin/CMS/contact/complete', protect, async(req, res) => {
 
     try {
         
@@ -508,7 +508,7 @@ app.delete('/admin/CMS/contact/:id', protect, async(req,res) => {
 })
 
 //Add booking reservation
-app.post('/admin/booking', protect, async(req,res) => {
+app.post('/admin/booking', async(req,res) => {
 
     try {
 
@@ -551,7 +551,7 @@ app.get('/locations', async(req,res) => {
 })
 
 //Get new booking reservations
-app.get('/admin/CMS/bookings/new', async(req,res) => {
+app.get('/admin/CMS/bookings/new', protect, async(req,res) => {
 
     try {
         
@@ -564,7 +564,7 @@ app.get('/admin/CMS/bookings/new', async(req,res) => {
 })
 
 //Get completed booking reservations
-app.get('/admin/CMS/bookings/complete', async(req,res) => {
+app.get('/admin/CMS/bookings/complete', protect, async(req,res) => {
 
     try {
         
@@ -658,7 +658,7 @@ app.delete('/admin/CMS/bookings/:id', protect, async(req,res) => {
 })
 
 //Add franchise query
-app.post('/franchise', protect, async(req,res) => {
+app.post('/franchise', async(req,res) => {
 
     try {
 
@@ -683,7 +683,7 @@ app.post('/franchise', protect, async(req,res) => {
 })
 
 //Get new franchise requests
-app.get('/admin/CMS/franchise/new', async(req,res) => {
+app.get('/admin/CMS/franchise/new', protect, async(req,res) => {
 
     try {
 
@@ -697,7 +697,7 @@ app.get('/admin/CMS/franchise/new', async(req,res) => {
 })
 
 //Get complete franchise requests
-app.get('/admin/CMS/franchise/complete', async(req,res) => {
+app.get('/admin/CMS/franchise/complete', protect, async(req,res) => {
 
     try {
 
