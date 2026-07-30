@@ -167,6 +167,8 @@ const OurMission = () => {
                   transition={{duration:.3*(i + 1), ease:'easeOut'}}
 
                   viewport={{once:true}}
+
+                  key={i}
                 >
                   {misitem}
 

@@ -1,11 +1,24 @@
+const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
+const authRoutes = require("./authroutes/auth");
+const protect = require('./middleware/protect')
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const pool = require('./db');
 require('dotenv').config();
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.CLIENT_URL || 'http://localhost:3000',
+    credentials: true,
+}));
 app.use(express.json());
+app.use(cookieParser())
+
+app.use('/api/auth', authRoutes);
+
+const PORT = process.env.PORT || 5000;
 
 
 //cloudinary initialisation
@@ -119,7 +132,7 @@ app.get('/admin/CMS/general-details/footer', async (req, res) => {
 })
 
 //Update general details item
-app.put('/admin/CMS/general-details/:id', async (req, res) => {
+app.put('/admin/CMS/general-details/:id', protect, async (req, res) => {
 
     try {
 
@@ -139,7 +152,7 @@ app.put('/admin/CMS/general-details/:id', async (req, res) => {
 })
 
 //Update menu category rank and name
-app.put('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
+app.put('/admin/CMS/menu/menu-categories/:id', protect, async (req, res) => {
 
     try {
 
@@ -160,7 +173,7 @@ app.put('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
 })
 
 //Delete menu category
-app.delete('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
+app.delete('/admin/CMS/menu/menu-categories/:id', protect, async (req, res) => {
 
     try {
         const catID = req.params.id;
@@ -180,7 +193,7 @@ app.delete('/admin/CMS/menu/menu-categories/:id', async (req, res) => {
 })
 
 //Disable Build Your Own
-app.delete('/admin/CMS/menu/menu-categories/toggle/byo', async (req, res) => {
+app.delete('/admin/CMS/menu/menu-categories/toggle/byo', protect, async (req, res) => {
 
     try {
 
@@ -194,7 +207,7 @@ app.delete('/admin/CMS/menu/menu-categories/toggle/byo', async (req, res) => {
 })
 
 //Delete category items
-app.delete('/admin/CMS/menu/menu-categoryitems/:id', async (req, res) => {
+app.delete('/admin/CMS/menu/menu-categoryitems/:id', protect, async (req, res) => {
 
     try {
 
@@ -216,7 +229,7 @@ app.delete('/admin/CMS/menu/menu-categoryitems/:id', async (req, res) => {
 })
 
 //Add category
-app.post('/admin/CMS/menu/menu-categories', async (req, res) => {
+app.post('/admin/CMS/menu/menu-categories', protect, async (req, res) => {
 
     try {
 
@@ -239,7 +252,7 @@ app.post('/admin/CMS/menu/menu-categories', async (req, res) => {
 })
 
 //Enable Build Your Own
-app.post('/admin/CMS/menu/menu-categories/toggle/byo', async(req, res) => {
+app.post('/admin/CMS/menu/menu-categories/toggle/byo', protect, async(req, res) => {
 
     try {
 
@@ -257,7 +270,7 @@ app.post('/admin/CMS/menu/menu-categories/toggle/byo', async(req, res) => {
 })
 
 //Update menu item
-app.put('/admin/CMS/menu/menu-item/:id', async(req, res) => {
+app.put('/admin/CMS/menu/menu-item/:id', protect, async(req, res) => {
 
     try {
         
@@ -283,7 +296,7 @@ app.put('/admin/CMS/menu/menu-item/:id', async(req, res) => {
 })
 
 //Add menu item
-app.post('/admin/CMS/menu/menu-item', async(req, res) => {
+app.post('/admin/CMS/menu/menu-item', protect, async(req, res) => {
 
     try {
         
@@ -311,7 +324,7 @@ app.post('/admin/CMS/menu/menu-item', async(req, res) => {
 }) 
 
 //Delete menu item
-app.delete('/admin/CMS/menu/menu-item/:id', async(req, res) => {
+app.delete('/admin/CMS/menu/menu-item/:id', protect, async(req, res) => {
 
     try {
 
@@ -342,7 +355,7 @@ app.get('/admin/CMS/about', async(req,res) => {
 })
 
 //Update about content
-app.put('/admin/CMS/about/:id', async(req,res) => {
+app.put('/admin/CMS/about/:id', protect, async(req,res) => {
 
     try {
 
@@ -389,7 +402,7 @@ app.get('/admin/CMS/about/mission', async(req,res) => {
 })
 
 //Add contact query
-app.post('/admin/CMS/contact', async(req,res) => {
+app.post('/admin/CMS/contact', protect, async(req,res) => {
 
     try {
         
@@ -441,7 +454,7 @@ app.get('/admin/CMS/contact/complete', async(req, res) => {
 })
 
 //Mark new contact queries as complete
-app.put('/admin/CMS/contact/new/:id', async(req, res) => {
+app.put('/admin/CMS/contact/new/:id', protect, async(req, res) => {
 
     try {
         
@@ -459,7 +472,7 @@ app.put('/admin/CMS/contact/new/:id', async(req, res) => {
 })
 
 //Mark complete contact queries as new
-app.put('/admin/CMS/contact/complete/:id', async(req, res) => {
+app.put('/admin/CMS/contact/complete/:id', protect, async(req, res) => {
 
     try {
         
@@ -477,7 +490,7 @@ app.put('/admin/CMS/contact/complete/:id', async(req, res) => {
 })
 
 //Delete contact query
-app.delete('/admin/CMS/contact/:id', async(req,res) => {
+app.delete('/admin/CMS/contact/:id', protect, async(req,res) => {
 
     try {
 
@@ -495,7 +508,7 @@ app.delete('/admin/CMS/contact/:id', async(req,res) => {
 })
 
 //Add booking reservation
-app.post('/admin/booking', async(req,res) => {
+app.post('/admin/booking', protect, async(req,res) => {
 
     try {
 
@@ -564,7 +577,7 @@ app.get('/admin/CMS/bookings/complete', async(req,res) => {
 })
 
 //Mark new reservations as complete
-app.put('/admin/CMS/bookings/new/:id', async(req, res) => {
+app.put('/admin/CMS/bookings/new/:id', protect, async(req, res) => {
 
     try {
         
@@ -582,7 +595,7 @@ app.put('/admin/CMS/bookings/new/:id', async(req, res) => {
 })
 
 //Mark complete reservations as new
-app.put('/admin/CMS/bookings/complete/:id', async(req, res) => {
+app.put('/admin/CMS/bookings/complete/:id', protect,async(req, res) => {
 
     try {
         
@@ -600,7 +613,7 @@ app.put('/admin/CMS/bookings/complete/:id', async(req, res) => {
 })
 
 //Update reservation
-app.put('/admin/CMS/bookings/:id', async(req,res) => {
+app.put('/admin/CMS/bookings/:id', protect,async(req,res) => {
 
     try {
 
@@ -629,7 +642,7 @@ app.put('/admin/CMS/bookings/:id', async(req,res) => {
 })
 
 //Delete booking
-app.delete('/admin/CMS/bookings/:id', async(req,res) => {
+app.delete('/admin/CMS/bookings/:id', protect, async(req,res) => {
 
     try {
         
@@ -645,7 +658,7 @@ app.delete('/admin/CMS/bookings/:id', async(req,res) => {
 })
 
 //Add franchise query
-app.post('/franchise', async(req,res) => {
+app.post('/franchise', protect, async(req,res) => {
 
     try {
 
@@ -698,7 +711,7 @@ app.get('/admin/CMS/franchise/complete', async(req,res) => {
 })
 
 //Mark new franchise requests as complete
-app.put('/admin/CMS/franchise/new/:id', async(req,res) => {
+app.put('/admin/CMS/franchise/new/:id', protect, async(req,res) => {
     
     try {
 
@@ -716,7 +729,7 @@ app.put('/admin/CMS/franchise/new/:id', async(req,res) => {
 })
 
 //Mark complete franchise requests as new
-app.put('/admin/CMS/franchise/complete/:id', async(req,res) => {
+app.put('/admin/CMS/franchise/complete/:id', protect, async(req,res) => {
     
     try {
 
@@ -734,7 +747,7 @@ app.put('/admin/CMS/franchise/complete/:id', async(req,res) => {
 })
 
 //Delete franchise request
-app.delete('/admin/CMS/franchise/:id', async(req,res) => {
+app.delete('/admin/CMS/franchise/:id', protect, async(req,res) => {
 
     try {
 
@@ -752,7 +765,7 @@ app.delete('/admin/CMS/franchise/:id', async(req,res) => {
 })
 
 //upload an image for a new menu item
-app.post("/upload/menu/item/new/:id", upload.single("my_file"), async (req, res) => {
+app.post("/upload/menu/item/new/:id", protect,upload.single("my_file"), async (req, res) => {
   try {
 
     const cat = req.body.category;
@@ -784,7 +797,7 @@ app.post("/upload/menu/item/new/:id", upload.single("my_file"), async (req, res)
 });
 
 //replace image of existing menu item
-app.post("/upload/menu/item/:id", upload.single("my_file"), async (req, res) => {
+app.post("/upload/menu/item/:id", protect, upload.single("my_file"), async (req, res) => {
   try {
     const itemid = req.params.id;
     const oldUrl = req.body.curr_image;
@@ -819,7 +832,7 @@ app.post("/upload/menu/item/:id", upload.single("my_file"), async (req, res) => 
 });
 
 //delete menu item image
-app.delete('/delete/menu/item', async(req,res) => {
+app.delete('/delete/menu/item', protect, async(req,res) => {
 
     try {
 
@@ -839,7 +852,7 @@ app.delete('/delete/menu/item', async(req,res) => {
 })
 
 //create category folder
-app.post('/create/menu/category/folder/:cat', async(req,res) => {
+app.post('/create/menu/category/folder/:cat', protect, async(req,res) => {
 
     try {
         
@@ -855,7 +868,7 @@ app.post('/create/menu/category/folder/:cat', async(req,res) => {
 })
 
 //edit category folder name
-app.put('/edit/menu/category/folder/:cat', async(req,res) => {
+app.put('/edit/menu/category/folder/:cat', protect, async(req,res) => {
     try {
         const oldCat = req.params.cat;
         const newCat = req.body.newcat;
@@ -870,7 +883,7 @@ app.put('/edit/menu/category/folder/:cat', async(req,res) => {
 })
 
 //delete category folder
-app.delete('/edit/menu/category/folder/:cat', async(req,res) => {
+app.delete('/edit/menu/category/folder/:cat',protect, async(req,res) => {
 
     try {
 
@@ -901,7 +914,7 @@ app.get('/gallery', async(req,res) => {
 })
 
 //add and upload gallery image
-app.post('/upload/gallery/image', upload.single("my_file"), async(req,res) => {
+app.post('/upload/gallery/image', protect,upload.single("my_file"), async(req,res) => {
 
     try {
 
@@ -931,7 +944,7 @@ app.post('/upload/gallery/image', upload.single("my_file"), async(req,res) => {
 })
 
 //delete gallery image
-app.delete('/delete/gallery/image/:id', async(req,res) => {
+app.delete('/delete/gallery/image/:id',protect, async(req,res) => {
 
     try {
 
@@ -957,7 +970,7 @@ app.delete('/delete/gallery/image/:id', async(req,res) => {
 })
 
 //upload coming soon image
-app.post('/upload/comingsoon/image/:id', upload.single("my_file"), async (req,res) => {
+app.post('/upload/comingsoon/image/:id',protect, upload.single("my_file"), async (req,res) => {
 
     
     try {
@@ -990,7 +1003,7 @@ app.post('/upload/comingsoon/image/:id', upload.single("my_file"), async (req,re
 })
 
 //add coming soon item
-app.post('/admin/CMS/locations/coming-soon', async(req,res) => {
+app.post('/admin/CMS/locations/coming-soon',protect, async(req,res) => {
 
     try {
 
@@ -1028,7 +1041,7 @@ app.get('/coming-soon', async(req,res) => {
 })
 
 //Replace coming soon location name
-app.put('/admin/CMS/locations/coming-soon/:id', async(req,res) => {
+app.put('/admin/CMS/locations/coming-soon/:id',protect, async(req,res) => {
 
     try {
         
@@ -1046,7 +1059,7 @@ app.put('/admin/CMS/locations/coming-soon/:id', async(req,res) => {
 })
 
 //Update coming soon location image
-app.post('/replace/comingsoon/image/:id', upload.single("my_file"), async (req,res) => {
+app.post('/replace/comingsoon/image/:id', protect, upload.single("my_file"), async (req,res) => {
 
     
     try {
@@ -1088,7 +1101,7 @@ app.post('/replace/comingsoon/image/:id', upload.single("my_file"), async (req,r
 })
 
 //delete coming soon location image
-app.delete('/delete/comingsoon/image/:id', async(req,res) => {
+app.delete('/delete/comingsoon/image/:id', protect, async(req,res) => {
 
     try {
 
@@ -1126,7 +1139,7 @@ app.get('/locations', async(req,res) => {
 })
 
 //update location
-app.put('/admin/CMS/locations/update/:id', async(req,res) => {
+app.put('/admin/CMS/locations/update/:id',protect, async(req,res) => {
 
     try {
 
@@ -1157,7 +1170,7 @@ app.put('/admin/CMS/locations/update/:id', async(req,res) => {
 })
 
 //replace location image
-app.put('/admin/CMS/locations/update-image/:id', upload.single("my_file"), async(req,res) => {
+app.put('/admin/CMS/locations/update-image/:id',protect, upload.single("my_file"), async(req,res) => {
 
     try {
 
@@ -1196,7 +1209,7 @@ app.put('/admin/CMS/locations/update-image/:id', upload.single("my_file"), async
 })
 
 //add location
-app.post('/admin/CMS/locations', async(req,res) => {
+app.post('/admin/CMS/locations', protect,async(req,res) => {
 
     try {
 
@@ -1224,7 +1237,7 @@ app.post('/admin/CMS/locations', async(req,res) => {
 })
 
 //upload location image
-app.post('/admin/CMS/locations/upload-image/:id', upload.single("my_file"), async(req,res) => {
+app.post('/admin/CMS/locations/upload-image/:id', protect,upload.single("my_file"), async(req,res) => {
 
     try {
 
@@ -1255,7 +1268,7 @@ app.post('/admin/CMS/locations/upload-image/:id', upload.single("my_file"), asyn
 })
 
 //delete location and image
-app.delete('/admin/CMS/locations/delete/:id', async(req,res) => {
+app.delete('/admin/CMS/locations/delete/:id',protect, async(req,res) => {
 
     try {
 
@@ -1285,7 +1298,7 @@ app.delete('/admin/CMS/locations/delete/:id', async(req,res) => {
 })
 
 
-app.listen(5000, () => {
-    console.log("Server started on port 5000.")
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}.`)
 })
 

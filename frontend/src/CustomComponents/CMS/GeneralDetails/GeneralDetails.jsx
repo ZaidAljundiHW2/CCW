@@ -16,7 +16,7 @@ const GeneralDetails = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [editedObj, setEditedObj] = useState();
     const [showEdit, setShowEdit] = useState(false);
-    const [legal, setLegal] = useState();
+    const [legal, setLegal] = useState([]);
     const [isLegal, setIsLegal] = useState(false);
 
     const [showEditGallery, setShowEditGallery] = useState(false);

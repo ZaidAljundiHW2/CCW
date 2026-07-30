@@ -103,10 +103,11 @@ const ContactCMS = () => {
                             New Queries
                         </h1>
 
-                        {newItems.map((item) => (
+                        {newItems.map((item,i) => (
 
                             <ContactBlock 
                                 mark={true}
+                                key={i}
                                 contactItem={item}
                                 setShowDelete={setShowDelete}
                                 setContactItem={setSelectedQuery}
