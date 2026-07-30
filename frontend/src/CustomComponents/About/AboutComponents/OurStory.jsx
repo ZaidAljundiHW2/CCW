@@ -12,14 +12,13 @@ const OurStory = () => {
 
   const [story, setStory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const API = 'http://localhost:5000';
 
   const getStory = async() => {
 
       try {
           
 
-          const response = await fetch(API + '/admin/CMS/about/story', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/about/story`, {
               method:"GET"
           });
 

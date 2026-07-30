@@ -5,8 +5,6 @@ import FranchiseBlock from './FranchiseBlock';
 import DeleteQuery from './DeleteQuery';
 
 const FranchiseCMS = () => {
-
-    const API = 'http://localhost:5000';
     
     const [newItems, setNewItems] = useState([]);
     const [completedItems, setCompletedItems] = useState([]);
@@ -25,7 +23,7 @@ const FranchiseCMS = () => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/franchise/new');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/new`);
             const jsonData = await response.json();
             setNewItems(jsonData);
             

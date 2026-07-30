@@ -9,7 +9,6 @@ import EditGallery from './EditGallery'
 
 const GeneralDetails = () => {
 
-    const API = 'http://localhost:5000'
 
     const [socialMediaObjs, setSocialMediaObjs] = useState([]);
     const [footeritems, setFooterItems] = useState([]);
@@ -25,7 +24,7 @@ const GeneralDetails = () => {
 
         try {
 
-            const res = await fetch(API + '/admin/CMS/general-details/social-media');
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/social-media`);
             const socialmediaitems = await res.json();
 
             setSocialMediaObjs(socialmediaitems);

@@ -18,8 +18,6 @@ const MenuShowcase = ({
     setShowMenuItemEdit = () => {}
 }) => {
 
-    const API = 'http://localhost:5000'
-
     const [selectedCat, setSelectedCat] = useState("");
     
     const [index, setIndex] = useState(0);
@@ -34,7 +32,7 @@ const MenuShowcase = ({
 
         try {
 
-            const response = await fetch(API + '/menu/menu-items');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/menu/menu-items`);
             const menuitems = await response.json();
             const collections = []
 
@@ -55,7 +53,7 @@ const MenuShowcase = ({
 
         try {
             
-            const response = await fetch(API + '/menu/menu-categories', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/menu/menu-categories`, {
 
                 method:"GET",
                 headers: {

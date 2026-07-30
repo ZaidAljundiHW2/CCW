@@ -9,7 +9,6 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
     const [isContentError, setIsContentError] = useState(false);
     const [contentErrorMessage, setContentErrorMessage]  = useState("");
 
-    const API = 'http://localhost:5000'
 
     const updateAboutContent = async(aboutitem, aboutcontent) => {
 
@@ -26,7 +25,7 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
                 "content":aboutcontent
             }
 
-            const response = await fetch(API + `/admin/CMS/about/${aboutitem.aboutid}`, {
+            const response = await fetch( `${import.meta.env.VITE_API_URL}/admin/CMS/about/${aboutitem.aboutid}`, {
 
                 method:"PUT",
                 headers: {

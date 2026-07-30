@@ -7,9 +7,6 @@ import Thank from './Thank';
 import { motion, AnimatePresence } from 'motion/react';
 
 const ContactForm = () => {
-
-    const API = 'http://localhost:5000'
-
     
     const [name, setName] = useState("");
     const [isNameError, setIsNameError] = useState(false);
@@ -127,7 +124,7 @@ const ContactForm = () => {
                 "datetime":now.toLocaleString()
             }
 
-            const response = await fetch(API + '/admin/CMS/contact', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact`, {
 
                 method:"POST",
                 headers: {

@@ -4,15 +4,13 @@ import { Flex, Button } from '@chakra-ui/react'
 
 const DeleteQuery = ({item, setShowDelete}) => {
 
-    const API = 'http://localhost:5000';
-
     const deleteContact = async(item) => {
 
         try {
 
             const id = item.contactid;
 
-            const response = await fetch(API + `/admin/CMS/contact/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/${id}`, {
                 method:"DELETE",
                 headers: {
                     "Content-Type": "application/json"

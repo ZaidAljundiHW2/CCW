@@ -22,7 +22,6 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
     const handleRankInputChange = (e) => setRankInput(e.target.value);
     const handleNameInputChange = (e) => setSelectedName(e.target.value);
 
-    const API = 'http://localhost:5000'
 
 
     const isNumericString = (val) => {
@@ -40,7 +39,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
                 "newcat": safeCat
             };
 
-            const response = await fetch(API + `/edit/menu/category/folder/${oldCat}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/edit/menu/category/folder/${oldCat}`, {
 
                 method:"PUT",
                 headers: {
@@ -149,7 +148,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
             };
 
 
-            const response = await fetch(API + `/admin/CMS/menu/menu-categories/${item.categoryid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/${item.categoryid}`, {
 
                 method:"PUT",
                 headers:{ "Content-Type": "application/json" },

@@ -9,8 +9,6 @@ import BookingEdit from './BookingEdit';
 const BookingCMS = () => {
 
 
-    const API = 'http://localhost:5000';
-
     const [allNewItems, setAllNewItems] = useState([]);
     const [allCompletedItems, setAllCompletedItems] = useState([]);
 
@@ -34,7 +32,7 @@ const BookingCMS = () => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/bookings/new');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/new`);
             const jsonData = await response.json();
             setAllNewItems(jsonData);
             
@@ -48,7 +46,7 @@ const BookingCMS = () => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/bookings/complete');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/complete`);
             const jsonData = await response.json();
             setAllCompletedItems(jsonData);
             
@@ -61,7 +59,7 @@ const BookingCMS = () => {
 
         try {
 
-            const response = await fetch(API + '/locations');
+            const response = await fetch( `${import.meta.env.VITE_API_URL}/locations`);
             const jsonData = await response.json();
             setLocations(jsonData);
             
@@ -152,7 +150,7 @@ const BookingCMS = () => {
                             <Menu.Positioner>
                             <Menu.Content >
                                 
-                                {locations.map((location,i) => (
+                                {locations.map((location) => (
 
                                     <Menu.Item value={location.locationid} key={location.locationid}>
                                         {location.locationname}

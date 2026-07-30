@@ -16,7 +16,6 @@ const BookForm = () => {
 
   const nextMonthFormatted = nextMonth.toISOString().split("T")[0];
 
-  const API = 'http://localhost:5000';
   
       
   const [name, setName] = useState("");
@@ -249,7 +248,7 @@ const BookForm = () => {
               "reservationtime": time
           }
 
-          const response = await fetch(API + '/admin/booking', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/booking`, {
 
               method:"POST",
               headers: {

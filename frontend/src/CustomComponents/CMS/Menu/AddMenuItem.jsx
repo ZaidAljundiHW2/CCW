@@ -22,7 +22,6 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
     const [isSelectCategoryError, setIsSelectCategoryError] = useState();
     const [selectedCategoryErrorMessage, setSelectedCategoryErrorMessage] = useState("");
 
-    const API = 'http://localhost:5000'
 
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -47,7 +46,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
             data.append("my_file", file);
             const safeCat = category.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
             data.append("category", safeCat);
-            const res = await axios.post(API + `/upload/menu/item/new/${itemid}`, data);
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/menu/item/new/${itemid}`, data);
             setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -107,7 +106,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                 "categoryid": catid
             }
 
-            const response = await fetch(API + '/admin/CMS/menu/menu-item', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-item`, {
                 method:"POST",
                 headers: {
                     "Content-Type": "application/json"

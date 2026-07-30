@@ -11,7 +11,6 @@ const EditGallery = ({setShowEdit}) => {
   
   const [isLoading, setIsLoading] = useState(true);
 
-  const API = 'http://localhost:5000';
 
   const [file, setFile] = useState(null);
   const [res, setRes] = useState({});
@@ -39,7 +38,7 @@ const EditGallery = ({setShowEdit}) => {
       setIsLoading(true);
       const data = new FormData();
       data.append("my_file", file);
-      const res = await axios.post(API + '/upload/gallery/image', data);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/gallery/image`, data);
       setRes(res.data);
       setShowEdit(false);
       } catch (error) {
@@ -64,7 +63,7 @@ const EditGallery = ({setShowEdit}) => {
     try {
 
 
-      const response = await fetch(API + '/gallery');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/gallery`);
       const jsonData = await response.json();
 
       setImages(jsonData);

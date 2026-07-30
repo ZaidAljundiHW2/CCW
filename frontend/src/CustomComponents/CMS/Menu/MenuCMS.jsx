@@ -11,8 +11,6 @@ import AddMenuItem from './AddMenuItem'
 
 const MenuCMS = () => {
     
-    const API = 'http://localhost:5000'
-
     const [categoriesList, setCategoriesList] = useState([]);
     const [catString, setCatString] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +29,7 @@ const MenuCMS = () => {
 
         try {
             
-            const response = await fetch(API + '/menu/menu-categories', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/menu/menu-categories`, {
 
                 method:"GET",
                 headers: {

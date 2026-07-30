@@ -19,8 +19,6 @@ import { Link } from 'react-router-dom';
 
 const Footer = forwardRef((props, ref) => {
 
-    const API = 'http://localhost:5000'
-
     const [showPP, setShowPP] = useState(false);
     const [showToS, setShowToS] = useState(false);
     const [instLink, setInstLink] = useState("");
@@ -37,7 +35,7 @@ const Footer = forwardRef((props, ref) => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/general-details/social-media');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/social-media`);
 
             const jsonData = await response.json();
 
@@ -58,7 +56,7 @@ const Footer = forwardRef((props, ref) => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/general-details/footer');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/footer`);
 
             const jsonData = await response.json();
 
@@ -73,7 +71,7 @@ const Footer = forwardRef((props, ref) => {
 
         try {
             
-            const res = await fetch(API + '/admin/CMS/general-details/legal');
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/legal`);
 
             const jsonData = await res.json();
 
@@ -275,7 +273,7 @@ const Footer = forwardRef((props, ref) => {
                         <Box className='h-[20px] w-[1px] bg-[#d9ebff]'/>
 
                         <h1 className='footertext'>
-                            Designed by ___
+                            Designed by Zaid Aljundi
                         </h1>
 
 

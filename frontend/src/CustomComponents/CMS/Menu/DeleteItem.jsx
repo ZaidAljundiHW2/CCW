@@ -3,7 +3,6 @@ import { Flex, Button } from '@chakra-ui/react'
 
 const DeleteItem = ({setShowDelete, item}) => {
 
-    const API = 'http://localhost:5000';
 
     const handleImageDelete = async(link) => {
 
@@ -14,7 +13,7 @@ const DeleteItem = ({setShowDelete, item}) => {
                 "curr_image":link
             }
 
-            const response = await fetch(API + '/delete/menu/item', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/delete/menu/item`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
@@ -38,7 +37,7 @@ const DeleteItem = ({setShowDelete, item}) => {
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/menu/menu-item/${item.fooditemid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-item/${item.fooditemid}`, {
 
                 method:"DELETE"
             });

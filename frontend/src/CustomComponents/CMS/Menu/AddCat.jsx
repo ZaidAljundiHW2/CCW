@@ -8,7 +8,6 @@ const AddCat = ({categories, setShowAdd}) => {
     const handleNameInputChange = (e) => setSelectedName(e.target.value);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const API = 'http://localhost:5000';
 
     const createCloudinaryFolder = async(catName) => {
 
@@ -16,7 +15,7 @@ const AddCat = ({categories, setShowAdd}) => {
 
             const safeCat = catName.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
 
-            const response = await fetch(API + `/create/menu/category/folder/${safeCat}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/create/menu/category/folder/${safeCat}`, {
                 method:"POST"
             });
 
@@ -54,7 +53,7 @@ const AddCat = ({categories, setShowAdd}) => {
                 "displayorder":nextDisplay
             }
 
-            const response = await fetch(API + '/admin/CMS/menu/menu-categories',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories`,
                 {
                     method:"POST",
                     headers:{

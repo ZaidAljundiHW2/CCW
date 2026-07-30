@@ -4,7 +4,6 @@ import { Flex, Button } from '@chakra-ui/react'
 
 const DeleteQuery = ({item, setShowDelete}) => {
 
-    const API = 'http://localhost:5000';
 
     const deleteBooking = async(item) => {
 
@@ -12,7 +11,7 @@ const DeleteQuery = ({item, setShowDelete}) => {
 
             const id = item.bookingid;
 
-            const response = await fetch(API + `/admin/CMS/bookings/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/${id}`, {
                 method:"DELETE",
                 headers: {
                     "Content-Type": "application/json"

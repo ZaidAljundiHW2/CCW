@@ -11,14 +11,13 @@ const OurMission = () => {
 
   const [mission, setMission] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const API = 'http://localhost:5000';
 
   const getMission = async() => {
 
       try {
           
 
-          const response = await fetch(API + '/admin/CMS/about/mission', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/about/mission`, {
               method:"GET"
           });
 

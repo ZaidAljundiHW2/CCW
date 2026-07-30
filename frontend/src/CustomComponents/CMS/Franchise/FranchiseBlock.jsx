@@ -3,14 +3,13 @@ import { Flex, Button } from '@chakra-ui/react';
 
 const FranchiseBlock = ({franchiseItem, mark=true, setFranchiseItem, setShowDelete, setRefresh}) => {
 
-    const API = 'http://localhost:5000'
 
     
     const markComplete = async() => {
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/franchise/new/${franchiseItem.franchiseid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/new/${franchiseItem.franchiseid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"

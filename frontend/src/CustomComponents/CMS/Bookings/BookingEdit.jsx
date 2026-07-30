@@ -15,9 +15,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
     const nextMonth = new Date();
     nextMonth.setMonth(nextMonth.getMonth() + 1);
 
-    const nextMonthFormatted = nextMonth.toISOString().split("T")[0];    
-    const API = 'http://localhost:5000';
-    
+    const nextMonthFormatted = nextMonth.toISOString().split("T")[0];        
         
     const [name, setName] = useState(selectedReservation.name);
     const [isNameError, setIsNameError] = useState(false);
@@ -51,8 +49,6 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
     const [location, setLocation] = useState("");
     const [isLocationError, setIsLocationError] = useState(false);
     const [locationErrorMessage, setLocationErrorMessage] = useState("");
-
-    const [isSuccessfulSubmission, setIsSuccessfulSubmission] = useState(false);
 
     const [locations, setLocations] = useState();
 
@@ -277,7 +273,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                 "status": selectedReservation.status    
             }
 
-            const response = await fetch(API + `/admin/CMS/bookings/${selectedReservation.bookingid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/${selectedReservation.bookingid}`, {
 
                 method:"PUT",
                 headers: {

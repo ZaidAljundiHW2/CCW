@@ -17,7 +17,7 @@ const GalleryComponent = () => {
 
   const [images, setImages] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const API = 'http://localhost:5000';
+  const API = '';
 
 
   const getImages = async() => {

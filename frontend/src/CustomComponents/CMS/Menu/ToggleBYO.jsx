@@ -3,13 +3,12 @@ import { Flex, Button } from '@chakra-ui/react'
 
 const ToggleBYO = ({cats, setShowToggle, categories}) => {
 
-    const API = 'http://localhost:5000'
 
     const disableBYO = async() => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/menu/menu-categories/toggle/byo', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/toggle/byo`, {
 
                 method:'DELETE'
             })

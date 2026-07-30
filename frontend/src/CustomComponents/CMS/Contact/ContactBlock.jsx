@@ -9,14 +9,13 @@ const ContactBlock = ({contactItem,
     setRefresh
 }) => {
 
-    const API = 'http://localhost:5000'
 
     
     const markComplete = async(contactItem) => {
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/contact/new/${contactItem.contactid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/new/${contactItem.contactid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -38,7 +37,7 @@ const ContactBlock = ({contactItem,
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/contact/complete/${contactItem.contactid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/complete/${contactItem.contactid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"

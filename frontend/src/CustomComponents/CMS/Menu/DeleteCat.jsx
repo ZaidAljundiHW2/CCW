@@ -3,7 +3,6 @@ import { Flex, Button } from '@chakra-ui/react'
 
 const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
-  const API = 'http://localhost:5000';
 
   const deleteCloudinaryFolder = async(catname) => {
 
@@ -11,7 +10,7 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
         const safeCat = catname.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
 
-        const response = await fetch(API + `/edit/menu/category/folder/${safeCat}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/edit/menu/category/folder/${safeCat}`, {
           method:"DELETE"
         });
 
@@ -44,7 +43,7 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
         };
 
 
-        const response = await fetch(API + `/admin/CMS/menu/menu-categories/${item.categoryid}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/${item.categoryid}`, {
 
             method:"PUT",
             headers:{ "Content-Type": "application/json" },
@@ -59,13 +58,13 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
 
       //API category menu items DELETE
-      const deleteItems = await fetch(API + `/admin/CMS/menu/menu-categoryitems/${category.categoryid}`, {
+      const deleteItems = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categoryitems/${category.categoryid}`, {
 
         method:"DELETE"
       })
 
       //API category DELETE 
-      const deleteCat = await fetch(API + `/admin/CMS/menu/menu-categories/${category.categoryid}`, {
+      const deleteCat = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/${category.categoryid}`, {
 
         method:"DELETE"
       });

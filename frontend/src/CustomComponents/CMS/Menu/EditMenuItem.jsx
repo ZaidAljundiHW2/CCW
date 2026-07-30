@@ -25,7 +25,6 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
     const [showDeleteConf, setShowDeleteConf] = useState(false);
 
-    const API = 'http://localhost:5000';
 
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -59,7 +58,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
         const data = new FormData();
         data.append("my_file", file);
         data.append("curr_image", currImgURL);
-        const res = await axios.post(API + `/upload/menu/item/${itemid}`, data);
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/menu/item/${itemid}`, data);
         setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -102,7 +101,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 "categoryid": categoryid
             }
 
-            const response = await fetch(API + `/admin/CMS/menu/menu-item/${fooditemid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-item/${fooditemid}`, {
 
                 method:"PUT",
                 headers: {

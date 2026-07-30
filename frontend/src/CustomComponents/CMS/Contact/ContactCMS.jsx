@@ -7,7 +7,6 @@ import DeleteQuery from './DeleteQuery';
 const ContactCMS = () => {
 
 
-    const API = 'http://localhost:5000';
 
     const [newItems, setNewItems] = useState([]);
     const [completedItems, setCompletedItems] = useState([]);
@@ -24,7 +23,7 @@ const ContactCMS = () => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/contact/new');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/new`);
             const jsonData = await response.json();
             setNewItems(jsonData);
             
@@ -38,7 +37,7 @@ const ContactCMS = () => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/contact/complete');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact/complete`);
             const jsonData = await response.json();
             setCompletedItems(jsonData);
             

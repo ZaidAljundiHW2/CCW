@@ -11,14 +11,13 @@ const ReservationBlock = ({reservationItem,
     setShowEdit
 }) => {
 
-    const API = 'http://localhost:5000'
 
     
     const markComplete = async(reservationItem) => {
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/bookings/new/${reservationItem.locationid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/new/${reservationItem.locationid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"

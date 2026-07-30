@@ -11,8 +11,6 @@ const AddCS = ({setShowAddCS}) => {
     const [nameErrorMessage, setNameErrorMessage] = useState("");
     const [imgErrorMessage, setImgErrorMessage] = useState("");
 
-    const API = 'http://localhost:5000'
-
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [res, setRes] = useState({});
@@ -36,7 +34,7 @@ const AddCS = ({setShowAddCS}) => {
             setLoading(true);
             const data = new FormData();
             data.append("my_file", file);
-            const res = await axios.post(API + `/upload/comingsoon/image/${itemid}`, data);
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/comingsoon/image/${itemid}`, data);
             setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -73,7 +71,7 @@ const AddCS = ({setShowAddCS}) => {
                 "imageURL": ""
             };
 
-            const response = await fetch(API + '/admin/CMS/locations/coming-soon', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/coming-soon`, {
                 method:"POST",
                 headers: {
                     "Content-Type": "application/json"

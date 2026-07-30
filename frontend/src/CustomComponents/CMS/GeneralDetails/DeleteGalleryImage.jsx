@@ -3,7 +3,6 @@ import { Flex, Button } from '@chakra-ui/react'
 
 const DeleteGalleryImage = ({setShowEdit, imageobj, setShowDelete}) => {
 
-    const API = 'http://localhost:5000';
 
     const deleteImage = async() => {
 
@@ -15,7 +14,7 @@ const DeleteGalleryImage = ({setShowEdit, imageobj, setShowDelete}) => {
 
             };
 
-            const response = await fetch(API + `/delete/gallery/image/${imageobj.imageid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/delete/gallery/image/${imageobj.imageid}`, {
 
                 method:"DELETE",
                 headers: {

@@ -11,8 +11,6 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isError, setIsError] = useState(false);
 
-    const API = 'http://localhost:5000'
-
     const updateVal = async (e) => {
 
 
@@ -25,7 +23,7 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
             };
 
 
-            const response = await fetch(API + `/admin/CMS/general-details/${label.current}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/${label.current}`, {
 
                 method:"PUT",
                 headers:{ "Content-Type": "application/json" },

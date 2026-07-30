@@ -9,10 +9,7 @@ import { FaRegPaperPlane } from "react-icons/fa6";
 import Thank from '@/CustomComponents/Contact/Thank';
 import { NativeSelect } from "@chakra-ui/react"
 
-const ReqFrForm = () => {
-
-    const API = 'http://localhost:5000';
-    
+const ReqFrForm = () => {    
         
     const [name, setName] = useState("");
     const [isNameError, setIsNameError] = useState(false);
@@ -169,7 +166,7 @@ const ReqFrForm = () => {
                 "status":'new'
             }
 
-            const response = await fetch(API + '/franchise', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/franchise`, {
                 method:"POST",
                 headers: {
                     "Content-Type":"application/json"
