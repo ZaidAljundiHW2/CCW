@@ -149,6 +149,7 @@ const Hero = () => {
               flex
               portrait:justify-center
               portrait:items-center
+              portrait:flex-col
               gap-5
             '
 

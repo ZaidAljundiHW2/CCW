@@ -107,8 +107,8 @@ const Footer = forwardRef((props, ref) => {
                 flex-col
                 landscape:gap-5
                 gap-0
-                items-center
                 footerwrapper
+                portrait:items-center
                 
             '
             style={{
@@ -266,13 +266,20 @@ const Footer = forwardRef((props, ref) => {
                     />
 
                     {/* TOS and Copyright */}
-                    <Flex className='w-full items-center justify-center'>
-                        <h1 className='w-[60%] footertext'>
-                            @ 2024 Captain's Crab Seafood Boil House. All Rights Reserved.
+                    <Flex className='items-center gap-6 portrait:gap-2 portrait:w-[80%] portrait:justify-center' style={{paddingLeft:'10px'}}>
+                        <h1 className='footertext'>
+                            @ 2026 Captain's Crab Seafood Boil House. All Rights Reserved.
 
                         </h1>
+                        
+                        <Box className='h-[20px] w-[1px] bg-[#d9ebff]'/>
 
-                        <Flex className='gap-6 items-center justify-center'>
+                        <h1 className='footertext'>
+                            Designed by ___
+                        </h1>
+
+
+                        <Flex className='gap-6 flex-1 items-center justify-end portrait:gap-2' style={{paddingRight:'10px'}}>
 
                             <h1 className='footertext footertextclickable' onClick={() => {setShowPP(true); setShowToS(false)}}>
                                 Privacy Policy

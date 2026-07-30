@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex } from '@chakra-ui/react'
+import { Flex, Button } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import { IoIosCloseCircle } from "react-icons/io";
 
@@ -33,6 +33,7 @@ const OrderPopup = ({setShowOrderPopup}) => {
                 absolute
                 bg-[#f2eeee]
                 w-[50%]
+                portrait:w-[80%]
                 flex
                
                 flex-col
@@ -61,17 +62,17 @@ const OrderPopup = ({setShowOrderPopup}) => {
             <Flex className='flex-col w-full justify-center items-center landscape:flex-row landscape:gap-20 gap-5'>
 
             
-                <button className='restbutton rounded-lg' style={{background:'#00C1B2', borderColor:'white'}}>
-                    Deliveroo
-                </button>
+                <Button className='restbutton rounded-lg flex-1' style={{background:'#e41601', borderColor:'white', color:'white'}}>
+                    Doordash
+                </Button>
 
-                <button className='restbutton rounded-lg' style={{color:'white', background:'black'}}>
+                <Button className='restbutton rounded-lg flex-1' style={{color:'white', background:'black'}}>
                     Uber Eats
-                </button>
+                </Button>
 
-                <button className='restbutton rounded-lg' style={{color:'black', background:'f2eeee', borderColor:'black'}}>
+                <Button className='restbutton rounded-lg flex-1' style={{color:'black', background:'f2eeee', borderColor:'black'}}>
                     Call Pickup
-                </button>
+                </Button>
 
             </Flex>
 
