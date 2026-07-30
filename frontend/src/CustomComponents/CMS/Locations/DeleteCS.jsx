@@ -16,7 +16,7 @@ const DeleteCS = ({setShowDelete, CSItem, setShowEditCSItem, setShowEditCS}) => 
         "image": CSItem.imageurl
       };
 
-      const response = await fetch(API + `/delete/comingsoon/image/${CSItem.csid}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/delete/comingsoon/image/${CSItem.csid}`, {
 
         method:"DELETE",
         headers: {

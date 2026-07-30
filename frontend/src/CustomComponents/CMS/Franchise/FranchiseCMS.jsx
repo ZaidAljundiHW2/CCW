@@ -37,7 +37,7 @@ const FranchiseCMS = () => {
 
         try {
 
-            const response = await fetch(API + '/admin/CMS/franchise/complete');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/complete`);
             const jsonData = await response.json();
             setCompletedItems(jsonData);
             

@@ -39,7 +39,7 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
             const data = new FormData();
             data.append("my_file", file);
             data.append("curr_image", oldurl);
-            const res = await axios.post(API + `/replace/comingsoon/image/${itemid}`, data);
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/replace/comingsoon/image/${itemid}`, data);
             setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -67,7 +67,7 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
                 "location": inputName,                
             };
 
-            const response = await fetch(API + `/admin/CMS/locations/coming-soon/${csid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/coming-soon/${csid}`, {
                 
                 method:"PUT",
                 headers: {

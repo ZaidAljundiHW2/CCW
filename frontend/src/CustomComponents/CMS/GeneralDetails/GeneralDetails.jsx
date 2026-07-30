@@ -41,7 +41,7 @@ const GeneralDetails = () => {
 
         try {
 
-            const res = await fetch(API + '/admin/CMS/general-details/footer');
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/footer`);
             const items = await res.json();
 
             setFooterItems(items);
@@ -57,7 +57,7 @@ const GeneralDetails = () => {
     const getLegal = async() => {
 
         try {
-            const res = await fetch(API + '/admin/CMS/general-details/legal');
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/legal`);
             const items = await res.json();
 
             setLegal(items);

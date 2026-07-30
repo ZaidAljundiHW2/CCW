@@ -129,7 +129,7 @@ const EditLocation = ({ item, setShowEdit }) => {
         const data = new FormData();
         data.append("my_file", file);
         data.append("curr_image", currImgURL);
-        const res = await axios.put(API + `/admin/CMS/locations/update-image/${itemid}`, data);
+        const res = await axios.put(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/update-image/${itemid}`, data);
         setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -225,7 +225,7 @@ const EditLocation = ({ item, setShowEdit }) => {
 
             setIsButtonLoading(true);
 
-            const response = await fetch(API + `/admin/CMS/locations/update/${locationid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/update/${locationid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"

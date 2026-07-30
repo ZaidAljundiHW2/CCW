@@ -39,7 +39,7 @@ const ReservationBlock = ({reservationItem,
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/bookings/complete/${contactItem.locationid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/complete/${contactItem.locationid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"

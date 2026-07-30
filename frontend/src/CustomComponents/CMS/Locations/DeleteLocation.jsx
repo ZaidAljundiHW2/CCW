@@ -20,7 +20,7 @@ const DeleteLocation = ({item, setShowDelete, setShowEdit}) => {
 
             setIsButtonPressed(true);
 
-            const response = await fetch(API + `/admin/CMS/locations/delete/${item.locationid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/delete/${item.locationid}`, {
 
                 method:"DELETE",
                 headers: {

@@ -126,7 +126,7 @@ const AddLocation = ({setShowAdd}) => {
         setLoading(true);
         const data = new FormData();
         data.append("my_file", file);
-        const res = await axios.post(API + `/admin/CMS/locations/upload-image/${itemid}`, data);
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/upload-image/${itemid}`, data);
         setRes(res.data);
         } catch (error) {
         alert(error.message);
@@ -234,7 +234,7 @@ const AddLocation = ({setShowAdd}) => {
 
 
 
-            const response = await fetch(API + '/admin/CMS/locations', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/locations`, {
 
                 method:"POST",
                 headers: {

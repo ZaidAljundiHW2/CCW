@@ -31,7 +31,7 @@ const FranchiseBlock = ({franchiseItem, mark=true, setFranchiseItem, setShowDele
 
         try {
 
-            const response = await fetch(API + `/admin/CMS/franchise/complete/${franchiseItem.franchiseid}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/franchise/complete/${franchiseItem.franchiseid}`, {
                 method:"PUT",
                 headers: {
                     "Content-Type": "application/json"
