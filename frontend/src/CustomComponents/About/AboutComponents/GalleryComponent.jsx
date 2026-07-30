@@ -17,14 +17,13 @@ const GalleryComponent = () => {
 
   const [images, setImages] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const API = '';
 
 
   const getImages = async() => {
 
     try {
 
-      const response = await fetch(API + '/gallery');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/gallery`);
       const jsonData = await response.json();
 
       setImages(jsonData);
