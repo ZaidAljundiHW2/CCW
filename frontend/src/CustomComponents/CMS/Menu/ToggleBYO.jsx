@@ -10,7 +10,8 @@ const ToggleBYO = ({cats, setShowToggle, categories}) => {
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/toggle/byo`, {
 
-                method:'DELETE'
+                method:'DELETE',
+                credentials:'include'
             })
 
             console.log(response);
@@ -35,6 +36,7 @@ const ToggleBYO = ({cats, setShowToggle, categories}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-categories/toggle/byo`, {
                 
                 method:'POST',
+                credentials:'include',
                 headers: {
                     "Content-Type":"application/json"
                 },
