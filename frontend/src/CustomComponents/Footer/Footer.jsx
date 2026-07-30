@@ -273,7 +273,7 @@ const Footer = forwardRef((props, ref) => {
                         <Box className='h-[20px] w-[1px] bg-[#d9ebff]'/>
 
                         <h1 className='footertext'>
-                            Designed by Zaid Aljundi
+                            Designed by Magnified Production
                         </h1>
 
 
