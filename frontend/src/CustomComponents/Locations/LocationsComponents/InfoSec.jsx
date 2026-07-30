@@ -1,12 +1,12 @@
 // InfoSec.jsx
 import React from 'react'
-import { Flex, Box } from '@chakra-ui/react'
+import { Flex, Box, Icon } from '@chakra-ui/react'
 import ClockIcon from '@/assets/icons/contact-clock-orange.png'
 import './InfoSec.css'
 import { resolveImg } from '@/customLib/utils/resolveImage'
 import { motion } from 'motion/react'
 
-const InfoSec = ({info, index}) => {
+const InfoSec = ({icon: IconComponent, index, text}) => {
     console.log(index);
   return (
     <motion.div className='w-full flex gap-5 items-center'
@@ -21,14 +21,8 @@ const InfoSec = ({info, index}) => {
 
     >
 
-        <div className='landscape:w-10 w-5 aspect-square shrink-0 overflow-hidden'>
-            <img
-                src={resolveImg(info.img)}
-                alt='icon'
-                className='w-full h-full object-contain block'
-            />
-        </div>
-
+        
+        <Icon as={IconComponent} boxSize="30px" color="#ef571b" />
 
         <div
             className='
@@ -39,7 +33,7 @@ const InfoSec = ({info, index}) => {
         >
 
             <p className='IST'>
-                {info.Text}
+                {text}
             </p>
 
         </div>

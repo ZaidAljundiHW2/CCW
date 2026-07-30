@@ -4,7 +4,23 @@ import { resolveImg } from '@/customLib/utils/resolveImage'
 import './ShowcaseItem.css'
 import { AnimatePresence, motion } from 'motion/react'
 
-const ShowcaseItem = ({item}) => {
+const ShowcaseItem = ({
+    item,
+    setSelectedMenuItem = () => {},
+    edit=false,
+    setShowMenuItemEdit = () => {}
+}) => {
+
+    const handleMenuEditToggle = (item) => {
+
+        if (edit == false) {
+            return;
+        }
+
+        setShowMenuItemEdit(true);
+        setSelectedMenuItem(item);
+    }
+
   return (
 
 
@@ -25,82 +41,41 @@ const ShowcaseItem = ({item}) => {
 
         style={{
             padding:'20px',
+            cursor: edit ? 'pointer' : 'auto'
         }}
+
+        onClick={() => handleMenuEditToggle(item)}
 
         
     >
 
         {/* Image and price */}
-        <Flex
-            className='
-                w-full
-                lg:h-[50%]
-                gap-2
+        <div className="w-full flex flex-col lg:flex-row landscape:items-center justify-center gap-2">
 
-                lg:flex-row
-                flex-col
-
-                              
-            '
-
-            
-        >
-
-            <Flex
-                className='
-                    landscape:aspect-square 
-                    w-[80px]
-                    h-[80px]
-                    landscape:w-[120px]
-                    landscape:h-[120px]
-                    flex-shrink-0
-                '
-
-                
-
-                
-            >
-
-                <img 
-                    
-                    src={resolveImg(item.Img)}
-
-                   
-
-                    className="
-                        rounded-full
-                        w-full
-                        h-full
-                        object-cover
-                    "
+            <div className="relative w-full portrait:w-[50%] lg:w-1/2 aspect-square bg-green-500 overflow-hidden rounded-full">
+                <div
+                    className="absolute inset-0 w-full h-full rounded-full"
+                    style={{
+                        backgroundImage: `url(${item.foodimage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
                 />
+            </div>
 
-            </Flex>
-
-
-            <Flex
-                className='
-                    justify-end
-                    items-center
-                    flex-1
-                '
-
-               
+            <div 
+                className="flex justify-center items-center w-full lg:w-1/2"
+                style={{ containerType: 'inline-size' }}
             >
-
-                <h1 style={{color:"#012447", fontWeight:'bold', fontSize:'clamp(.5rem, 1vw, 1.5rem)'}}>
-                    {item.Price}
+                <h1 style={{
+                    color: "#012447",
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(1rem, 12cqi, 2.5rem)'
+                }}>
+                    {item.price + "$"}
                 </h1>
-
-            </Flex>
-
-            
-
-            
-
-            
-
-        </Flex>
+            </div>
+        </div>
 
         <Flex
             className='
@@ -111,7 +86,7 @@ const ShowcaseItem = ({item}) => {
             '
 
             style={{
-                justifyContent: item.HasDescription ? 'start' : 'center'
+                justifyContent: item.hasdesc ? 'start' : 'center'
             }}
         >
 
@@ -123,13 +98,13 @@ const ShowcaseItem = ({item}) => {
                     color:'#012447',
                 }}
             >
-                {item.Name}
+                {item.itemname}
             </h1>
 
-            {item.HasDescription && (
+            {item.hasdesc && (
 
                 <p style={{color:'#012447'}} className='itemdesc'>
-                    {item.Description}
+                    {item.itemdescription}
 
                 </p>
 

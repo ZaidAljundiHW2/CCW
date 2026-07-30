@@ -39,7 +39,7 @@ const Contact = () => {
             CONTACT US
         </motion.h1>
 
-        <motion.Flex className='flex landscape:flex-row flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg landscape:gap-5 gap-0' 
+        <motion.div className='flex landscape:flex-row flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg landscape:gap-5 gap-0' 
             style={{padding:'2%'}}
             initial={{opacity:0, y:-50}}
 
@@ -180,7 +180,7 @@ const Contact = () => {
 
             </Flex>
 
-        </motion.Flex>
+        </motion.div>
 
         
 

@@ -10,6 +10,10 @@ const About = () => {
   return (
     <div
         id='about'
+        
+        style={{
+          overflowX:'hidden'
+        }}
     >
 
         <OurStory />

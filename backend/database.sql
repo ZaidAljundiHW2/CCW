@@ -1,31 +1,78 @@
 CREATE DATABASE CaptainsCrabDatabase
 
-CREATE TABLE Menu (
+CREATE TABLE generaldetails (
 
-    FoodItemID SERIAL PRIMARY KEY,
-    ItemName varchar(255),
-    HasDesc boolean,
-    ItemDescription text,
-    FoodImage VARCHAR(500)
+    generaldetailsid SERIAL PRIMARY KEY,
+    label varchar(255),
+    val varchar(255),
+    type varchar(255)
 
-)
+);
 
-INSERT INTO menu (
-    itemname, 
-    hasdesc, 
-    itemdescription, 
-    foodimage,
-    itemtype,
-    price
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Instagram',
+    'https://www.instagram.com/captainscrab',
+    'Social Media'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Facebook',
+    'https://www.facebook.com/captainscrab',
+    'Social Media'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'TikTok',
+    'https://www.tiktok.com/@captainscrab',
+    'Social Media'
+);
+
+
+
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Phone Number',
+    '647 271 3140',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Address',
+    '1250 Brant Street, Burlington, ON LS7 1X6',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Location',
+    'Undefined',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Email',
+    'captainscrab@gmail.com',
+    'Footer'
+);
+
+INSERT INTO generaldetails (label, val, type) VALUES (
+    'Timings',
+    'Mon - Sun: 11:00 AM - 10:00 PM',
+    'Footer'
+);
+
+
+
+
+
+INSERT INTO menucategories (category, displayorder) VALUES ('Build Your Own', (SELECT MAX(displayorder) + 1 FROM menucategories));
+
+INSERT INTO MenuCategories (
+    Category, 
+    DisplayOrder 
 ) VALUES (
-    'Snow Crab Leg Boil',
-    TRUE,
-    'Sweet snow crab legs, shrimp, corn, and potatoes seasoned to perfection.',
-    'https://drive.google.com/file/d/1cUH5cogkz57SvVsLEdclgMZE8W_-cCDr/view?usp=sharing',
-    'Main Course',
-    '54.99'
-
-)
+    'Drinks',
+    5
+);
 
 INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, itemtype, price)
 VALUES ('Lemonade', FALSE, '', 'https://drive.google.com/file/d/1HQhyRLHd4_bpRndZl3cfKfdkKiLhCCpG/view?usp=sharing', 'Drinks', '3.49');
@@ -50,3 +97,15 @@ VALUES ('Sprite', FALSE, '', 'https://drive.google.com/file/d/1ORQHEZNLT4Vh7EQaR
 
 INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, itemtype, price)
 VALUES ('Orange Juice', FALSE, '', 'https://drive.google.com/file/d/1paZ-IehYLdtKEseGvfez-8Baw-HYPFVD/view?usp=sharing', 'Drinks', '2.99');
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Garlic Butter', FALSE, '', 'https://drive.google.com/thumbnail?id=1zq0pOmKr8v46CiXVeYZlIvwaXOHkLvX4', '2.99', 12);
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Lemon Butter', FALSE, '', 'https://drive.google.com/thumbnail?id=1B2e1IUmCtd5ZDIiATyKVWsKz4PpNaMmt', '2.99', 12);
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Cajun Remoulade', FALSE, '', 'https://drive.google.com/thumbnail?id=1bmWU2QuLe5dRi0qTMo0e2-d4vxYhZm0L', '2.99', 12);
+
+INSERT INTO menu (itemname, hasdesc, itemdescription, foodimage, price, categoryid)
+VALUES ('Captain''s Fire Sauce', FALSE, '', 'https://drive.google.com/thumbnail?id=1ZUCxUA2_lzrbv7dAVFW7yVUkYu3Uo8mY', '2.99', 12);

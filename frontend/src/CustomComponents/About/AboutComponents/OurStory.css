@@ -13,7 +13,7 @@
     padding:20px
 }
 
-@media (max-width:1024px) {
+@media (orientation: portrait) {
 
     .ourstorycontainer {
         background-image: url('/src/assets/img/Backgrounds/aboutusmobile2.png');

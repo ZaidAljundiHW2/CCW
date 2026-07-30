@@ -1,12 +1,27 @@
 
 
+.CSCard {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    align-items: center;
+}
+
 .CSCH {
     color: #012447;
     font-family: 'PersonalServices', sans-serif;
     font-size: clamp(.75rem, 1.25vw, 2rem);
-    overflow-wrap: break-word;
     text-align: center;
 
+    /* single-line truncate instead of wrap-and-grow */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 .CSCT {
@@ -26,9 +41,6 @@
     font-size: clamp(1rem, 2vw, 3rem);
 }
 
-.CSCard {
-    padding:20px;
-}
 
 @media (max-width:768px) {
 

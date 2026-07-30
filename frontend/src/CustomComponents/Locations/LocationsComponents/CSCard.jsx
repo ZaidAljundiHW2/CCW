@@ -5,7 +5,7 @@ import TorontoSketch from '@/assets/img/torontosketch.jpg'
 import { IoLocationSharp } from "react-icons/io5";
 import { motion } from 'framer-motion';
 
-const CSCard = ({image, location, index}) => {
+const CSCard = ({index, csitem}) => {
   return (
     
     <motion.div
@@ -18,14 +18,13 @@ const CSCard = ({image, location, index}) => {
             min-w-[0]
             landscape:flex-1
             flex
-            w-[45%]
             CSCard
             
         '
 
         style={{
             
-            background:`url(${image})`,
+            background:`url(${csitem.imageurl})`,
             backgroundSize:'cover',
             backgroundPosition:'center'
         }}
@@ -42,7 +41,7 @@ const CSCard = ({image, location, index}) => {
 
             <Flex className='w-full landscape:flex-row flex-col justify-center items-center'>
                 <h1 className='CSCH w-full min-w-0'>
-                    {location}
+                    {csitem.location}
                 </h1>
                 <IoLocationSharp color='#ef571b' className='locationicon'/>
 
