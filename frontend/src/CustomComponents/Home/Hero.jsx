@@ -7,35 +7,10 @@ import { FaClipboard } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaDoorClosed } from "react-icons/fa";
 import backalt from '@/assets/img/altback.png'
-import BookReservationPopup from '../Navbar/BookReservationPopup'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Hero = () => {
-
-  const [showBook, setShowBook] = useState(false);
-
-  const handleNavLink = (event, targetID) => {
-
-        event.preventDefault();
-
-        const target = document.querySelector(targetID);
-        
-        if (target) {
-
-            const navbar = document.querySelector('#navbar');
-            const navbarheight = navbar?.offsetHeight || 0;
-            const offsetPosition = target.offsetTop - navbarheight;
-
-
-            window.scrollTo ({
-                top: offsetPosition,
-                behavior: 'smooth'
-
-            })
-
-        }
-  }
 
   return (
     <div 
@@ -204,7 +179,6 @@ const Hero = () => {
           <HeroCarousel />
         </div>
 
-        {showBook && (<BookReservationPopup setShowBook={setShowBook}/>)}
       
     </div>
   )

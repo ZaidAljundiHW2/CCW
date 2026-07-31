@@ -3,98 +3,190 @@
     src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
 }
 
-.navcomponents {
+:root {
+    --navbar-height: clamp(70px, 10vh, 110px);
+}
+
+.navbar-container {
+    box-sizing: border-box;
+}
+
+.navbar-inner {
+    width: 100%;
+    min-height: var(--navbar-height);
+    box-sizing: border-box;
+    padding: 0 clamp(16px, 4vw, 40px);
+}
+
+/* ---------- LEFT SIDE ---------- */
+
+.navbar-left {
+    position: relative;
+    min-width: 0; /* allows children to shrink instead of overflowing */
+}
+
+.navicon-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'HeadingNow', sans-serif;
+    cursor: pointer;
+    flex-shrink: 0;
+}
 
+.navicon {
+    width: clamp(40px, 4vw, 60px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
+
+.dropdown-trigger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.dropdown-icon {
+    width: clamp(42px, 9vw, 48px);
+    height: auto;
+}
+
+.componentBar {
+    display: flex;
+    align-items: center;
+    gap: clamp(4px, 1vw, 16px);
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.componentBar::-webkit-scrollbar {
+    display: none;
 }
 
 .componentBar .Link {
     white-space: nowrap;
     flex-shrink: 0;
-    height: 50px;
-    width: 50%;
+    height: 44px;
+    padding: 0 clamp(8px, 1.2vw, 18px);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: HeadingNow, 'sans-serif';
+    font-family: HeadingNow, sans-serif;
+    font-size: clamp(12px, 1vw, 16px);
     z-index: 10;
     mix-blend-mode: difference;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    color:white
-
-    
-
+    color: white;
+    border-radius: 6px;
 }
 
-
 .componentBar .Link:hover {
-
     background: rgb(54, 54, 54);
     transition: .2s;
-    cursor:pointer;
+    cursor: pointer;
+}
 
+.componentBar .book {
+    color: #ef571b;
 }
 
 .componentBar .book:hover {
-    color:white;
+    color: white;
     background: #ef571b;
     transition: .2s;
-
 }
 
-.restbutton {
-    padding:20px;
-    border-width: 2px;
-    
-}
+/* ---------- RIGHT SIDE ---------- */
 
-.orderwrapper {
-    padding:20px
+.navbar-right {
+    flex-shrink: 0;
 }
 
 .orderbutton {
-    border-width: 2px;
-    border-color: white;
+    border: 2px solid white;
     color: white;
-    padding: 10px;
+    background: #ef571b;
+    padding: clamp(8px, 1.4vw, 10px) clamp(16px, 3vw, 20px);
+    font-size: clamp(14px, 1.2vw, 16px);
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 999px;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
-.book {
-    color:#ef571b;
+.company-logo {
+    width: clamp(70px, 8vw, 100px);
+    height: auto;
+    flex-shrink: 0;
 }
 
-.dropdown {
-    display: none;
-}
+/* ---------- BREAKPOINTS ---------- */
 
-.navicon {
-    display: block;
-}
-
-
-
-@media (max-width:1024px) {
+/* Tighten nav before it hits the mobile swap, so mid-size laptops/landscape
+   tablets don't overlap the order button */
+@media (max-width: 1280px) {
     .componentBar {
-        display: none;
+        gap: clamp(2px, 0.6vw, 8px);
     }
 
-    .navicon {
-        display: none;
-    }
-
-    .dropdown {
-        display: block;
-    }
-
-    .orderwrapper {
-        padding:20px;
-        text-align: center;
+    .componentBar .Link {
+        padding: 0 clamp(6px, 0.8vw, 12px);
+        font-size: clamp(11px, 0.9vw, 14px);
     }
 }
+
+@media (max-width: 1024px) {
+    .componentBar,
+    .navicon-wrapper {
+        display: none;
+    }
+
+    .dropdown-trigger {
+        display: flex;
+    }
+}
+
+/* Tablet-specific override — sits between the mobile-icon-only range
+   and the 1024px nav swap, so iPad gets its own tuned sizes independent
+   of phone (clamp mins) and desktop (clamp maxes) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .orderbutton {
+        font-size: 17px;
+        padding: 12px 22px;
+    }
+
+    .dropdown-icon {
+        width: 50px;
+    }
+
+    /* Chakra Menu dropdown items — target the rendered menu content.
+       Verify these data-part values match your Chakra version in devtools. */
+    [data-part="content"] [data-part="item"] {
+        font-size: 17px !important;
+        padding: 12px 20px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .orderbutton span {
+        display: none;
+    }
+
+    .company-logo {
+        width: clamp(62px, 16vw, 70px);
+    }
+
+    .orderbutton {
+        padding: clamp(10px, 3vw, 12px);
+    }
+
+    .dropdown-icon {
+        width: clamp(42px, 9vw, 48px);
+    }
+}
+

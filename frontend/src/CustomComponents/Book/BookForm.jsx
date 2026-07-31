@@ -322,7 +322,7 @@ const BookForm = () => {
 
   return (
     <motion.div 
-      className='landscape:w-full w-[90%] gap-5 rounded-lg shadow-lg flex flex-col bg-[#f2eeee]/90' 
+      className='w-full gap-5 rounded-lg shadow-lg flex flex-col bg-[#f2eeee]/90' 
       style={{padding:'20px'}}
       initial={{ opacity:0, x:50 }}
       animate={{ opacity:1, x:0 }}

@@ -7,19 +7,21 @@ import Back2 from '@/assets/img/back2.png'
 const OtherLocations = ({ items = [] }) => {
     const [page, setPage] = useState(0)
     const navItemRefs = useRef([])
+    const prevPage = useRef(0)
 
     const handleNavClick = (index) => {
         setPage(index)
     }
 
-    // Keep the active nav item scrolled into view as the page changes
     useEffect(() => {
+        if (prevPage.current === page) return
+        prevPage.current = page
+
         const navItem = navItemRefs.current[page]
         if (!navItem) return
         navItem.scrollIntoView({
             behavior: 'smooth',
-            inline: 'center',
-            block: 'nearest'
+            inline: 'center'
         })
     }, [page])
 

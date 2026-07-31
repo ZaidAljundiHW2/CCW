@@ -1,66 +1,77 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useRef, useLayoutEffect, useEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from './CustomComponents/Navbar/Navbar'
 import Footer from './CustomComponents/Footer/Footer'
-import { useRef, useState, useLayoutEffect } from 'react'
 
 const Layout = () => {
 
-  const navRef = useRef(null);
-  const dropdown = useRef(null);
-  const footerRef = useRef(null);
+  const navRef = useRef(null)
+  const footerRef = useRef(null)
+  const { pathname } = useLocation()
 
   useLayoutEffect(() => {
-    const node = navRef.current
-    const nodefooter = footerRef.current
+    const navNode = navRef.current
+    const footerNode = footerRef.current
+    if (!navNode) return
 
-    if (!node) return
-
-    const updateHeight = () => {
-        document.documentElement.style.setProperty(
-            '--nav-height',
-            `${node.offsetHeight}px`
-        )
+    const setVar = (name, px) => {
+      document.documentElement.style.setProperty(name, `${px}px`)
     }
 
-    updateHeight()
+    const navObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const height = entry.borderBoxSize?.[0]?.blockSize ?? entry.target.offsetHeight
+        setVar('--nav-height', height)
+      }
+    })
+    navObserver.observe(navNode, { box: 'border-box' })
 
-    const observer = new ResizeObserver(updateHeight)
-    observer.observe(node)
-
-
-    let observer2;
-
-    if (nodefooter) {
-        const updateFooterHeight = () => {
-            document.documentElement.style.setProperty(
-                '--footer-height',
-                `${nodefooter.offsetHeight}px`
-            )
+    let footerObserver
+    if (footerNode) {
+      footerObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const height = entry.borderBoxSize?.[0]?.blockSize ?? entry.target.offsetHeight
+          setVar('--footer-height', height)
         }
-
-        updateFooterHeight()
-
-        observer2 = new ResizeObserver(updateFooterHeight)
-        observer2.observe(nodefooter)
+      })
+      footerObserver.observe(footerNode, { box: 'border-box' })
     }
 
+    const recheck = () => {
+      setVar('--nav-height', navNode.offsetHeight)
+      if (footerNode) setVar('--footer-height', footerNode.offsetHeight)
+    }
+
+    const images = navNode.querySelectorAll('img')
+    images.forEach((img) => {
+      if (!img.complete) img.addEventListener('load', recheck, { once: true })
+    })
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(recheck)
+    }
+
+    window.addEventListener('resize', recheck)
 
     return () => {
-        observer.disconnect()
-        observer2?.disconnect()
+      navObserver.disconnect()
+      footerObserver?.disconnect()
+      window.removeEventListener('resize', recheck)
+      images.forEach((img) => img.removeEventListener('load', recheck))
     }
 
-  }, []);
+  }, [])
+
+  // Scroll the page back to the top whenever the route changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname])
 
   return (
     <>
-
-        <Navbar ref={navRef}/>
-        <Outlet />
-        <Footer ref={footerRef}/>
-
-    
+      <Navbar ref={navRef} />
+      <Outlet />
+      <Footer ref={footerRef} />
     </>
   )
 }
