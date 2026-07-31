@@ -22,7 +22,7 @@
 
 .navbar-left {
     position: relative;
-    min-width: 0; /* allows children to shrink instead of overflowing */
+    min-width: 0;
 }
 
 .navicon-wrapper {
@@ -45,11 +45,6 @@
     justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
-}
-
-.dropdown-icon {
-    width: clamp(42px, 9vw, 48px);
-    height: auto;
 }
 
 .componentBar {
@@ -76,9 +71,8 @@
     font-family: HeadingNow, sans-serif;
     font-size: clamp(12px, 1vw, 16px);
     z-index: 10;
-    mix-blend-mode: difference;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 6px;
 }
 
@@ -127,8 +121,6 @@
 
 /* ---------- BREAKPOINTS ---------- */
 
-/* Tighten nav before it hits the mobile swap, so mid-size laptops/landscape
-   tablets don't overlap the order button */
 @media (max-width: 1280px) {
     .componentBar {
         gap: clamp(2px, 0.6vw, 8px);
@@ -151,21 +143,12 @@
     }
 }
 
-/* Tablet-specific override — sits between the mobile-icon-only range
-   and the 1024px nav swap, so iPad gets its own tuned sizes independent
-   of phone (clamp mins) and desktop (clamp maxes) */
 @media (min-width: 601px) and (max-width: 1024px) {
     .orderbutton {
         font-size: 17px;
         padding: 12px 22px;
     }
 
-    .dropdown-icon {
-        width: 50px;
-    }
-
-    /* Chakra Menu dropdown items — target the rendered menu content.
-       Verify these data-part values match your Chakra version in devtools. */
     [data-part="content"] [data-part="item"] {
         font-size: 17px !important;
         padding: 12px 20px !important;
@@ -184,9 +167,70 @@
     .orderbutton {
         padding: clamp(10px, 3vw, 12px);
     }
-
-    .dropdown-icon {
-        width: clamp(42px, 9vw, 48px);
-    }
 }
 
+/* ---------- BURGER ----------
+   Color driven by [data-theme] on .navbar-container (set from JS via
+   useNavTheme), not mix-blend-mode — a fixed + z-index navbar creates
+   its own stacking context that blend modes cannot see past, so it can
+   never actually react to page content behind it. */
+
+.burger {
+  position: relative;
+  width: clamp(32px, 6vw, 40px);
+  height: clamp(24px, 4.5vw, 30px);
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  border-radius: 9px;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out, background-color .2s ease;
+}
+
+.navbar-container[data-theme="dark"] .burger span {
+  background: white;
+}
+
+.navbar-container[data-theme="light"] .burger span {
+  background: #1a1a1a;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-100%);
+}
+
+.burger span:nth-of-type(1).burger-open {
+  transform: rotate(45deg);
+  top: 0px;
+  left: 5px;
+}
+
+.burger span:nth-of-type(2).burger-open {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger span:nth-of-type(3).burger-open {
+  transform: rotate(-45deg);
+  top: 22px;
+  left: 5px;
+}

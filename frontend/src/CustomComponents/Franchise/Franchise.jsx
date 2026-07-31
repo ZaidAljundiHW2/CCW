@@ -9,15 +9,21 @@ const Franchise = () => {
   return (
     <div id='franchise'>
 
+      <section data-navbar-theme="dark">
+        <FranchiseHeader />
+      </section>
 
-      <FranchiseHeader />
-
-      <WhyCC />
-
+      <section data-navbar-theme="light">
+        <WhyCC />
+      </section>
       {/* <YNA /> */}
 
-      <Steps />
+      <section data-navbar-theme="dark">
+        <Steps />
+      </section>
 
+
+      
       <RequestFranchise />
 
     </div>

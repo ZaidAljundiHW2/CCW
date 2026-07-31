@@ -8,18 +8,26 @@ import CompanyLogo from '@/assets/img/logo-full-transparent.png'
 import WheelIcon from '@/assets/icons/benefit-wheel.png'
 import OrderPopup from './OrderPopup';
 import { Link } from 'react-router-dom';
+import useNavTheme from './useNavTheme'
 
 const Navbar = forwardRef((props, ref) => {
 
     const [expandedMenu, setExpandedMenu] = useState(false);
     const [showOrderPopup, setShowOrderPopup] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const navTheme = useNavTheme('dark'); // 'dark' | 'light'
 
     const toggleMenu = () => {
         setExpandedMenu(!expandedMenu)
     }
 
   return (
-    <div className='fixed w-full z-50 navbar-container' id='navbar' ref={ref}>
+    <div
+        className='fixed w-full z-50 navbar-container'
+        id='navbar'
+        ref={ref}
+        data-theme={navTheme}
+    >
 
         <Flex className='navbar-inner' align='center' justify='space-between'>
 
@@ -36,15 +44,19 @@ const Navbar = forwardRef((props, ref) => {
                     />
                 </Box>
 
-                {/* Mobile dropdown menu */}
-                <Menu.Root>
+                {/* Mobile dropdown menu — open state controlled by Chakra,
+                    no checkbox/label (that pattern fired two click events
+                    per tap: one on the label, one synthesized on the
+                    checkbox, which opened then immediately closed the menu) */}
+                <Menu.Root
+                    open={mobileMenuOpen}
+                    onOpenChange={(details) => setMobileMenuOpen(details.open)}
+                >
                     <Menu.Trigger asChild>
-                        <Box className='dropdown-trigger'>
-                            <img
-                                src={WheelIcon}
-                                alt='menu icon'
-                                className='dropdown-icon'
-                            />
+                        <Box className='dropdown-trigger burger' aria-label='Open menu'>
+                            <span className={mobileMenuOpen ? 'burger-open' : ''}></span>
+                            <span className={mobileMenuOpen ? 'burger-open' : ''}></span>
+                            <span className={mobileMenuOpen ? 'burger-open' : ''}></span>
                         </Box>
                     </Menu.Trigger>
                     <Portal>

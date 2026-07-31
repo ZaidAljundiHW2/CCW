@@ -16,12 +16,18 @@ const About = () => {
         }}
     >
 
-        <OurStory />
+        <section data-navbar-theme="dark">
+          <OurStory />
+        </section>
 
-        <OurValues />
+        <section data-navbar-theme="light">
+          <OurValues />
+        </section>
 
-        <OurMission />
-
+        <section data-navbar-theme="dark">
+          <OurMission />
+        </section>
+        
         {/* <GalleryComponent /> */}
 
         

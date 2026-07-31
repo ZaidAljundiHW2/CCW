@@ -8,13 +8,21 @@ const Home = () => {
   return (
     <>
 
-        <Hero />
+        <section data-navbar-theme="dark">
+            <Hero />
+        </section>
 
-        <CallToAction />
+        <section data-navbar-theme="dark">
+            <CallToAction />
+        </section>
 
-        <OurMission />
+        <section data-navbar-theme="light">
+            <OurMission />
+        </section>
 
-        <GalleryComponent />
+        <section data-navbar-theme="light">
+            <GalleryComponent />
+        </section>
       
     </>
   )

@@ -64,7 +64,6 @@ const Book = () => {
                 landscape:items-center
                 justify-center
                 landscape:flex-1
-                flex-1
                 
             '
             

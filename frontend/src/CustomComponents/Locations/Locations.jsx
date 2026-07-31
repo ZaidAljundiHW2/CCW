@@ -65,12 +65,17 @@ const Locations = () => {
   return (
     <div className='locationswrapper'>
 
-        <ExistingLocation locationitem={locations.find(item => item.ismainbranch == true)}/>
+        <section data-navbar-theme="light">
+          <ExistingLocation locationitem={locations.find(item => item.ismainbranch == true)}/>
+        </section>
 
-        {locations.filter(item => item.ismainbranch == false) && (<OtherLocations items={locations.filter(item => item.ismainbranch == false)} />)}
+        <section data-navbar-theme="dark">
+          {locations.filter(item => item.ismainbranch == false) && (<OtherLocations items={locations.filter(item => item.ismainbranch == false)} />)}
+        </section>
 
-        {(comingSoonItems.length > 0) && (<ComingSoon locations={comingSoonItems}/>)}
-
+        <section data-navbar-theme="light">
+          {(comingSoonItems.length > 0) && (<ComingSoon locations={comingSoonItems}/>)}
+        </section>
       
     </div>
   )
