@@ -1359,9 +1359,9 @@ app.delete('/admin/CMS/locations/delete/:id',protect, async(req,res) => {
 })
 
 
-// module.exports = app;
+module.exports = app;
 
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
