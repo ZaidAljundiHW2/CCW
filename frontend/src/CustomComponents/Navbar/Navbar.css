@@ -69,7 +69,7 @@
     justify-content: center;
     align-items: center;
     font-family: HeadingNow, sans-serif;
-    font-size: clamp(12px, 1vw, 16px);
+    font-size: clamp(20px, 1vw, 16px);
     z-index: 10;
     color: white;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -169,11 +169,6 @@
     }
 }
 
-/* ---------- BURGER ----------
-   Color driven by [data-theme] on .navbar-container (set from JS via
-   useNavTheme), not mix-blend-mode — a fixed + z-index navbar creates
-   its own stacking context that blend modes cannot see past, so it can
-   never actually react to page content behind it. */
 
 .burger {
   position: relative;

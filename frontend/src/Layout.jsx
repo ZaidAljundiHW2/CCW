@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from './CustomComponents/Navbar/Navbar'
 import Footer from './CustomComponents/Footer/Footer'
+import FooterMobile from './CustomComponents/Footer/Footer'
 
 const Layout = () => {
 
@@ -71,6 +72,7 @@ const Layout = () => {
     <>
       <Navbar ref={navRef} />
       <Outlet />
+
       <Footer ref={footerRef} />
     </>
   )

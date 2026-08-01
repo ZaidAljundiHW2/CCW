@@ -19,10 +19,13 @@ const OtherLocations = ({ items = [] }) => {
 
         const navItem = navItemRefs.current[page]
         if (!navItem) return
+
         navItem.scrollIntoView({
             behavior: 'smooth',
-            inline: 'center'
+            inline: 'center',
+            block: 'nearest'
         })
+
     }, [page])
 
     if (items.length === 0) return null

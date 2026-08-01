@@ -65,6 +65,7 @@ const DeleteCS = ({setShowDelete, CSItem, setShowEditCSItem, setShowEditCS}) => 
                 flex-col
                 text-center
                 gap-3
+                portrait:w-[90%]
             '
 
             style={{

@@ -37,12 +37,17 @@
     align-items: center;
     display: flex;
     padding:10px;
-    border-radius: 20px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: white;
+    transition: .3s;
+
 }
 
 .ELBook:hover {
     background-color: white;
     color: #012447;
+    border-color: #012447;
 }
 
 .ELDir {
@@ -53,12 +58,18 @@
     align-items: center;
     display: flex;
     padding:10px;
-    border-radius: 20px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: white;
+    transition: .3s;
+
 } 
 
 .ELDir:hover {
     background-color: white;
-    color:#ef571b
+    color:#ef571b;
+    border-color: #ef571b;
+    
 }
 
 @media (orientation:portrait) {

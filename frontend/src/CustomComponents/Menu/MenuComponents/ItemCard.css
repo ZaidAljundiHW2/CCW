@@ -4,15 +4,14 @@
 }
 
 .ItemCard {
-    width:100%;
-    aspect-ratio: 1/1;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 220px;
     display: flex;
     justify-content: end;
     flex-direction: column;
     overflow: hidden;
     text-align: center;
-
-    
 }
 
 .ItemCard h1 {
@@ -29,7 +28,6 @@
 
     .ItemCard {
         min-height:100px;
-        min-height: 100px;
         
     }
 

@@ -65,6 +65,7 @@ const DeleteLocation = ({item, setShowDelete, setShowEdit}) => {
             flex-col
             text-center
             gap-3
+            portrait:w-[90%]
         '
 
         style={{

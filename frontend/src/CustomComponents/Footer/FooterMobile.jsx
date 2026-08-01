@@ -17,7 +17,7 @@ import PrivacyPolicy from './PrivacyPolicy'
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const Footer = forwardRef((props, ref) => {
+const FooterMobile = forwardRef((props, ref) => {
 
     const [showPP, setShowPP] = useState(false);
     const [showToS, setShowToS] = useState(false);
@@ -186,39 +186,19 @@ const Footer = forwardRef((props, ref) => {
                                 </Flex>
                             </a>
 
-                            <a 
-                                href={`tel:${genDetails.find(item => item.label === "Phone Number")?.val}`}
-                            >
-                                <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
+                            <Flex className='items-center landscape:gap-5 gap-1'>
+                                <CiPhone className='footericon' color='gold'/>
+                                <p className='footertext'>
+                                    {genDetails.find(item => item.label === "Phone Number")?.val}
+                                </p>
+                            </Flex>
 
-                                    <CiPhone 
-                                        className='footericon' 
-                                        color='gold'
-                                    />
-
-                                    <p className='footertext'>
-                                        {genDetails.find(item => item.label === "Phone Number")?.val}
-                                    </p>
-
-                                </Flex>
-                            </a>
-
-                            <a 
-                                href={`mailto:${genDetails.find(item => item.label === "Email")?.val}`}
-                            >
-                                <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
-
-                                    <CiMail 
-                                        className='footericon' 
-                                        color='gold'
-                                    />
-
-                                    <p className='footertext'>
-                                        {genDetails.find(item => item.label === "Email")?.val}
-                                    </p>
-
-                                </Flex>
-                            </a>
+                            <Flex className='items-center landscape:gap-5 gap-1'>
+                                <CiMail className='footericon' color='gold'/>
+                                <p className='footertext'>
+                                    {genDetails.find(item => item.label === "Email")?.val}
+                                </p>
+                            </Flex>
 
                             <Flex className='items-center landscape:gap-5 gap-1'>
                                 <CiClock2 className='footericon' color='gold'/>
@@ -327,4 +307,4 @@ const Footer = forwardRef((props, ref) => {
     )
 })
 
-export default Footer;
+export default FooterMobile;

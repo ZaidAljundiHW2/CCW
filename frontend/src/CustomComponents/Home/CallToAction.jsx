@@ -80,7 +80,12 @@ const CallToAction = () => {
                         borderColor:'white',
                         background:'black',
                         color:'white',
+                        padding:'10px',
+                        fontSize: 'clamp(.9rem, 1vw, 1.5rem)',
+                        borderRadius:'10px'
+
                     }}
+
 
                     size={'xl'}
 

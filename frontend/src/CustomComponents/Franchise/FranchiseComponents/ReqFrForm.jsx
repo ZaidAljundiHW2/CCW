@@ -383,6 +383,7 @@ const ReqFrForm = () => {
 
             <Button bg={'#ef571b'} color={'white'} onClick={() => uploadFranchise()}>
                 REQUEST FRANCHISE INFO
+                <FaRegPaperPlane />
             </Button>
 
         </form>

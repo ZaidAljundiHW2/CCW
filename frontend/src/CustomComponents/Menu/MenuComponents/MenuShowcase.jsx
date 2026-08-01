@@ -140,7 +140,15 @@ const MenuShowcase = ({
             {options.map((option, i) => (
                 <motion.button
 
-                    className='msbutton'
+                    className="
+                        msbutton
+                        flex-1
+                        min-w-fit
+                        flex
+                        items-center
+                        justify-center
+                        flex-shrink-0
+                    "
 
                     key={i}
 
@@ -150,7 +158,9 @@ const MenuShowcase = ({
 
                         boxShadow: (selectedCat === option) ? '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)' : '0 0 #0000',
                         backgroundColor:(selectedCat === option) ? '#ef571b' : 'rgba(239, 87, 27, 0)',
-                        color:(selectedCat === option) ? '#ffffff' : '#012447'
+                        color:(selectedCat === option) ? '#ffffff' : '#012447',
+                        borderWidth:(selectedCat === option) ? '2px' : '0px',
+                        borderColor:(selectedCat === option) ? 'white' : 'transparent'
 
                     }}
 
@@ -160,7 +170,8 @@ const MenuShowcase = ({
                     }}
 
                     style={{
-                        borderRadius:'8px'
+                        borderRadius:'10px',
+                        
                     }}
                 >
                     {option}

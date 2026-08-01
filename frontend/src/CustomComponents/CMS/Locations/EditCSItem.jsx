@@ -112,7 +112,7 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
                 text-center
                 gap-3
                 max-h-[50%]
-                min-w-[50%]
+                portrait:w-[90%]
             '
             
             style={{

@@ -80,7 +80,6 @@ const EditCS = ({setShowEdit}) => {
                 flex-col
                 text-center
                 gap-3
-                max-h-[50%]
                 portrait:w-[90%]
 
             '

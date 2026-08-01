@@ -124,7 +124,6 @@ const Hero = () => {
               flex
               portrait:justify-center
               portrait:items-center
-              portrait:flex-col
               gap-5
             '
 
@@ -150,17 +149,8 @@ const Hero = () => {
 
               <FaCalendarAlt />
             </Link>
-              
-            
-            <Link to={'/Franchise'} className='herobutton' style={{background:'#68a7d6'}}>
-              Request Franchise
-
-              <FaDoorClosed />
-            </Link>
-
-            
-
-          </motion.div>
+      
+    </motion.div>
 
         </div>
 

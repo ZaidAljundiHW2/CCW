@@ -101,13 +101,13 @@ app.use("/coming-soon", publicLimiter);
 
 
 // public form submissions
-app.use("/admin/CMS/contact", formLimiter);
-app.use("/admin/booking", formLimiter);
-app.use("/franchise", formLimiter);
+// app.use("/admin/CMS/contact", formLimiter);
+// app.use("/admin/booking", formLimiter);
+// app.use("/franchise", formLimiter);
 
 
 // all CMS functionality
-app.use("/admin/CMS", adminLimiter);
+// app.use("/admin/CMS", adminLimiter);
 
 
 // every image upload endpoint

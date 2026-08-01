@@ -64,6 +64,8 @@ const GalleryComponent = () => {
         maxW="5xl"
         w="90%"
         gap="6"
+
+        
       >
         <Carousel.Control justifyContent="center" gap={{ base: "2", md: "6" }} width="full">
           <Carousel.PrevTrigger asChild>
@@ -113,7 +115,11 @@ const GalleryComponent = () => {
 
       {/* Thumbnail strip — capped to the SAME width as the carousel above,
           with the inner row scrolling horizontally instead of overflowing the page */}
-      <Flex align="center" gap={{ base: "2", md: "5" }} maxW="5xl" w="90%">
+      <Flex align="center" gap={{ base: "2", md: "5" }} maxW="5xl" w="90%" display={{
+    base: "flex",
+    _portrait: "none",
+    _landscape: "flex"
+  }}>
         <IconButton
           size={{ base: "sm", md: "lg" }}
           variant="outline"

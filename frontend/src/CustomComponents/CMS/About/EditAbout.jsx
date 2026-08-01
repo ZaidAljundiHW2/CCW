@@ -1,6 +1,7 @@
 import React from 'react'
 import { Flex, Field, Textarea, Span, Button } from '@chakra-ui/react'
 import { useState } from 'react'
+import { button } from 'motion/react-client';
 
 
 const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
@@ -9,10 +10,14 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
     const [isContentError, setIsContentError] = useState(false);
     const [contentErrorMessage, setContentErrorMessage]  = useState("");
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+
 
     const updateAboutContent = async(aboutitem, aboutcontent) => {
 
         try {
+
+            setButtonLoading(true);
 
             if (aboutcontent.trim().length == 0) {
 
@@ -113,7 +118,7 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
                     Cancel
                 </Button>
 
-                <Button className='editButton' onClick={() => updateAboutContent(aboutitem, content)}>
+                <Button className='editButton' loading={buttonLoading} onClick={() => updateAboutContent(aboutitem, content)}>
                     Update
                 </Button>
             </Flex>

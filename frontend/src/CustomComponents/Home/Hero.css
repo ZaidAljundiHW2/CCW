@@ -26,7 +26,6 @@
     gap: 5px;
     font-size: clamp(.9rem, 1vw, 1.5rem);
     color: white;
-    width:40%
 }
 
 .herobutton:hover {
