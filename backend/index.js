@@ -55,67 +55,7 @@ function getPublicIdFromUrl(url) {
     }
 }
 
-const publicLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 300,
-    standardHeaders: true,
-});
 
-
-const formLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 5,
-    standardHeaders: true,
-});
-
-
-const authLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 5,
-    standardHeaders: true,
-});
-
-
-const adminLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    standardHeaders: true,
-});
-
-
-const uploadLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 20,
-    standardHeaders: true,
-});
-
-// authentication
-app.use("/api/auth", authLimiter);
-
-
-// public website requests
-app.use("/menu", publicLimiter);
-app.use("/locations", publicLimiter);
-app.use("/gallery", publicLimiter);
-app.use("/coming-soon", publicLimiter);
-
-
-// public form submissions
-// app.use("/admin/CMS/contact", formLimiter);
-// app.use("/admin/booking", formLimiter);
-// app.use("/franchise", formLimiter);
-
-
-// all CMS functionality
-// app.use("/admin/CMS", adminLimiter);
-
-
-// every image upload endpoint
-app.use("/upload", uploadLimiter);
-app.use("/replace", uploadLimiter);
-app.use("/create", uploadLimiter);
-app.use("/edit", uploadLimiter);
-app.use("/delete", uploadLimiter);
 
 //ROUTES
 
