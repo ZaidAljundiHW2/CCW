@@ -159,7 +159,7 @@ const Scrollbar = () => {
             >
                 <Menu.Root>
                     <Menu.Trigger asChild bg={'black'}>
-                        <Button bg={'black'} color={'white'}>
+                        <Button bg={'black'} padding={'20px'} color={'white'}>
                             Open Menu
                         </Button>
                     </Menu.Trigger>
