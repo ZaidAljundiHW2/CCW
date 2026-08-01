@@ -26,7 +26,7 @@ const EditCS = ({setShowEdit}) => {
     const [selectedItem, setSelectedItem] = useState();
     const [showEditCSItem, setShowEditCSItem] = useState(false);
 
-    const API = import.meta.env.VITE_API_URL;
+
 
     const getCSLocations = async() => {
 

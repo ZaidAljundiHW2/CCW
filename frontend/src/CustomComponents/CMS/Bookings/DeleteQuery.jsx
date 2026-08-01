@@ -1,14 +1,16 @@
 import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
-
+import { useState } from 'react';
 
 const DeleteQuery = ({item, setShowDelete}) => {
 
-
+    const [buttonLoading, setButtonLoading] = useState(false);
+    
     const deleteBooking = async(item) => {
 
         try {
 
+            setButtonLoading(true);
             const id = item.bookingid;
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/${id}`, {
@@ -76,7 +78,7 @@ const DeleteQuery = ({item, setShowDelete}) => {
 
             </Button>
 
-            <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteBooking(item)}>
+            <Button className='editButton' loading={buttonLoading} style={{background:'#4BB543'}} onClick={() => deleteBooking(item)}>
 
             Yes
 

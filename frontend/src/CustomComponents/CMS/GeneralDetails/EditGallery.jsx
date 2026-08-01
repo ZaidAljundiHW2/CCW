@@ -25,13 +25,20 @@ const EditGallery = ({setShowEdit}) => {
 
   const [selectedImage, setSelectedImage] = useState();
 
+  const [buttonLoading, setButtonLoading] = useState(false);
+  
+
 
   const handleUpload = async () => {
     try {
 
+      
+      setButtonLoading(true)
+
       if (file === null) {
         setIsImgError(true);
         setImgErrorMessage("Select an image");
+        setButtonLoading(false);
         return;
       }
 
@@ -61,6 +68,8 @@ const EditGallery = ({setShowEdit}) => {
   const getImages = async() => {
 
     try {
+
+      
 
 
       const response = await fetch(`${import.meta.env.VITE_API_URL}/gallery`, {
@@ -193,6 +202,7 @@ const EditGallery = ({setShowEdit}) => {
             className='editButton' 
             style={{background:'#4BB543', alignSelf:'start'}}
             onClick={() => handleUpload()}
+            loading={buttonLoading}
           >
             Add
           </Button>

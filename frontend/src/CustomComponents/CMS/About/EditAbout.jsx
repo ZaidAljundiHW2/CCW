@@ -22,7 +22,8 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
             if (aboutcontent.trim().length == 0) {
 
                 setIsContentError(true)
-                setContentErrorMessage("Enter a value").
+                setContentErrorMessage("Enter a value");
+                setButtonLoading(false);
                 return;
             }
 

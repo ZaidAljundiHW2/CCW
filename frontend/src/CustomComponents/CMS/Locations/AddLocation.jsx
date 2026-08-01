@@ -79,6 +79,7 @@ const AddLocation = ({setShowAdd}) => {
 
     const [description, setDescription] = useState("");
 
+
     // --- Closed days: only offer days not already selected ---
     const availableDays = useMemo(
         () => DAYS_OF_WEEK.filter((day) => !closedDays.includes(day)),
@@ -213,6 +214,7 @@ const AddLocation = ({setShowAdd}) => {
             }
 
             if (end == true) {
+                setButtonLoading(false);
                 return;
             }
 

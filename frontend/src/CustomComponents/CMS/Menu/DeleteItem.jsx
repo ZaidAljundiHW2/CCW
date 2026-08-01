@@ -1,7 +1,11 @@
 import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
+import { useState } from 'react'
 
 const DeleteItem = ({setShowDelete, item}) => {
+
+    const [buttonLoading, setButtonLoading] = useState(false);
+
 
 
     const handleImageDelete = async(link) => {
@@ -37,6 +41,8 @@ const DeleteItem = ({setShowDelete, item}) => {
     const deleteItem = async(item) => {
 
         try {
+
+            setButtonLoading(true);
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/menu/menu-item/${item.fooditemid}`, {
 
@@ -111,7 +117,7 @@ const DeleteItem = ({setShowDelete, item}) => {
 
                 </Button>
 
-                <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteItem(item)}>
+                <Button className='editButton' loading={buttonLoading} style={{background:'#4BB543'}} onClick={() => deleteItem(item)}>
 
                     Yes
 

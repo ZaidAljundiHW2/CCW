@@ -15,12 +15,12 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
 
     const [isFileError, setIsFileError] = useState(false);
 
-    const API = import.meta.env.VITE_API_URL;
-
     const [isNameError, setIsNameError] = useState("");
     const [inputName, setInputName] = useState(CSItem.location);
     const [nameErrorMessage, setNameErrorMessage] = useState("");
     const [imgErrorMessage, setImgErrorMessage] = useState("");
+
+    const [buttonLoading, setButtonLoading] = useState(false);
 
     const [showDelete, setShowDelete] = useState(false);
 
@@ -53,10 +53,13 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
 
         try {
 
+            setButtonLoading(true);
+
             if (inputName.trim().length === 0) {
 
                 setIsNameError(true);
                 setNameErrorMessage("Input a value");
+                setButtonLoading(false);
                 return;
             }
 
@@ -202,7 +205,9 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
             <Flex className='justify-end gap-3'>
 
                 <Button className='editButton'  
-                    onClick={() => updateCS(inputName)}>
+                    onClick={() => updateCS(inputName)}
+                    loading={buttonLoading}
+                >
                     Update
                 </Button>
 

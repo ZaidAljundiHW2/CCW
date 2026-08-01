@@ -8,6 +8,7 @@ const AddCat = ({categories, setShowAdd}) => {
     const handleNameInputChange = (e) => setSelectedName(e.target.value);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [buttonLoading, setButtonLoading] = useState(false);
 
     const createCloudinaryFolder = async(catName) => {
 
@@ -32,17 +33,21 @@ const AddCat = ({categories, setShowAdd}) => {
 
         try {
 
+            setButtonLoading(true);
+
             const catNames = categories.map(category => category.category);
             console.log(catNames);
 
             if (catName.trim().length === 0) {
                 setErrorMessage("Enter a category name");
                 setIsError(true);
+                setButtonLoading(false);
                 return;
             }
 
             else if (catNames.includes(catName)) {
                 setErrorMessage("Category already exists");
+                setButtonLoading(false);
                 setIsError(true);
                 return;
             }
@@ -135,7 +140,7 @@ const AddCat = ({categories, setShowAdd}) => {
                         Cancel
                     </Button>
 
-                    <Button className='editButton' style={{background:'#4BB543'}} onClick={() => AddCategory(selectedName, categories)}>
+                    <Button className='editButton' loading={buttonLoading} style={{background:'#4BB543'}} onClick={() => AddCategory(selectedName, categories)}>
                         Add
                     </Button>
 

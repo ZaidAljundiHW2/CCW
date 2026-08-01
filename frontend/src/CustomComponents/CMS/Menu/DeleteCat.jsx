@@ -1,9 +1,11 @@
 import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
+import { useState } from 'react'
 
 const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
-
+  const [buttonLoading, setButtonLoading] = useState(false);
+  
   const deleteCloudinaryFolder = async(catname) => {
 
     try {
@@ -27,6 +29,8 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
   const deleteCat = async(category, categories) => {
     
     try {
+
+      setButtonLoading(true)
 
       let output = categories;
     
@@ -150,7 +154,7 @@ const DeleteCat = ({item, setShowDelete, categories, setShowEdit}) => {
 
           </Button>
 
-          <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteCat(item, categories)}>
+          <Button className='editButton' style={{background:'#4BB543'}} loading={buttonLoading} onClick={() => deleteCat(item, categories)}>
 
             Yes
 

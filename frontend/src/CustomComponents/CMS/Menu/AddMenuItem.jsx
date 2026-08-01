@@ -30,6 +30,9 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+
+
     const handleSelectFile = (e) => {
         const selected = e.target.files[0];
         if (fileImg) URL.revokeObjectURL(fileImg);
@@ -69,6 +72,8 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
         
         try {
 
+            setButtonLoading(true);
+
             let end = false;
 
             if (itemname.trim().length == 0) {
@@ -90,7 +95,10 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                 end = true;
             }
 
-            if (end) return;
+            if (end) {
+                setButtonLoading(false);
+                return;   
+            }
 
             const hasDesc = itemdesc.trim().length > 0;
 
@@ -356,6 +364,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
                 <Button className='editButton' 
                     style={{background:'#4BB543'}} 
+                    loading={buttonLoading}
                     onClick={() => addItem(inputName, inputPrice, placeholderImgsrc, inputDesc, selectedCategory, categories)}>
                     Add
                 </Button>

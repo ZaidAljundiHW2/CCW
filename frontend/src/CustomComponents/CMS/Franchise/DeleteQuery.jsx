@@ -1,12 +1,17 @@
 import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
-
+import { useState } from 'react';
 
 const DeleteQuery = ({item, setShowDelete}) => {
+
+    const [buttonLoading, setButtonLoading] = useState(false);
+    
 
     const deleteContact = async(item) => {
 
         try {
+
+            setButtonLoading(true);
 
             const id = item.franchiseid;
 
@@ -72,7 +77,7 @@ const DeleteQuery = ({item, setShowDelete}) => {
 
             </Button>
 
-            <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteContact(item)}>
+            <Button className='editButton' loading={buttonLoading} style={{background:'#4BB543'}} onClick={() => deleteContact(item)}>
 
                 Yes
 

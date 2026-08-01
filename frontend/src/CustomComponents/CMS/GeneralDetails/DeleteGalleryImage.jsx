@@ -1,12 +1,17 @@
 import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
+import { useState } from 'react';
 
 const DeleteGalleryImage = ({setShowEdit, imageobj, setShowDelete}) => {
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+    
 
     const deleteImage = async() => {
 
         try {
+
+            setButtonLoading(true);
 
             const body = {
 
@@ -60,7 +65,7 @@ const DeleteGalleryImage = ({setShowEdit, imageobj, setShowDelete}) => {
     
                 </Button>
     
-                <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteImage()}>
+                <Button className='editButton' loading={buttonLoading} style={{background:'#4BB543'}} onClick={() => deleteImage()}>
     
                     Yes
     

@@ -20,6 +20,8 @@ const AddCS = ({setShowAddCS}) => {
 
     const [isFileError, setIsFileError] = useState(false);
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+
     const handleSelectFile = (e) => {
         const selected = e.target.files[0];
         if (fileImg) URL.revokeObjectURL(fileImg);
@@ -48,6 +50,7 @@ const AddCS = ({setShowAddCS}) => {
         
         try {
 
+            setButtonLoading(true);
             let end = false;
 
             if (itemname.trim().length == 0) {
@@ -63,7 +66,10 @@ const AddCS = ({setShowAddCS}) => {
                 end = true;
             }
 
-            if (end) return;
+            if (end) {
+                setButtonLoading(false);
+                return;
+            }
 
             const body = {
 
@@ -220,6 +226,7 @@ const AddCS = ({setShowAddCS}) => {
                 <Button className='editButton' 
                     style={{background:'#4BB543'}} 
                     onClick={() => addCS(inputName)}>
+                    loading={buttonLoading}
                     Add
                 </Button>
 

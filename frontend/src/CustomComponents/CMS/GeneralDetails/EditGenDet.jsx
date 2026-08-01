@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react'
-import { Flex, Input, Textarea, Field, Span } from '@chakra-ui/react'
+import { Flex, Input, Textarea, Field, Span, Button } from '@chakra-ui/react'
 import { useState, useRef } from 'react';
 
 const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
 
     const textarea = editedItem.type === "Legal";
-
+    const [buttonLoading, setButtonLoading] = useState(false);
+    
     const [value, setValue] = useState(editedItem.val);
     const label = useRef(editedItem.label);
     const [errorMessage, setErrorMessage] = useState("");
     const [isError, setIsError] = useState(false);
 
     const updateVal = async (e) => {
+
+        setButtonLoading(true);
 
 
         e.preventDefault();
@@ -150,7 +153,7 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
                     '
                 >
 
-                    <button
+                    <Button
 
                         className='
                             rounded-lg
@@ -168,14 +171,16 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
                         onClick={() => setShowEdit(false)}
                     >
                         Cancel
-                    </button>
+                    </Button>
 
-                    <button
+                    <Button
                         className='
                             editButton
                             rounded-lg
                             
                         '
+
+                        loading={buttonLoading}
 
                         
                         type='submit'
@@ -183,7 +188,7 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
                         
                     >
                         Update
-                    </button>
+                    </Button>
 
                 </Flex>
             </form>

@@ -54,6 +54,9 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+    
+
     const getLocations = async() => {
 
         try {
@@ -170,6 +173,8 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
 
         try {
 
+            setButtonLoading(true);
+
             let end = false;
           
             if (name.trim().length === 0) {
@@ -258,7 +263,10 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                 setTimeErrorMessage("");
             }
 
-            if (end) return;
+            if (end) {
+                setButtonLoading(false);
+                return;
+            }
 
             const locationid = location.locationid;
 
@@ -613,7 +621,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
 
                 <Flex className='gap-2 justify-end'>
 
-                    <Button className='editButton' color={'white'} onClick={() => updateBooking(name, email, phoneNumber, date, numGuests, specialRequests, location, time)}>
+                    <Button className='editButton' loading={buttonLoading} color={'white'} onClick={() => updateBooking(name, email, phoneNumber, date, numGuests, specialRequests, location, time)}>
                         Update Reservation
                     </Button>
 

@@ -22,6 +22,9 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
     const handleRankInputChange = (e) => setRankInput(e.target.value);
     const handleNameInputChange = (e) => setSelectedName(e.target.value);
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+
+
 
 
     const isNumericString = (val) => {
@@ -64,16 +67,20 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
 
     const handleUpdate = async(originalName, newRank, newName, categories) => {
 
+        setButtonLoading(true);
+
         if(newName.trim().length === 0) {
 
             setIsNameError(true);
             setNameErrorMessage("Enter a name.");
+            setButtonLoading(false);
             return;
 
         }
 
         if (newRank.trim().length === 0) {
             setIsRankError(true);
+            setButtonLoading(false);
             setRankErrorMessage("Enter a rank.");
             return;
         }
@@ -138,8 +145,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
         }
 
         output[output.findIndex(item => item.category === category.category)].category = category.newCat;
-
-
+        
         for (const item of output) {
 
             const body = {
@@ -312,7 +318,7 @@ const CatEditPopup = ({cats, catItem, setShowEdit}) => {
 
                         <Flex className='w-full gap-5'>
 
-                            <Button className='editButton flex-1' onClick={async() => await handleUpdate(selectedCat, rankInput, selectedName, catItem)}>
+                            <Button className='editButton flex-1' loading={buttonLoading} onClick={async() => await handleUpdate(selectedCat, rankInput, selectedName, catItem)}>
 
                                 Update
 

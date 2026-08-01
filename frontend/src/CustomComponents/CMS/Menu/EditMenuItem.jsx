@@ -33,6 +33,9 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
 
+    const [buttonLoading, setButtonLoading] = useState(false);
+    
+
     const handleSelectFile = (e) => {
         const selected = e.target.files[0];
         if (fileImg) URL.revokeObjectURL(fileImg);
@@ -72,6 +75,8 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
         try {
 
+            setButtonLoading(true);
+
             let end = false;
 
             if (inputName.trim().length == 0) {
@@ -86,7 +91,10 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 end = true;
             }
 
-            if (end) return;
+            if (end) {
+                setButtonLoading(false);
+                return;
+            }
 
             const categoryid = categories.find(cat => cat.category === selectedCategory).categoryid;
             const fooditemid = item.fooditemid;
@@ -370,7 +378,9 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
                 <Button className='editButton' 
                     style={{background:'#0076df'}} 
-                    onClick={() => handleUpdate(menuitem, categories)}>
+                    onClick={() => handleUpdate(menuitem, categories)}
+                    loading={buttonLoading}
+                >
                     Update
                 </Button>
 

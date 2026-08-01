@@ -1,14 +1,16 @@
 import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
+import { useState } from 'react';
 
 const DeleteCS = ({setShowDelete, CSItem, setShowEditCSItem, setShowEditCS}) => {
 
 
-  const API = import.meta.env.VITE_API_URL;
-
+  const [buttonLoading, setButtonLoading] = useState(false);
   const deleteCSItem = async() => {
 
     try {
+
+      setButtonLoading(true);
 
 
       const body = {
@@ -94,7 +96,7 @@ const DeleteCS = ({setShowDelete, CSItem, setShowEditCSItem, setShowEditCS}) => 
 
                 </Button>
 
-                <Button className='editButton' style={{background:'#4BB543'}} onClick={() => deleteCSItem()}>
+                <Button className='editButton' loading={buttonLoading} style={{background:'#4BB543'}} onClick={() => deleteCSItem()}>
 
                     Yes
 

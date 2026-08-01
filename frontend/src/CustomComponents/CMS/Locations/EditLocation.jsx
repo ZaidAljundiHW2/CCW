@@ -202,6 +202,7 @@ const EditLocation = ({ item, setShowEdit }) => {
             }
 
             if (end == true) {
+                setIsButtonLoading(false);
                 return;
             }
 
