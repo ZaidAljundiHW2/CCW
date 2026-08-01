@@ -201,7 +201,7 @@ const AddCS = ({setShowAddCS}) => {
                                 onChange={handleSelectFile}
                                 multiple={false}
                                 style={{ display: 'none' }}
-                                accept="image/png, image/jpeg" 
+                                accept="image/*" 
                             />
                             
                             {/* {file && (

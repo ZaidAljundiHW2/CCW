@@ -551,7 +551,7 @@ const EditLocation = ({ item, setShowEdit }) => {
                                     onChange={handleSelectFile}
                                     multiple={false}
                                     style={{ display: 'none' }}
-                                    accept="image/png, image/jpeg" 
+                                    accept="image/*" 
                                 />
                         
                             </div>

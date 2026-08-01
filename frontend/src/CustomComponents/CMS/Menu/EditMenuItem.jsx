@@ -261,7 +261,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                                 onChange={handleSelectFile}
                                 multiple={false}
                                 style={{ display: 'none' }}
-                                accept="image/png, image/jpeg" 
+                                accept="image/*" 
                             />
                             <code>
                                 {Object.keys(res).length > 0

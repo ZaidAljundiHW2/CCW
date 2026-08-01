@@ -269,7 +269,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                                 onChange={handleSelectFile}
                                 multiple={false}
                                 style={{ display: 'none' }}
-                                accept="image/png, image/jpeg" 
+                                accept="image/*" 
                             />
                             
                             {/* {file && (
