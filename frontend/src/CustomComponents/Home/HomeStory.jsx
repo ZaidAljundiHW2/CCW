@@ -72,7 +72,7 @@ const HomeStory = () => {
     >
 
       <Flex
-        className='flex-col portrait:flex-row portrait:gap-2 justify-center items-end'
+        className='flex-col portrait:flex-row portrait:gap-2 landscape:order-2 justify-center items-end'
       >
 
         
@@ -116,7 +116,7 @@ const HomeStory = () => {
 
 
 
-      <Flex className='justify-center flex-1 items-center text-right portrait:text-center'>
+      <Flex className='justify-center flex-1 items-center landscape:order-1 text-right portrait:text-center'>
 
         {(isLoading) ? (
             <p style={{color:'black'}}>Loading...</p>
