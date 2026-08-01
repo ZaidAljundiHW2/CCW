@@ -3,6 +3,7 @@ import Hero from './Hero'
 import CallToAction from './CallToAction'
 import OurMission from '../About/AboutComponents/OurMission'
 import GalleryComponent from '../About/AboutComponents/GalleryComponent'
+import HomeStory from './HomeStory'
 
 const Home = () => {
   return (
@@ -18,6 +19,10 @@ const Home = () => {
 
         <section data-navbar-theme="light">
             <OurMission />
+        </section>
+
+        <section data-navbar-theme="dark">
+            <HomeStory />
         </section>
 
         <section data-navbar-theme="light">

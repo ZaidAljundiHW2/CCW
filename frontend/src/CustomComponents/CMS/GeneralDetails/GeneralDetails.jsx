@@ -17,6 +17,7 @@ const GeneralDetails = () => {
     const [showEdit, setShowEdit] = useState(false);
     const [legal, setLegal] = useState([]);
     const [isLegal, setIsLegal] = useState(false);
+    const [homestory, setHomestory] = useState("");
 
     const [showEditGallery, setShowEditGallery] = useState(false);
 
@@ -74,10 +75,27 @@ const GeneralDetails = () => {
 
     }
 
+    const getHomeStory = async() => {
+
+        try {
+
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/homestory`, {
+                credentials:'include',
+            });
+            const items = await res.json();
+
+            setHomestory(items);
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     const fetchAll = async () => {
 
         await getSocialMedia();
         await getFooterItems();
+        await getHomeStory();
         await getLegal();
     }
 
@@ -256,6 +274,44 @@ const GeneralDetails = () => {
             
 
         </Flex> */}
+
+        {/* Homepage story */}
+        <Flex 
+            className='
+                GDWrapper 
+                rounded-lg 
+                shadow-lg
+                flex-col
+            '
+        >
+
+            <h1 className='CMSHead'>
+                Home page story
+            </h1>
+
+            {(
+
+                isLoading ? (
+                    <p style={{color:'black'}}>Loading...</p>
+                )
+
+                :
+
+                (
+                    <div>
+                        <InfoBlock 
+                            setShowEdit={setShowEdit}
+                            setEditedObj={setEditedObj}
+                            item={homestory}
+                        />
+                    </div>
+                )
+
+            )}
+
+            
+
+        </Flex>
 
         {/* Gallery Edit */}
         <Flex 

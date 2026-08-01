@@ -1297,5 +1297,37 @@ app.delete('/admin/CMS/locations/delete/:id',protect, async(req,res) => {
     }
 })
 
+//get home story
+app.get('/homestory', async(req,res) => {
 
+    try {
+
+        const getHomeStory = await pool.query("SELECT * FROM generaldetails WHERE type = 'Home About'");
+        
+        res.json(getHomeStory.rows[0]);
+        
+    } catch (error) {
+        console.error(error);
+    }
+}) 
+
+//update home story
+app.put('/admin/CMS/general-details/homestory', async(req,res) => {
+    try {
+
+        const newVal = req.body.newval;
+
+        const updateHomeStory = await pool.query("UPDATE generaldetails SET val = $1 WHERE label=$2", [
+            newVal, 'Our Story'
+        ]);
+
+        res.json("success")
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+
+// app.listen(5000);
 module.exports = app;

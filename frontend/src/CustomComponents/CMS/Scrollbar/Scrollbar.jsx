@@ -140,29 +140,22 @@ const Scrollbar = () => {
             {/* MOBILE DROPDOWN MENU */}
 
 
-            <div
-                className='
-                    landscape:hidden
-                    fixed
-                    flex
-                    w-[20%]
-                    justify-start
-                    border-white
-                '
-                
-                style={{
-
-                    padding:'5px',
-                    borderWidth:'2px'
-
-                }}
-            >
+            <div className='landscape:hidden fixed top-3 left-3 flex'>
                 <Menu.Root>
-                    <Menu.Trigger asChild bg={'black'}>
-                        <Button bg={'black'} padding={'20px'} color={'white'}>
+                    <Menu.Trigger asChild>
+                        <Button
+                            bg={'black'}
+                            color={'white'}
+                            px={'20px'}
+                            py={'10px'}
+                            borderRadius={'md'}
+                            fontWeight={'medium'}
+                            width={'fit-content'}
+                        >
                             Open Menu
                         </Button>
                     </Menu.Trigger>
+
 
                     <Portal>
                         <Menu.Positioner>
