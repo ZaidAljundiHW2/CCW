@@ -123,158 +123,171 @@ const Footer = forwardRef((props, ref) => {
             {!isLoading && (
                 <>
 
-                    <Flex className='landscape:gap-15 gap-5'>
+                    <div className='landscape:gap-15 flex portrait:flex-col gap-5 w-full' style={{padding:'20px'}}>
 
-                        <Flex className='flex-1 items-center justify-center'>
+                        <div className='flex-1 flex items-center justify-center portrait:hidden'>
 
                         
                             <img src={Logo} className='footerlogo'/>
-                        </Flex>
+                        </div>
 
-                        {/* Quick Links */}
-                        <Flex className='flex-col'>
+                        <Flex className='portrait:order-2 landscape:gap-15'>
+                            {/* Quick Links */}
+                            <Flex className='flex-col flex-1'>
 
-                            <h1 className='FH'>
-                                QUICK LINKS
-                            </h1>
+                                <h1 className='FH'>
+                                    QUICK LINKS
+                                </h1>
 
-                            <Link to={'/'}>
-                                <p className='footertext footertextclickable'>Home</p>
-                            </Link>
-                            
-                            <Link to={'/Menu'}>
-                                <p className='footertext footertextclickable'>Menu</p>
-                            </Link>
+                                <Link to={'/'}>
+                                    <p className='footertext footertextclickable'>Home</p>
+                                </Link>
+                                
+                                <Link to={'/Menu'}>
+                                    <p className='footertext footertextclickable'>Menu</p>
+                                </Link>
 
-                            <Link to={'/Locations'}>
-                                <p className='footertext footertextclickable'>Locations</p>
-                            </Link>
+                                <Link to={'/Locations'}>
+                                    <p className='footertext footertextclickable'>Locations</p>
+                                </Link>
 
-                            <Link to={'/Franchise'}>
-                                <p className='footertext footertextclickable'>Franchise</p>
-                            </Link>
+                                <Link to={'/Franchise'}>
+                                    <p className='footertext footertextclickable'>Franchise</p>
+                                </Link>
 
-                            <Link to={'/About'}>
-                                <p className='footertext footertextclickable'>About Us</p>
-                            </Link>
+                                <Link to={'/About'}>
+                                    <p className='footertext footertextclickable'>About Us</p>
+                                </Link>
 
-                            <Link to={'/Contact'}>
-                                <p className='footertext footertextclickable'>Contact</p>
-                            </Link>
+                                <Link to={'/Contact'}>
+                                    <p className='footertext footertextclickable'>Contact</p>
+                                </Link>
 
-                            <Link to={'/Book'}>
-                                <p className='footertext footertextclickable'>Book</p>
-                            </Link>
+                                <Link to={'/Book'}>
+                                    <p className='footertext footertextclickable'>Book</p>
+                                </Link>
 
-                        </Flex>
+                            </Flex>
 
-                        {/* Contact */}
-                        <Flex className='flex-col gap-2'>
+                            {/* Contact */}
+                            <Flex className='flex-col gap-2 flex-1'>
 
-                            <h1 className='FH'>
-                                CONTACT US
-                            </h1>
+                                <h1 className='FH'>
+                                    CONTACT US
+                                </h1>
 
-                            <a href={genDetails.find(item => item.label === "Location")?.val} className='cursor-pointer'>
-                                <Flex className='items-center landscape:gap-5 gap-1'>
-                                    <CiLocationOn className='footericon' color='gold'/>
-                                    
+                                <a href={genDetails.find(item => item.label === "Location")?.val} className='cursor-pointer'>
+                                    <Flex className='items-center landscape:gap-5 gap-1'>
+                                        <CiLocationOn className='footericon' color='gold'/>
+                                        
+                                            <p className='footertext'>
+                                                {genDetails.find(item => item.label === "Address")?.val}
+                                            </p>
+                                        
+                                    </Flex>
+                                </a>
+
+                                <a 
+                                    href={`tel:${genDetails.find(item => item.label === "Phone Number")?.val}`}
+                                >
+                                    <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
+
+                                        <CiPhone 
+                                            className='footericon' 
+                                            color='gold'
+                                        />
+
                                         <p className='footertext'>
-                                            {genDetails.find(item => item.label === "Address")?.val}
+                                            {genDetails.find(item => item.label === "Phone Number")?.val}
                                         </p>
-                                    
-                                </Flex>
-                            </a>
 
-                            <a 
-                                href={`tel:${genDetails.find(item => item.label === "Phone Number")?.val}`}
-                            >
-                                <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
+                                    </Flex>
+                                </a>
 
-                                    <CiPhone 
-                                        className='footericon' 
-                                        color='gold'
-                                    />
+                                <a 
+                                    href={`mailto:${genDetails.find(item => item.label === "Email")?.val}`}
+                                >
+                                    <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
 
+                                        <CiMail 
+                                            className='footericon' 
+                                            color='gold'
+                                        />
+
+                                        <p className='footertext'>
+                                            {genDetails.find(item => item.label === "Email")?.val}
+                                        </p>
+
+                                    </Flex>
+                                </a>
+
+                                <Flex className='items-center landscape:gap-5 gap-1'>
+                                    <CiClock2 className='footericon' color='gold'/>
                                     <p className='footertext'>
-                                        {genDetails.find(item => item.label === "Phone Number")?.val}
+                                        {genDetails.find(item => item.label === "Timings")?.val}
                                     </p>
-
                                 </Flex>
-                            </a>
-
-                            <a 
-                                href={`mailto:${genDetails.find(item => item.label === "Email")?.val}`}
-                            >
-                                <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
-
-                                    <CiMail 
-                                        className='footericon' 
-                                        color='gold'
-                                    />
-
-                                    <p className='footertext'>
-                                        {genDetails.find(item => item.label === "Email")?.val}
-                                    </p>
-
-                                </Flex>
-                            </a>
-
-                            <Flex className='items-center landscape:gap-5 gap-1'>
-                                <CiClock2 className='footericon' color='gold'/>
-                                <p className='footertext'>
-                                    {genDetails.find(item => item.label === "Timings")?.val}
-                                </p>
-                            </Flex>
-
-                        </Flex>
-
-                        {/* Social Media */}
-
-                        <Flex className='flex-col'>
-
-                            <h1 className='FH'>FOLLOW US</h1>
-
-                            <Flex className='landscape:flex-row flex-col gap-2'>
-
-                                <a href={instLink}>
-                                    <img src={InstagramIcon} className='SMI'/>
-                                </a>
-
-                                <a href={tktkLink}>
-                                    <img src={TiktokIcon} className='SMI'/>
-                                </a>
-
-                                <a href={fcbkLink}>
-                                    <img src={FacebookIcon} className='SMI'/>
-                                </a>
 
                             </Flex>
 
                         </Flex>
+                        
 
-                        {/* Separator */}
-                        <Box className='w-[2px]'
-                            style={{
-                                background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'
-                            }}
-                        />
+                        <Flex>
 
-                        <Flex className='flex-col w-[20%] justify-start gap-0'>
+                            {/* Social Media */}
+                            <Flex className='flex-col flex-1 portrait:order-1'>
 
-                            <h1 className='FH2'> FRESH CATCHES</h1>
-                            <h1 className='FH2'> BIG FLAVOURS</h1>
-                            <h1 className='FH2'> GOOD TIMES AHEAD</h1>
+                                <h1 className='FH'>FOLLOW US</h1>
+
+                                <Flex className='gap-2'>
+
+                                    <a href={instLink}>
+                                        <img src={InstagramIcon} className='SMI'/>
+                                    </a>
+
+                                    <a href={tktkLink}>
+                                        <img src={TiktokIcon} className='SMI'/>
+                                    </a>
+
+                                    <a href={fcbkLink}>
+                                        <img src={FacebookIcon} className='SMI'/>
+                                    </a>
+
+                                </Flex>
+
+                            </Flex>
+
+                            {/* Separator */}
+                            {/* <Box className='w-[2px] portrait:hidden'
+                                style={{
+                                    background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'
+                                }}
+                            /> */}
+
+                            
+
+                        </Flex>
+
+                        <Flex className='flex-col portrait:flex-row flex-1 items-center justify-start gap-0 order-3'>
+                                
+                            <Flex className='flex-col portrait:flex-row'>
+                                <h1 className='FH2'> FRESH CATCHES</h1>
+                                <h1 className='FH2'> BIG FLAVOURS</h1>
+                                <h1 className='FH2'> GOOD TIMES AHEAD</h1>
+                            </Flex>
+                            
                             <img src={WaveIcon3} className='wi3'/>
 
                             <img src={Logo} className='footerlogo2'/>
 
 
                         </Flex>
+                        
 
 
 
-                    </Flex>
+                    </div>
 
                     {/* Separator */}
                     <Box className='w-[80%] h-[2px]'
@@ -284,7 +297,7 @@ const Footer = forwardRef((props, ref) => {
                     />
 
                     {/* TOS and Copyright */}
-                    <Flex className='items-center gap-6 portrait:gap-2 portrait:w-[80%] portrait:justify-center' style={{paddingLeft:'10px'}}>
+                    <Flex className='items-center gap-6 portrait:gap-2 portrait:justify-center'>
                         <h1 className='footertext'>
                             @ 2026 Captain's Crab Seafood Boil House. All Rights Reserved.
 

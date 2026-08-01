@@ -72,7 +72,7 @@ const HomeStory = () => {
     >
 
       <Flex
-        className='flex-col justify-center portrait:order-2 landscape:order-1'
+        className='flex-col portrait:flex-row portrait:gap-2 justify-center items-end'
       >
 
         
@@ -93,7 +93,7 @@ const HomeStory = () => {
 
           whileInView={{opacity:1, x:0}}
 
-          transition={{duration:.5, ease:'easeOut', delay:.2}}
+          transition={{duration:.5, ease:'easeOut', delay:.1}}
           viewport={{once:true}}
         >
           WHO ARE WE?
@@ -104,7 +104,7 @@ const HomeStory = () => {
 
           whileInView={{opacity:1, x:0}}
 
-          transition={{duration:.5, ease:'easeOut', delay:.2}}
+          transition={{duration:.5, ease:'easeOut'}}
           viewport={{once:true}}
         >
           WHO ARE WE?
@@ -116,7 +116,7 @@ const HomeStory = () => {
 
 
 
-      <Flex className='justify-center items-center landscape:order-2 portrait:order-1 text-right'>
+      <Flex className='justify-center flex-1 items-center text-right portrait:text-center'>
 
         {(isLoading) ? (
             <p style={{color:'black'}}>Loading...</p>
@@ -129,7 +129,7 @@ const HomeStory = () => {
             <div className='flex flex-col gap-3'>
 
 
-                <motion.p className='WhyCCText md:text-left text-center' style={{color:'white'}}
+                <motion.p style={{color:'white'}}
                     initial={{opacity:0, x:-50}}
 
                     whileInView={{opacity:1, x:0}}

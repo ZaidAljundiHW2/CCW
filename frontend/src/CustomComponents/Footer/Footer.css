@@ -16,14 +16,14 @@
 
 .FH {
     font-family: HeadingNow, 'sans-serif';
-    font-size: clamp(1rem, 2vw, 2.5rem);
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
     color: white;
    
 }
 
 .FH2 {
     font-family:PersonalServices, 'sans-serif';
-    font-size: clamp(.6rem, 2vw, 2.5rem);
+    font-size: clamp(1rem, 2vw, 2.5rem);
     color: #d9ebff;
 }
 
@@ -43,7 +43,7 @@
 
 .footertext {
     
-    font-size: clamp(.5rem, 1vw, 1.2rem);
+    font-size: clamp(1rem, 1vw, 1.2rem);
     color: white;
 }
 
@@ -56,13 +56,14 @@
 .footerlogo {
     width: 240px;
     height: auto;
+    flex-shrink: 0;
 }
 
 .footerlogo2 {
     display: none;
 }
 
-@media (max-width:768px) {
+@media (orientation: portrait) {
 
     .wi3 {
         display: none;
@@ -70,6 +71,8 @@
 
     .footerlogo2 {
         display: block;
+        width:50px;
+        height:50px
     }
     .footerwrapper {
         padding:5px
