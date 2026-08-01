@@ -145,7 +145,6 @@ const Scrollbar = () => {
                 className='
                     landscape:hidden
                     fixed
-                    bg-[#012447]
                     flex
                     w-[20%]
                     justify-start
@@ -163,42 +162,16 @@ const Scrollbar = () => {
 
 
 
-                <Menu.Root
-
-                    open={mobileMenuOpen}
-
-                    onOpenChange={(details) => 
-                        setMobileMenuOpen(details.open)
-                    }
-
-                >
-
-
-
+                <Menu.Root>
                     <Menu.Trigger asChild>
-
-
                         <Button variant="outline" size="sm">
-                            Open
+                            Open Menu
                         </Button>
-
-
                     </Menu.Trigger>
 
-
-
-
-
                     <Portal>
-
-
                         <Menu.Positioner>
-
-
                             <Menu.Content>
-
-
-
                                 <Link to={'Menu'}>
 
                                     <Menu.Item>
