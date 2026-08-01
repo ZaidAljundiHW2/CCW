@@ -2,7 +2,6 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const authRoutes = require("./authroutes/auth");
 const protect = require('./middleware/protect')
-const rateLimit = require("express-rate-limit");
 
 const express = require('express');
 const app = express();
@@ -61,16 +60,16 @@ function getPublicIdFromUrl(url) {
 
 //Get all menu items
 app.get('/menu/menu-items', async (req, res) => {
-    
+
     try {
 
         const menuItems = await pool.query("SELECT * FROM menu");
         res.json(menuItems.rows);
-        
+
     } catch (err) {
 
         console.error(err);
-        
+
     }
 })
 
@@ -81,11 +80,11 @@ app.get('/menu/menu-categories', async (req, res) => {
 
         const categories = await pool.query("SELECT * FROM menucategories ORDER BY DisplayOrder");
         res.json(categories.rows);
-        
+
     } catch (error) {
 
         console.error(error)
-        
+
     }
 })
 
@@ -96,11 +95,11 @@ app.get('/admin/CMS/general-details/social-media', async (req, res) => {
 
         const socialMedia = await pool.query("SELECT * FROM generaldetails WHERE type = 'Social Media'");
         res.json(socialMedia.rows);
-        
+
     } catch (error) {
 
         console.error(error);
-        
+
     }
 })
 
@@ -108,7 +107,7 @@ app.get('/admin/CMS/general-details/social-media', async (req, res) => {
 app.get('/admin/CMS/general-details/legal', async(req,res) => {
 
     try {
-        
+
         const getLegal = await pool.query("SELECT * FROM generaldetails WHERE type = 'Legal'");
         res.json(getLegal.rows);
 
@@ -124,11 +123,11 @@ app.get('/admin/CMS/general-details/footer', async (req, res) => {
 
         const footerinfo = await pool.query("SELECT * FROM generaldetails WHERE type = 'Footer'");
         res.json(footerinfo.rows);
-        
+
     } catch (error) {
         console.error(error)
     }
-    
+
 
 })
 
@@ -146,7 +145,7 @@ app.put('/admin/CMS/general-details/:id', protect, async (req, res) => {
         );
 
         res.json("General detail item updated");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -164,13 +163,13 @@ app.put('/admin/CMS/menu/menu-categories/:id', protect, async (req, res) => {
         const updateCat = await pool.query("UPDATE menucategories SET category = $1, displayorder = $2 WHERE categoryid = $3",
             [newName, newRank, id]
         );
-        
+
         res.json("Category updated");
-        
+
     } catch (error) {
         console.error(error)
     }
-    
+
 })
 
 //Delete menu category
@@ -184,11 +183,11 @@ app.delete('/admin/CMS/menu/menu-categories/:id', protect, async (req, res) => {
         );
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error)
     }
-    
+
 
 
 })
@@ -201,7 +200,7 @@ app.delete('/admin/CMS/menu/menu-categories/toggle/byo', protect, async (req, re
         const deleteBYO = await pool.query("DELETE FROM menucategories WHERE category='Build Your Own'");
 
         res.json("Success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -218,10 +217,10 @@ app.delete('/admin/CMS/menu/menu-categoryitems/:id', protect, async (req, res) =
             [catID]
         );
 
-      
+
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
         res.status(500).json(error.message);
@@ -243,12 +242,12 @@ app.post('/admin/CMS/menu/menu-categories', protect, async (req, res) => {
 
         res.json("success");
 
-        
-        
+
+
     } catch (error) {
 
         console.error(error);
-        
+
     }
 })
 
@@ -264,7 +263,7 @@ app.post('/admin/CMS/menu/menu-categories/toggle/byo', protect, async(req, res) 
         );
 
         res.json('Success');
-        
+
     } catch (error) {
         console.error(error);   
     }
@@ -274,7 +273,7 @@ app.post('/admin/CMS/menu/menu-categories/toggle/byo', protect, async(req, res) 
 app.put('/admin/CMS/menu/menu-item/:id', protect, async(req, res) => {
 
     try {
-        
+
         const fooditemid = req.params.id;
 
         const itemname = req.body.itemname;
@@ -300,7 +299,7 @@ app.put('/admin/CMS/menu/menu-item/:id', protect, async(req, res) => {
 app.post('/admin/CMS/menu/menu-item', protect, async(req, res) => {
 
     try {
-        
+
         const itemname = req.body.itemname;
         const hasdesc = req.body.hasdesc;
         const itemdescription = req.body.itemdescription;
@@ -333,11 +332,11 @@ app.delete('/admin/CMS/menu/menu-item/:id', protect, async(req, res) => {
         const deleteItem = await pool.query("DELETE FROM menu WHERE fooditemid = $1", [id]);
 
         res.json("Success");
-        
+
     } catch (error) {
 
         console.error(error);
-        
+
     }
 })
 
@@ -349,7 +348,7 @@ app.get('/admin/CMS/about', async(req,res) => {
         const getSections = await pool.query("SELECT * FROM about");
 
         res.json(getSections.rows);
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -368,7 +367,7 @@ app.put('/admin/CMS/about/:id', protect, async(req,res) => {
         );
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -382,7 +381,7 @@ app.get('/admin/CMS/about/story', async(req,res) => {
         const getStory = await pool.query("SELECT * FROM about WHERE aboutsection = 'Our Story'");
 
         res.json(getStory.rows[0]);
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -396,7 +395,7 @@ app.get('/admin/CMS/about/mission', async(req,res) => {
         const getMission = await pool.query("SELECT * FROM about WHERE aboutsection = 'Our Mission'");
 
         res.json(getMission.rows[0]);
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -406,7 +405,7 @@ app.get('/admin/CMS/about/mission', async(req,res) => {
 app.post('/admin/CMS/contact', async(req,res) => {
 
     try {
-        
+
         const name = req.body.name;
         const email = req.body.email;
         const phonenumber = req.body.phonenumber;
@@ -430,7 +429,7 @@ app.post('/admin/CMS/contact', async(req,res) => {
 app.get('/admin/CMS/contact/new', protect, async(req, res) => {
 
     try {
-        
+
         const getNewQueries = await pool.query("SELECT * FROM contact WHERE status='new'");
 
         res.json(getNewQueries.rows);
@@ -444,7 +443,7 @@ app.get('/admin/CMS/contact/new', protect, async(req, res) => {
 app.get('/admin/CMS/contact/complete', protect, async(req, res) => {
 
     try {
-        
+
         const getNewQueries = await pool.query("SELECT * FROM contact WHERE status='complete'");
 
         res.json(getNewQueries.rows);
@@ -458,7 +457,7 @@ app.get('/admin/CMS/contact/complete', protect, async(req, res) => {
 app.put('/admin/CMS/contact/new/:id', protect, async(req, res) => {
 
     try {
-        
+
         const id = req.params.id;
 
         const updateStatus = await pool.query("UPDATE contact SET status='complete' WHERE contactid=$1",
@@ -476,7 +475,7 @@ app.put('/admin/CMS/contact/new/:id', protect, async(req, res) => {
 app.put('/admin/CMS/contact/complete/:id', protect, async(req, res) => {
 
     try {
-        
+
         const id = req.params.id;
 
         const updateStatus = await pool.query("UPDATE contact SET status='new' WHERE contactid=$1",
@@ -502,7 +501,7 @@ app.delete('/admin/CMS/contact/:id', protect, async(req,res) => {
         );
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -531,7 +530,7 @@ app.post('/admin/booking', async(req,res) => {
         ]);
 
         res.json("success");
-        
+
     } catch (error) {
         console.error
     }
@@ -541,9 +540,9 @@ app.post('/admin/booking', async(req,res) => {
 app.get('/locations', async(req,res) => {
 
     try {
-        
+
         const getLocations = await pool.query("SELECT * FROM locations");
-        
+
         res.json(getLocations.rows);
 
     } catch (error) {
@@ -555,7 +554,7 @@ app.get('/locations', async(req,res) => {
 app.get('/admin/CMS/bookings/new', protect, async(req,res) => {
 
     try {
-        
+
         const getNewRes = await pool.query("SELECT * FROM bookings WHERE status='new'");
         res.json(getNewRes.rows);
 
@@ -568,7 +567,7 @@ app.get('/admin/CMS/bookings/new', protect, async(req,res) => {
 app.get('/admin/CMS/bookings/complete', protect, async(req,res) => {
 
     try {
-        
+
         const getNewRes = await pool.query("SELECT * FROM bookings WHERE status='complete'");
         res.json(getNewRes.rows);
 
@@ -581,7 +580,7 @@ app.get('/admin/CMS/bookings/complete', protect, async(req,res) => {
 app.put('/admin/CMS/bookings/new/:id', protect, async(req, res) => {
 
     try {
-        
+
         const id = req.params.id;
 
         const updateStatus = await pool.query("UPDATE bookings SET status='complete' WHERE locationid=$1",
@@ -599,7 +598,7 @@ app.put('/admin/CMS/bookings/new/:id', protect, async(req, res) => {
 app.put('/admin/CMS/bookings/complete/:id', protect,async(req, res) => {
 
     try {
-        
+
         const id = req.params.id;
 
         const updateStatus = await pool.query("UPDATE bookings SET status='new' WHERE locationid=$1",
@@ -636,7 +635,7 @@ app.put('/admin/CMS/bookings/:id', protect,async(req,res) => {
         ])
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -646,7 +645,7 @@ app.put('/admin/CMS/bookings/:id', protect,async(req,res) => {
 app.delete('/admin/CMS/bookings/:id', protect, async(req,res) => {
 
     try {
-        
+
         const id = req.params.id;
 
         const deleteItem = await pool.query("DELETE FROM bookings WHERE bookingid=$1", [id]);
@@ -677,7 +676,7 @@ app.post('/franchise', async(req,res) => {
         ]);
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -691,7 +690,7 @@ app.get('/admin/CMS/franchise/new', protect, async(req,res) => {
         const getNewFranchiseRequests = await pool.query("SELECT * FROM franchise WHERE status='new'");
 
         res.json(getNewFranchiseRequests.rows);
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -705,7 +704,7 @@ app.get('/admin/CMS/franchise/complete', protect, async(req,res) => {
         const getNewFranchiseRequests = await pool.query("SELECT * FROM franchise WHERE status='complete'");
 
         res.json(getNewFranchiseRequests.rows);
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -713,7 +712,7 @@ app.get('/admin/CMS/franchise/complete', protect, async(req,res) => {
 
 //Mark new franchise requests as complete
 app.put('/admin/CMS/franchise/new/:id', protect, async(req,res) => {
-    
+
     try {
 
         const id = req.params.id;
@@ -723,7 +722,7 @@ app.put('/admin/CMS/franchise/new/:id', protect, async(req,res) => {
         ])
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -731,7 +730,7 @@ app.put('/admin/CMS/franchise/new/:id', protect, async(req,res) => {
 
 //Mark complete franchise requests as new
 app.put('/admin/CMS/franchise/complete/:id', protect, async(req,res) => {
-    
+
     try {
 
         const id = req.params.id;
@@ -741,7 +740,7 @@ app.put('/admin/CMS/franchise/complete/:id', protect, async(req,res) => {
         ])
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -759,7 +758,7 @@ app.delete('/admin/CMS/franchise/:id', protect, async(req,res) => {
         ])
 
         res.json("Success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -846,7 +845,7 @@ app.delete('/delete/menu/item', protect, async(req,res) => {
         }
 
         res.json()
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -856,7 +855,7 @@ app.delete('/delete/menu/item', protect, async(req,res) => {
 app.post('/create/menu/category/folder/:cat', protect, async(req,res) => {
 
     try {
-        
+
         const cat = req.params.cat;
 
         const response = await cloudinary.api.create_folder(`/menuitems/${cat}`);
@@ -889,7 +888,7 @@ app.delete('/edit/menu/category/folder/:cat',protect, async(req,res) => {
     try {
 
         const cat = req.params.cat;
-        
+
         await cloudinary.api.delete_resources_by_prefix(`/menuitems/${cat}`);
         await cloudinary.api.delete_folder(`/menuitems/${cat}`);
 
@@ -908,7 +907,7 @@ app.get('/gallery', async(req,res) => {
         const getGallery = await pool.query("SELECT * FROM galleryimages");
 
         res.json(getGallery.rows);
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -964,7 +963,7 @@ app.delete('/delete/gallery/image/:id',protect, async(req,res) => {
 
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -973,7 +972,7 @@ app.delete('/delete/gallery/image/:id',protect, async(req,res) => {
 //upload coming soon image
 app.post('/upload/comingsoon/image/:id',protect, upload.single("my_file"), async (req,res) => {
 
-    
+
     try {
 
         const id = req.params.id;
@@ -1021,7 +1020,7 @@ app.post('/admin/CMS/locations/coming-soon',protect, async(req,res) => {
             csid:csid,
             success:true
         });
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -1031,7 +1030,7 @@ app.post('/admin/CMS/locations/coming-soon',protect, async(req,res) => {
 app.get('/coming-soon', async(req,res) => {
 
     try {
-        
+
         const getCS = await pool.query("SELECT * FROM comingsoon");
 
         res.json(getCS.rows);
@@ -1045,7 +1044,7 @@ app.get('/coming-soon', async(req,res) => {
 app.put('/admin/CMS/locations/coming-soon/:id',protect, async(req,res) => {
 
     try {
-        
+
         const csid = req.params.id;
 
         const name = req.body.location;
@@ -1062,7 +1061,7 @@ app.put('/admin/CMS/locations/coming-soon/:id',protect, async(req,res) => {
 //Update coming soon location image
 app.post('/replace/comingsoon/image/:id', protect, upload.single("my_file"), async (req,res) => {
 
-    
+
     try {
 
         const id = req.params.id;
@@ -1119,7 +1118,7 @@ app.delete('/delete/comingsoon/image/:id', protect, async(req,res) => {
         ]);
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -1133,7 +1132,7 @@ app.get('/locations', async(req,res) => {
         const getLocations = await pool.query("SELECT * FROM locations ORDER BY locationid ASC");
 
         res.json(getLocations.rows);
-        
+
     } catch (error) {
         console.error(error);
     }
@@ -1163,9 +1162,9 @@ app.put('/admin/CMS/locations/update/:id',protect, async(req,res) => {
         ])
 
         res.json("success");
-        
+
     } catch (error) {
-        
+
         console.error(error);
     }
 })
@@ -1230,10 +1229,10 @@ app.post('/admin/CMS/locations', protect,async(req,res) => {
         ])
 
         res.json(addLocation.rows[0].locationid);
-        
+
     } catch (error) {
         console.error(error);
-        
+
     }
 })
 
@@ -1292,16 +1291,8 @@ app.delete('/admin/CMS/locations/delete/:id',protect, async(req,res) => {
 
 
         res.json("success");
-        
+
     } catch (error) {
         console.error(error);
     }
 })
-
-
-module.exports = app;
-
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
