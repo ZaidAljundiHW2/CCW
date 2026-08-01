@@ -141,7 +141,6 @@ const Scrollbar = () => {
 
 
             <div
-
                 className='
                     landscape:hidden
                     fixed
@@ -150,21 +149,17 @@ const Scrollbar = () => {
                     justify-start
                     border-white
                 '
-
+                
                 style={{
 
                     padding:'5px',
                     borderWidth:'2px'
 
                 }}
-
             >
-
-
-
                 <Menu.Root>
                     <Menu.Trigger asChild>
-                        <Button variant="outline" size="sm">
+                        <Button bg={'black'} color={'white'}>
                             Open Menu
                         </Button>
                     </Menu.Trigger>
