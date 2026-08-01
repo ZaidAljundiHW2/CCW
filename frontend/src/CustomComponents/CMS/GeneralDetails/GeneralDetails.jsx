@@ -122,7 +122,7 @@ const GeneralDetails = () => {
         >
 
             <h1 className='CMSHead'>
-                Social Media Links
+                Links
             </h1>
 
             {(

@@ -14,33 +14,40 @@ const OrderPopup = ({ setShowOrderPopup }) => {
     const [genDetails, setGenDetails] = useState([]);
 
 
+
     const getGeneralDetails = async () => {
 
         try {
 
             const response = await fetch(
-                `${import.meta.env.VITE_API_URL}/admin/CMS/general-details/footer`
+                `${import.meta.env.VITE_API_URL}/admin/CMS/general-details/social-media`
             );
 
+
             const jsonData = await response.json();
+
 
             setGenDetails(jsonData);
 
 
         } catch(error) {
 
-            console.error(error);
+            console.error("Failed to get general details:", error);
 
         }
 
     };
 
 
+
     useEffect(() => {
+
 
         document.body.style.overflow = 'hidden';
 
+
         getGeneralDetails();
+
 
 
         return () => {
@@ -49,7 +56,9 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
         }
 
+
     }, []);
+
 
 
 
@@ -58,9 +67,11 @@ const OrderPopup = ({ setShowOrderPopup }) => {
     )?.val;
 
 
+
     const uberEatsLink = genDetails.find(
         item => item.label === "Uber Eats"
     )?.val;
+
 
 
     const phoneNumber = genDetails.find(
@@ -83,6 +94,7 @@ const OrderPopup = ({ setShowOrderPopup }) => {
             onClick={() => setShowOrderPopup(false)}
 
         >
+
 
 
             <Flex
@@ -115,6 +127,7 @@ const OrderPopup = ({ setShowOrderPopup }) => {
             >
 
 
+
                 <Flex className="flex-col">
 
 
@@ -133,6 +146,7 @@ const OrderPopup = ({ setShowOrderPopup }) => {
                         Order Now!
 
                     </h1>
+
 
 
 
@@ -158,6 +172,8 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
 
 
+
+
                 <Flex
 
                     className="
@@ -174,6 +190,7 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
 
 
+
                     {/* DOORDASH */}
 
                     <a
@@ -186,7 +203,9 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
                     >
 
+
                         <Button
+
 
                             className="
                                 restbutton
@@ -197,6 +216,7 @@ const OrderPopup = ({ setShowOrderPopup }) => {
                                 gap-3
                                 w-full
                             "
+
 
                             style={{
 
@@ -208,8 +228,10 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
                         >
 
+
                             Doordash
                             <SiDoordash />
+
 
                         </Button>
 
@@ -221,19 +243,28 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
 
 
+
                     {/* UBER EATS */}
+
 
                     <a
 
+
                         href={uberEatsLink || "#"}
+
                         target="_blank"
+
                         rel="noopener noreferrer"
+
 
                         className="flex-1 w-full"
 
+
                     >
 
+
                         <Button
+
 
                             className="
                                 restbutton
@@ -245,17 +276,25 @@ const OrderPopup = ({ setShowOrderPopup }) => {
                                 w-full
                             "
 
+
                             style={{
 
+
                                 color:'white',
+
                                 background:'black'
+
 
                             }}
 
+
                         >
 
+
                             Uber Eats
+
                             <SiUbereats />
+
 
                         </Button>
 
@@ -270,7 +309,9 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
                     {/* PHONE PICKUP */}
 
+
                     <a
+
 
                         href={
                             phoneNumber
@@ -278,11 +319,16 @@ const OrderPopup = ({ setShowOrderPopup }) => {
                                 : "#"
                         }
 
+
                         className="flex-1 w-full"
+
 
                     >
 
+
+
                         <Button
+
 
                             className="
                                 restbutton
@@ -294,20 +340,30 @@ const OrderPopup = ({ setShowOrderPopup }) => {
                                 w-full
                             "
 
+
                             style={{
 
+
                                 color:'black',
+
                                 background:'#f2eeee',
+
                                 borderColor:'black'
+
 
                             }}
 
+
                         >
 
+
                             Call Pickup
+
                             <FaPhoneAlt />
 
+
                         </Button>
+
 
 
                     </a>
@@ -320,9 +376,13 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
 
 
+
+
                 {/* CLOSE BUTTON */}
 
+
                 <div
+
 
                     className="
                         absolute
@@ -331,17 +391,24 @@ const OrderPopup = ({ setShowOrderPopup }) => {
                         hover:cursor-pointer
                     "
 
+
                     onClick={() => setShowOrderPopup(false)}
+
 
                 >
 
+
                     <IoIosCloseCircle
+
 
                         className="PPClose"
 
+
                         color="#012447"
 
+
                     />
+
 
                 </div>
 
@@ -349,6 +416,7 @@ const OrderPopup = ({ setShowOrderPopup }) => {
 
 
             </Flex>
+
 
 
         </div>
