@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Scrollbar.css'
 import { Link } from 'react-router-dom'
-import { Menu, Portal, Box } from "@chakra-ui/react"
+import { Menu, Portal, Box, Button } from "@chakra-ui/react"
 
 
 const Scrollbar = () => {
@@ -178,43 +178,9 @@ const Scrollbar = () => {
                     <Menu.Trigger asChild>
 
 
-                        <Box
-
-                            className='dropdown-trigger burger'
-
-                            aria-label='Open menu'
-
-                        >
-
-
-                            <span 
-                                className={
-                                    mobileMenuOpen 
-                                    ? 'burger-open' 
-                                    : ''
-                                }
-                            ></span>
-
-
-                            <span 
-                                className={
-                                    mobileMenuOpen 
-                                    ? 'burger-open' 
-                                    : ''
-                                }
-                            ></span>
-
-
-                            <span 
-                                className={
-                                    mobileMenuOpen 
-                                    ? 'burger-open' 
-                                    : ''
-                                }
-                            ></span>
-
-
-                        </Box>
+                        <Button variant="outline" size="sm">
+                            Open
+                        </Button>
 
 
                     </Menu.Trigger>
