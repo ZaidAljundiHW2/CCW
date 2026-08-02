@@ -50,7 +50,7 @@ const ShowcaseItem = ({
         {/* Image and price */}
         <div className="w-full flex flex-col lg:flex-row landscape:items-center justify-center gap-2">
 
-            <div className="relative w-full portrait:w-[50%] lg:w-1/2 aspect-square bg-green-500 overflow-hidden rounded-full">
+            <div className="relative w-full portrait:w-[50%] lg:w-1/2 aspect-square overflow-hidden rounded-full">
                 <div
                     className="absolute inset-0 w-full h-full rounded-full"
                     style={{

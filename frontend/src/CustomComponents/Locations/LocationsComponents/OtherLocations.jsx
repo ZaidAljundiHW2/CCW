@@ -31,7 +31,7 @@ const OtherLocations = ({ items = [] }) => {
 
     return (
         <div 
-            className='w-full flex flex-col items-center bg-red-500' 
+            className='w-full flex flex-col items-center' 
             style={{ 
                 padding: '20px', 
                 gap: '16px',

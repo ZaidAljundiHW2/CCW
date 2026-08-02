@@ -71,7 +71,7 @@ const Contact = () => {
 
             {/* Separator */}
 
-            <Box className='w-[5px] bg-red-500'/>
+            <Box className='w-[5px]'/>
 
             
 

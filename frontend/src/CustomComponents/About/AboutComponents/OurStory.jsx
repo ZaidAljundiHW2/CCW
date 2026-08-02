@@ -57,7 +57,7 @@ const OurStory = () => {
       '
     >
 
-      <Flex className='ourstorycontainer flex-1 bg-red-500'>
+      <Flex className='ourstorycontainer flex-1'>
 
       </Flex>
 
