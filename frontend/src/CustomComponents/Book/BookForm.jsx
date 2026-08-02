@@ -14,8 +14,6 @@ const BookForm = () => {
   nextMonth.setMonth(nextMonth.getMonth() + 1);
 
   const nextMonthFormatted = nextMonth.toISOString().split("T")[0];
-
-  
       
   const [name, setName] = useState("");
   const [isNameError, setIsNameError] = useState(false);
@@ -33,7 +31,10 @@ const BookForm = () => {
   const [isDateError, setIsDateError] = useState(false);
   const [dateErrorMessage, setDateErrorMessage] = useState("");
 
-  const [numGuests, setNumGuests] = useState(1);
+  // NumGuests is now kept as a STRING while the user types, so the field
+  // can be cleared/edited freely. Clamping to 1-20 happens onBlur and again
+  // as a safety net right before submit.
+  const [numGuests, setNumGuests] = useState("1");
   const [isNumGuestsError, SetIsNumGuestsError] = useState(false);
   const [numGuestsErrorMessage, setNumGuestsErrorMessage] = useState("");
 
@@ -143,6 +144,26 @@ const BookForm = () => {
     return times;
   };
 
+  // Clamp a raw numGuests string to a valid integer between 1 and 20.
+  // Falls back to 1 if the value is empty, non-numeric, or NaN.
+  const clampNumGuests = (rawValue) => {
+      let value = parseInt(rawValue, 10);
+
+      if (isNaN(value)) {
+          value = 1;
+      }
+
+      if (value > 20) {
+          value = 20;
+      }
+
+      if (value < 1) {
+          value = 1;
+      }
+
+      return value;
+  };
+
   const uploadBooking = async(name, email, phonenumber, date, numguests, requests, location, time) => {
 
       try {
@@ -239,6 +260,10 @@ const BookForm = () => {
 
           if (end) return;
 
+          // Final safety-net clamp for numGuests (1-20) right before it's sent
+          const safeNumGuests = clampNumGuests(numguests);
+          setNumGuests(String(safeNumGuests));
+
           const now = new Date();
           const timeTakenMs = Date.now() - formLoadTime.current;
 
@@ -248,7 +273,7 @@ const BookForm = () => {
               "email": email,
               "phonenumber": phonenumber,
               "date": date,
-              "numguests": numguests,
+              "numguests": safeNumGuests,
               "specialrequests": requests,
               "status": 'new',
               "datetime": now.toLocaleString(),
@@ -289,6 +314,7 @@ const BookForm = () => {
               setTime("");
               setDate("");
               setHoneypot("");
+              setNumGuests("1");
               formLoadTime.current = Date.now();
 
               setIsSuccessfulSubmission(true);
@@ -513,23 +539,24 @@ const BookForm = () => {
                     <Input
                         value={numGuests}
                         onChange={(e) => {
-                            let value = Number(e.currentTarget.value);
+                            // Only allow digits, but don't clamp yet — this lets
+                            // the user clear the field or type a new value freely
+                            // (e.g. delete "1" then type "17").
+                            const raw = e.currentTarget.value;
 
-                            if (value > 20) {
-                                value = 20;
+                            if (raw === "" || /^[0-9]+$/.test(raw)) {
+                                setNumGuests(raw);
                             }
-
-                            if (value < 1) {
-                                value = 1;
-                            }
-
-                            setNumGuests(value);
+                        }}
+                        onBlur={() => {
+                            // Clamp to 1-20 once the user leaves the field
+                            setNumGuests(String(clampNumGuests(numGuests)));
                         }}
                         style={{ color: 'black', background:'white'}}
                         className='CFText'
-                        type='number'
-                        min={1}
-                        max={20}
+                        type='text'
+                        inputMode='numeric'
+                        pattern='[0-9]*'
                         
                     />  
 

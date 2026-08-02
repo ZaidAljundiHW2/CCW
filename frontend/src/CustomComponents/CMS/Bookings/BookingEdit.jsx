@@ -29,7 +29,11 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
     const [isDateError, setIsDateError] = useState(false);
     const [dateErrorMessage, setDateErrorMessage] = useState("");
 
-    const [numGuests, setNumGuests] = useState(selectedReservation.numguests);
+    // NumGuests is kept as a STRING while the user types, so the field
+    // can be cleared/edited freely (e.g. delete "1" then type "17").
+    // Clamping to 1-20 happens onBlur and again as a safety net right
+    // before submit.
+    const [numGuests, setNumGuests] = useState(String(selectedReservation.numguests ?? 1));
     const [isNumGuestsError, SetIsNumGuestsError] = useState(false);
     const [numGuestsErrorMessage, setNumGuestsErrorMessage] = useState("");
 
@@ -137,6 +141,26 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
         }
 
         return times;
+    };
+
+    // Clamp a raw numGuests string to a valid integer between 1 and 20.
+    // Falls back to 1 if the value is empty, non-numeric, or NaN.
+    const clampNumGuests = (rawValue) => {
+        let value = parseInt(rawValue, 10);
+
+        if (isNaN(value)) {
+            value = 1;
+        }
+
+        if (value > 20) {
+            value = 20;
+        }
+
+        if (value < 1) {
+            value = 1;
+        }
+
+        return value;
     };
 
     const dayNameToNumber = {
@@ -264,6 +288,10 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                 return;
             }
 
+            // Final safety-net clamp for numGuests (1-20) right before it's sent
+            const safeNumGuests = clampNumGuests(numGuests);
+            setNumGuests(String(safeNumGuests));
+
             const locationid = location.locationid;
 
             const body = {
@@ -271,7 +299,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                 "email": email,
                 "phonenumber": phoneNumber,
                 "reservationdate": date,
-                "numguests": numGuests,
+                "numguests": safeNumGuests,
                 "specialrequests": specialRequests,
                 "reservationtime":time,
                 "locationid": locationid,
@@ -296,6 +324,8 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
             
         } catch (error) {
             console.error(error);
+        } finally {
+            setButtonLoading(false);
         }
     }
 
@@ -473,23 +503,24 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                         <Input
                             value={numGuests}
                             onChange={(e) => {
-                                let value = Number(e.currentTarget.value);
+                                // Only allow digits, but don't clamp yet — this lets
+                                // the user clear the field or type a new value freely
+                                // (e.g. delete "1" then type "17").
+                                const raw = e.currentTarget.value;
 
-                                if (value > 20) {
-                                    value = 20;
+                                if (raw === "" || /^[0-9]+$/.test(raw)) {
+                                    setNumGuests(raw);
                                 }
-
-                                if (value < 1) {
-                                    value = 1;
-                                }
-
-                                setNumGuests(value);
+                            }}
+                            onBlur={() => {
+                                // Clamp to 1-20 once the user leaves the field
+                                setNumGuests(String(clampNumGuests(numGuests)));
                             }}
                             style={{ color: 'black', background:'white'}}
                             className='CFText'
-                            type='number'
-                            min={1}
-                            max={20}
+                            type='text'
+                            inputMode='numeric'
+                            pattern='[0-9]*'
                             
                         />  
 
