@@ -24,6 +24,7 @@ import Login from "./CustomComponents/Login/Login"
 import NotFound from "./CustomComponents/Login/NotFound"
 import Loader from "./CustomComponents/Loader/Loader"
 import { Navigate } from "react-router-dom"
+import TestimonialsCMS from "./CustomComponents/CMS/Testimonials/TestimonialsCMS"
 
 axios.defaults.withCredentials = true
 
@@ -73,6 +74,7 @@ const App = () => {
           { path: "Book", element: <BookingCMS /> },
           { path: "Franchise", element: <FranchiseCMS /> },
           { path: "Location", element: <LocationCMS /> },
+          { path: "Testimonials", element: <TestimonialsCMS />}
         ],
       },
       {

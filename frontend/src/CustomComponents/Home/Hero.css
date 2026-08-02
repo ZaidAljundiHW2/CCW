@@ -3,6 +3,11 @@
     src: url('@/assets/personal_services/Personal Services.ttf');
 }
 
+@font-face {
+    font-family: HeadingNow;
+    src: url('@/assets/personal_services/Heading Now.ttf');
+}
+
 .herotextwrapper {
     padding-top: var(--nav-height);
 }
@@ -35,6 +40,12 @@
 
 .herotext {
     font-size: clamp(.8rem, 1vw, 1.2rem);
+}
+
+.testheader {
+    color:#012447;
+    font-family: HeadingNow, 'sans-serif';
+    font-size: 3rem;
 }
 
 

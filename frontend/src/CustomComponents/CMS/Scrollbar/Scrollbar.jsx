@@ -128,6 +128,16 @@ const Scrollbar = () => {
 
                 </Link>
 
+                <Link className='w-full' to={'Testimonials'}>
+
+                    <button>
+
+                        Testimonials
+
+                    </button>
+
+                </Link>
+
 
             </div>
 
@@ -248,6 +258,16 @@ const Scrollbar = () => {
                                     <Menu.Item>
 
                                         Booking Reservation Queries
+
+                                    </Menu.Item>
+
+                                </Link>
+
+                                <Link to={'Testimonials'}>
+
+                                    <Menu.Item>
+
+                                        Testimonials
 
                                     </Menu.Item>
 

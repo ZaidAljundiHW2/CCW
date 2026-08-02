@@ -1328,6 +1328,127 @@ app.put('/admin/CMS/general-details/homestory', async(req,res) => {
     }
 })
 
+//get testimonials
+app.get("/testimonials", async(req,res) => {
+
+    try {
+
+        const getTestimonials = await pool.query("SELECT * FROM testimonials");
+        res.json(getTestimonials.rows)
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//update testimonial
+app.put('/admin/CMS/testimonials/update-testimonial/:id', protect, async(req,res) => {
+
+    try {
+
+        const id = req.params.id;
+        const username = req.body.username;
+        const rating = req.body.rating;
+        const testimonial = req.body.testimonial;
+
+        const updateTest = await pool.query("UPDATE testimonials SET username=$1, testimonial=$2, rating=$3 WHERE testimonialid=$4", [
+            username, testimonial, rating, id
+        ])
+
+        res.json("success");
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+//replace or upload testimonial profile picture
+app.put("/upload/testimonials/:id", protect, upload.single("my_file"), async (req, res) => {
+  try {
+
+    const itemid = req.params.id;
+    const oldUrl = req.body.curr_image;
+
+    const b64 = Buffer.from(req.file.buffer).toString("base64");
+    const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+    const cldRes = await handleUpload(dataURI, {
+        folder: "testimonials",
+        use_filename: true,
+        unique_filename: false,
+        overwrite: true,
+    });
+    const url = cldRes.secure_url;
+
+    await pool.query(
+        "UPDATE testimonials SET image=$1 WHERE testimonialid=$2",
+        [url, itemid]
+    );
+
+    if (oldUrl && oldUrl !== url && !oldUrl.includes("placeholder")) {
+        const publicId = getPublicIdFromUrl(oldUrl);
+        if (publicId) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+    }
+
+    res.json(cldRes);
+  } catch (error) {
+    console.log(error);
+    res.send({ message: error.message });
+  }
+});
+
+//add testimonial
+app.post('/admin/CMS/testimonials', protect, async(req,res) => {
+
+    try {
+
+        const username = req.body.username;
+        const testimonial = req.body.testimonial;
+        const image = req.body.image;
+        const rating = req.body.rating;
+
+        const addTest = await pool.query("INSERT INTO testimonials (username, testimonial, image, rating) VALUES ($1,$2,$3,$4) RETURNING testimonialid", [
+            username, testimonial, image, rating
+        ])
+
+        const testimonialid = addTest.rows[0].testimonialid;
+
+        res.json({
+            testimonialid:testimonialid,
+            success:true
+        })
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
+app.delete('/admin/CMS/testimonials/:id', protect, async(req,res) => {
+
+    try {
+
+        const imageURL = req.body.curr_image;
+
+        const publicId = getPublicIdFromUrl(imageURL);
+
+        if (publicId && !imageURL.includes("placeholder")) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+
+        const id = req.params.id;
+
+        const deleteItem = await pool.query("DELETE FROM testimonials WHERE testimonialid=$1", [
+            id
+        ])
+
+        res.json("success")
+        
+    } catch (error) {
+        console.error(error);
+    }
+})
+
 
 // app.listen(5000);
 module.exports = app;

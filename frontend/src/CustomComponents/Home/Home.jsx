@@ -4,6 +4,7 @@ import CallToAction from './CallToAction'
 import OurMission from '../About/AboutComponents/OurMission'
 import GalleryComponent from '../About/AboutComponents/GalleryComponent'
 import HomeStory from './HomeStory'
+import Testimonials from './Testimonials'
 
 const Home = () => {
   return (
@@ -27,6 +28,10 @@ const Home = () => {
 
         <section data-navbar-theme="light">
             <GalleryComponent />
+        </section>
+
+        <section data-navbar-theme="light">
+            <Testimonials />
         </section>
       
     </>
