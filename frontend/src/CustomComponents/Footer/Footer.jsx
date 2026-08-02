@@ -16,8 +16,7 @@ import ToS from './ToS';
 import PrivacyPolicy from './PrivacyPolicy'
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FaYoutube } from "react-icons/fa";
-
+import YoutubeIcon from '@/assets/icons/youtube'
 const Footer = forwardRef((props, ref) => {
 
     const [showPP, setShowPP] = useState(false);
@@ -44,11 +43,12 @@ const Footer = forwardRef((props, ref) => {
             const instaobj = jsonData.find(item => item.label === "Instagram").val;
             const fcbkobj = jsonData.find(item => item.label === "Facebook").val;
             const tktkobj = jsonData.find(item => item.label === "TikTok").val;
+            const ytobj = jsonData.find(item => item.label === "Youtube").val;
 
             setInstLink(instaobj);
             setFcbkLink(fcbkobj);
             setTktkLink(tktkobj);
-            setYtLink(ytLink);
+            setYtLink(ytobj);
             
         } catch (error) {
             console.error(error);
@@ -258,7 +258,7 @@ const Footer = forwardRef((props, ref) => {
                                     </a>
 
                                     <a href={ytLink}>
-                                        <FaYoutube />
+                                        <img src={YoutubeIcon} className='SMI'/>
                                     </a>
 
                                 </Flex>
