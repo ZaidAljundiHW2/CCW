@@ -39,11 +39,22 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
                 body: JSON.stringify(body)
             });
 
-            SetShowAboutEdit(false);
+            if (response.ok) {
+                SetShowAboutEdit(false);
+            } else {
+                setIsContentError(true);
+                setContentErrorMessage("Something went wrong. Please try again.");
+            }
+
             
         } catch (error) {
-            
+
             console.error(error);
+            setIsContentError(true);
+            setContentErrorMessage("Something went wrong. Please try again.");
+
+        } finally {
+            setButtonLoading(false);
         }
     }
 

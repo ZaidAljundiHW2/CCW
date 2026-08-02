@@ -14,9 +14,6 @@ const FranchiseCMS = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const [showDelete, setShowDelete] = useState(false);
-    
-    const [selectedQuery, setSelectedQuery] = useState();
-
     const [refresh, setRefresh] = useState(false);
 
     const getNewFranchiseRequests = async() => {

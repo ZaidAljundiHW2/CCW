@@ -29,17 +29,10 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
     const [isDateError, setIsDateError] = useState(false);
     const [dateErrorMessage, setDateErrorMessage] = useState("");
 
-    // NumGuests is kept as a STRING while the user types, so the field
-    // can be cleared/edited freely (e.g. delete "1" then type "17").
-    // Clamping to 1-20 happens onBlur and again as a safety net right
-    // before submit.
+    
     const [numGuests, setNumGuests] = useState(String(selectedReservation.numguests ?? 1));
-    const [isNumGuestsError, SetIsNumGuestsError] = useState(false);
-    const [numGuestsErrorMessage, setNumGuestsErrorMessage] = useState("");
 
     const [specialRequests, setSpecialRequests] = useState(selectedReservation.specialrequests);
-    const [isSpecialRequestsError, setIsSpecialRequestsError] = useState(false);
-    const [specialRequestsErrorMessage, setSpecialRequestsErrorMessage] = useState("");
     const normalizeTime = (str) => str.replace(/\s/g, " "); // collapse any whitespace variant to a plain space
 
     const [time, setTime] = useState(normalizeTime(selectedReservation.reservationtime ?? ""));
@@ -83,19 +76,19 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
 
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    // const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
     const phoneRegex = /^\+?[0-9\s().-]{7,20}$/;
     
     useEffect(() => {
 
-    const load = async() => {
-        await getLocations();
-        setIsLoading(false);
-    }
+        const load = async() => {
+            await getLocations();
+            setIsLoading(false);
+        }
 
-    load();
+        load();
 
-    },[])
+    },[]);
 
 
     const generateTimes = (open, close, is24hrs) => {
@@ -497,15 +490,13 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                     </Field.Root>
 
                     {/* NumGuests */}
-                    <Field.Root invalid={isNumGuestsError} className='w-full' required>
+                    <Field.Root className='w-full' required>
                         <Field.Label className='editText'>Number of Guests <Field.RequiredIndicator /></Field.Label>
                         
                         <Input
                             value={numGuests}
                             onChange={(e) => {
-                                // Only allow digits, but don't clamp yet — this lets
-                                // the user clear the field or type a new value freely
-                                // (e.g. delete "1" then type "17").
+                                
                                 const raw = e.currentTarget.value;
 
                                 if (raw === "" || /^[0-9]+$/.test(raw)) {
@@ -524,10 +515,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                             
                         />  
 
-                        <Field.ErrorText width="full">
-                            <Field.ErrorIcon />
-                            {numGuestsErrorMessage}
-                        </Field.ErrorText>
+                        
                     </Field.Root>
 
 
@@ -619,7 +607,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                             
                         <Field.ErrorText width="full">
                             <Field.ErrorIcon />
-                            {numGuestsErrorMessage}
+                            {timeErrorMessage}
                         </Field.ErrorText>
                     </Field.Root>
 
@@ -627,7 +615,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                 </Flex>
 
                 {/* Special Requests */}
-                <Field.Root invalid={isSpecialRequestsError} className='w-full' disabled>
+                <Field.Root className='w-full' disabled>
                     <Field.Label className='editText'>Special Requests </Field.Label>
                     
                     <Textarea
@@ -639,10 +627,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
                         
                     />  
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {specialRequestsErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
 
 

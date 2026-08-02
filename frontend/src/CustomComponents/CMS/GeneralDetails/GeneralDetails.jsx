@@ -15,7 +15,6 @@ const GeneralDetails = () => {
     const [editedObj, setEditedObj] = useState();
     const [showEdit, setShowEdit] = useState(false);
     const [legal, setLegal] = useState([]);
-    const [isLegal, setIsLegal] = useState(false);
     const [homestory, setHomestory] = useState("");
 
     const [showEditGallery, setShowEditGallery] = useState(false);

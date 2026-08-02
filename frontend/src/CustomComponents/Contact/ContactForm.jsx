@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Input, Flex, Button, Textarea, Field, Span  } from '@chakra-ui/react'
 import { FaRegPaperPlane } from "react-icons/fa6";
 import './ContactForm.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Thank from './Thank';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -35,10 +35,14 @@ const ContactForm = () => {
     const [honeypot, setHoneypot] = useState("");
 
     // Track when the form first rendered, to measure fill time
-    const formLoadTime = useRef(Date.now());
+    const formLoadTime = useRef(null);
+
+    useEffect(() => {
+        formLoadTime.current = Date.now();
+    }, []);
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    // const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
     const phoneRegex = /^\+?[0-9\s().-]{7,20}$/;
 
     const uploadContact = async(name, email, phonenumber, subject, message) => {
@@ -120,7 +124,7 @@ const ContactForm = () => {
             if (end) return;
 
             const now = new Date();
-            const timeTakenMs = Date.now() - formLoadTime.current;
+            const timeTakenMs = formLoadTime.current ? Date.now() - formLoadTime.current : null;
 
             const body = {
                 "name": name,

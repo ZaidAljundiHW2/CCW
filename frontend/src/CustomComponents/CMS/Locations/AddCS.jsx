@@ -11,8 +11,6 @@ const AddCS = ({setShowAddCS}) => {
     const [imgErrorMessage, setImgErrorMessage] = useState("");
 
     const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
 
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
@@ -32,16 +30,12 @@ const AddCS = ({setShowAddCS}) => {
     
     const handleUpload = async (itemid) => {
         try {
-            setLoading(true);
             const data = new FormData();
             data.append("my_file", file);
             const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/comingsoon/image/${itemid}`, data);
-            setRes(res.data);
         } catch (error) {
         alert(error.message);
-        } finally {
-        setLoading(false);
-        }
+        } 
     };
 
     const addCS = async(itemname) => {

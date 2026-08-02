@@ -39,9 +39,6 @@ const TIME_OPTIONS = generateTimeOptions()
 
 const EditLocation = ({ item, setShowEdit }) => {
 
-    const API = import.meta.env.VITE_API_URL;
-
-
     const [openingtext, setOpeningtext] = useState(item.openingtext || "");
     const [isOpeningtextError, setIsOpeningtextError] = useState(false);
     const [openingtextErrorMessage, setOpeningtextErrorMessage] = useState("");
@@ -53,8 +50,6 @@ const EditLocation = ({ item, setShowEdit }) => {
 
     // Closed days (postgres array -> JS array, e.g. ["Monday"])
     const [closedDays, setClosedDays] = useState(item.closeddays || [])
-
-    const [imgErrorMessage, setImgErrorMessage] = useState("");
 
     // Is 24 hours (boolean)
     const [is24hrs, setIs24hrs] = useState(!!item.is24hrs)
@@ -74,8 +69,6 @@ const EditLocation = ({ item, setShowEdit }) => {
     const [directionsErrorMessage, setDirectionsErrorMessage] = useState("")
 
     const [parking, setParking] = useState(item.parking);
-    const [isParkingError, setIsParkingError] = useState(false);
-    const [parkingErrorMessage, setParkingErrorMessage] = useState("");
 
     const [description, setDescription] = useState(item.description || "");
 
@@ -107,8 +100,7 @@ const EditLocation = ({ item, setShowEdit }) => {
     });
 
     const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
+   
 
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
@@ -125,17 +117,13 @@ const EditLocation = ({ item, setShowEdit }) => {
 
     const handleUpload = async (itemid, currImgURL) => {
         try {
-        setLoading(true);
         const data = new FormData();
         data.append("my_file", file);
         data.append("curr_image", currImgURL);
         const res = await axios.put(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/update-image/${itemid}`, data);
-        setRes(res.data);
         } catch (error) {
         alert(error.message);
-        } finally {
-        setLoading(false);
-        }
+        } 
     };
 
     const updateLocation = async() => {
@@ -556,14 +544,11 @@ const EditLocation = ({ item, setShowEdit }) => {
                         
                             </div>
     
-                        <Field.ErrorText width="full">
-                            <Field.ErrorIcon />
-                            {imgErrorMessage}
-                        </Field.ErrorText>
+                       
                     </Field.Root>
 
                     {/* Parking */}
-                    <Field.Root invalid={isParkingError} className='w-full'>
+                    <Field.Root className='w-full'>
                         <Field.Label className='editText'>Parking text</Field.Label>
 
                         <div className="relative w-full">
@@ -585,10 +570,7 @@ const EditLocation = ({ item, setShowEdit }) => {
                             </Span>
                         </div>
 
-                        <Field.ErrorText width="full">
-                            <Field.ErrorIcon />
-                            {parkingErrorMessage}
-                        </Field.ErrorText>
+                        
                     </Field.Root>
 
                     {/* Directions Link */}

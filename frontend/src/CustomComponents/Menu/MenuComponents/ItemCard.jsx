@@ -1,8 +1,5 @@
-import React from 'react'
 import { Box } from '@chakra-ui/react'
 import './ItemCard.css'
-import fitty from 'fitty'
-import { useEffect } from 'react'
 import { motion } from 'motion/react'
 import { resolveImg } from '@/customLib/utils/resolveImage'
 

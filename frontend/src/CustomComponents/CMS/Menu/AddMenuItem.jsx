@@ -11,8 +11,6 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
     const [nameErrorMessage, setNameErrorMessage] = useState("");
 
     const [inputDesc, setInputDesc] = useState("");
-
-    const [imgErrorMessage, setImgErrorMessage] = useState("");
     
     const [inputPrice, setInputPrice] = useState("");
     const [isPriceError, setIsPriceError] = useState("");
@@ -24,8 +22,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
 
 
     const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
+    
 
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
@@ -44,18 +41,14 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
     
     const handleUpload = async (itemid, category) => {
         try {
-            setLoading(true);
             const data = new FormData();
             data.append("my_file", file);
             const safeCat = category.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
             data.append("category", safeCat);
             const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/menu/item/new/${itemid}`, data);
-            setRes(res.data);
         } catch (error) {
         alert(error.message);
-        } finally {
-        setLoading(false);
-        }
+        } 
     };
 
 
@@ -281,10 +274,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                             )} */}
                         </div>
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {imgErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
 
                 {/* Price */}

@@ -1,5 +1,5 @@
 import InfoBlock from '../InfoBlock'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TestimonialBlock from './TestimonialBlock';
 import EditTestimonial from './EditTestimonial';
 import AddTestimonial from './AddTestimonial';

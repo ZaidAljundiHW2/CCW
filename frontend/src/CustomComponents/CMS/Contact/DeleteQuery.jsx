@@ -22,6 +22,7 @@ const DeleteQuery = ({item, setShowDelete}) => {
                 },
                 body: JSON.stringify({})
             });
+            
 
             setShowDelete(false);
             

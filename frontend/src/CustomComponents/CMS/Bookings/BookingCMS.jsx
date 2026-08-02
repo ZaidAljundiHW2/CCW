@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 import ReservationBlock from './ReservationBlock';
@@ -11,9 +11,6 @@ const BookingCMS = () => {
 
     const [allNewItems, setAllNewItems] = useState([]);
     const [allCompletedItems, setAllCompletedItems] = useState([]);
-
-    const [selectedNewItems, setSelectedNewItems] = useState([]);
-    const [selectedCompletedItems, setSelectedCompletedItems] = useState([]);
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -78,14 +75,7 @@ const BookingCMS = () => {
 
         const currLocationID = details.value;
         setLocation(currLocationID);
-        console.log(locations);
         setLocationName(locations.find(item => item.locationid == currLocationID).locationname);
-
-        const currNewItems = allNewItems.filter(item => item.locationid == currLocationID);
-        const currCompletedItems = allCompletedItems.filter(item => item.locationid == currLocationID);
-
-        setSelectedNewItems(currNewItems);
-        setSelectedCompletedItems(currCompletedItems);
 
     }
 
@@ -102,15 +92,18 @@ const BookingCMS = () => {
         load();
     }, [showDelete, refresh, showEdit]);
 
-    useEffect(() => {
-        if (!location) return;
+    // Derived state: no need for an effect here — just compute the filtered
+    // lists directly from the current render's values. useMemo avoids
+    // re-filtering on every render unless the underlying data actually changed.
+    const selectedNewItems = useMemo(() => {
+        if (!location) return [];
+        return allNewItems.filter(item => item.locationid == location);
+    }, [allNewItems, location]);
 
-        const currNewItems = allNewItems.filter(item => item.locationid == location);
-        const currCompletedItems = allCompletedItems.filter(item => item.locationid == location);
-
-        setSelectedNewItems(currNewItems);
-        setSelectedCompletedItems(currCompletedItems);
-    }, [allNewItems, allCompletedItems, location, setShowEdit]);
+    const selectedCompletedItems = useMemo(() => {
+        if (!location) return [];
+        return allCompletedItems.filter(item => item.locationid == location);
+    }, [allCompletedItems, location]);
 
     if (isLoading) {
         return (

@@ -38,6 +38,7 @@ const App = () => {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/me`)
         setUser(res.data)
       } catch (err) {
+        console.error(err);
         setUser(null)
       } finally {
         setLoading(false)

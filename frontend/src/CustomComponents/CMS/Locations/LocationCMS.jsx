@@ -12,7 +12,6 @@ const LocationCMS = () => {
 
     const [showAddCS, setShowAddCS] = useState(false);
     const [showEditCS, setShowEditCS] = useState(false);
-    const [showEditCSItem, setShowEditCSItem] = useState(false);
     const [showEditLocation, setShowEditLocation] = useState(false);
     const [showAdd, setShowAdd] = useState(false);
 
@@ -23,7 +22,6 @@ const LocationCMS = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const API = import.meta.env.VITE_API_URL;
 
     const getLocations = async() => {
 

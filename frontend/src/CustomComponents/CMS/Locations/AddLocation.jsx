@@ -37,8 +37,6 @@ const formatTimeLabel = (time) => time.slice(0, 5)
 const TIME_OPTIONS = generateTimeOptions()
 
 const AddLocation = ({setShowAdd}) => {
-
-    const API = import.meta.env.VITE_API_URL;
     
     const [openingtext, setOpeningtext] = useState("");
     const [isOpeningtextError, setIsOpeningtextError] = useState(false);
@@ -73,8 +71,6 @@ const AddLocation = ({setShowAdd}) => {
     const [directionsErrorMessage, setDirectionsErrorMessage] = useState("")
 
     const [parking, setParking] = useState("");
-    const [isParkingError, setIsParkingError] = useState(false);
-    const [parkingErrorMessage, setParkingErrorMessage] = useState("");
 
     const [description, setDescription] = useState("");
 
@@ -105,8 +101,6 @@ const AddLocation = ({setShowAdd}) => {
     });
 
     const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
 
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
@@ -123,16 +117,12 @@ const AddLocation = ({setShowAdd}) => {
 
     const handleUpload = async (itemid) => {
         try {
-        setLoading(true);
         const data = new FormData();
         data.append("my_file", file);
         const res = await axios.post(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/upload-image/${itemid}`, data);
-        setRes(res.data);
         } catch (error) {
         alert(error.message);
-        } finally {
-        setLoading(false);
-        }
+        } 
     };
 
 
@@ -565,7 +555,7 @@ const AddLocation = ({setShowAdd}) => {
                 </Field.Root>
 
                 {/* Parking */}
-                <Field.Root invalid={isParkingError} className='w-full'>
+                <Field.Root className='w-full'>
                     <Field.Label className='editText'>Parking text</Field.Label>
 
                     <div className="relative w-full">
@@ -587,10 +577,7 @@ const AddLocation = ({setShowAdd}) => {
                         </Span>
                     </div>
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {parkingErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
 
                 {/* Directions Link */}

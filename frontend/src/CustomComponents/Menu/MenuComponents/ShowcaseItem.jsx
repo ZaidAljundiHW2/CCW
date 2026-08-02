@@ -1,4 +1,5 @@
 import { Flex } from '@chakra-ui/react'
+import { motion } from 'motion/react'
 import './ShowcaseItem.css'
 
 const ShowcaseItem = ({

@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Flex, Input, Textarea, Field, Button } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'motion/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaRegPaperPlane } from "react-icons/fa6";
 import Thank from '@/CustomComponents/Contact/Thank';
 import { NativeSelect } from "@chakra-ui/react"
@@ -35,16 +35,17 @@ const ReqFrForm = () => {
     const [isSuccessfulSubmission, setIsSuccessfulSubmission] = useState(false);
     const [isSubmissionError, setIsSubmissionError] = useState(false);
 
-    const [isLoading, setIsLoading] = useState(true);
-
     // Honeypot field — should stay empty; bots often fill every input
     const [honeypot, setHoneypot] = useState("");
 
     // Track when the form first rendered, to measure fill time
-    const formLoadTime = useRef(Date.now());
+    const formLoadTime = useRef(null);
+    useEffect(() => {
+        formLoadTime.current = Date.now();
+    }, []);
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    // const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
     const phoneRegex = /^\+?[0-9\s().-]{7,20}$/;
 
     const generateInvestmentRanges = (min, max, step) => {
@@ -156,7 +157,7 @@ const ReqFrForm = () => {
             if (end) return;
 
             const now = new Date();
-            const timeTakenMs = Date.now() - formLoadTime.current;
+            const timeTakenMs = formLoadTime.current ? Date.now() - formLoadTime.current : null;
 
 
             const body = {
@@ -338,7 +339,7 @@ const ReqFrForm = () => {
                 </Field.Root>
 
                 {/* City */}
-                <Field.Root invalid={cityErrorMessage} required className='w-full'>
+                <Field.Root invalid={isCityError} required className='w-full'>
                     <Field.Label className='editText'>City<Field.RequiredIndicator /></Field.Label>
                     
                     <Input

@@ -35,12 +35,9 @@ const BookForm = () => {
   // can be cleared/edited freely. Clamping to 1-20 happens onBlur and again
   // as a safety net right before submit.
   const [numGuests, setNumGuests] = useState("1");
-  const [isNumGuestsError, SetIsNumGuestsError] = useState(false);
-  const [numGuestsErrorMessage, setNumGuestsErrorMessage] = useState("");
 
   const [specialRequests, setSpecialRequests] = useState("");
-  const [isSpecialRequestsError, setIsSpecialRequestsError] = useState(false);
-  const [specialRequestsErrorMessage, setSpecialRequestsErrorMessage] = useState("");
+  
 
   const [time, setTime] = useState("");
   const [isTimeError, setIsTimeError] = useState(false);
@@ -61,7 +58,7 @@ const BookForm = () => {
   const [honeypot, setHoneypot] = useState("");
 
   // Track when the form first rendered, to measure fill time
-  const formLoadTime = useRef(Date.now());
+  const formLoadTime = useRef(null);
 
   const getLocations = async() => {
 
@@ -83,7 +80,7 @@ const BookForm = () => {
 
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
+//   const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
   const phoneRegex = /^\+?[0-9\s().-]{7,20}$/;
   
   useEffect(() => {
@@ -265,7 +262,7 @@ const BookForm = () => {
           setNumGuests(String(safeNumGuests));
 
           const now = new Date();
-          const timeTakenMs = Date.now() - formLoadTime.current;
+          const timeTakenMs = formLoadTime.current ? Date.now() - formLoadTime.current : null;
 
 
           const body = {
@@ -301,7 +298,6 @@ const BookForm = () => {
               setIsEmailError(false);
               setIsPhoneNumberError(false);
               setIsDateError(false);
-              setIsSpecialRequestsError(false);
               setIsTimeError(false);
               setIsDateError(false);
               setIsSubmissionError(false);
@@ -533,7 +529,7 @@ const BookForm = () => {
                 </Field.Root>
 
                 {/* NumGuests */}
-                <Field.Root invalid={isNumGuestsError} className='w-full' required>
+                <Field.Root className='w-full' required>
                     <Field.Label className='editText'>Number of Guests <Field.RequiredIndicator /></Field.Label>
                     
                     <Input
@@ -560,10 +556,7 @@ const BookForm = () => {
                         
                     />  
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {numGuestsErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
 
 
@@ -655,18 +648,20 @@ const BookForm = () => {
                             </NativeSelect.Field>
                             <NativeSelect.Indicator />
                         </NativeSelect.Root>
+
+                        <Field.ErrorText width="full">
+                            <Field.ErrorIcon />
+                            {timeErrorMessage}
+                        </Field.ErrorText>
                         
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {numGuestsErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
 
 
             </Flex>
 
             {/* Special Requests */}
-            <Field.Root invalid={isSpecialRequestsError} className='w-full'>
+            <Field.Root className='w-full'>
                 <Field.Label className='editText'>Special Requests </Field.Label>
                 
                 <Textarea
@@ -678,10 +673,7 @@ const BookForm = () => {
                     
                 />  
 
-                <Field.ErrorText width="full">
-                    <Field.ErrorIcon />
-                    {specialRequestsErrorMessage}
-                </Field.ErrorText>
+                
             </Field.Root>
 
             {isSubmissionError && (

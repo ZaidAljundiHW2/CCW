@@ -12,16 +12,11 @@ const AddTestimonial = ({ setShowAdd }) => {
     const [isTestimonialError, setIsTestimonialError] = useState(false);
     const [testimonialErrorMessage, setTestimonialErrorMessage] = useState("");
 
-    const [isImgError, setIsImgError] = useState(false);
-    const [imgErrorMessage, setImgErrorMessage] = useState("");
-
     const [rating, setRating] = useState("5.0");
-    const [isRatingError, setIsRatingError] = useState(false);
-    const [ratingErrorMessage, setRatingErrorMessage] = useState("");
+    
 
     const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
+    
 
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
@@ -46,17 +41,13 @@ const AddTestimonial = ({ setShowAdd }) => {
 
     const handleUpload = async (testimonialid) => {
         try {
-            setLoading(true);
             const data = new FormData();
             data.append("my_file", file);
             data.append("folder", "testimonials");
             const res = await axios.put(`${import.meta.env.VITE_API_URL}/upload/testimonials/${testimonialid}`, data);
-            setRes(res.data);
         } catch (error) {
             alert(error.message);
-        } finally {
-            setLoading(false);
-        }
+        } 
     };
 
     const addTestimonial = async (username, testimonialText, testimonialImg, testimonialRating) => {
@@ -238,14 +229,11 @@ const AddTestimonial = ({ setShowAdd }) => {
 
                         </div>
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {imgErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
 
                 {/* Rating */}
-                <Field.Root invalid={isRatingError} className='w-full'>
+                <Field.Root className='w-full'>
                     <Field.Label className='editText'>Rating</Field.Label>
 
                     <NativeSelect.Root size="sm" width="320px">
@@ -263,10 +251,7 @@ const AddTestimonial = ({ setShowAdd }) => {
                         <NativeSelect.Indicator />
                     </NativeSelect.Root>
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {ratingErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
 
             </form>

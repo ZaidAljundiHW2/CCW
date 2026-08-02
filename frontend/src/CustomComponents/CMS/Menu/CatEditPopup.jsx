@@ -5,7 +5,7 @@ import { Table } from "@chakra-ui/react"
 import { Input, Field, Button } from '@chakra-ui/react'
 import DeleteCat from './DeleteCat'
 
-const CatEditPopup = ({cats, catItem, setShowEdit}) => {
+const CatEditPopup = ({catItem, setShowEdit}) => {
 
     
     const [selectedCat, setSelectedCat] = useState("");

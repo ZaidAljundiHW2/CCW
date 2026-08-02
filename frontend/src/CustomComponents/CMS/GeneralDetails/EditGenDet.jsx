@@ -19,6 +19,11 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
         e.preventDefault();
 
         try {
+
+            if (value.trim().length === 0) {
+                setIsError(true);
+                setErrorMessage("Input a value");
+            }
             
             const body = {
                 val: value,

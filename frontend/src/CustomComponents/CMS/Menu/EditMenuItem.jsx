@@ -9,23 +9,16 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
     const [inputName, setInputName] = useState(menuitem.itemname);
     const [isNameError, setIsNameError] = useState(false);
     const [nameErrorMessage, setNameErrorMessage] = useState("");
-    const [discErrorMessage, setDiscErrorMessage] = useState("");
     const [inputDesc, setInputDesc] = useState(menuitem.itemdescription);
     const [inputPrice, setInputPrice] = useState(menuitem.price);
     const [priceErrorMessage, setPriceErrorMessage] = useState("");
     const [isPriceError, setIsPriceError] = useState(false);
-    const [isImgError, setIsImgError] = useState(false);
-    const [imgErrorMessage, setImgErrorMessage] = useState("");
-
-    const [isSelectCategoryError, setIsSelectCategoryError] = useState();
-    const [selectedCategoryErrorMessage, setSelectedCategoryErrorMessage] = useState("");
 
     const [showDeleteConf, setShowDeleteConf] = useState(false);
 
 
     const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
+    
 
     const [isFileChosen, setIsFileChosen] = useState(false);
     const [fileImg, setFileImg] = useState();
@@ -54,17 +47,13 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
 
     const handleUpload = async (itemid, currImgURL) => {
         try {
-        setLoading(true);
         const data = new FormData();
         data.append("my_file", file);
         data.append("curr_image", currImgURL);
         const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/menu/item/${itemid}`, data);
-        setRes(res.data);
         } catch (error) {
         alert(error.message);
-        } finally {
-        setLoading(false);
-        }
+        } 
     };
 
     
@@ -229,10 +218,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                         </Span>
                     </div>
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {discErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
                 
                 {/* Image */}
@@ -260,18 +246,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                                 style={{ display: 'none' }}
                                 accept="image/*" 
                             />
-                            <code>
-                                {Object.keys(res).length > 0
-                                ? Object.keys(res).map((key) => (
-                                    <p className="output-item" key={key}>
-                                        <span>{key}:</span>
-                                        <span>
-                                        {typeof res[key] === "object" ? "object" : res[key]}
-                                        </span>
-                                    </p>
-                                    ))
-                                : null}
-                            </code>
+                            
                             {/* {file && (
                                 <>
                                 <button onClick={handleUpload} className="btn-green">
@@ -281,10 +256,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                             )} */}
                         </div>
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {imgErrorMessage}
-                    </Field.ErrorText>
+                   
                 </Field.Root>
 
                 {/* Price */}
@@ -316,7 +288,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                 </Field.Root>
 
                 {/* Category */}
-                <Field.Root invalid={isSelectCategoryError} className='w-full'>
+                <Field.Root className='w-full'>
                     <Field.Label className='editText'>Item Category</Field.Label>
                     
                         <Select.Root 
@@ -350,10 +322,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                             </Portal>
                             </Select.Root>                    
 
-                    <Field.ErrorText width="full">
-                        <Field.ErrorIcon />
-                        {selectedCategoryErrorMessage}
-                    </Field.ErrorText>
+                    
                 </Field.Root>
                 
 

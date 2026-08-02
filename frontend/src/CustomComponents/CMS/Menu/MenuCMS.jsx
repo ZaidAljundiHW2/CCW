@@ -23,7 +23,6 @@ const MenuCMS = () => {
     const [showMenuItemAdd, setShowMenuItemAdd] = useState(false);
 
     const [selectedMenuItem, setSelectedMenuItem] = useState();
-    const [editedObj, setEditedObj] = useState();
 
     const getCategories = async () => {
 
