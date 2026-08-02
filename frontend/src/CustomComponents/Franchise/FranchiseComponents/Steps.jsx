@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react'
-import StepsBack from '@/assets/img/Backgrounds/f2back.png'
-import waveicon from '@/assets/icons/waveicon.png'
-import waveicon4 from '@/assets/icons/waveicon4.png'
+import StepsBack from '@/assets/img/Backgrounds/f2back.webp'
+import waveicon from '@/assets/icons/waveicon.webp'
+import waveicon4 from '@/assets/icons/waveicon4.webp'
 import './WhyCC.css'
 import FranchiseItemsJSON from '@/assets/JSONs/franchisecards.json'
 import Step from './Step'
@@ -119,7 +119,7 @@ const Steps = () => {
             
         >
 
-            {FranchiseItemsJSON[2].map((card, i) => (
+            {FranchiseItemsJSON[1].map((card, i) => (
                 
                 
                 <Step CardItem={card} index={i} key={i}/>

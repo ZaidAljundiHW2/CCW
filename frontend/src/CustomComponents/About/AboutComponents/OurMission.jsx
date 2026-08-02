@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
-import creamwall from '@/assets/img/Backgrounds/sand2.png'
+import creamwall from '@/assets/img/Backgrounds/sand2.webp'
 import { Flex } from '@chakra-ui/react'
-import waveicon from '@/assets/icons/waveicon.png'
+import waveicon from '@/assets/icons/waveicon.webp'
 import './OurMission.css'
-import logo from '@/assets/img/logo-overflow.png'
+import logo from '@/assets/img/logo-overflow.webp'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 

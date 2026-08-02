@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import './Book.css'
-import bookback from '@/assets/img/Backgrounds/f2eeee.png'
+import bookback from '@/assets/img/Backgrounds/f2eeee.webp'
 import BookForm from './BookForm'
 import { motion } from 'motion/react'
 

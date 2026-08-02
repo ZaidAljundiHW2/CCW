@@ -1,6 +1,6 @@
 import './WhyCC.css'
 import { resolveImg } from '@/customLib/utils/resolveImage'
-import wave2 from '@/assets/icons/waveicon2.png'
+import wave2 from '@/assets/icons/waveicon2.webp'
 import { motion } from 'motion/react'
 
 const WhyCCCard = ({CardItem, wave=true, YNA=false, index}) => {

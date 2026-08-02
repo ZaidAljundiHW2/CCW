@@ -6,17 +6,17 @@
         "Items": [
             {
                 "Name":"Lobster",
-                "Img":"/src/assets/img/FoodOptions/Catches/lobsteroption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Catches/lobsteroption.webp"
             },
 
             {
                 "Name":"Crab",
-                "Img":"/src/assets/img/FoodOptions/Catches/craboption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Catches/craboption.webp"
             },
 
             {
                 "Name":"Shrimp",
-                "Img":"/src/assets/img/FoodOptions/Catches/shrimpoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Catches/shrimpoption.webp"
             }
         ]
     },
@@ -28,22 +28,22 @@
         "Items": [
             {
                 "Name":"Roasted Potatoes",
-                "Img":"/src/assets/img/FoodOptions/Sides/potatoesoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/potatoesoption.webp"
             },
 
             {
                 "Name":"Corn",
-                "Img":"/src/assets/img/FoodOptions/Sides/cornoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/cornoption.webp"
             },
 
             {
                 "Name":"Fries",
-                "Img":"/src/assets/img/FoodOptions/Sides/friesoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/friesoption.webp"
             },
 
             {
                 "Name":"Coleslaw",
-                "Img":"/src/assets/img/FoodOptions/Sides/coleslawoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sides/coleslawoption.webp"
             }
         ]
     },
@@ -55,17 +55,17 @@
         "Items": [
             {
                 "Name":"Sweet Chili",
-                "Img":"/src/assets/img/FoodOptions/Sauces/chiligarlicoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sauces/chiligarlicoption.webp"
             },
 
             {
                 "Name":"Katsu Curry",
-                "Img":"/src/assets/img/FoodOptions/Sauces/katsucurryoption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sauces/katsucurryoption.webp"
             },
 
             {
                 "Name":"Lemon Butter",
-                "Img":"/src/assets/img/FoodOptions/Sauces/lemonbutteroption.jpg"
+                "Img":"/src/assets/img/FoodOptions/Sauces/lemonbutteroption.webp"
             }
         ]
     },
@@ -77,17 +77,17 @@
         "Items": [
             {
                 "Name":"Mild",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice1.png"
+                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice1.webp"
             },
 
             {
                 "Name":"Spicy",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice2.png"
+                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice2.webp"
             },
 
             {
                 "Name":"Extra Spicy",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice3.png"
+                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice3.webp"
             }
         ]
     }

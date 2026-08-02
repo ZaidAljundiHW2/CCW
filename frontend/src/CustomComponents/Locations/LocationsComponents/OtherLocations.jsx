@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Carousel } from "@chakra-ui/react"
 import OtherCard from './OtherCard'
-import Back2 from '@/assets/img/back2.png'
+import Back2 from '@/assets/img/back2.webp'
 
 const OtherLocations = ({ items = [] }) => {
     const [page, setPage] = useState(0)

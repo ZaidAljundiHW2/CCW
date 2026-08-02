@@ -4,8 +4,8 @@ import { GiPaperBagFolded } from "react-icons/gi";
 import './Navbar.css'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import CompanyLogo from '@/assets/img/logo-full-transparent.png'
-import WheelIcon from '@/assets/icons/benefit-wheel.png'
+import CompanyLogo from '@/assets/img/logo-full-transparent.webp'
+import WheelIcon from '@/assets/icons/benefit-wheel.webp'
 import OrderPopup from './OrderPopup';
 import { Link } from 'react-router-dom';
 import useNavTheme from './useNavTheme'

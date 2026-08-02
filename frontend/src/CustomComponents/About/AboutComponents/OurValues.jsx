@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react'
-import waveicon3 from '@/assets/icons/waveicon3.png'
+import waveicon3 from '@/assets/icons/waveicon3.webp'
 import OurValuesJSON from '@/assets/JSONs/OurValues.json'
 import { motion } from 'motion/react'
 import ValueCard from './ValueCard'

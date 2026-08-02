@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
-import Lighthouse from '@/assets/img/lighthouse.png'
-import Wave2 from '@/assets/icons/waveicon2.png'
+import Lighthouse from '@/assets/img/lighthouse.webp'
+import Wave2 from '@/assets/icons/waveicon2.webp'
 import "./ComingSoon.css"
 import CSCard from './CSCard'
 import { motion } from 'motion/react'

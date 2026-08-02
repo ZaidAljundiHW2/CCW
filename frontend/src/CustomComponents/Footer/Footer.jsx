@@ -1,22 +1,22 @@
 import { useEffect } from 'react'
-import FooterBack from '@/assets/img/footer-background.png'
+import FooterBack from '@/assets/img/footer-background.webp'
 import { Flex, Box } from '@chakra-ui/react'
-import Logo from '@/assets/img/logo-full-transparent.png'
+import Logo from '@/assets/img/logo-full-transparent.webp'
 import { CiLocationOn } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { CiClock2 } from "react-icons/ci";
-import InstagramIcon from '@/assets/icons/instagram.png'
-import FacebookIcon from '@/assets/icons/facebook.png'
-import TiktokIcon from '@/assets/icons/tiktok.png'
+import InstagramIcon from '@/assets/icons/instagram.webp'
+import FacebookIcon from '@/assets/icons/facebook.webp'
+import TiktokIcon from '@/assets/icons/tiktok.webp'
 import './Footer.css'
-import WaveIcon3 from '@/assets/icons/waveicon3.png'
+import WaveIcon3 from '@/assets/icons/waveicon3.webp'
 import { useState } from 'react';
 import ToS from './ToS';
 import PrivacyPolicy from './PrivacyPolicy'
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import YoutubeIcon from '@/assets/icons/youtube.png'
+import YoutubeIcon from '@/assets/icons/youtube.webp'
 const Footer = forwardRef((props, ref) => {
 
     const [showPP, setShowPP] = useState(false);

@@ -1,7 +1,7 @@
 import './HeroCarousel.css'
 import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
-import FoodBucket from '@/assets/img/food collection.png'
+import FoodBucket from '@/assets/img/food collection.webp'
 import { Box } from '@chakra-ui/react';
 import steaminit from '@/assets/videos/steam.mp4'
 import steamloop from '@/assets/videos/steamloop.mp4'

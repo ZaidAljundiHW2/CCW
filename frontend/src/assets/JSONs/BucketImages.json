@@ -1,66 +1,66 @@
 [
     {
         "Name":"Lobster",
-        "Img":"/src/assets/img/FoodShowcase/lobsterlayer.png"
+        "Img":"/src/assets/img/FoodShowcase/lobsterlayer.webp"
     },
 
     {
         "Name":"Crab",
-        "Img":"/src/assets/img/FoodShowcase/crablayer.png"
+        "Img":"/src/assets/img/FoodShowcase/crablayer.webp"
     },
 
     {
         "Name":"Shrimp",
-        "Img":"/src/assets/img/FoodShowcase/shrimplayer.png"
+        "Img":"/src/assets/img/FoodShowcase/shrimplayer.webp"
     },
 
     {
         "Name":"Corn",
-        "Img":"/src/assets/img/FoodShowcase/corn.png"
+        "Img":"/src/assets/img/FoodShowcase/corn.webp"
     },
 
     {
         "Name":"Coleslaw",
-        "Img":"/src/assets/img/FoodShowcase/coleslaw.png"
+        "Img":"/src/assets/img/FoodShowcase/coleslaw.webp"
     },
 
     {
         "Name":"Fries",
-        "Img":"/src/assets/img/FoodShowcase/fries.png"
+        "Img":"/src/assets/img/FoodShowcase/fries.webp"
     },
 
     {
         "Name":"Roasted Potatoes",
-        "Img":"/src/assets/img/FoodShowcase/roastpotato.png"
+        "Img":"/src/assets/img/FoodShowcase/roastpotato.webp"
     },
 
     {
         "Name":"Katsu Curry",
-        "Img":"/src/assets/img/FoodShowcase/katsucurry.png"
+        "Img":"/src/assets/img/FoodShowcase/katsucurry.webp"
     },
 
     {
         "Name":"Lemon Butter",
-        "Img":"/src/assets/img/FoodShowcase/lemonbutter.png"
+        "Img":"/src/assets/img/FoodShowcase/lemonbutter.webp"
     },
 
     {
         "Name":"Sweet Chili",
-        "Img":"/src/assets/img/FoodShowcase/chiligarlic.png"
+        "Img":"/src/assets/img/FoodShowcase/chiligarlic.webp"
     },
 
     {
         "Name":"Mild",
-        "Img":"/src/assets/img/FoodShowcase/spice1.png"
+        "Img":"/src/assets/img/FoodShowcase/spice1.webp"
     },
 
     {
         "Name":"Spicy",
-        "Img":"/src/assets/img/FoodShowcase/spice2.png"
+        "Img":"/src/assets/img/FoodShowcase/spice2.webp"
     },
 
     {
         "Name":"Extra Spicy",
-        "Img":"/src/assets/img/FoodShowcase/spice3.png"
+        "Img":"/src/assets/img/FoodShowcase/spice3.webp"
     }
 ]

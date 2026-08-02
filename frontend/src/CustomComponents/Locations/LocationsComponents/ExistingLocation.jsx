@@ -2,7 +2,7 @@
 import { Box, Flex, VStack } from '@chakra-ui/react'
 import InfoSec from './InfoSec'
 import './ExistingLocation.css'
-import WaveIcon from '@/assets/icons/waveicon.png'
+import WaveIcon from '@/assets/icons/waveicon.webp'
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { CiClock2 } from "react-icons/ci";

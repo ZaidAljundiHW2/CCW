@@ -6,8 +6,8 @@ import ItemCard from './ItemCard'
 import MenuItemsJSON from '@/assets/JSONs/buildyourownitems.json'
 import { motion, AnimatePresence } from 'motion/react'
 
-import RestBack from '@/assets/img/Backgrounds/restback.jpg'
-import BucketImg from '@/assets/img/FoodShowcase/bucket.png'
+import RestBack from '@/assets/img/Backgrounds/restback.webp'
+import BucketImg from '@/assets/img/FoodShowcase/bucket.webp'
 import BucketImagesJSON from '@/assets/JSONs/BucketImages.json'
 
 import { resolveImg } from '@/customLib/utils/resolveImage'

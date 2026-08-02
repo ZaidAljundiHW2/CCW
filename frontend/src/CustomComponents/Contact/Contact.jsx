@@ -1,17 +1,48 @@
-import Back2 from '@/assets/img/back2.png'
+import Back2 from '@/assets/img/back2.webp'
 import { Flex, Box, Text } from '@chakra-ui/react'
 import ContactForm from './ContactForm'
-import Wave2 from '@/assets/icons/waveicon2.png'
+import Wave2 from '@/assets/icons/waveicon2.webp'
 import './Contact.css'
-import InstagramIcon from '@/assets/icons/instagram.png'
-import FacebookIcon from '@/assets/icons/facebook.png'
-import TiktokIcon from '@/assets/icons/tiktok.png'
-import BoilBag from '@/assets/img/boil-bag-cutout-transparent.png'
-import Tray from '@/assets/img/catering-trays-source.png'
-import Back3 from '@/assets/img/back3.png'
+import InstagramIcon from '@/assets/icons/instagram.webp'
+import FacebookIcon from '@/assets/icons/facebook.webp'
+import YoutubeIcon from '@/assets/icons/youtube.webp'
+import TiktokIcon from '@/assets/icons/tiktok.wepb'
+import BoilBag from '@/assets/img/boil-bag-cutout-transparent.webp'
+import Tray from '@/assets/img/catering-trays-source.webp'
+import Back3 from '@/assets/img/back3.webp'
 import { motion } from 'motion/react'
+import { useState } from 'react'
 
 const Contact = () => {
+
+    const [instLink, setInstLink] = useState("");
+    const [fcbkLink, setFcbkLink] = useState("");
+    const [tktkLink, setTktkLink] = useState("");
+    const [ytLink, setYtLink] = useState("");
+
+    const getSocialMedia = async() => {
+
+        try {
+
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/general-details/social-media`);
+
+            const jsonData = await response.json();
+
+            const instaobj = jsonData.find(item => item.label === "Instagram").val;
+            const fcbkobj = jsonData.find(item => item.label === "Facebook").val;
+            const tktkobj = jsonData.find(item => item.label === "TikTok").val;
+            const ytobj = jsonData.find(item => item.label === "Youtube").val;
+
+            setInstLink(instaobj);
+            setFcbkLink(fcbkobj);
+            setTktkLink(tktkobj);
+            setYtLink(ytobj);
+            
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
   return (
     <div 
         style={{
@@ -112,7 +143,7 @@ const Contact = () => {
 
                     <Flex className='flex-1 flex-col landscape:gap-5 gap-2'>
 
-                        <a href='https://www.instagram.com/captainscrab'>
+                        <a href={instLink}>
                             <Flex gap={'3'} className='items-center'>
 
                                 <img src={InstagramIcon} style={{
@@ -120,13 +151,13 @@ const Contact = () => {
                                     width:'40px'
                                 }}/>
                                 <Text className='CUT' style={{color:'white'}}>
-                                    @captainscrab.ca
+                                    @captainscrab
                                 </Text>
 
                             </Flex>
                         </a>
 
-                        <a href='https://www.tiktok.com/@captainscrab'>
+                        <a href={tktkLink}>
                             <Flex gap={'3'} className='items-center'>
 
                                 <img src={TiktokIcon} style={{
@@ -134,13 +165,27 @@ const Contact = () => {
                                     width:'40px'
                                 }}/>
                                 <Text className='CUT' style={{color:'white'}}>
-                                    @captainscrab.ca
+                                    @captainscrab
                                 </Text>
 
                             </Flex>
                         </a>
                         
-                        <a href='https://www.facebook.com/captainscrab'>
+                        <a href={ytLink}>
+                            <Flex gap={'3'} className='items-center'>
+
+                                <img src={YoutubeIcon} style={{
+                                    height:'40px',
+                                    width:'40px'
+                                }}/>
+                                <Text className='CUT' style={{color:'white'}}>
+                                    @CaptainsCrab
+                                </Text>
+
+                            </Flex>
+                        </a>
+
+                        <a href={fcbkLink}>
                             <Flex gap={'3'} className='items-center'>
 
                                 <img src={FacebookIcon} style={{
@@ -148,7 +193,7 @@ const Contact = () => {
                                     width:'40px'
                                 }}/>
                                 <Text className='CUT' style={{color:'white'}}>
-                                    /captainscrab.ca
+                                    Captain's Crab
                                 </Text>
 
                             </Flex>

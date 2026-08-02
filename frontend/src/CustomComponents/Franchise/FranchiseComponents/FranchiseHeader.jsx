@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import './FranchiseHeader.css'
-import OceanBack from '@/assets/img/Backgrounds/oceanback.jpg'
+import OceanBack from '@/assets/img/Backgrounds/oceanback.webp'
 import { motion } from 'motion/react'
 
 const FranchiseHeader = () => {

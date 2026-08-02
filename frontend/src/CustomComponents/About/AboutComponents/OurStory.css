@@ -1,5 +1,5 @@
 .ourstorycontainer {
-    background-image: url('/src/assets/img/Backgrounds/aboutus2.png');
+    background-image: url('/src/assets/img/Backgrounds/aboutus2.webp');
     background-size: 100% 100%;
     background-position: center;
 }
@@ -16,7 +16,7 @@
 @media (orientation: portrait) {
 
     .ourstorycontainer {
-        background-image: url('/src/assets/img/Backgrounds/aboutusmobile2.png');
+        background-image: url('/src/assets/img/Backgrounds/aboutusmobile2.webp');
         background-size: 100% 100%;
         background-position: center;
     }

@@ -3,7 +3,7 @@ import HeroCarousel from './HeroCarousel'
 import './Hero.css'
 import { FaClipboard } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
-import backalt from '@/assets/img/altback.png'
+import backalt from '@/assets/img/altback.webp'
 import { Link } from 'react-router-dom'
 
 const Hero = () => {

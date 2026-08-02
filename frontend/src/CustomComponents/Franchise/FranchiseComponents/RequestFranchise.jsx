@@ -1,10 +1,10 @@
-import compassback from '@/assets/img/Backgrounds/compassback.png'
+import compassback from '@/assets/img/Backgrounds/compassback.webp'
 import { Flex } from '@chakra-ui/react'
 import './RequestFranchise.css'
-import reqfrImg from '@/assets/img/delivery-door.png'
+import reqfrImg from '@/assets/img/delivery-door.webp'
 import ReqFrForm from './ReqFrForm'
-import waveicon4 from '@/assets/icons/waveicon4.png'
-import waveicon3 from '@/assets/icons/waveicon3.png'
+import waveicon4 from '@/assets/icons/waveicon4.webp'
+import waveicon3 from '@/assets/icons/waveicon3.webp'
 import { motion } from 'motion/react'
 
 const RequestFranchise = () => {
