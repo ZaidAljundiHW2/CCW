@@ -1552,5 +1552,5 @@ app.delete('/admin/CMS/testimonials/:id', protect, async(req,res) => {
 
 
 
-// app.listen(5000);
-module.exports = app;
+app.listen(5000);
+// module.exports = app;

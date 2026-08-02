@@ -1,13 +1,3 @@
-@font-face {
-    font-family: PersonalServices;
-    src: url('@/assets/personal_services/Personal Services.ttf');
-}
-
-@font-face {
-    font-family: HeadingNow;
-    src: url('@/assets/heading_now/HeadingNowTrial-45Medium.ttf');
-}
-
 .herotextwrapper {
     padding-top: var(--nav-height);
 }
