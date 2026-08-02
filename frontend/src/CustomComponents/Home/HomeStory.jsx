@@ -3,7 +3,7 @@ import { Flex } from '@chakra-ui/react'
 import '../About/AboutComponents/OurMission.css'
 import { motion } from 'motion/react'
 import { useState } from 'react'
-import StepsBack from '@/assets/img/Backgrounds/f2back.png'
+import StepsBack from '@/assets/img/Backgrounds/f2back.webp'
 
 const HomeStory = () => {
 
