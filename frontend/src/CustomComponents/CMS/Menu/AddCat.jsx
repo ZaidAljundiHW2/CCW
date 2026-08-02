@@ -1,10 +1,10 @@
-import { Flex, Input, Field, Button } from '@chakra-ui/react'
+import { Flex, Input, Field, Button, Span } from '@chakra-ui/react'
 import { useState } from 'react';
 
 const AddCat = ({categories, setShowAdd}) => {
 
     const [selectedName, setSelectedName] = useState('');
-    const handleNameInputChange = (e) => setSelectedName(e.target.value);
+    const handleNameInputChange = (e) => setSelectedName(e.target.value.slice(0,255));
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonLoading, setButtonLoading] = useState(false);
@@ -123,9 +123,22 @@ const AddCat = ({categories, setShowAdd}) => {
                         <Input 
                             value={selectedName} 
                             onChange={handleNameInputChange} 
+                            maxLength={255}
                             placeholder="New category" 
                             style={{color:'black'}} 
+
                         />
+
+                        <Span
+                            color="fg.muted"
+                            textStyle="xs"
+                            className="absolute right-3 top-1/2"
+                            style={{ transform: 'translateY(-50%)', width: '3.5rem', textAlign: 'right' }}
+                        >
+                            {selectedName.length}/255
+                        </Span>
+
+
                         <Field.ErrorText width="full">
                             <Field.ErrorIcon />
                             {errorMessage}

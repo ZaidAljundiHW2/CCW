@@ -580,20 +580,12 @@ const EditLocation = ({ item, setShowEdit }) => {
                         <div className="relative w-full">
                             <Input
                                 value={directionsLink}
-                                onChange={(e) => setDirectionsLink(e.currentTarget.value.slice(0, 100))}
+                                onChange={(e) => setDirectionsLink(e.currentTarget.value)}
                                 placeholder="New directions link"
                                 style={{ color: 'black', paddingRight: '4.5rem' }}
-                                maxLength={100}
                                 className="w-full"
                             />
-                            <Span
-                                color="fg.muted"
-                                textStyle="xs"
-                                className="absolute right-3 top-1/2"
-                                style={{ transform: 'translateY(-50%)', width: '3.5rem', textAlign: 'right' }}
-                            >
-                                {directionsLink.length}/100
-                            </Span>
+                            
                         </div>
 
                         <Field.ErrorText width="full">

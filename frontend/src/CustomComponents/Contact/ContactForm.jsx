@@ -321,7 +321,7 @@ const ContactForm = () => {
                 
                 <Textarea
                     value={message}
-                    onChange={(e) => setMessage(e.currentTarget.value.slice(0, 255))}
+                    onChange={(e) => setMessage(e.currentTarget.value.slice(0, 800))}
                     style={{ color: 'black', height:'100px'}}
                     maxLength={800}
                     className='CFText'

@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, Span } from '@chakra-ui/react'
 import './CatEditPopup.css'
 import { useState } from 'react'
 import { Table } from "@chakra-ui/react"
@@ -19,7 +19,7 @@ const CatEditPopup = ({catItem, setShowEdit}) => {
     const [selectedItem, setSelectedItem] = useState();
 
     const handleRankInputChange = (e) => setRankInput(e.target.value);
-    const handleNameInputChange = (e) => setSelectedName(e.target.value);
+    const handleNameInputChange = (e) => setSelectedName(e.target.value.slice(0,255));
 
     const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -293,8 +293,21 @@ const CatEditPopup = ({catItem, setShowEdit}) => {
                                 onChange={handleNameInputChange} 
                                 placeholder="New name" 
                                 style={{color:'black'}} 
+                                maxLength={255}
                                 disabled={selectedName === 'Build Your Own'}
                             />
+
+                            <Span
+                                color="fg.muted"
+                                textStyle="xs"
+                                className="absolute right-3 top-1/2"
+                                style={{ transform: 'translateY(-50%)', width: '3.5rem', textAlign: 'right' }}
+                            >
+                                {selectedName.length}/255
+                            </Span>
+
+
+
                             <Field.ErrorText width="full">
                                 <Field.ErrorIcon />
                                 {nameErrorMessage}
@@ -309,6 +322,8 @@ const CatEditPopup = ({catItem, setShowEdit}) => {
                                 placeholder="New order rank" 
                                 style={{color:'black'}} 
                             />
+
+
                             <Field.ErrorText width="full">
                                 <Field.ErrorIcon />
                                 {rankErrorMessage}

@@ -412,7 +412,7 @@ const ReqFrForm = () => {
                 
                 <Textarea
                     value={specialRequests}
-                    onChange={(e) => setSpecialRequests(e.currentTarget.value.slice(0, 255))}
+                    onChange={(e) => setSpecialRequests(e.currentTarget.value.slice(0, 800))}
                     style={{ color: 'black', height:'100px', background:'white'}}
                     maxLength={800}
                     className='CFText'

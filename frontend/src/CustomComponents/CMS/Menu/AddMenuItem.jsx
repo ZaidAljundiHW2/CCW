@@ -284,7 +284,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                     <div className="relative">
                         <Input
                             value={inputPrice}
-                            onChange={(e) => setInputPrice(e.currentTarget.value.slice(0, 255))}
+                            onChange={(e) => setInputPrice(e.currentTarget.value.slice(0, 20))}
                             placeholder="New price"
                             style={{ color: 'black', paddingRight: '4.5rem' }}
                             maxLength={20}
