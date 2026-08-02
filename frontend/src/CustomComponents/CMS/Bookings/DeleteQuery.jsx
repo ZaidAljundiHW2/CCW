@@ -23,7 +23,6 @@ const DeleteQuery = ({item, setShowDelete}) => {
 
             if (response.ok) {
                 setShowDelete(false);
-
             }
             
         } catch (error) {

@@ -13,13 +13,14 @@ const BookingCMS = () => {
     const [allCompletedItems, setAllCompletedItems] = useState([]);
 
     const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     const [showDelete, setShowDelete] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
 
     const [reservationItem, setReservationItem] = useState();
 
-    const [locations, setLocations] = useState();
+    const [locations, setLocations] = useState([]);
     const [location, setLocation] = useState("");
     const [locationName, setLocationName] = useState("");
 
@@ -32,12 +33,19 @@ const BookingCMS = () => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/new`, {
                 credentials:'include',
             });
+
+            if (!response.ok) {
+                setIsError(true);
+                return;
+            }
+
             const jsonData = await response.json();
             setAllNewItems(jsonData);
             
             
         } catch (error) {
             console.error(error);
+            setIsError(true);
         }
     }
 
@@ -48,11 +56,18 @@ const BookingCMS = () => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/bookings/complete`, {
                 credentials:'include',
             });
+
+            if (!response.ok) {
+                setIsError(true);
+                return;
+            }
+
             const jsonData = await response.json();
             setAllCompletedItems(jsonData);
             
         } catch (error) {
             console.error(error);
+            setIsError(true);
         }
     }
 
@@ -63,11 +78,18 @@ const BookingCMS = () => {
             const response = await fetch( `${import.meta.env.VITE_API_URL}/locations`, {
                 credentials:'include',
             });
+
+            if (!response.ok) {
+                setIsError(true);
+                return;
+            }
+
             const jsonData = await response.json();
             setLocations(jsonData);
             
         } catch (error) {
             console.error(error);
+            setIsError(true);
         }
     }
 
@@ -83,6 +105,7 @@ const BookingCMS = () => {
     useEffect(() => {
 
         const load = async() => {
+            setIsError(false);
             await getNewReservations();
             await getCompletedReservations();
             await getLocations();
@@ -111,6 +134,12 @@ const BookingCMS = () => {
         )
     }
 
+    if (isError) {
+        return (
+            <p style={{color:'black'}}>Something went wrong loading bookings. Please try again later.</p>
+        )
+    }
+
 
   return (
     <div
@@ -124,122 +153,106 @@ const BookingCMS = () => {
         '
     >
 
-        {isLoading ? (
+        <div>
+            <h1 className='CMSHead'>
+                Booking Reservations
+            </h1>
 
-                <p style={{color:'black'}}>Loading...</p>
+            <Menu.Root onSelect={handleLocationChange}>
+                <Menu.Trigger asChild>
+                    <Button color={'black'} style={{borderWidth:'2px', borderColor:'black'}}>
+                        Locations
+                    </Button>
+                </Menu.Trigger>
+                <Portal>
+                    <Menu.Positioner>
+                    <Menu.Content >
+                        
+                        {locations.map((location) => (
 
-            )
-
-            :
-
-            (
-
-                <div>
-                    <h1 className='CMSHead'>
-                        Booking Reservations
-                    </h1>
-
-                    <Menu.Root onSelect={handleLocationChange}>
-                        <Menu.Trigger asChild>
-                            <Button color={'black'} style={{borderWidth:'2px', borderColor:'black'}}>
-                                Locations
-                            </Button>
-                        </Menu.Trigger>
-                        <Portal>
-                            <Menu.Positioner>
-                            <Menu.Content >
-                                
-                                {locations.map((location) => (
-
-                                    <Menu.Item value={location.locationid} key={location.locationid}>
-                                        {location.locationname}
-                                    </Menu.Item>
-
-                                ))}
-                            </Menu.Content>
-                            </Menu.Positioner>
-                        </Portal>
-                    </Menu.Root>
-                    
-                    <h1 className='editText'>
-                        Selected Location: {locationName}
-                    </h1>
-
-
-                    <Flex 
-                        className='
-                            GDWrapper 
-                            rounded-lg 
-                            shadow-lg
-                            flex-col
-                        '
-                    >
-
-                        <h1 className='CMSHead'>
-                            New Reservations
-                        </h1>
-
-                        {selectedNewItems.map((item) => (
-
-                            <ReservationBlock 
-                                mark={true}
-                                reservationItem={item}
-                                key={item.bookingid}
-                                setShowDelete={setShowDelete}
-                                setReservationItem={setReservationItem}
-                                setRefresh={setRefresh}
-                                setShowEdit={setShowEdit}
-                                location={locations.find(location => location.locationid === item.locationid).locationname}
-
-                            />
+                            <Menu.Item value={location.locationid} key={location.locationid}>
+                                {location.locationname}
+                            </Menu.Item>
 
                         ))}
-
-                        
-                    </Flex>
-
-                    <Flex 
-                        className='
-                            GDWrapper 
-                            rounded-lg 
-                            shadow-lg
-                            flex-col
-                        '
-                    >
-
-                        <h1 className='CMSHead'>
-                            Completed Reservations
-                        </h1>
-
-                        {selectedCompletedItems.map((item) => (
-
-                            <ReservationBlock 
-                                mark={false} 
-                                reservationItem={item} 
-                                key={item.bookingid}
-                                setShowDelete={setShowDelete} 
-                                setReservationItem={setReservationItem}
-                                setRefresh={setRefresh}
-                                setShowEdit={setShowEdit}
-                                location={locations.find(location => location.locationid === item.locationid).locationname}
-
-                            />
-
-                        ))}
-
-                        
-                    </Flex>
-
-                    {showDelete && (<DeleteQuery item={reservationItem} setShowDelete={setShowDelete}/>)}
-
-                    {showEdit && (<BookingEdit selectedReservation={reservationItem} setShowEdit={setShowEdit}/>)}
-                </div>
-
-            )
+                    </Menu.Content>
+                    </Menu.Positioner>
+                </Portal>
+            </Menu.Root>
             
-        
-        }
-        
+            <h1 className='editText'>
+                Selected Location: {locationName}
+            </h1>
+
+
+            <Flex 
+                className='
+                    GDWrapper 
+                    rounded-lg 
+                    shadow-lg
+                    flex-col
+                '
+            >
+
+                <h1 className='CMSHead'>
+                    New Reservations
+                </h1>
+
+                {selectedNewItems.map((item) => (
+
+                    <ReservationBlock 
+                        mark={true}
+                        reservationItem={item}
+                        key={item.bookingid}
+                        setShowDelete={setShowDelete}
+                        setReservationItem={setReservationItem}
+                        setRefresh={setRefresh}
+                        setShowEdit={setShowEdit}
+                        location={locations.find(location => location.locationid === item.locationid)?.locationname}
+
+                    />
+
+                ))}
+
+                
+            </Flex>
+
+            <Flex 
+                className='
+                    GDWrapper 
+                    rounded-lg 
+                    shadow-lg
+                    flex-col
+                '
+            >
+
+                <h1 className='CMSHead'>
+                    Completed Reservations
+                </h1>
+
+                {selectedCompletedItems.map((item) => (
+
+                    <ReservationBlock 
+                        mark={false} 
+                        reservationItem={item} 
+                        key={item.bookingid}
+                        setShowDelete={setShowDelete} 
+                        setReservationItem={setReservationItem}
+                        setRefresh={setRefresh}
+                        setShowEdit={setShowEdit}
+                        location={locations.find(location => location.locationid === item.locationid)?.locationname}
+
+                    />
+
+                ))}
+
+                
+            </Flex>
+
+            {showDelete && (<DeleteQuery item={reservationItem} setShowDelete={setShowDelete}/>)}
+
+            {showEdit && (<BookingEdit selectedReservation={reservationItem} setShowEdit={setShowEdit}/>)}
+        </div>
       
     </div>
   )

@@ -8,6 +8,8 @@ const AboutCMS = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [showAboutEdit, SetShowAboutEdit] = useState(false);
     const [currAboutItem, setCurrAboutItem] = useState();
+    const [isError, setIsError] = useState(false);
+
 
     const getAbout = async() => {
 
@@ -19,13 +21,17 @@ const AboutCMS = () => {
                 credentials:'include',
             });
 
-            console.log(response);
+
+            if (!response.ok) {
+                setIsError(true);
+                return;
+            }
 
 
             const jsonData = await response.json();
-
-            
             setAboutItems(jsonData);
+            setIsError(false);
+
 
             
         } catch (error) {
@@ -61,6 +67,10 @@ const AboutCMS = () => {
         <h1 className='CMSHead'>
             About
         </h1>
+
+        {isError && (
+            <p style={{color:'black'}}>Something went wrong loading the About content. Please try again later.</p>
+        )}
 
         {(
 

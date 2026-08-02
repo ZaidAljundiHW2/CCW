@@ -43,9 +43,10 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
     const [isLocationError, setIsLocationError] = useState(false);
     const [locationErrorMessage, setLocationErrorMessage] = useState("");
 
-    const [locations, setLocations] = useState();
+    const [locations, setLocations] = useState([]);
 
     const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     const [buttonLoading, setButtonLoading] = useState(false);
     
@@ -57,11 +58,15 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/locations`, {
                 credentials:'include',
             });
+
+            if (!response.ok) {
+                setIsError(true);
+                return;
+            }
+
             const jsonData = await response.json();
 
             setLocations(jsonData);
-
-            console.log(jsonData);
 
             const selectedLocation = jsonData.find(item => item.locationid === selectedReservation.locationid);
 
@@ -70,6 +75,7 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
             
         } catch (error) {
             console.error(error);
+            setIsError(true);
         }
     }
 
@@ -179,6 +185,12 @@ const BookingEdit = ({selectedReservation, setShowEdit}) => {
     if (isLoading) {
         return (
             <p style={{color:'black'}}>Loading...</p>
+        )
+    }
+
+    if (isError) {
+        return (
+            <p style={{color:'black'}}>Something went wrong loading locations. Please try again later.</p>
         )
     }
 
