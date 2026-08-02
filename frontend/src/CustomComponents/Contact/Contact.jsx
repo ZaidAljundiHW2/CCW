@@ -6,12 +6,12 @@ import './Contact.css'
 import InstagramIcon from '@/assets/icons/instagram.webp'
 import FacebookIcon from '@/assets/icons/facebook.webp'
 import YoutubeIcon from '@/assets/icons/youtube.webp'
-import TiktokIcon from '@/assets/icons/tiktok.wepb'
+import TiktokIcon from '@/assets/icons/tiktok.webp'
 import BoilBag from '@/assets/img/boil-bag-cutout-transparent.webp'
 import Tray from '@/assets/img/catering-trays-source.webp'
 import Back3 from '@/assets/img/back3.webp'
 import { motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Contact = () => {
 
@@ -19,6 +19,8 @@ const Contact = () => {
     const [fcbkLink, setFcbkLink] = useState("");
     const [tktkLink, setTktkLink] = useState("");
     const [ytLink, setYtLink] = useState("");
+
+    
 
     const getSocialMedia = async() => {
 
@@ -42,6 +44,19 @@ const Contact = () => {
             console.error(error);
         }
     };
+
+    useEffect(() => {
+
+        const load = async() => {
+
+            await getSocialMedia();
+        }
+
+        load();
+
+    },[])
+
+
 
   return (
     <div 
