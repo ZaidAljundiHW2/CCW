@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom'
 import { CiClock2 } from "react-icons/ci";
 import { CiParking1 } from "react-icons/ci";
 import { IoLocationSharp } from "react-icons/io5";
+import { FaLocationArrow } from "react-icons/fa";
+import { FaCalendar } from "react-icons/fa";
+import { IoIosCall } from "react-icons/io";
 
 const ExistingLocation = ({ locationitem }) => {
 
@@ -91,6 +94,8 @@ const ExistingLocation = ({ locationitem }) => {
                     Visit our flagship location in the heart of Burlington - where every meal is a celebration of fresh seafood, community, and unforgettable flavor.
                 </motion.p>
 
+                
+
             </Box>
 
 
@@ -141,6 +146,16 @@ const ExistingLocation = ({ locationitem }) => {
                     Our home port in the heart of burlington serving up bold flavours and good times
                 </motion.p>
 
+                <motion.p className='ELT'
+                    initial={{opacity:0, x:-50}}
+
+                    whileInView={{opacity:1, x:0}}
+
+                    transition={{duration:.5, ease:'easeOut'}}
+                >
+                    {locationitem.address}
+                </motion.p>
+
                 <VStack className='w-full' align='stretch' spacing={2}>
 
                     <InfoSec icon={CiClock2} text={locationitem.openingtext} index={0}/>
@@ -153,16 +168,25 @@ const ExistingLocation = ({ locationitem }) => {
 
                 <Flex className='w-full items-center justify-center gap-5' padding={'5%'}>
                     
-                    <a href={locationitem.directions} className='ELDir'>
+                    <a href={locationitem.directions} className='ELDir gap-2 items-center justify-center'>
 
                         Directions
+                        <FaLocationArrow />
 
                     </a>
 
 
-                    <Link className='ELBook' to={'/Book'}>
+                    <Link className='ELBook gap-2 items-center justify-center' to={'/Book'}>
                         Book
+                        <FaCalendar />
                     </Link>
+
+                    <a href={`tel:${locationitem.phonenumber}`} className='ELCall gap-2 items-center justify-center'>
+
+                        Call
+                        <IoIosCall />
+
+                    </a>
                 </Flex>
 
                 

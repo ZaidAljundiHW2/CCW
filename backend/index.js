@@ -1257,9 +1257,11 @@ app.put('/admin/CMS/locations/update/:id',protect, async(req,res) => {
         const parking = req.body.parking;
         const is24hrs = req.body.is24hrs;
         const description = req.body.description;
+        const address = req.body.address;
+        const phonenumber = req.body.phonenumber;
 
-        const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7, parking = $8, is24hrs = $9, description = $10 WHERE locationid = $11", [
-            locationname, closeddays, opentime, closetime, directions, image, openingtext, parking, is24hrs, description, id
+        const updateItem = await pool.query("UPDATE locations SET locationname = $1, closeddays = $2, opentime = $3, closetime = $4, directions = $5, image = $6, openingtext = $7, parking = $8, is24hrs = $9, description = $10, address = $11, phonenumber = $12 WHERE locationid = $13", [
+            locationname, closeddays, opentime, closetime, directions, image, openingtext, parking, is24hrs, description, address, phonenumber, id
         ])
 
         res.json("success");
@@ -1324,9 +1326,11 @@ app.post('/admin/CMS/locations', protect,async(req,res) => {
         const image = req.body.image;
         const is24hrs = req.body.is24hrs;
         const description = req.body.description;
+        const address = req.body.address;
+        const phonenumber = req.body.phonenumber;
 
-        const addLocation = await pool.query("INSERT INTO locations (locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, ismainbranch, is24hrs, description) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING locationid", [
-            locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, false, is24hrs, description
+        const addLocation = await pool.query("INSERT INTO locations (locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, ismainbranch, is24hrs, description, address, phonenumber) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) RETURNING locationid", [
+            locationname, closeddays, opentime, closetime, directions, parking, image, openingtext, false, is24hrs, description, address, phonenumber
         ])
 
         res.json(addLocation.rows[0].locationid);

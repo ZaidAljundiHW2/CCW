@@ -47,6 +47,11 @@ const AddLocation = ({setShowAdd}) => {
     const [isNameError, setIsNameError] = useState(false)
     const [nameErrorMessage, setNameErrorMessage] = useState("")
 
+    // Address
+    const [address, setAddress] = useState("")
+    const [isAddressError, setIsAddressError] = useState(false)
+    const [addressErrorMessage, setAddressErrorMessage] = useState("")
+
     // Closed days (postgres array -> JS array, e.g. ["Monday"])
     const [closedDays, setClosedDays] = useState([])
 
@@ -69,6 +74,11 @@ const AddLocation = ({setShowAdd}) => {
     const [directionsLink, setDirectionsLink] = useState("");
     const [isDirectionsError, setIsDirectionsError] = useState(false)
     const [directionsErrorMessage, setDirectionsErrorMessage] = useState("")
+
+    // Phone Number
+    const [phoneNumber, setPhoneNumber] = useState("")
+    const [isPhoneNumberError, setIsPhoneNumberError] = useState(false)
+    const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState("")
 
     const [parking, setParking] = useState("");
 
@@ -145,6 +155,28 @@ const AddLocation = ({setShowAdd}) => {
                 setNameErrorMessage("");
             }
 
+            if (phoneNumber.trim().length == 0) {
+                setIsPhoneNumberError(true);
+                setPhoneNumberErrorMessage("Input a value");
+                end = true;
+            }
+
+            else {
+                setIsPhoneNumberError(false);
+                setPhoneNumberErrorMessage("");
+            }
+
+            if (address.trim().length == 0) {
+                setIsAddressError(true);
+                setAddressErrorMessage("Input a value");
+                end = true;
+            }
+
+            else {
+                setIsAddressError(false);
+                setAddressErrorMessage("");
+            }
+
             if (directionsLink.trim().length == 0) {
                 setIsDirectionsError(true);
                 setDirectionsErrorMessage("Input a value");
@@ -211,6 +243,7 @@ const AddLocation = ({setShowAdd}) => {
 
             const body = {
                 "locationname": name,
+                "address": address,
                 "closeddays": closedDays,
                 "is24hrs": is24hrs,
                 "opentime": is24hrs ? null : openTime,
@@ -219,7 +252,9 @@ const AddLocation = ({setShowAdd}) => {
                 "openingtext": openingtext,
                 "parking": parking,
                 "image": "",
-                "description": description
+                "description": description,
+                "phonenumber": phoneNumber
+
                 
             };
 
@@ -318,6 +353,48 @@ const AddLocation = ({setShowAdd}) => {
                     <Field.ErrorText width="full">
                         <Field.ErrorIcon />
                         {nameErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+
+                {/* Address */}
+                <Field.Root invalid={isAddressError} className='w-full' required>
+                    <Field.Label className='editText'>Address <Field.RequiredIndicator /></Field.Label>
+
+                    <div className="relative w-full">
+                        <Input
+                            value={address}
+                            onChange={(e) => setAddress(e.currentTarget.value)}
+                            placeholder="Address"
+                            style={{ color: 'black', paddingRight: '4.5rem' }}
+                            className="w-full"
+                        />
+                        
+                    </div>
+
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {addressErrorMessage}
+                    </Field.ErrorText>
+                </Field.Root>
+
+                {/* Phone Number */}
+                <Field.Root invalid={isPhoneNumberError} className='w-full' required>
+                    <Field.Label className='editText'>Phone Number <Field.RequiredIndicator /></Field.Label>
+
+                    <div className="relative w-full">
+                        <Input
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.currentTarget.value)}
+                            placeholder="Phone number"
+                            style={{ color: 'black', paddingRight: '4.5rem' }}
+                            className="w-full"
+                        />
+                        
+                    </div>
+
+                    <Field.ErrorText width="full">
+                        <Field.ErrorIcon />
+                        {phoneNumberErrorMessage}
                     </Field.ErrorText>
                 </Field.Root>
 

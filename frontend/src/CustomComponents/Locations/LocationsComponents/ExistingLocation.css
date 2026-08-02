@@ -39,6 +39,27 @@
 
 }
 
+.ELCall {
+    background-color: black;
+    color: white;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding:10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: white;
+    transition: .3s;
+
+}
+
+.ELCall:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
 .ELBook:hover {
     background-color: white;
     color: #012447;

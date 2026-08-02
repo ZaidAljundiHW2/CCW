@@ -2,7 +2,9 @@ import { Flex, Link } from '@chakra-ui/react'
 import InfoSec from './InfoSec'
 import { CiClock2 } from "react-icons/ci";
 import { CiParking1 } from "react-icons/ci";
- 
+import { IoIosCall } from "react-icons/io";
+import { FaLocationArrow } from "react-icons/fa";
+import { FaCalendar } from "react-icons/fa";
 
 const OtherCard = ({item}) => {
   return (
@@ -48,6 +50,11 @@ const OtherCard = ({item}) => {
                 {item.description}
             </h1>
 
+            <p className='ELT'
+            >
+                {item.address}
+            </p>
+
             <InfoSec icon={CiClock2} text={item.openingtext}/>
 
             {item.parking && (
@@ -56,16 +63,25 @@ const OtherCard = ({item}) => {
 
             <Flex className='w-full flex-1 justify-end items-end gap-5'>
 
-                <a href={item.directions} className='ELDir'>
+                <a href={item.directions} className='ELDir gap-2 items-center justify-center'>
 
                     Directions
+                    <FaLocationArrow />
 
                 </a>
 
 
-                <Link className='ELBook' to={'/Book'}>
+                <Link className='ELBook gap-2 items-center justify-center' to={'/Book'}>
                     Book
+                    <FaCalendar />
                 </Link>
+
+                <a href={`tel:${item.phonenumber}`} className='ELCall gap-2 items-center justify-center'>
+
+                    Call
+                    <IoIosCall />
+
+                </a>
             </Flex>
 
 
