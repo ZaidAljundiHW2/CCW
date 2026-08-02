@@ -1,6 +1,4 @@
-import React from 'react'
 import './Step.css'
-import { resolveImg } from '@/customLib/utils/resolveImage'
 import { CiMail } from "react-icons/ci";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaFileAlt } from "react-icons/fa";

@@ -1,9 +1,5 @@
-// InfoSec.jsx
-import React from 'react'
-import { Flex, Box, Icon } from '@chakra-ui/react'
-import ClockIcon from '@/assets/icons/contact-clock-orange.png'
+import { Icon } from '@chakra-ui/react'
 import './InfoSec.css'
-import { resolveImg } from '@/customLib/utils/resolveImage'
 import { motion } from 'motion/react'
 
 const InfoSec = ({icon: IconComponent, index, text}) => {

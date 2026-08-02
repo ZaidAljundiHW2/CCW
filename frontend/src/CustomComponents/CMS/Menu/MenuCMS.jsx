@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Flex } from '@chakra-ui/react'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import InfoBlock from '../InfoBlock'
 import MenuShowcase from '@/CustomComponents/Menu/MenuComponents/MenuShowcase'
 import CatEditPopup from './CatEditPopup'

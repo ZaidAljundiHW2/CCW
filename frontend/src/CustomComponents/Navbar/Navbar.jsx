@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { Box, Flex, Menu, Portal } from '@chakra-ui/react'
 import { GiPaperBagFolded } from "react-icons/gi";
 import './Navbar.css'

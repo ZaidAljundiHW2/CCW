@@ -1,5 +1,3 @@
-import React from 'react'
-import SeafoodPile from '@/assets/img/seafood pile.png'
 import { Flex } from '@chakra-ui/react'
 import './FranchiseHeader.css'
 import OceanBack from '@/assets/img/Backgrounds/oceanback.jpg'

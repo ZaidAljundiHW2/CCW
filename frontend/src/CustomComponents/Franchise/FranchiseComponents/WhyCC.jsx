@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex } from '@chakra-ui/react'
 import WhyCCBack from '@/assets/img/Backgrounds/anchorcrabback.png'
 import waveicon from '@/assets/icons/waveicon.png'
@@ -6,7 +5,6 @@ import waveicon4 from '@/assets/icons/waveicon4.png'
 import './WhyCC.css'
 import WhyCCCard from './WhyCCCard'
 import FranchiseItemsJSON from '@/assets/JSONs/franchisecards.json'
-import Franchise from '../Franchise'
 import { motion } from 'motion/react'
 
 const WhyCC = () => {

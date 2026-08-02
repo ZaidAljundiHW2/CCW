@@ -1,9 +1,7 @@
-import React from 'react'
-import { Flex, Button, Link } from '@chakra-ui/react'
+import { Flex, Link } from '@chakra-ui/react'
 import InfoSec from './InfoSec'
 import { CiClock2 } from "react-icons/ci";
 import { CiParking1 } from "react-icons/ci";
-import { IoLocationSharp } from "react-icons/io5";
  
 
 const OtherCard = ({item}) => {

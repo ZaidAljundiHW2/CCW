@@ -1,10 +1,7 @@
-import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
 import { useState } from 'react';
 
 const DeleteLocation = ({item, setShowDelete, setShowEdit}) => {
-
-    const API = import.meta.env.VITE_API_URL;
 
     const [isButtonPressed, setIsButtonPressed] = useState(false);
 

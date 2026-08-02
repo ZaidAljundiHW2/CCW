@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
-import creamwall from '@/assets/img/Backgrounds/sand2.png'
+import { useEffect } from 'react'
 import { Flex } from '@chakra-ui/react'
-import waveicon from '@/assets/icons/waveicon.png'
 import '../About/AboutComponents/OurMission.css'
-import logo from '@/assets/img/logo-overflow.png'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import StepsBack from '@/assets/img/Backgrounds/f2back.png'
-import Crab from '@/assets/img/location-coming-soon.png'
 
 const HomeStory = () => {
 

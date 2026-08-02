@@ -1,4 +1,3 @@
-import React from 'react'
 import ExistingLocation from './LocationsComponents/ExistingLocation'
 import ComingSoon from './LocationsComponents/ComingSoon'
 import { useState, useEffect } from 'react'

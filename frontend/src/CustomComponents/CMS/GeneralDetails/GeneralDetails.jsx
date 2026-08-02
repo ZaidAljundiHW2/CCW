@@ -1,4 +1,3 @@
-import React from 'react'
 import './GeneralDetails.css'
 import { Flex } from '@chakra-ui/react'
 import '../CMS.css'

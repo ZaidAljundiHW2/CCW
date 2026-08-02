@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 import ReservationBlock from './ReservationBlock';

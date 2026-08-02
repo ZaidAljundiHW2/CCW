@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Flex, Button } from '@chakra-ui/react'
 import { IoIosCloseCircle } from "react-icons/io"
 import { SiDoordash } from "react-icons/si"

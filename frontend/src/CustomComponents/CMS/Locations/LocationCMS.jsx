@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import InfoBlock from '../InfoBlock'
 import AddCS from './AddCS'
 import EditCS from './EditCS'

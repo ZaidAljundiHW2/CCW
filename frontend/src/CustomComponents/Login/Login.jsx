@@ -1,7 +1,6 @@
-import React from 'react'
-import { Flex, Field, Input, Button } from '@chakra-ui/react'
+import { Field, Input } from '@chakra-ui/react'
 import './Login.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 

@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
 import './Scrollbar.css'
 import { Link } from 'react-router-dom'
-import { Menu, Portal, Box, Button } from "@chakra-ui/react"
+import { Menu, Portal, Button } from "@chakra-ui/react"
 
 
 const Scrollbar = () => {
 
-
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import creamwall from '@/assets/img/Backgrounds/sand2.png'
 import { Flex } from '@chakra-ui/react'
 import waveicon from '@/assets/icons/waveicon.png'

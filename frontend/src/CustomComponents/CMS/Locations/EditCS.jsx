@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Flex, Button } from '@chakra-ui/react'
 import CSCard from '@/CustomComponents/Locations/LocationsComponents/CSCard'
 import {
-  Badge,
-  Box,
+  
   Carousel,
   HStack,
-  Icon,
   IconButton,
-  Image,
-  Span,
-  Stack,
+  
 } from "@chakra-ui/react"
-import { FaStar } from "react-icons/fa"
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
 import { useState } from 'react'
 import EditCSItem from './EditCSItem'

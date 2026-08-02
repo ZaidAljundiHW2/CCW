@@ -1,4 +1,3 @@
-import React from 'react'
 import InfoBlock from '../InfoBlock'
 import { useState, useEffect } from 'react';
 import EditAbout from './EditAbout';

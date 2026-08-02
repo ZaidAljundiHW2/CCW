@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Carousel, IconButton, Box, RatingGroup, Flex, Text } from '@chakra-ui/react'
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
 

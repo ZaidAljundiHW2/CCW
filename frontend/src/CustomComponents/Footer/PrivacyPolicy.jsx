@@ -1,4 +1,3 @@
-import React from 'react'
 import { IoIosCloseCircle } from "react-icons/io";
 import './PP.css'
 import { useEffect } from 'react';

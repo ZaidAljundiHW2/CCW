@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import InfoBlock from '../InfoBlock'
 import { useState } from 'react';
 import TestimonialBlock from './TestimonialBlock';

@@ -1,4 +1,3 @@
-import React from 'react'
 import Hero from './Hero'
 import CallToAction from './CallToAction'
 import OurMission from '../About/AboutComponents/OurMission'

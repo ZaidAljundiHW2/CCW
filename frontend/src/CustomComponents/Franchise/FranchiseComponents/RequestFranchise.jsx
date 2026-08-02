@@ -1,4 +1,3 @@
-import React from 'react'
 import compassback from '@/assets/img/Backgrounds/compassback.png'
 import { Flex } from '@chakra-ui/react'
 import './RequestFranchise.css'
@@ -6,7 +5,6 @@ import reqfrImg from '@/assets/img/delivery-door.png'
 import ReqFrForm from './ReqFrForm'
 import waveicon4 from '@/assets/icons/waveicon4.png'
 import waveicon3 from '@/assets/icons/waveicon3.png'
-import waveicon from '@/assets/icons/waveicon.png'
 import { motion } from 'motion/react'
 
 const RequestFranchise = () => {

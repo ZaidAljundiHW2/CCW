@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex, SimpleGrid, Field, Button } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex, Button } from '@chakra-ui/react';
 
 const FranchiseBlock = ({franchiseItem, mark=true, setFranchiseItem, setShowDelete, setRefresh}) => {

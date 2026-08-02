@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { Flex, Input, Textarea, Field, Span, Button } from '@chakra-ui/react'
+import { Flex, Input, Textarea, Field, Button } from '@chakra-ui/react'
 import { useState, useRef } from 'react';
 
 const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {

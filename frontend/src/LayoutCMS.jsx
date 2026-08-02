@@ -1,9 +1,5 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Scrollbar from './CustomComponents/CMS/Scrollbar/Scrollbar'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Navigate } from 'react-router-dom'
 
 const LayoutCMS = () => {  
   

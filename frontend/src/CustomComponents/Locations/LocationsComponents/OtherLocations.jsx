@@ -1,5 +1,4 @@
-// OtherLocations.jsx
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Carousel } from "@chakra-ui/react"
 import OtherCard from './OtherCard'
 import Back2 from '@/assets/img/back2.png'

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import FooterBack from '@/assets/img/footer-background.png'
 import { Flex, Box } from '@chakra-ui/react'
 import Logo from '@/assets/img/logo-full-transparent.png'

@@ -1,8 +1,6 @@
 import './HeroCarousel.css'
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useState, useRef } from 'react';
-import { useStackState } from 'rooks';
-import Queue from '@/customLib/Queue'
+import { useState } from 'react';
 import FoodBucket from '@/assets/img/food collection.png'
 import { Box } from '@chakra-ui/react';
 import steaminit from '@/assets/videos/steam.mp4'
@@ -12,7 +10,6 @@ const HeroCarousel = () => {
 
   const [videoEnded, setVideoEnded] = useState(false);
   const [loopIndex, setLoopIndex] = useState(0);
-  const [smokeReady, setSmokeReady] = useState(false);
   
   const updateLoopIndex = () => {
 

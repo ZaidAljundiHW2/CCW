@@ -1,4 +1,3 @@
-import React from 'react'
 import Back2 from '@/assets/img/back2.png'
 import { Flex, Box, Text } from '@chakra-ui/react'
 import ContactForm from './ContactForm'

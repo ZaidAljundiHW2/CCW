@@ -1,4 +1,3 @@
-import React from 'react'
 import OceanBack from '@/assets/img/Backgrounds/oceanback.jpg'
 import { Flex, Button } from '@chakra-ui/react'
 import { motion } from 'motion/react'

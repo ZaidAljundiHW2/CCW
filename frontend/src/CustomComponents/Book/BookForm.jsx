@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Flex, Input, Textarea, Field, Button } from '@chakra-ui/react'
-import { IoIosCloseCircle } from "react-icons/io";
 import { motion, AnimatePresence } from 'motion/react';
 import { DatePicker, Portal, parseDate } from "@chakra-ui/react"
 import { LuCalendar } from "react-icons/lu"

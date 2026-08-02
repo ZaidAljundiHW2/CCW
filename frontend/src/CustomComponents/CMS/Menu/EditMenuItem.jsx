@@ -1,8 +1,5 @@
-import React from 'react'
-import { Flex, Field, Input, InputGroup, Span, Button, Textarea } from '@chakra-ui/react'
+import { Flex, Field, Input, Span, Button, Textarea } from '@chakra-ui/react'
 import { useState } from 'react';
-import { FileUpload } from "@chakra-ui/react"
-import { HiUpload } from "react-icons/hi"
 import { Portal, Select, createListCollection } from "@chakra-ui/react"
 import DeleteItem from './DeleteItem'
 import axios from 'axios';

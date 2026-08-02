@@ -1,7 +1,5 @@
-import MenuBackground from '@/assets/img/back4.png'
 import './Menu.css'
-import { motion, AnimatePresence } from 'motion/react';
-import CreateYourOwn from './MenuComponents/CreateYourOwn';
+import { motion } from 'motion/react';
 import MenuShowcase from './MenuComponents/MenuShowcase';
 
 const Menu = () => {

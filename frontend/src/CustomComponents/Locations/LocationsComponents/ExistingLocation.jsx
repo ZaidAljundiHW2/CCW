@@ -1,5 +1,5 @@
 // ExistingLocation.jsx
-import { Box, Flex, VStack, Button } from '@chakra-ui/react'
+import { Box, Flex, VStack } from '@chakra-ui/react'
 import InfoSec from './InfoSec'
 import './ExistingLocation.css'
 import WaveIcon from '@/assets/icons/waveicon.png'

@@ -1,4 +1,3 @@
-import React from 'react'
 import './WhyCC.css'
 import { resolveImg } from '@/customLib/utils/resolveImage'
 import wave2 from '@/assets/icons/waveicon2.png'

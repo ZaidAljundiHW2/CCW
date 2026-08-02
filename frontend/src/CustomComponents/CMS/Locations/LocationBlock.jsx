@@ -1,12 +1,9 @@
-import React from 'react'
 import { Flex, Button } from '@chakra-ui/react'
 
 const LocationBlock = ({
     item={}, 
     setShowEdit = () => {}, 
     setEditedObj = () => {}, 
-    label="", 
-    val="",
     add=false,
     setShowAdd = () => {},
     edit=true

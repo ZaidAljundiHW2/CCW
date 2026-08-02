@@ -1,8 +1,5 @@
-import React from 'react'
-import { Box, Flex } from '@chakra-ui/react'
-import { resolveImg } from '@/customLib/utils/resolveImage'
+import { Flex } from '@chakra-ui/react'
 import './ShowcaseItem.css'
-import { AnimatePresence, motion } from 'motion/react'
 
 const ShowcaseItem = ({
     item,

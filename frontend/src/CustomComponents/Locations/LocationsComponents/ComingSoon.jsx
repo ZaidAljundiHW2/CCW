@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { Flex, Heading, VStack } from '@chakra-ui/react'
+import { useState } from 'react'
+import { Flex } from '@chakra-ui/react'
 import Lighthouse from '@/assets/img/lighthouse.png'
 import Wave2 from '@/assets/icons/waveicon2.png'
 import "./ComingSoon.css"
 import CSCard from './CSCard'
-import { motion, AnimatePresence } from 'motion/react'
-import { IoChevronBack, IoChevronForward } from 'react-icons/io5'
+import { motion } from 'motion/react'
 import {
-  Badge,
   Box,
   Carousel,
   HStack,
-  Icon,
   IconButton,
-  Image,
-  Span,
-  Stack,
+  
 } from "@chakra-ui/react"
-import { FaStar } from "react-icons/fa"
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
 
 const ComingSoon = ({locations}) => {
 
-    const API = import.meta.env.VITE_API_URL;
 
     const [isLoading, setIsLoading] = useState(false);
     

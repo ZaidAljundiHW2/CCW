@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Flex, Input, Textarea, Field, Button } from '@chakra-ui/react'
-import { IoIosCloseCircle } from "react-icons/io";
-import { motion, AnimatePresence } from 'motion/react';
 import { DatePicker, Portal, parseDate } from "@chakra-ui/react"
 import { LuCalendar } from "react-icons/lu"
 import { useState } from 'react';
-import { FaRegPaperPlane } from "react-icons/fa6";
 import { NativeSelect } from "@chakra-ui/react"
-import { select } from 'motion/react-client';
 
 const BookingEdit = ({selectedReservation, setShowEdit}) => {
 

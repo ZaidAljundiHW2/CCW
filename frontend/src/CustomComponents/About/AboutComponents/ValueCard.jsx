@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaAnchor } from "react-icons/fa";
 import { Flex } from '@chakra-ui/react';
 import './ValueCard.css'

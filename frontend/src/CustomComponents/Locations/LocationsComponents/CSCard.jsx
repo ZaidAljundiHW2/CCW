@@ -1,7 +1,5 @@
-import React from 'react'
-import { Flex, Heading } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import './CSCard.css'
-import TorontoSketch from '@/assets/img/torontosketch.jpg'
 import { IoLocationSharp } from "react-icons/io5";
 import { motion } from 'framer-motion';
 

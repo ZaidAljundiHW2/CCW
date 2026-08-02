@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Box, Grid, Button } from '@chakra-ui/react'
 import '../Menu.css'
 import { IoArrowBackCircle } from "react-icons/io5"

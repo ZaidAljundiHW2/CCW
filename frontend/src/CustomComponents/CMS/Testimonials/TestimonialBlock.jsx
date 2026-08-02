@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex, Button } from '@chakra-ui/react';
 
 const TestimonialBlock = ({testimonial, setTestimonial, setShowEdit}) => {

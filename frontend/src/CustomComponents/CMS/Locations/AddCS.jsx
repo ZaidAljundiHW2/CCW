@@ -1,6 +1,5 @@
-import { Flex, Field, Button, Input, Select, Span, Textarea } from '@chakra-ui/react'
+import { Flex, Field, Button, Input, Span } from '@chakra-ui/react'
 import { useState } from 'react'
-import { createListCollection, Portal } from '@chakra-ui/react'
 import axios from 'axios'
 
 const AddCS = ({setShowAddCS}) => {

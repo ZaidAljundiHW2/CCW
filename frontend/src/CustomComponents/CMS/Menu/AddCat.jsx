@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex, Input, Field, Button } from '@chakra-ui/react'
 import { useState } from 'react';
 

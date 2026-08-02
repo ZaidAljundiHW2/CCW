@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Input, Flex, Button, Textarea, Field, Span  } from '@chakra-ui/react'
 import { FaRegPaperPlane } from "react-icons/fa6";
 import './ContactForm.css'

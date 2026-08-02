@@ -1,16 +1,12 @@
-import React from 'react'
 import { Flex, SimpleGrid } from '@chakra-ui/react'
 import './MenuShowcase.css'
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import ShowcaseItem from './ShowcaseItem'
-import MenuItemsJSON from '@/assets/JSONs/menuitems.json'
-import { select } from 'motion/react-client'
 import CreateYourOwn from './CreateYourOwn'
 import { AnimatePresence } from 'motion/react'
-import { resolveImg } from '@/customLib/utils/resolveImage'
 import './ShowcaseItem.css'
-import { useLayoutEffect, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 const MenuShowcase = ({
     edit = false,

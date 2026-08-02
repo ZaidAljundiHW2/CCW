@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex } from '@chakra-ui/react'
 import './Book.css'
 import bookback from '@/assets/img/Backgrounds/f2eeee.png'

@@ -1,7 +1,5 @@
-import React from 'react'
 import { Flex, Field, Textarea, Span, Button } from '@chakra-ui/react'
 import { useState } from 'react'
-import { button } from 'motion/react-client';
 
 
 const EditAbout = ({aboutitem, SetShowAboutEdit}) => {

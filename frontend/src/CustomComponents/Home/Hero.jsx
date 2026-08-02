@@ -1,13 +1,9 @@
-import React from 'react'
-import { Box, Heading, Text } from '@chakra-ui/react'
 import { motion } from 'motion/react'
 import HeroCarousel from './HeroCarousel'
 import './Hero.css'
 import { FaClipboard } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
-import { FaDoorClosed } from "react-icons/fa";
 import backalt from '@/assets/img/altback.png'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Hero = () => {
