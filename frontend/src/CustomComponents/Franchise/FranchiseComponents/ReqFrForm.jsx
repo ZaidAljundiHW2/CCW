@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Flex, Input, Textarea, Field, Button } from '@chakra-ui/react'
 import { IoIosCloseCircle } from "react-icons/io";
 import { motion, AnimatePresence } from 'motion/react';
@@ -36,8 +36,15 @@ const ReqFrForm = () => {
     const [cityErrorMessage, setCityErrorMessage] = useState("");
 
     const [isSuccessfulSubmission, setIsSuccessfulSubmission] = useState(false);
+    const [isSubmissionError, setIsSubmissionError] = useState(false);
 
     const [isLoading, setIsLoading] = useState(true);
+
+    // Honeypot field — should stay empty; bots often fill every input
+    const [honeypot, setHoneypot] = useState("");
+
+    // Track when the form first rendered, to measure fill time
+    const formLoadTime = useRef(Date.now());
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
@@ -152,6 +159,7 @@ const ReqFrForm = () => {
             if (end) return;
 
             const now = new Date();
+            const timeTakenMs = Date.now() - formLoadTime.current;
 
 
             const body = {
@@ -163,7 +171,9 @@ const ReqFrForm = () => {
                 "city":city,
                 "message":specialRequests,
                 "datetime": now.toLocaleString(),
-                "status":'new'
+                "status":'new',
+                "honeypot": honeypot,
+                "timetaken": timeTakenMs
             }
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/franchise`, {
@@ -183,6 +193,8 @@ const ReqFrForm = () => {
                 setPhoneNumber("");
                 setInvestmentInterest("");
                 setSpecialRequests("");
+                setHoneypot("");
+                formLoadTime.current = Date.now();
 
                 setIsNameError(false);
                 setIsEmailError(false);
@@ -190,6 +202,7 @@ const ReqFrForm = () => {
                 setIsPhoneNumberError(false);
                 setIsInvestmentInterestError(false);
                 setIsSpecialRequestsError(false);
+                setIsSubmissionError(false);
 
                 setNameErrorMessage("");
                 setEmailErrorMessage("");
@@ -204,9 +217,22 @@ const ReqFrForm = () => {
                     setIsSuccessfulSubmission(false);
                 },1500);
             }
+
+            else {
+                setIsSubmissionError(true);
+
+                setTimeout(() => {
+                    setIsSubmissionError(false);
+                },3000);
+            }
             
         } catch (error) {
             console.error(error);
+            setIsSubmissionError(true);
+
+            setTimeout(() => {
+                setIsSubmissionError(false);
+            },3000);
         }
     }
 
@@ -220,6 +246,29 @@ const ReqFrForm = () => {
     >
 
         <form className='flex gap-3 flex-col'>
+
+            {/* Honeypot — hidden from real users, visible to most bots */}
+            <div
+                style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                    overflow: 'hidden'
+                }}
+                aria-hidden="true"
+            >
+                <label htmlFor="company_website">Company Website</label>
+                <input
+                    id="company_website"
+                    name="company_website"
+                    type="text"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.currentTarget.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                />
+            </div>
       
             <Flex
                 className='landscape:gap-5 gap-2' 
@@ -378,8 +427,11 @@ const ReqFrForm = () => {
                 </Field.ErrorText>
             </Field.Root>
 
-
-            
+            {isSubmissionError && (
+                <span style={{ color: '#e53e3e', fontSize: '0.875rem' }}>
+                    Something went wrong. Please try again.
+                </span>
+            )}
 
             <Button bg={'#ef571b'} color={'white'} onClick={() => uploadFranchise()}>
                 REQUEST FRANCHISE INFO

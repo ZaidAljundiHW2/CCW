@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Input, Flex, Button, Textarea, Field, Span  } from '@chakra-ui/react'
 import { FaRegPaperPlane } from "react-icons/fa6";
 import './ContactForm.css'
@@ -29,6 +29,13 @@ const ContactForm = () => {
     const [messageErrorMessage, setMessageErrorMessage] = useState("");
 
     const [isSuccessfulSubmission, setIsSuccessfulSubmission] = useState(false);
+    const [isSubmissionError, setIsSubmissionError] = useState(false);
+
+    // Honeypot field — should stay empty; bots often fill every input
+    const [honeypot, setHoneypot] = useState("");
+
+    // Track when the form first rendered, to measure fill time
+    const formLoadTime = useRef(Date.now());
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phoneValRegex = /^(\+1\s?)?(\(?[2-9]\d{2}\)?)[\s.-]?\d{3}[\s.-]?\d{4}$/;
@@ -113,6 +120,7 @@ const ContactForm = () => {
             if (end) return;
 
             const now = new Date();
+            const timeTakenMs = Date.now() - formLoadTime.current;
 
             const body = {
                 "name": name,
@@ -121,7 +129,9 @@ const ContactForm = () => {
                 "subject": subject,
                 "message": message,
                 "status": 'new',
-                "datetime":now.toLocaleString()
+                "datetime":now.toLocaleString(),
+                "honeypot": honeypot,
+                "timetaken": timeTakenMs
             }
 
             const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/CMS/contact`, {
@@ -140,12 +150,15 @@ const ContactForm = () => {
                 setIsPhoneNumberError(false);
                 setIsSubjectError(false);
                 setIsMessageError(false);
+                setIsSubmissionError(false);
 
                 setName("");
                 setEmail("");
                 setPhoneNumber("");
                 setSubject("");
                 setMessage("");
+                setHoneypot("");
+                formLoadTime.current = Date.now();
 
                 setIsSuccessfulSubmission(true);
 
@@ -154,10 +167,23 @@ const ContactForm = () => {
                 },1500);
             }
 
+            else {
+                setIsSubmissionError(true);
+
+                setTimeout(() => {
+                    setIsSubmissionError(false);
+                },3000);
+            }
+
             
             
         } catch (error) {
             console.error(error);
+            setIsSubmissionError(true);
+
+            setTimeout(() => {
+                setIsSubmissionError(false);
+            },3000);
         }
         
 
@@ -174,6 +200,29 @@ const ContactForm = () => {
         </h1>
 
         <form className='flex gap-3 flex-col'>
+
+            {/* Honeypot — hidden from real users, visible to most bots */}
+            <div
+                style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                    overflow: 'hidden'
+                }}
+                aria-hidden="true"
+            >
+                <label htmlFor="company_website">Company Website</label>
+                <input
+                    id="company_website"
+                    name="company_website"
+                    type="text"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.currentTarget.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                />
+            </div>
 
             <Flex
                 className='landscape:gap-5 gap-2' 
@@ -282,7 +331,11 @@ const ContactForm = () => {
             </Field.Root>
 
 
-            
+            {isSubmissionError && (
+                <Span color="red.500" fontSize="sm">
+                    Something went wrong. Please try again.
+                </Span>
+            )}
 
             <Button bg={'#ef571b'} color={'white'} onClick={() => uploadContact(name, email, phoneNumber, subject, message)}>
                 Submit

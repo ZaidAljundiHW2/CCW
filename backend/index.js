@@ -2,12 +2,15 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const authRoutes = require("./authroutes/auth");
 const protect = require('./middleware/protect')
+const rateLimit = require('express-rate-limit');
 
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const pool = require('./db');
 require('dotenv').config();
+
+app.set('trust proxy', 1);
 
 app.use(cors({
     origin: process.env.CLIENT_URL || 'http://localhost:3000',
@@ -53,6 +56,64 @@ function getPublicIdFromUrl(url) {
         return null;
     }
 }
+
+const publicLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 300,
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+const formLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { success: false, message: "Too many submissions. Please try again later." }
+});
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 5,
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+const adminLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+const uploadLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 20,
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+// public read-only routes
+app.use("/menu", publicLimiter);
+app.use("/locations", publicLimiter);
+app.use("/gallery", publicLimiter);
+app.use("/coming-soon", publicLimiter);
+app.use("/testimonials", publicLimiter);
+
+// uploads / cloudinary-touching admin routes
+app.use("/upload", uploadLimiter);
+app.use("/replace", uploadLimiter);
+app.use("/create", uploadLimiter);
+app.use("/edit", uploadLimiter);
+app.use("/delete", uploadLimiter);
+
+// authentication — tune max/window based on what's actually inside authRoutes
+// (e.g. if it includes silent token-refresh, scope this to /api/auth/login instead)
+app.use("/api/auth", authLimiter);
+app.use('/api/auth', authRoutes);
+
+// general admin CMS routes (CRUD on menu, locations, about, bookings mgmt, etc.)
+app.use("/admin/CMS", adminLimiter);
 
 
 
@@ -402,9 +463,22 @@ app.get('/admin/CMS/about/mission', async(req,res) => {
 })
 
 //Add contact query
-app.post('/admin/CMS/contact', async(req,res) => {
+app.post('/admin/CMS/contact', formLimiter, async(req,res) => {
 
     try {
+
+        const honeypot = req.body.honeypot;
+        const timetaken = Number(req.body.timetaken);
+
+        if (honeypot && honeypot.trim().length > 0) {
+            console.log("Bot detected: honeypot filled");
+            return res.status(400).json({ success: false, message: "Submission failed" });
+        }
+
+        if (!isNaN(timetaken) && timetaken < 2000) {
+            console.log("Bot detected: submitted too fast", timetaken);
+            return res.status(400).json({ success: false, message: "Submission failed" });
+        }
         
         const name = req.body.name;
         const email = req.body.email;
@@ -508,9 +582,23 @@ app.delete('/admin/CMS/contact/:id', protect, async(req,res) => {
 })
 
 //Add booking reservation
-app.post('/admin/booking', async(req,res) => {
+app.post('/admin/booking', formLimiter, async(req,res) => {
 
     try {
+
+        const honeypot = req.body.honeypot;
+        const timetaken = Number(req.body.timetaken);
+
+        if (honeypot && honeypot.trim().length > 0) {
+            console.log("Bot detected: honeypot filled");
+            return res.status(400).json({ success: false, message: "Submission failed" });
+        }
+
+        
+        if (!isNaN(timetaken) && timetaken < 2000) {
+            console.log("Bot detected: submitted too fast", timetaken);
+            return res.status(400).json({ success: false, message: "Submission failed" });
+        }
 
         const name = req.body.name;
         const email = req.body.email;
@@ -658,9 +746,22 @@ app.delete('/admin/CMS/bookings/:id', protect, async(req,res) => {
 })
 
 //Add franchise query
-app.post('/franchise', async(req,res) => {
+app.post('/franchise', formLimiter, async(req,res) => {
 
     try {
+
+        const honeypot = req.body.honeypot;
+        const timetaken = Number(req.body.timetaken);
+
+        if (honeypot && honeypot.trim().length > 0) {
+            console.log("Bot detected: honeypot filled");
+            return res.status(400).json({ success: false, message: "Submission failed" });
+        }
+        
+        if (!isNaN(timetaken) && timetaken < 2000) {
+            console.log("Bot detected: submitted too fast", timetaken);
+            return res.status(400).json({ success: false, message: "Submission failed" });
+        }
 
         const name = req.body.name;
         const email = req.body.email;

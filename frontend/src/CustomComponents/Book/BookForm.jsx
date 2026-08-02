@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Flex, Input, Textarea, Field, Button } from '@chakra-ui/react'
 import { IoIosCloseCircle } from "react-icons/io";
 import { motion, AnimatePresence } from 'motion/react';
@@ -51,10 +51,17 @@ const BookForm = () => {
   const [locationErrorMessage, setLocationErrorMessage] = useState("");
 
   const [isSuccessfulSubmission, setIsSuccessfulSubmission] = useState(false);
+  const [isSubmissionError, setIsSubmissionError] = useState(false);
 
   const [locations, setLocations] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
+
+  // Honeypot field — should stay empty; bots often fill every input
+  const [honeypot, setHoneypot] = useState("");
+
+  // Track when the form first rendered, to measure fill time
+  const formLoadTime = useRef(Date.now());
 
   const getLocations = async() => {
 
@@ -84,6 +91,7 @@ const BookForm = () => {
     const load = async() => {
         await getLocations();
         setIsLoading(false);
+        formLoadTime.current = Date.now();
     }
 
     load();
@@ -233,6 +241,7 @@ const BookForm = () => {
           if (end) return;
 
           const now = new Date();
+          const timeTakenMs = Date.now() - formLoadTime.current;
 
 
           const body = {
@@ -245,7 +254,9 @@ const BookForm = () => {
               "status": 'new',
               "datetime": now.toLocaleString(),
               "locationid": locationid,
-              "reservationtime": time
+              "reservationtime": time,
+              "honeypot": honeypot,
+              "timetaken": timeTakenMs
           }
 
           const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/booking`, {
@@ -269,6 +280,7 @@ const BookForm = () => {
               setIsSpecialRequestsError(false);
               setIsTimeError(false);
               setIsDateError(false);
+              setIsSubmissionError(false);
 
               setName("");
               setEmail("");
@@ -277,6 +289,8 @@ const BookForm = () => {
               setSpecialRequests("");
               setTime("");
               setDate("");
+              setHoneypot("");
+              formLoadTime.current = Date.now();
 
               setIsSuccessfulSubmission(true);
 
@@ -285,10 +299,23 @@ const BookForm = () => {
               },1500);
           }
 
+          else {
+              setIsSubmissionError(true);
+
+              setTimeout(() => {
+                  setIsSubmissionError(false);
+              },3000);
+          }
+
           
           
       } catch (error) {
           console.error(error);
+          setIsSubmissionError(true);
+
+          setTimeout(() => {
+              setIsSubmissionError(false);
+          },3000);
       }
       
 
@@ -331,6 +358,29 @@ const BookForm = () => {
 
 
         <form className='flex gap-3 flex-col'>
+
+            {/* Honeypot — hidden from real users, visible to most bots */}
+            <div
+                style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                    overflow: 'hidden'
+                }}
+                aria-hidden="true"
+            >
+                <label htmlFor="company_website">Company Website</label>
+                <input
+                    id="company_website"
+                    name="company_website"
+                    type="text"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.currentTarget.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                />
+            </div>
       
             <Flex
                 className='landscape:gap-5 gap-2' 
@@ -608,6 +658,11 @@ const BookForm = () => {
                 </Field.ErrorText>
             </Field.Root>
 
+            {isSubmissionError && (
+                <span style={{ color: '#e53e3e', fontSize: '0.875rem' }}>
+                    Something went wrong. Please try again.
+                </span>
+            )}
 
             
 
