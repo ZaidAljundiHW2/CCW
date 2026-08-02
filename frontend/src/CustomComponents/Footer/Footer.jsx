@@ -16,7 +16,7 @@ import ToS from './ToS';
 import PrivacyPolicy from './PrivacyPolicy'
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import YoutubeIcon from '@/assets/icons/youtube'
+import YoutubeIcon from '@/assets/icons/youtube.png'
 const Footer = forwardRef((props, ref) => {
 
     const [showPP, setShowPP] = useState(false);
