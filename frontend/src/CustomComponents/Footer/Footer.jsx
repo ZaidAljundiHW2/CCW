@@ -134,7 +134,7 @@ const Footer = forwardRef((props, ref) => {
                             <img src={Logo} className='footerlogo'/>
                         </div>
 
-                        <Flex className='portrait:order-1 landscape:gap-15'>
+                        <Flex className='portrait:order-1 items-center justify-center landscape:gap-15'>
                             {/* Quick Links */}
                             <Flex className='flex-col flex-1'>
 
@@ -276,15 +276,14 @@ const Footer = forwardRef((props, ref) => {
 
                         </Flex>
 
-                        <Flex className='flex-col portrait:flex-row flex-1 items-center justify-start gap-0 order-2'>
+                        <Flex className='flex-col portrait:flex-row flex-1 items-center justify-start gap-2 order-2'>
                                 
-                            <Flex className='flex-col portrait:flex-row'>
+                            <Flex className='flex-col'>
                                 <h1 className='FH2'> FRESH CATCHES</h1>
                                 <h1 className='FH2'> BIG FLAVOURS</h1>
                                 <h1 className='FH2'> GOOD TIMES AHEAD</h1>
                             </Flex>
                             
-                            <img src={WaveIcon3} className='wi3'/>
 
                             <img src={Logo} className='footerlogo2'/>
 
