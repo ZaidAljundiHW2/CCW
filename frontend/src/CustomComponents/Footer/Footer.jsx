@@ -16,6 +16,7 @@ import ToS from './ToS';
 import PrivacyPolicy from './PrivacyPolicy'
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
+import { FaYoutube } from "react-icons/fa";
 
 const Footer = forwardRef((props, ref) => {
 
@@ -24,6 +25,7 @@ const Footer = forwardRef((props, ref) => {
     const [instLink, setInstLink] = useState("");
     const [fcbkLink, setFcbkLink] = useState("");
     const [tktkLink, setTktkLink] = useState("");
+    const [ytLink, setYtLink] = useState("");
 
     const [genDetails, setGenDetails] = useState([]);
 
@@ -46,6 +48,7 @@ const Footer = forwardRef((props, ref) => {
             setInstLink(instaobj);
             setFcbkLink(fcbkobj);
             setTktkLink(tktkobj);
+            setYtLink(ytLink);
             
         } catch (error) {
             console.error(error);
@@ -252,6 +255,10 @@ const Footer = forwardRef((props, ref) => {
 
                                     <a href={fcbkLink}>
                                         <img src={FacebookIcon} className='SMI'/>
+                                    </a>
+
+                                    <a href={ytLink}>
+                                        <FaYoutube />
                                     </a>
 
                                 </Flex>
