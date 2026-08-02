@@ -44,7 +44,7 @@ const AddTestimonial = ({ setShowAdd }) => {
             const data = new FormData();
             data.append("my_file", file);
             data.append("folder", "testimonials");
-            const res = await axios.put(`${import.meta.env.VITE_API_URL}/upload/testimonials/${testimonialid}`, data);
+            const res = await axios.put(`${import.meta.env.VITE_API_URL}/upload/testimonials/${testimonialid}`, data, { withCredentials: true });
         } catch (error) {
             alert(error.message);
         } 
@@ -88,7 +88,7 @@ const AddTestimonial = ({ setShowAdd }) => {
                 method: "POST",
                 credentials: 'include',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body)
             });

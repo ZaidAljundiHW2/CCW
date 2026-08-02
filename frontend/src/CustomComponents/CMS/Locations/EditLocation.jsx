@@ -120,7 +120,7 @@ const EditLocation = ({ item, setShowEdit }) => {
         const data = new FormData();
         data.append("my_file", file);
         data.append("curr_image", currImgURL);
-        const res = await axios.put(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/update-image/${itemid}`, data);
+        const res = await axios.put(`${import.meta.env.VITE_API_URL}/admin/CMS/locations/update-image/${itemid}`, data, { withCredentials: true });
         } catch (error) {
         alert(error.message);
         } 

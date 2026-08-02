@@ -45,7 +45,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
             data.append("my_file", file);
             const safeCat = category.trim().toLowerCase().replace(/[^a-zA-Z0-9_-]/g, "_");
             data.append("category", safeCat);
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/menu/item/new/${itemid}`, data);
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/upload/menu/item/new/${itemid}`, data, { withCredentials: true });
         } catch (error) {
         alert(error.message);
         } 

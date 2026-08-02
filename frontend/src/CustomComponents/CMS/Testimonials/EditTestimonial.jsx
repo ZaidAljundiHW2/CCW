@@ -47,7 +47,7 @@ const EditTestimonial = ({testimonial, setShowEdit}) => {
             data.append("my_file", file);
             data.append("curr_image", currImgURL);
             data.append("folder", "testimonials");
-            const res = await axios.put(`${import.meta.env.VITE_API_URL}/upload/testimonials/${testimonialid}`, data);
+            const res = await axios.put(`${import.meta.env.VITE_API_URL}/upload/testimonials/${testimonialid}`, data, { withCredentials: true });
         } catch (error) {
             alert(error.message);
         } 
