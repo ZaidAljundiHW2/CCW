@@ -126,7 +126,7 @@ const Footer = forwardRef((props, ref) => {
             {!isLoading && (
                 <>
 
-                    <div className='landscape:gap-15 flex portrait:flex-col gap-5 w-full' style={{padding:'20px'}}>
+                    <div className='landscape:gap-15 flex portrait:flex-col gap-5 w-full portrait:items-center portrait:justify-center portrait:text-center' style={{padding:'20px'}}>
 
                         <div className='flex-1 flex items-center justify-center portrait:hidden'>
 
@@ -134,7 +134,7 @@ const Footer = forwardRef((props, ref) => {
                             <img src={Logo} className='footerlogo'/>
                         </div>
 
-                        <Flex className='portrait:order-2 landscape:gap-15'>
+                        <Flex className='portrait:order-1 landscape:gap-15'>
                             {/* Quick Links */}
                             <Flex className='flex-col flex-1'>
 
@@ -236,14 +236,14 @@ const Footer = forwardRef((props, ref) => {
                         </Flex>
                         
 
-                        <Flex>
+                        <Flex className='portrait:order-3'>
 
                             {/* Social Media */}
-                            <Flex className='flex-col flex-1 portrait:order-1'>
+                            <Flex className='flex-col flex-1 gap-2'>
 
                                 <h1 className='FH'>FOLLOW US</h1>
 
-                                <Flex className='gap-2'>
+                                <Flex className='gap-2 portrait:gap-5'>
 
                                     <a href={instLink}>
                                         <img src={InstagramIcon} className='SMI'/>
@@ -276,7 +276,7 @@ const Footer = forwardRef((props, ref) => {
 
                         </Flex>
 
-                        <Flex className='flex-col portrait:flex-row flex-1 items-center justify-start gap-0 order-3'>
+                        <Flex className='flex-col portrait:flex-row flex-1 items-center justify-start gap-0 order-2'>
                                 
                             <Flex className='flex-col portrait:flex-row'>
                                 <h1 className='FH2'> FRESH CATCHES</h1>
