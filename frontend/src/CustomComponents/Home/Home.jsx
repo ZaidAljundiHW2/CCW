@@ -4,16 +4,19 @@ import OurMission from '../About/AboutComponents/OurMission'
 import GalleryComponent from '../About/AboutComponents/GalleryComponent'
 import HomeStory from './HomeStory'
 import Testimonials from './Testimonials'
-import { Helmet } from 'react-helmet-async'
+import SEO from '@/SEO'
 
 const Home = () => {
+
+    
+
+    
+
   return (
     <>
 
-        <Helmet>
-            <title>Captain's Crab a</title>
-            <meta name='description' content='Captain&#39;s Crab Homepage'/>
-        </Helmet>
+
+        <SEO title={"Captain's Crab | Seafood Restaurant"} description={"Craving seafood boils? Captain's Crab on your mind? Get your favourite seafood meals and courses from your nearest location in Canada. Call us, order online!"}/>
 
         <section data-navbar-theme="dark">
             <Hero />

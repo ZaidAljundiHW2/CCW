@@ -12,6 +12,7 @@ import Tray from '@/assets/img/catering-trays-source.webp'
 import Back3 from '@/assets/img/back3.webp'
 import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
+import SEO from '@/SEO'
 
 const Contact = () => {
 
@@ -59,193 +60,201 @@ const Contact = () => {
 
 
   return (
-    <div 
-        style={{
-            backgroundImage: `url(${Back2})`,
-            backgroundSize:'cover',
-            width:'100%',
+
+    <>
+
+        <SEO title={"Captain's Crab | Contact"} description={"Contact Captain's Crab with questions, feedback, or catering inquiries. Get in touch today."}/>
+
+        <div 
+            style={{
+                backgroundImage: `url(${Back2})`,
+                backgroundSize:'cover',
+                width:'100%',
+                
+            }}
+
+            id='contact'
+
+            className='flex flex-col gap-5 contactwrapper'
             
-        }}
-
-        id='contact'
-
-        className='flex flex-col gap-5 contactwrapper'
         
-    
-    >
-
-        <motion.h1 className='CUH' style={{color:'white', paddingTop:'var(--nav-height)'}}
-            initial={{opacity:0, x:-50}}
-
-            whileInView={{opacity:1, x:0}}
-
-            transition={{duration:.5, ease:'easeOut', delay:.1}}
-        >
-            CONTACT US
-        </motion.h1>
-
-        <motion.div className='flex landscape:flex-row flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg landscape:gap-5 gap-0' 
-            style={{padding:'2%'}}
-            initial={{opacity:0, y:-50}}
-
-            whileInView={{opacity:1, y:0}}
-
-            transition={{duration:.5, ease:'easeOut'}}
         >
 
-            {/* Contact Form */}
-            <Flex
-                className='
-                    flex-col
-                    flex-1
-                    rounded-lg
-                    shadow-lg
-                    bg-[#F2F0EF]
-                '   
+            <motion.h1 className='CUH' style={{color:'white', paddingTop:'var(--nav-height)'}}
+                initial={{opacity:0, x:-50}}
 
-                style={{
-                    padding:'2%'
-                }}
+                whileInView={{opacity:1, x:0}}
+
+                transition={{duration:.5, ease:'easeOut', delay:.1}}
+            >
+                CONTACT US
+            </motion.h1>
+
+            <motion.div className='flex landscape:flex-row flex-col bg-radial from-[#012446] from-40% to-[#1d4163] rounded-lg shadow-lg landscape:gap-5 gap-0' 
+                style={{padding:'2%'}}
+                initial={{opacity:0, y:-50}}
+
+                whileInView={{opacity:1, y:0}}
+
+                transition={{duration:.5, ease:'easeOut'}}
             >
 
-                <ContactForm />
+                {/* Contact Form */}
+                <Flex
+                    className='
+                        flex-col
+                        flex-1
+                        rounded-lg
+                        shadow-lg
+                        bg-[#F2F0EF]
+                    '   
+
+                    style={{
+                        padding:'2%'
+                    }}
+                >
+
+                    <ContactForm />
+
+                    
+
+                </Flex>
+
+
+                {/* Separator */}
+
+                <Box className='w-[5px]'/>
 
                 
 
-            </Flex>
+                {/* Social Media  */}
+                <Flex className='flex-1 rounded-lg
+                            shadow-lg' style={{
+                            backgroundImage:`url(${Back3})`
+                        }}>
 
+                
+                    <Flex
+                        className='
+                            flex-1
+                            
+                            
+                            flex-col
+                            relative
+                            socmediawrapper
+                        '
 
-            {/* Separator */}
-
-            <Box className='w-[5px]'/>
-
-            
-
-            {/* Social Media  */}
-            <Flex className='flex-1 rounded-lg
-                        shadow-lg' style={{
-                        backgroundImage:`url(${Back3})`
-                    }}>
-
-            
-                <Flex
-                    className='
-                        flex-1
                         
+
                         
-                        flex-col
-                        relative
-                        socmediawrapper
-                    '
+                    >
 
-                    
+                        
 
-                    
-                >
+                        <Flex className='flex-col gap-0'>
 
-                    
+                            <h1 className='CUH2' style={{color:'white'}}>
+                                FOLLOW US
+                            </h1>
 
-                    <Flex className='flex-col gap-0'>
+                            <img src={Wave2} className='w-[150px]'/>
 
-                        <h1 className='CUH2' style={{color:'white'}}>
-                            FOLLOW US
-                        </h1>
 
-                        <img src={Wave2} className='w-[150px]'/>
+                        </Flex>
+
+                        <Flex className='flex-1 flex-col landscape:gap-5 gap-2'>
+
+                            <a href={instLink}>
+                                <Flex gap={'3'} className='items-center'>
+
+                                    <img src={InstagramIcon} style={{
+                                        height:'40px',
+                                        width:'40px'
+                                    }}/>
+                                    <Text className='CUT' style={{color:'white'}}>
+                                        @captainscrab
+                                    </Text>
+
+                                </Flex>
+                            </a>
+
+                            <a href={tktkLink}>
+                                <Flex gap={'3'} className='items-center'>
+
+                                    <img src={TiktokIcon} style={{
+                                        height:'40px',
+                                        width:'40px'
+                                    }}/>
+                                    <Text className='CUT' style={{color:'white'}}>
+                                        @captainscrab
+                                    </Text>
+
+                                </Flex>
+                            </a>
+                            
+                            <a href={ytLink}>
+                                <Flex gap={'3'} className='items-center'>
+
+                                    <img src={YoutubeIcon} style={{
+                                        height:'40px',
+                                        width:'40px'
+                                    }}/>
+                                    <Text className='CUT' style={{color:'white'}}>
+                                        @CaptainsCrab
+                                    </Text>
+
+                                </Flex>
+                            </a>
+
+                            <a href={fcbkLink}>
+                                <Flex gap={'3'} className='items-center'>
+
+                                    <img src={FacebookIcon} style={{
+                                        height:'40px',
+                                        width:'40px'
+                                    }}/>
+                                    <Text className='CUT' style={{color:'white'}}>
+                                        Captain's Crab
+                                    </Text>
+
+                                </Flex>
+                            </a>
+
+                        </Flex>
 
 
                     </Flex>
 
-                    <Flex className='flex-1 flex-col landscape:gap-5 gap-2'>
+                    <Flex className='flex-1 relative'>
 
-                        <a href={instLink}>
-                            <Flex gap={'3'} className='items-center'>
+                        <img 
+                            src={BoilBag}
+                            alt='boil bag'
 
-                                <img src={InstagramIcon} style={{
-                                    height:'40px',
-                                    width:'40px'
-                                }}/>
-                                <Text className='CUT' style={{color:'white'}}>
-                                    @captainscrab
-                                </Text>
+                            className='CUI'
+                        />
 
-                            </Flex>
-                        </a>
+                        <img 
+                            src={Tray}
+                            alt='boil bag'
 
-                        <a href={tktkLink}>
-                            <Flex gap={'3'} className='items-center'>
-
-                                <img src={TiktokIcon} style={{
-                                    height:'40px',
-                                    width:'40px'
-                                }}/>
-                                <Text className='CUT' style={{color:'white'}}>
-                                    @captainscrab
-                                </Text>
-
-                            </Flex>
-                        </a>
-                        
-                        <a href={ytLink}>
-                            <Flex gap={'3'} className='items-center'>
-
-                                <img src={YoutubeIcon} style={{
-                                    height:'40px',
-                                    width:'40px'
-                                }}/>
-                                <Text className='CUT' style={{color:'white'}}>
-                                    @CaptainsCrab
-                                </Text>
-
-                            </Flex>
-                        </a>
-
-                        <a href={fcbkLink}>
-                            <Flex gap={'3'} className='items-center'>
-
-                                <img src={FacebookIcon} style={{
-                                    height:'40px',
-                                    width:'40px'
-                                }}/>
-                                <Text className='CUT' style={{color:'white'}}>
-                                    Captain's Crab
-                                </Text>
-
-                            </Flex>
-                        </a>
+                            className='CUI2'
+                        />
 
                     </Flex>
 
-
                 </Flex>
 
-                <Flex className='flex-1 relative'>
+            </motion.div>
 
-                    <img 
-                        src={BoilBag}
-                        alt='boil bag'
+            
 
-                        className='CUI'
-                    />
-
-                    <img 
-                        src={Tray}
-                        alt='boil bag'
-
-                        className='CUI2'
-                    />
-
-                </Flex>
-
-            </Flex>
-
-        </motion.div>
-
+            
         
-
-        
-      
-    </div>
+        </div>
+    
+    </>
+    
   )
 }
 
