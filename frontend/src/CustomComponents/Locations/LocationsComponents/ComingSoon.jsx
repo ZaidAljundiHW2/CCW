@@ -86,7 +86,7 @@ const ComingSoon = ({locations}) => {
 
                 
                 <Carousel.Root slideCount={locations.length} slidesPerPage={slidesPerPage} gap="3" w="full">
-                    <HStack align="stretch" gap="2" w="full" h="280px">
+                    <HStack align="stretch" gap="2" w="full">
                         {showArrows && (
                             <Carousel.PrevTrigger asChild>
                                 <IconButton size="xs" variant="subtle" alignSelf="center">
@@ -101,7 +101,6 @@ const ComingSoon = ({locations}) => {
                                     <Carousel.Item
                                         key={CSLocation.csid}
                                         index={index}
-                                        h="full"
                                     >
                                         <CSCard csitem={CSLocation} index={index}/>
                                     </Carousel.Item>

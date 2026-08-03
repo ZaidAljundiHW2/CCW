@@ -105,10 +105,10 @@ const Footer = forwardRef((props, ref) => {
             className='
                 flex
                 flex-col
-                landscape:gap-5
+                md:gap-5
                 gap-0
                 footerwrapper
-                portrait:items-center
+                max-md:items-center
                 
             '
             style={{
@@ -125,15 +125,15 @@ const Footer = forwardRef((props, ref) => {
             {!isLoading && (
                 <>
 
-                    <div className='landscape:gap-15 flex portrait:flex-col gap-5 w-full portrait:items-center portrait:justify-center portrait:text-center' style={{padding:'20px'}}>
+                    <div className='md:gap-15 flex max-md:flex-col gap-5 w-full max-md:items-center max-md:justify-center max-md:text-center' style={{padding:'20px'}}>
 
-                        <div className='flex-1 flex items-center justify-center portrait:hidden'>
+                        <div className='flex-1 flex items-center justify-center max-md:hidden'>
 
                         
                             <img src={Logo} alt="Captain's Crab logo" className='footerlogo'/>
                         </div>
 
-                        <Flex className='portrait:order-1 items-center justify-center landscape:gap-15'>
+                        <Flex className='max-md:order-1 items-center justify-center md:gap-15'>
                             {/* Quick Links */}
                             <Flex className='flex-col flex-1'>
 
@@ -179,7 +179,7 @@ const Footer = forwardRef((props, ref) => {
                                 </h1>
 
                                 <a href={genDetails.find(item => item.label === "Location")?.val} className='cursor-pointer'>
-                                    <Flex className='items-center landscape:gap-5 gap-1'>
+                                    <Flex className='items-center md:gap-5 gap-1'>
                                         <CiLocationOn className='footericon' color='gold'/>
                                         
                                             <p className='footertext'>
@@ -192,7 +192,7 @@ const Footer = forwardRef((props, ref) => {
                                 <a 
                                     href={`tel:${genDetails.find(item => item.label === "Phone Number")?.val}`}
                                 >
-                                    <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
+                                    <Flex className='items-center md:gap-5 gap-1 cursor-pointer'>
 
                                         <CiPhone 
                                             className='footericon' 
@@ -209,7 +209,7 @@ const Footer = forwardRef((props, ref) => {
                                 <a 
                                     href={`mailto:${genDetails.find(item => item.label === "Email")?.val}`}
                                 >
-                                    <Flex className='items-center landscape:gap-5 gap-1 cursor-pointer'>
+                                    <Flex className='items-center md:gap-5 gap-1 cursor-pointer'>
 
                                         <CiMail 
                                             className='footericon' 
@@ -223,7 +223,7 @@ const Footer = forwardRef((props, ref) => {
                                     </Flex>
                                 </a>
 
-                                <Flex className='items-center landscape:gap-5 gap-1'>
+                                <Flex className='items-center md:gap-5 gap-1'>
                                     <CiClock2 className='footericon' color='gold'/>
                                     <p className='footertext'>
                                         {genDetails.find(item => item.label === "Timings")?.val}
@@ -235,14 +235,14 @@ const Footer = forwardRef((props, ref) => {
                         </Flex>
                         
 
-                        <Flex className='portrait:order-3'>
+                        <Flex className='max-md:order-3'>
 
                             {/* Social Media */}
                             <Flex className='flex-col flex-1 gap-2'>
 
                                 <h1 className='FH'>FOLLOW US</h1>
 
-                                <Flex className='gap-2 portrait:gap-5'>
+                                <Flex className='gap-2 max-md:gap-5'>
 
                                     <a href={instLink}>
                                         <img src={InstagramIcon} alt="Captain's Crab Instagram icon" className='SMI'/>
@@ -264,18 +264,11 @@ const Footer = forwardRef((props, ref) => {
 
                             </Flex>
 
-                            {/* Separator */}
-                            {/* <Box className='w-[2px] portrait:hidden'
-                                style={{
-                                    background:'linear-gradient(to top, transparent 2%, gray, transparent 97%)'
-                                }}
-                            /> */}
-
                             
 
                         </Flex>
 
-                        <Flex className='flex-col portrait:flex-row flex-1 items-center justify-start gap-2 order-2'>
+                        <Flex className='flex-col max-md:flex-row flex-1 items-center justify-start gap-2 order-2'>
                                 
                             <Flex className='flex-col'>
                                 <h1 className='FH2'> FRESH CATCHES</h1>
@@ -302,7 +295,7 @@ const Footer = forwardRef((props, ref) => {
                     />
 
                     {/* TOS and Copyright */}
-                    <Flex className='items-center gap-6 portrait:gap-2 portrait:justify-center'>
+                    <Flex className='items-center gap-6 max-md:gap-2 max-md:justify-center'>
                         <h1 className='footertext'>
                             @ 2026 Captain's Crab Seafood Boil House. All Rights Reserved.
 
@@ -315,7 +308,7 @@ const Footer = forwardRef((props, ref) => {
                         </h1>
 
 
-                        <Flex className='gap-6 flex-1 items-center justify-end portrait:gap-2' style={{paddingRight:'10px'}}>
+                        <Flex className='gap-6 flex-1 items-center justify-end max-md:gap-2' style={{paddingRight:'10px'}}>
 
                             <h1 className='footertext footertextclickable' onClick={() => {setShowPP(true); setShowToS(false)}}>
                                 Privacy Policy
