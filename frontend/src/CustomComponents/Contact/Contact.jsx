@@ -170,7 +170,7 @@ const Contact = () => {
                                     <img src={InstagramIcon} style={{
                                         height:'40px',
                                         width:'40px'
-                                    }}/>
+                                    }} alt="Captain's Crab Instagram icon"/>
                                     <Text className='CUT' style={{color:'white'}}>
                                         @captainscrab
                                     </Text>
@@ -184,7 +184,7 @@ const Contact = () => {
                                     <img src={TiktokIcon} style={{
                                         height:'40px',
                                         width:'40px'
-                                    }}/>
+                                    }} alt="Captain's Crab TikTok icon"/>
                                     <Text className='CUT' style={{color:'white'}}>
                                         @captainscrab
                                     </Text>
@@ -198,7 +198,7 @@ const Contact = () => {
                                     <img src={YoutubeIcon} style={{
                                         height:'40px',
                                         width:'40px'
-                                    }}/>
+                                    }} alt="Captain's Crab YouTube icon"/>
                                     <Text className='CUT' style={{color:'white'}}>
                                         @CaptainsCrab
                                     </Text>
@@ -212,7 +212,7 @@ const Contact = () => {
                                     <img src={FacebookIcon} style={{
                                         height:'40px',
                                         width:'40px'
-                                    }}/>
+                                    }} alt="Captain's Crab Facebook icon"/>
                                     <Text className='CUT' style={{color:'white'}}>
                                         Captain's Crab
                                     </Text>
@@ -229,14 +229,14 @@ const Contact = () => {
 
                         <img 
                             src={BoilBag}
-                            alt='boil bag'
+                            alt="Captin's Crab boil bag"
 
                             className='CUI'
                         />
 
                         <img 
                             src={Tray}
-                            alt='boil bag'
+                            alt="Captin's Crab seafood tray"
 
                             className='CUI2'
                         />

@@ -10,7 +10,6 @@ import InstagramIcon from '@/assets/icons/instagram.webp'
 import FacebookIcon from '@/assets/icons/facebook.webp'
 import TiktokIcon from '@/assets/icons/tiktok.webp'
 import './Footer.css'
-import WaveIcon3 from '@/assets/icons/waveicon3.webp'
 import { useState } from 'react';
 import ToS from './ToS';
 import PrivacyPolicy from './PrivacyPolicy'
@@ -131,7 +130,7 @@ const Footer = forwardRef((props, ref) => {
                         <div className='flex-1 flex items-center justify-center portrait:hidden'>
 
                         
-                            <img src={Logo} className='footerlogo'/>
+                            <img src={Logo} alt="Captain's Crab logo" className='footerlogo'/>
                         </div>
 
                         <Flex className='portrait:order-1 items-center justify-center landscape:gap-15'>
@@ -246,19 +245,19 @@ const Footer = forwardRef((props, ref) => {
                                 <Flex className='gap-2 portrait:gap-5'>
 
                                     <a href={instLink}>
-                                        <img src={InstagramIcon} className='SMI'/>
+                                        <img src={InstagramIcon} alt="Captain's Crab Instagram icon" className='SMI'/>
                                     </a>
 
                                     <a href={tktkLink}>
-                                        <img src={TiktokIcon} className='SMI'/>
+                                        <img src={TiktokIcon} alt="Captain's Crab TikTok icon" className='SMI'/>
                                     </a>
 
                                     <a href={fcbkLink}>
-                                        <img src={FacebookIcon} className='SMI'/>
+                                        <img src={FacebookIcon} alt="Captain's Crab Facebook icon" className='SMI'/>
                                     </a>
 
                                     <a href={ytLink}>
-                                        <img src={YoutubeIcon} className='SMI'/>
+                                        <img src={YoutubeIcon} alt="Captain's Crab YouTube icon" className='SMI'/>
                                     </a>
 
                                 </Flex>
@@ -285,7 +284,7 @@ const Footer = forwardRef((props, ref) => {
                             </Flex>
                             
 
-                            <img src={Logo} className='footerlogo2'/>
+                            <img src={Logo} alt="Captain's Crab logo" className='footerlogo2'/>
 
 
                         </Flex>

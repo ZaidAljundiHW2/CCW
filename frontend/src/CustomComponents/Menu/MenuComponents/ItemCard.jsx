@@ -13,17 +13,12 @@ const ItemCard = ({ItemObj, incStep, incOrder}) => {
             ItemCard
             rounded-lg
             shadow-lg
-            
+            relative
+            overflow-hidden
         '
 
         layout
         transition={{ duration: 0.25, layout: { duration: 0.4, ease: 'easeOut' }}}
-
-        style={{
-            backgroundImage:`url(${resolveImg(ItemObj.Img)})`,
-            backgroundSize:'cover',
-            backgroundPosition: 'center'
-        }}
 
         onClick={() => {
             incStep();
@@ -31,7 +26,17 @@ const ItemCard = ({ItemObj, incStep, incOrder}) => {
         }}
     >
 
-        <Box className='flex bg-white h-[30%] justify-center items-center' style={{padding:'5px'}}>
+        <img
+            src={resolveImg(ItemObj.Img)}
+            alt={ItemObj.Name}
+            className='absolute inset-0 w-full h-full'
+            style={{
+                objectFit: 'cover',
+                objectPosition: 'center'
+            }}
+        />
+
+        <Box className='flex bg-white h-[30%] justify-center items-center relative' style={{padding:'5px'}}>
 
             <h1 className='text-black'>
                 {ItemObj.Name}

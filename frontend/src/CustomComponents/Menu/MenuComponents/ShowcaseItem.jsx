@@ -51,12 +51,13 @@ const ShowcaseItem = ({
         <div className="w-full flex flex-col lg:flex-row landscape:items-center justify-center gap-2">
 
             <div className="relative w-full portrait:w-[50%] lg:w-1/2 aspect-square overflow-hidden rounded-full">
-                <div
-                    className="absolute inset-0 w-full h-full rounded-full"
+                <img
+                    src={item.foodimage}
+                    alt={`${item.itemname}${item.hasdesc ? " " + item.itemdescription : ""}`}
+                    className="absolute inset-0 w-full h-full rounded-full aspect-square"
                     style={{
-                        backgroundImage: `url(${item.foodimage})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
+                        objectFit: 'cover',
+                        objectPosition: 'center',
                     }}
                 />
             </div>

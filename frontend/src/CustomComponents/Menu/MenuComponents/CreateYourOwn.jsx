@@ -234,7 +234,7 @@ const CreateYourOwn = () => {
                                 landscape:5
                             }}
 
-                            templateColumns="repeat(3,1fr)"
+                            templateColumns="repeat(3, minmax(0, 220px))"
 
                         >
 
