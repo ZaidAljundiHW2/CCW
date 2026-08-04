@@ -145,11 +145,9 @@ const CreateYourOwn = () => {
                 Item:{' '}
                 {items.map((name, index) => {
 
-                    const item = getItemData(name)
-
                     return (
                         <span key={name}>
-                            {name} (${item?.Price || 0})
+                            {name}
                             {index !== items.length - 1 && ', '}
                         </span>
                     )
@@ -563,14 +561,7 @@ const CreateYourOwn = () => {
             </h1>
 
 
-            <h2
-                style={{
-                    color:'white',
-                    fontSize:'1.5rem'
-                }}
-            >
-                Total: ${getTotalPrice()}
-            </h2>
+          
 
 
 

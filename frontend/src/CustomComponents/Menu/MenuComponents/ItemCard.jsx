@@ -78,15 +78,7 @@ const ItemCard = ({ ItemObj, isSelected, onSelect }) => {
                 </h1>
 
 
-                <p
-                    className="text-black"
-                    style={{
-                        fontSize:'0.85rem',
-                        fontWeight:'600'
-                    }}
-                >
-                    ${ItemObj.Price}
-                </p>
+                
 
             </Box>
 
