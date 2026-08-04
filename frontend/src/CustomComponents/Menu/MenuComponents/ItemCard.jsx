@@ -41,35 +41,39 @@ const ItemCard = ({ ItemObj, isSelected, onSelect }) => {
 
         >
 
+            <div className="ItemImageContainer">
 
-            <img
+                <img
+                    src={resolveImg(ItemObj.Img)}
+                    alt={ItemObj.Name}
+                    className="w-full h-full"
+                    style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center'
+                    }}
+                />
 
-                src={resolveImg(ItemObj.Img)}
-
-                alt={ItemObj.Name}
-
-                className="absolute inset-0 w-full h-full"
-
-                style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center'
-                }}
-
-            />
-
+            </div>
 
 
             <Box
 
-                className="flex bg-white h-[30%] justify-center items-center relative flex-col"
+                className="ItemTextBox flex bg-white justify-center items-center flex-col"
 
                 style={{
-                    padding:'5px'
+                    padding:'5px',
+                    minHeight:'45px'
                 }}
 
             >
 
-                <h1 className="text-black">
+                <h1
+                    className="text-black"
+                    style={{
+                        fontSize:"clamp(.6rem, 1vw, 1.5rem)",
+                        lineHeight:"1.1"
+                    }}
+                >
                     {ItemObj.Name}
                 </h1>
 
@@ -84,7 +88,6 @@ const ItemCard = ({ ItemObj, isSelected, onSelect }) => {
                     ${ItemObj.Price}
                 </p>
 
-
             </Box>
 
 
@@ -92,25 +95,18 @@ const ItemCard = ({ ItemObj, isSelected, onSelect }) => {
             {isSelected && (
 
                 <Box
-
                     className="absolute inset-0 pointer-events-none"
-
                     style={{
-                        background:
-                        'rgba(72,187,120,0.25)'
+                        background:'rgba(72,187,120,0.25)'
                     }}
-
                 />
 
             )}
-
-
 
         </motion.div>
 
     )
 
 }
-
 
 export default ItemCard
