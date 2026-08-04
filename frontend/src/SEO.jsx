@@ -17,6 +17,8 @@ const SEO = ({ title, description, canonical }) => (
         href={canonical} 
       />
     )}
+
+    <link rel="icon" href="/logo-full-transparent.webp" type="image/webp" />
   </Helmet>
 )
 
