@@ -3,20 +3,38 @@
         "Step": "1",
         "Label": "Catch Options",
         "Header": "Step One: Choose Your Catch",
+        "MultiSelect": true,
+        "Max": 3,
         "Items": [
             {
-                "Name":"Lobster",
-                "Img":"/src/assets/img/FoodOptions/Catches/lobsteroption.webp"
+                "Name": "Lobster",
+                "Price": 32,
+                "Img": "/src/assets/img/FoodOptions/Catches/lobsteroption.webp"
             },
-
             {
-                "Name":"Crab",
-                "Img":"/src/assets/img/FoodOptions/Catches/craboption.webp"
+                "Name": "Crab",
+                "Price": 24,
+                "Img": "/src/assets/img/FoodOptions/Catches/craboption.webp"
             },
-
             {
-                "Name":"Shrimp",
-                "Img":"/src/assets/img/FoodOptions/Catches/shrimpoption.webp"
+                "Name": "Shrimp",
+                "Price": 16,
+                "Img": "/src/assets/img/FoodOptions/Catches/shrimpoption.webp"
+            },
+            {
+                "Name": "Crawfish",
+                "Price": 18,
+                "Img": "/src/assets/img/FoodOptions/Catches/crawfish.webp"
+            },
+            {
+                "Name": "Mussels",
+                "Price": 14,
+                "Img": "/src/assets/img/FoodOptions/Catches/musselsoption.webp"
+            },
+            {
+                "Name": "Clams",
+                "Price": 15,
+                "Img": "/src/assets/img/FoodOptions/Catches/clams.webp"
             }
         ]
     },
@@ -27,70 +45,101 @@
         "Header": "Step Two: Choose Your Side",
         "Items": [
             {
-                "Name":"Roasted Potatoes",
-                "Img":"/src/assets/img/FoodOptions/Sides/potatoesoption.webp"
+                "Name": "Roasted Potatoes",
+                "Price": 5,
+                "Img": "/src/assets/img/FoodOptions/Sides/potatoesoption.webp"
             },
-
             {
-                "Name":"Corn",
-                "Img":"/src/assets/img/FoodOptions/Sides/cornoption.webp"
+                "Name": "Corn",
+                "Price": 4,
+                "Img": "/src/assets/img/FoodOptions/Sides/cornoption.webp"
             },
-
             {
-                "Name":"Fries",
-                "Img":"/src/assets/img/FoodOptions/Sides/friesoption.webp"
+                "Name": "Broccoli",
+                "Price": 5,
+                "Img": "/src/assets/img/FoodOptions/Sides/broccolioption.webp"
             },
-
             {
-                "Name":"Coleslaw",
-                "Img":"/src/assets/img/FoodOptions/Sides/coleslawoption.webp"
+                "Name": "Egg",
+                "Price": 2,
+                "Img": "/src/assets/img/FoodOptions/Sides/eggoption.webp"
+            },
+            {
+                "Name": "Garlic Bread",
+                "Price": 6,
+                "Img": "/src/assets/img/FoodOptions/Sides/garlicbreadoption.webp"
+            },
+            {
+                "Name": "Noodles",
+                "Price": 5,
+                "Img": "/src/assets/img/FoodOptions/Sides/noodlesoption.webp"
+            },
+            {
+                "Name": "Rice",
+                "Price": 4,
+                "Img": "/src/assets/img/FoodOptions/Sides/riceoption.webp"
+            },
+            {
+                "Name": "Sausage",
+                "Price": 6,
+                "Img": "/src/assets/img/FoodOptions/Sides/sausageoption.webp"
             }
         ]
     },
 
     {
-        "Step":"3",
-        "Label":"Sauce Options",
+        "Step": "3",
+        "Label": "Sauce Options",
         "Header": "Step Three: Choose Your Sauce",
         "Items": [
             {
-                "Name":"Sweet Chili",
-                "Img":"/src/assets/img/FoodOptions/Sauces/chiligarlicoption.webp"
+                "Name": "Captain's Sauce",
+                "Price": 3,
+                "Img": "/src/assets/img/FoodOptions/Sauces/captainssauce.webp"
             },
-
             {
-                "Name":"Katsu Curry",
-                "Img":"/src/assets/img/FoodOptions/Sauces/katsucurryoption.webp"
+                "Name": "Cajun",
+                "Price": 3,
+                "Img": "/src/assets/img/FoodOptions/Sauces/cajun.webp"
             },
-
             {
-                "Name":"Lemon Butter",
-                "Img":"/src/assets/img/FoodOptions/Sauces/lemonbutteroption.webp"
+                "Name": "Garlic Butter",
+                "Price": 3,
+                "Img": "/src/assets/img/FoodOptions/Sauces/garlicbutter.webp"
+            },
+            {
+                "Name": "Sweet Chili",
+                "Price": 3,
+                "Img": "/src/assets/img/FoodOptions/Sauces/chiligarlicoption.webp"
+            },
+            {
+                "Name": "Lemon Butter",
+                "Price": 3,
+                "Img": "/src/assets/img/FoodOptions/Sauces/lemonbutteroption.webp"
             }
         ]
     },
 
     {
-        "Step":"4",
-        "Label":"Spice Level",
-        "Header":"Step Four: Choose Your Spice Level",
+        "Step": "4",
+        "Label": "Spice Level",
+        "Header": "Step Four: Choose Your Spice Level",
         "Items": [
             {
-                "Name":"Mild",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice1.webp"
+                "Name": "Mild",
+                "Price": 0,
+                "Img": "/src/assets/img/FoodOptions/SpiceLevels/spice1.webp"
             },
-
             {
-                "Name":"Spicy",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice2.webp"
+                "Name": "Spicy",
+                "Price": 0,
+                "Img": "/src/assets/img/FoodOptions/SpiceLevels/spice2.webp"
             },
-
             {
-                "Name":"Extra Spicy",
-                "Img":"/src/assets/img/FoodOptions/SpiceLevels/spice3.webp"
+                "Name": "Extra Spicy",
+                "Price": 1,
+                "Img": "/src/assets/img/FoodOptions/SpiceLevels/spice3.webp"
             }
         ]
     }
-
-
 ]

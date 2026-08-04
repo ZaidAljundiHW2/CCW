@@ -64,7 +64,7 @@
     justify-content: center;
     align-items: center;
     font-family: HeadingNow, sans-serif;
-    font-size: clamp(20px, 1vw, 16px);
+    font-size: clamp(20px, 1.5vw, 25px);
     z-index: 10;
     color: white;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

@@ -133,7 +133,7 @@ const Footer = forwardRef((props, ref) => {
                             <img src={Logo} alt="Captain's Crab logo" className='footerlogo'/>
                         </div>
 
-                        <Flex className='max-md:order-1 items-center justify-center md:gap-15'>
+                        <Flex className='max-md:order-1 items-start justify-center md:gap-15'>
                             {/* Quick Links */}
                             <Flex className='flex-col flex-1'>
 

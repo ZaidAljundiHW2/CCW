@@ -1,66 +1,112 @@
 [
     {
-        "Name":"Lobster",
-        "Img":"/src/assets/img/FoodShowcase/lobsterlayer.webp"
+        "Name": "Lobster",
+        "Price": 32,
+        "Img": "/src/assets/img/FoodShowcase/lobster.webp"
     },
-
     {
-        "Name":"Crab",
-        "Img":"/src/assets/img/FoodShowcase/crablayer.webp"
+        "Name": "Crab",
+        "Price": 24,
+        "Img": "/src/assets/img/FoodShowcase/crab.webp"
     },
-
     {
-        "Name":"Shrimp",
-        "Img":"/src/assets/img/FoodShowcase/shrimplayer.webp"
+        "Name": "Shrimp",
+        "Price": 16,
+        "Img": "/src/assets/img/FoodShowcase/shrimps.webp"
     },
-
     {
-        "Name":"Corn",
-        "Img":"/src/assets/img/FoodShowcase/corn.webp"
+        "Name": "Crawfish",
+        "Price": 18,
+        "Img": "/src/assets/img/FoodShowcase/crawfish.webp"
     },
-
     {
-        "Name":"Coleslaw",
-        "Img":"/src/assets/img/FoodShowcase/coleslaw.webp"
+        "Name": "Mussels",
+        "Price": 14,
+        "Img": "/src/assets/img/FoodShowcase/mussels.webp"
     },
-
     {
-        "Name":"Fries",
-        "Img":"/src/assets/img/FoodShowcase/fries.webp"
+        "Name": "Clams",
+        "Price": 15,
+        "Img": "/src/assets/img/FoodShowcase/clams.webp"
     },
-
     {
-        "Name":"Roasted Potatoes",
-        "Img":"/src/assets/img/FoodShowcase/roastpotato.webp"
+        "Name": "Broccoli",
+        "Price": 5,
+        "Img": "/src/assets/img/FoodShowcase/broccoli.webp"
     },
-
     {
-        "Name":"Katsu Curry",
-        "Img":"/src/assets/img/FoodShowcase/katsucurry.webp"
+        "Name": "Corn",
+        "Price": 4,
+        "Img": "/src/assets/img/FoodShowcase/corn.webp"
     },
-
     {
-        "Name":"Lemon Butter",
-        "Img":"/src/assets/img/FoodShowcase/lemonbutter.webp"
+        "Name": "Roasted Potatoes",
+        "Price": 5,
+        "Img": "/src/assets/img/FoodShowcase/roastpotato.webp"
     },
-
     {
-        "Name":"Sweet Chili",
-        "Img":"/src/assets/img/FoodShowcase/chiligarlic.webp"
+        "Name": "Egg",
+        "Price": 2,
+        "Img": "/src/assets/img/FoodShowcase/eggs.webp"
     },
-
     {
-        "Name":"Mild",
-        "Img":"/src/assets/img/FoodShowcase/spice1.webp"
+        "Name": "Garlic Bread",
+        "Price": 6,
+        "Img": "/src/assets/img/FoodShowcase/garlicbread.webp"
     },
-
     {
-        "Name":"Spicy",
-        "Img":"/src/assets/img/FoodShowcase/spice2.webp"
+        "Name": "Noodles",
+        "Price": 5,
+        "Img": "/src/assets/img/FoodShowcase/noodles.webp"
     },
-
     {
-        "Name":"Extra Spicy",
-        "Img":"/src/assets/img/FoodShowcase/spice3.webp"
+        "Name": "Rice",
+        "Price": 4,
+        "Img": "/src/assets/img/FoodShowcase/rice.webp"
+    },
+    {
+        "Name": "Sausage",
+        "Price": 6,
+        "Img": "/src/assets/img/FoodShowcase/sausage.webp"
+    },
+    {
+        "Name": "Captain's Sauce",
+        "Price": 3,
+        "Img": "/src/assets/img/FoodShowcase/captainsauce.webp"
+    },
+    {
+        "Name": "Cajun",
+        "Price": 3,
+        "Img": "/src/assets/img/FoodShowcase/cajun.webp"
+    },
+    {
+        "Name": "Garlic Butter",
+        "Price": 3,
+        "Img": "/src/assets/img/FoodShowcase/garlicbutter.webp"
+    },
+    {
+        "Name": "Sweet Chili",
+        "Price": 3,
+        "Img": "/src/assets/img/FoodShowcase/chiligarlic.webp"
+    },
+    {
+        "Name": "Lemon Butter",
+        "Price": 3,
+        "Img": "/src/assets/img/FoodShowcase/lemonpepper.webp"
+    },
+    {
+        "Name": "Mild",
+        "Price": 0,
+        "Img": "/src/assets/img/FoodShowcase/spice1.webp"
+    },
+    {
+        "Name": "Spicy",
+        "Price": 0,
+        "Img": "/src/assets/img/FoodShowcase/spice2.webp"
+    },
+    {
+        "Name": "Extra Spicy",
+        "Price": 1,
+        "Img": "/src/assets/img/FoodShowcase/spice3.webp"
     }
 ]

@@ -184,7 +184,7 @@ const MenuShowcase = ({
                 <AnimatePresence mode='wait'>
 
                 
-                    <motion.div layout className='w-full h-full'
+                    <motion.div layout className=' h-full'
                     
                         initial={{
                             opacity:0
