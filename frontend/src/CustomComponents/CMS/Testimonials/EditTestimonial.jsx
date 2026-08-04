@@ -292,7 +292,7 @@ const EditTestimonial = ({testimonial, setShowEdit}) => {
                     Update
                 </Button>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowEdit(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowEdit(false)}>
                     Cancel
                 </Button>
             </Flex>

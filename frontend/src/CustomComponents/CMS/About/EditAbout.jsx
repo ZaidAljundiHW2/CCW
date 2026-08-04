@@ -124,7 +124,7 @@ const EditAbout = ({aboutitem, SetShowAboutEdit}) => {
 
             <Flex className='justify-end gap-5'>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => SetShowAboutEdit(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => SetShowAboutEdit(false)}>
                     Cancel
                 </Button>
 

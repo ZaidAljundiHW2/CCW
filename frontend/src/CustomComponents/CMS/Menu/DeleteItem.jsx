@@ -110,7 +110,7 @@ const DeleteItem = ({setShowDelete, item}) => {
 
                 
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowDelete(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowDelete(false)}>
 
                     No
 

@@ -223,7 +223,7 @@ const AddCS = ({setShowAddCS}) => {
                     Add
                 </Button>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowAddCS(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowAddCS(false)}>
                     Cancel
                 </Button>
             </Flex>

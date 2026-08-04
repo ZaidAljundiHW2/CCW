@@ -390,7 +390,7 @@ const EditLocation = ({ item, setShowEdit }) => {
                     </Field.Root>
 
                     {/* Description */}
-                    <Field.Root className='w-full'>
+                    <Field.Root className='w-full' disabled={item.ismainbranch}>
                         <Field.Label className='editText'>Description</Field.Label>
 
                         <div className="relative w-full">
@@ -682,7 +682,7 @@ const EditLocation = ({ item, setShowEdit }) => {
                     
                 </Flex>
 
-                <Button className='editButton' style={{ background: 'red', alignSelf:'end' }} onClick={() => setShowEdit(false)}>
+                <Button className='editButton' style={{ background: 'red', alignSelf:'end', color:'white' }} onClick={() => setShowEdit(false)}>
                     Cancel
                 </Button>
 

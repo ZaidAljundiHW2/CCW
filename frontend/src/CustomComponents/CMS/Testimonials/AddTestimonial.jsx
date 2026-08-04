@@ -266,7 +266,7 @@ const AddTestimonial = ({ setShowAdd }) => {
                     Add
                 </Button>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowAdd(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowAdd(false)}>
                     Cancel
                 </Button>
             </Flex>

@@ -203,7 +203,7 @@ const EditCSItem = ({setShowEditCSItem, CSItem, setShowEditCS}) => {
                 </Button>
             </Flex>
 
-            <Button className='editButton' style={{background:'red', alignSelf:'end'}} onClick={() => setShowEditCSItem(false)}>
+            <Button className='editButton' style={{background:'red', alignSelf:'end', color:'white'}} onClick={() => setShowEditCSItem(false)}>
                 Cancel
             </Button>
 

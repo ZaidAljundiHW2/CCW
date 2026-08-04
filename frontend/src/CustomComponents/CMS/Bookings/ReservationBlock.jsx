@@ -175,7 +175,7 @@ const ReservationBlock = ({reservationItem,
                 Edit
             </Button>
 
-            <Button className='rounded-lg editButton' style={{background:'red'}} onClick={() => {setShowDelete(true); setReservationItem(reservationItem)}}>
+            <Button className='rounded-lg editButton' style={{background:'red', color:'white'}} onClick={() => {setShowDelete(true); setReservationItem(reservationItem)}}>
                 Delete
             </Button>
 

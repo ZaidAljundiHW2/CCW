@@ -208,7 +208,7 @@ const EditGallery = ({setShowEdit}) => {
 
           <Button 
             className='editButton' 
-            style={{background:'red', alignSelf:'start'}}
+            style={{background:'red', alignSelf:'start', color:'white'}}
             onClick={() => setShowEdit(false)}
           >
             Cancel

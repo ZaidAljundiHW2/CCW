@@ -135,7 +135,7 @@ const EditCS = ({setShowEdit}) => {
             
 
 
-            <Button className='editButton' style={{background:'red', alignSelf:'end'}} onClick={() => setShowEdit(false)}>
+            <Button className='editButton' style={{background:'red', alignSelf:'end', color:'white'}} onClick={() => setShowEdit(false)}>
                 Cancel
             </Button>
 

@@ -359,7 +359,7 @@ const AddMenuItem = ({setShowMenuItemAdd, categories}) => {
                     Add
                 </Button>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowMenuItemAdd(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowMenuItemAdd(false)}>
                     Cancel
                 </Button>
             </Flex>

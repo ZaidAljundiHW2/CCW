@@ -58,7 +58,7 @@ const DeleteGalleryImage = ({setShowEdit, imageobj, setShowDelete}) => {
             <img src={imageobj.url} style={{height:'100px', aspectRatio:'1/1', alignSelf: 'center' }}/>
 
             <Flex className='w-full gap-5 justify-center'>
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowDelete(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowDelete(false)}>
                 
                     No
     

@@ -350,7 +350,7 @@ const EditMenuItem = ({menuitem, setShowMenuItemEdit, categories}) => {
                     Update
                 </Button>
 
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowMenuItemEdit(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowMenuItemEdit(false)}>
                     Cancel
                 </Button>
             </Flex>

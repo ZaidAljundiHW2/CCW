@@ -138,7 +138,7 @@ const ToggleBYO = ({cats, setShowToggle, categories}) => {
             </Flex>
 
             <Flex className='justify-end'>
-                <Button className='editButton' style={{background:'red'}} onClick={() => setShowToggle(false)}>
+                <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowToggle(false)}>
                     Cancel
                 </Button>
             </Flex>

@@ -169,7 +169,8 @@ const EditGenDet = ({editedItem, setShowEdit, fetchAll}) => {
                         type='button'
                         style={{
                             background:'red',
-                            padding:'10px'
+                            padding:'10px',
+                            color:'white'
                         }}
 
                         onClick={() => setShowEdit(false)}

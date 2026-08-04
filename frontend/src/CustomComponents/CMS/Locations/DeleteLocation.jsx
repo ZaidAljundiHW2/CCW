@@ -87,7 +87,7 @@ const DeleteLocation = ({item, setShowDelete, setShowEdit}) => {
 
             
 
-            <Button className='editButton' style={{background:'red'}} onClick={() => setShowDelete(false)}>
+            <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowDelete(false)}>
 
             No
 

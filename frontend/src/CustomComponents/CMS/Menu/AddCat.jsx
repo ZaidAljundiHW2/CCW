@@ -148,7 +148,7 @@ const AddCat = ({categories, setShowAdd}) => {
 
                 <Flex className='flex-1 justify-end gap-3'>
 
-                    <Button className='editButton' style={{background:'red'}} onClick={() => setShowAdd(false)}>
+                    <Button className='editButton' style={{background:'red', color:'white'}} onClick={() => setShowAdd(false)}>
                         Cancel
                     </Button>
 

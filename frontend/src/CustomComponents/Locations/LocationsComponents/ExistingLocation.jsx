@@ -143,7 +143,7 @@ const ExistingLocation = ({ locationitem }) => {
 
                     transition={{duration:.5, ease:'easeOut', delay:.1}}
                 >
-                    Our home port in the heart of burlington serving up bold flavours and good times
+                    {locationitem.description}
                 </motion.p>
 
                 <motion.p className='ELT'
