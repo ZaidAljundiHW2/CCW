@@ -390,7 +390,7 @@ const EditLocation = ({ item, setShowEdit }) => {
                     </Field.Root>
 
                     {/* Description */}
-                    <Field.Root className='w-full' disabled={item.ismainbranch}>
+                    <Field.Root className='w-full'>
                         <Field.Label className='editText'>Description</Field.Label>
 
                         <div className="relative w-full">
